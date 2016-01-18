@@ -1,4 +1,4 @@
-package com.rayman.v2ex;
+package com.rayman.v2ex.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.rayman.v2ex.R;
 
 public class MainActivity extends AppCompatActivity {
 

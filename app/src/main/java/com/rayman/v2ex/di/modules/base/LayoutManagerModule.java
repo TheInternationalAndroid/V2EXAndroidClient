@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 10:07 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: IInject.
- * Author: Lena; Last Modified: 1/18/16 10:07 PM.
+ * Created on 1/18/16 10:38 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: LayoutManagerModule.
+ * Author: Lena; Last Modified: 1/18/16 10:38 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,16 +20,27 @@
  *
  */
 
-package com.rayman.v2ex.di;
+package com.rayman.v2ex.di.modules.base;
 
-import com.rayman.v2ex.di.component.app.AppComp;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
+import com.rayman.v2ex.anotations.ContextType;
+import com.rayman.v2ex.anotations.ListType;
+
+import javax.inject.Named;
+
+import dagger.Module;
+import dagger.Provides;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/18/16
- * Time: 22:07
+ * Time: 22:38
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -41,10 +52,14 @@ import com.rayman.v2ex.di.component.app.AppComp;
  * \               ||----w |
  * \               ||     ||
  */
-public interface IInject {
+@Module
+public class LayoutManagerModule {
 
-    <T extends AppComp> T buildComp();
+    @Provides @Named(ListType.VERTICAL) RecyclerView.LayoutManager provideVerticalLayout(@Named(ContextType.ACTIVITY) @NonNull Context context) {
+        return new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
+    }
 
-    void onInject();
-
+    @Provides @Named(ListType.HORIZONTAL) RecyclerView.LayoutManager provideHorizontalLayout(@Named(ContextType.ACTIVITY) @NonNull Context context) {
+        return new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+    }
 }

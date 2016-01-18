@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 10:07 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: IInject.
- * Author: Lena; Last Modified: 1/18/16 10:07 PM.
+ * Created on 1/18/16 10:35 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainActivity.
+ * Author: Lena; Last Modified: 1/18/16 10:35 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,31 +20,23 @@
  *
  */
 
-package com.rayman.v2ex.di;
+package com.rayman.v2ex.view.main;
 
-import com.rayman.v2ex.di.component.app.AppComp;
+import android.os.Bundle;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 22:07
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
-public interface IInject {
+import com.rayman.v2ex.R;
+import com.rayman.v2ex.presenter.IPresenter;
+import com.rayman.v2ex.view.base.BaseActivity;
 
-    <T extends AppComp> T buildComp();
+public class MainActivity extends BaseActivity {
 
-    void onInject();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
 
+    @Override protected IPresenter getPresenter() {
+        return null;
+    }
 }

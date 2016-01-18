@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 10:08 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AppComp.
- * Author: Lena; Last Modified: 1/18/16 10:08 PM.
+ * Created on 1/18/16 10:39 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: SPModule.
+ * Author: Lena; Last Modified: 1/18/16 10:39 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,26 +20,27 @@
  *
  */
 
-package com.rayman.v2ex.di.component.app;
+package com.rayman.v2ex.di.modules.base;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
+import android.preference.PreferenceManager;
 
 import com.rayman.v2ex.anotations.ContextType;
-import com.rayman.v2ex.app.V2EXApplication;
-import com.rayman.v2ex.di.modules.AppModule;
 import com.rayman.v2ex.di.scope.PerApplication;
 
 import javax.inject.Named;
 
-import dagger.Component;
+import dagger.Module;
+import dagger.Provides;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/18/16
- * Time: 22:07
+ * Time: 22:39
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -51,14 +52,19 @@ import dagger.Component;
  * \               ||----w |
  * \               ||     ||
  */
-@PerApplication
-@Component(modules = {AppModule.class})
-public interface AppComp {
+@Module
+public class SPModule {
 
-    void inject(V2EXApplication application);
-
-    @Named(ContextType.APPLICATION) Context applicationContext();
-
-    SharedPreferences preference();
+    @Provides @PerApplication SharedPreferences provideSP(@Named(ContextType.APPLICATION) Context context) {
+        String applicationId = context.getApplicationContext().getPackageName();
+        PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences sharedPrefs;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            sharedPrefs = context.getSharedPreferences(applicationId, Context.MODE_MULTI_PROCESS);
+        } else {
+            sharedPrefs = context.getSharedPreferences(applicationId, 0);
+        }
+        return sharedPrefs;
+    }
 
 }

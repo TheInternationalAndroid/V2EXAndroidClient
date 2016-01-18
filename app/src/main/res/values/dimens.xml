@@ -1,6 +1,39 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="drawer_header_height">140dp</dimen>
+    <dimen name="item_height">45dp</dimen>
+
+    <dimen name="tag_corner">20dp</dimen>
+    <dimen name="btn_corner">5dp</dimen>
+    <dimen name="divider">0.5dp</dimen>
+
+    <dimen name="padding_list_bottom">64dp</dimen>
+
+    <!--TextSize-->
+    <dimen name="text_micro">6sp</dimen>
+    <dimen name="text_s">8sp</dimen>
+    <dimen name="text_m">10sp</dimen>
+    <dimen name="text_l">13sp</dimen>
+    <dimen name="text_xl">15sp</dimen>
+    <dimen name="text_xxl">17sp</dimen>
+    <dimen name="text_xxxl">23sp</dimen>
+    <dimen name="text_phone_num_large">37sp</dimen>
+    <dimen name="text_phone_num_middle">32sp</dimen>
+    <dimen name="text_phone_num_small">23sp</dimen>
+    <!--Padding-->
+    <dimen name="padding_ss">1.5dp</dimen>
+    <dimen name="padding_s">3dp</dimen>
+    <dimen name="padding_m">5dp</dimen>
+    <dimen name="padding_l">8dp</dimen>
+    <dimen name="padding_xl">12dp</dimen>
+    <dimen name="padding_xxl">15dp</dimen>
+    <dimen name="padding_bottom">20dp</dimen>
+
+
+    <!--List item height-->
+    <dimen name="list_item_l">53dp</dimen>
+    <dimen name="list_item_m">48dp</dimen>
 </resources>

@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 10:07 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: IInject.
- * Author: Lena; Last Modified: 1/18/16 10:07 PM.
+ * Created on 1/18/16 10:36 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainFragment.
+ * Author: Lena; Last Modified: 1/18/16 10:36 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,31 +20,23 @@
  *
  */
 
-package com.rayman.v2ex.di;
+package com.rayman.v2ex.view.main;
 
-import com.rayman.v2ex.di.component.app.AppComp;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 22:07
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
-public interface IInject {
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-    <T extends AppComp> T buildComp();
+import com.rayman.v2ex.R;
 
-    void onInject();
+public class MainFragment extends Fragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_main, container, false);
+    }
 
 }

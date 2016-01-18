@@ -24,6 +24,12 @@ package com.rayman.v2ex.app;
 
 import android.app.Application;
 
+import com.rayman.v2ex.di.IInject;
+import com.rayman.v2ex.di.component.app.AppComp;
+import com.rayman.v2ex.di.component.app.DaggerAppComp;
+import com.rayman.v2ex.di.modules.AppModule;
+import com.rayman.v2ex.utils.LogUtil;
+
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
@@ -41,9 +47,32 @@ import android.app.Application;
  * \               ||----w |
  * \               ||     ||
  */
-public class V2EXApplication extends Application {
+public class V2EXApplication extends Application implements IInject {
+
+    private AppComp appComp;
 
     @Override public void onCreate() {
         super.onCreate();
+
+        LogUtil.setDebug(true);
+
+        onInject();
     }
+
+    @Override public AppComp buildComp() {
+        appComp = DaggerAppComp
+                .builder()
+                .appModule(new AppModule(this))
+                .build();
+        return appComp;
+    }
+
+    @Override public void onInject() {
+        buildComp().inject(this);
+    }
+
+    public AppComp appComp() {
+        return appComp;
+    }
+
 }

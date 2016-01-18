@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 10:07 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: IInject.
- * Author: Lena; Last Modified: 1/18/16 10:07 PM.
+ * Created on 1/18/16 11:05 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: ActivityAction.
+ * Author: Lena; Last Modified: 1/18/16 11:05 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,16 +20,21 @@
  *
  */
 
-package com.rayman.v2ex.di;
+package com.rayman.v2ex.anotations;
 
-import com.rayman.v2ex.di.component.app.AppComp;
+import android.app.Activity;
+import android.support.annotation.IntDef;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/18/16
- * Time: 22:07
+ * Time: 23:05
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -41,10 +46,8 @@ import com.rayman.v2ex.di.component.app.AppComp;
  * \               ||----w |
  * \               ||     ||
  */
-public interface IInject {
-
-    <T extends AppComp> T buildComp();
-
-    void onInject();
-
+@Documented
+@Retention(RetentionPolicy.SOURCE)
+@IntDef({Activity.RESULT_CANCELED,Activity.RESULT_FIRST_USER,Activity.RESULT_OK})
+public @interface ActivityAction {
 }

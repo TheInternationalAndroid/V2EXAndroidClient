@@ -1,20 +1,162 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="V2EXTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="toolbarStyle">@style/ToolBar</item>
+        <item name="android:editTextStyle">@style/EditTextStyle</item>
+        <item name="editTextStyle">@style/EditTextStyle</item>
+        <item name="android:scrollViewStyle">@style/ScrollViewStyle</item>
+
+        <item name="actionMenuTextColor">@color/text_white</item>
+        <item name="actionMenuTextAppearance">@style/ActionMenuAppearance</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="colorControlNormal">@color/bg_white</item>
+        <item name="colorControlActivated">@color/bg_blue_light</item>
+        <item name="colorControlHighlight">@color/bg_blue_transparent</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColorPrimary">@color/text_white</item>
+        <item name="android:textColorSecondary">@color/text_white</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@color/bg_gray_light_F4</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="NearbyDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="toolbarStyle">@style/ToolBar</item>
+        <item name="android:editTextStyle">@style/EditTextStyle</item>
+        <item name="editTextStyle">@style/EditTextStyle</item>
+        <item name="android:scrollViewStyle">@style/ScrollViewStyle</item>
+
+        <item name="colorControlNormal">@color/bg_blue_transparent_5F</item>
+        <item name="colorControlActivated">@color/bg_blue_light</item>
+        <item name="colorControlHighlight">@color/text_yellow</item>
+
+        <item name="actionMenuTextColor">@color/text_white</item>
+        <item name="actionMenuTextAppearance">@style/ActionMenuAppearance</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="colorPrimaryDark">@color/bg_blue_dark</item>
+        <item name="colorPrimary">@color/bg_blue</item>
+
+        <item name="android:textColorPrimary">@color/text_white</item>
+        <item name="android:textColorSecondary">@color/text_white</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+    </style>
+
+
+    <style name="V2EXTheme.Splash">
+        <!--<item name="android:windowFullscreen">true</item>-->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="V2EXTheme.Home">
+        <item name="toolbarStyle">@style/ToolBar.Home</item>
+    </style>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="V2EXTheme.FullScreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/bg_black_A0_transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="V2EXTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="ScrollViewStyle">
+        <item name="android:clipToPadding">false</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+    </style>
+
+    <style name="ToolBar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/bg_blue</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:minHeight">?actionBarSize</item>
+        <item name="height">?actionBarSize</item>
+        <item name="titleTextAppearance">@style/ToolBarTitleAppearance</item>
+        <item name="subtitleTextAppearance">@style/ToolBarSubTitleAppearance</item>
+        <item name="displayOptions">homeAsUp|showTitle|showHome|useLogo</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="colorControlNormal">@color/bg_white</item>
+    </style>
+
+    <style name="ToolBarNavigationStyle" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:background">?actionBarItemBackground</item>
+    </style>
+
+    <style name="ToolbarActionButtonStyle" parent="Widget.AppCompat.ActionButton">
+        <item name="android:background">?actionBarItemBackground</item>
+    </style>
+
+    <style name="ToolBar.Transparent">
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="ToolBar.Home">
+        <item name="contentInsetLeft">0dp</item>
+        <item name="contentInsetRight">0dp</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetEnd">0dp</item>
+        <item name="displayOptions">showTitle|disableHome|useLogo</item>
+    </style>
+
+    <style name="ToolBarTitleAppearance" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/text_xl</item>
+    </style>
+
+    <style name="ToolBarSubTitleAppearance" parent="TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">@dimen/text_m</item>
+        <item name="android:singleLine">false</item>
+    </style>
+
+    <style name="ToolBar.ActionMenuAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:textSize">@dimen/text_xl</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="ActionMenuAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:textSize">@dimen/text_xl</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="EditTextStyle" parent="Base.V7.Widget.AppCompat.EditText">
+        <item name="android:minHeight">45dp</item>
+        <item name="android:padding">@dimen/padding_m</item>
+        <item name="android:textSize">@dimen/text_xl</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textColorHint">@color/text_gray</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="InputLayoutStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">@dimen/item_height</item>
+        <item name="android:textSize">@dimen/text_l</item>
+        <item name="android:layout_marginTop">@dimen/padding_m</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textColorHint">@color/text_gray</item>
+    </style>
+
+    <style name="TabTitleAppearance" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">@dimen/text_xl</item>
+    </style>
 
 </resources>

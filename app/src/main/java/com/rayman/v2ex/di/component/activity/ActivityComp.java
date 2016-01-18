@@ -27,7 +27,7 @@ import android.content.Context;
 import com.rayman.v2ex.anotations.ContextType;
 import com.rayman.v2ex.di.component.app.AppComp;
 import com.rayman.v2ex.di.modules.ActivityModule;
-import com.rayman.v2ex.di.scope.PerActivity;
+import com.rayman.v2ex.di.scope.PerBaseActivity;
 import com.rayman.v2ex.view.base.BaseActivity;
 
 import javax.inject.Named;
@@ -51,7 +51,7 @@ import dagger.Component;
  * \               ||----w |
  * \               ||     ||
  */
-@PerActivity
+@PerBaseActivity
 @Component(modules = {ActivityModule.class}, dependencies = AppComp.class)
 public interface ActivityComp extends AppComp {
 

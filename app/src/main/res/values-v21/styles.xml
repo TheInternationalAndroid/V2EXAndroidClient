@@ -1,9 +1,23 @@
 <resources>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="V2EXTheme.Home">
+        <item name="toolbarStyle">@style/ToolBar.Home</item>
+        <!--<item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+        <item name="android:statusBarColor">@color/transparent</item>
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+    </style>
+
+    <style name="V2EXTheme.Splash">
+        <!--<item name="android:windowFullscreen">true</item>-->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBarOverlay">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@color/bg_blue</item>
     </style>
+
+    <style name="V2EXTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="V2EXTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

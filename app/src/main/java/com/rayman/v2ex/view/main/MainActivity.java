@@ -25,15 +25,34 @@ package com.rayman.v2ex.view.main;
 import android.os.Bundle;
 
 import com.rayman.v2ex.R;
+import com.rayman.v2ex.databinding.ActivityMainBinding;
+import com.rayman.v2ex.di.component.activity.ActivityComp;
+import com.rayman.v2ex.di.component.activity.DaggerMainComp;
 import com.rayman.v2ex.presenter.IPresenter;
 import com.rayman.v2ex.view.base.BaseActivity;
+import com.rayman.v2ex.vm.main.MainVM;
+
+import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity {
+
+    @Inject MainVM viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding binding = bindLayout(R.layout.activity_main, false);
+        binding.setViewModel(viewModel);
+    }
+
+    @Override public ActivityComp buildComp() {
+        return DaggerMainComp.builder()
+                .activityComp(super.buildComp())
+                .build();
+    }
+
+    @Override public void onInject() {
+        buildComp().inject(this);
     }
 
     @Override protected IPresenter getPresenter() {

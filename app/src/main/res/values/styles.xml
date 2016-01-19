@@ -26,7 +26,7 @@
         <item name="android:windowBackground">@color/bg_gray_light_F4</item>
     </style>
 
-    <style name="NearbyDialogTheme" parent="Theme.AppCompat.Light.Dialog">
+    <style name="V2EXDialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="toolbarStyle">@style/ToolBar</item>
         <item name="android:editTextStyle">@style/EditTextStyle</item>
         <item name="editTextStyle">@style/EditTextStyle</item>

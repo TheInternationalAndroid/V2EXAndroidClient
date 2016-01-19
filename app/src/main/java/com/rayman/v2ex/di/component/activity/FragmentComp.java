@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 9:55 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: IMainP.
- * Author: Lena; Last Modified: 1/18/16 9:55 PM.
+ * Created on 1/19/16 11:55 AM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: FragmentComp.
+ * Author: Lena; Last Modified: 1/19/16 11:55 AM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,14 +19,20 @@
  * limitations under the License.
  *
  */
-package com.rayman.v2ex.presenter.main;
+
+package com.rayman.v2ex.di.component.activity;
+
+import com.rayman.v2ex.di.scope.PerFragment;
+import com.rayman.v2ex.view.base.BaseFragment;
+
+import dagger.Component;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 21:43
+ * Date: 1/19/16
+ * Time: 11:55
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -38,5 +44,10 @@ package com.rayman.v2ex.presenter.main;
  * \               ||----w |
  * \               ||     ||
  */
-public interface IMainP {
+@PerFragment
+@Component(dependencies = ActivityComp.class)
+public interface FragmentComp extends ActivityComp {
+
+    void inject(BaseFragment baseFragment);
+
 }

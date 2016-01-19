@@ -1,9 +1,9 @@
 <!--
   ~ Copyright (c) 2016 Lena.t.Yan
   ~ Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
-  ~ Created on 1/18/16 10:36 PM
-  ~ ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: fragment_main.xml.
-  ~ Author: Lena; Last Modified: 1/18/16 10:36 PM.
+  ~ Created on 1/19/16 11:49 AM
+  ~ ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: fragment_hot.xml.
+  ~ Author: Lena; Last Modified: 1/19/16 11:48 AM.
   ~ This file is originally created by Lena.
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rayman.v2ex.view.main.MainFragment">
+    tools:context="com.rayman.v2ex.view.main.HotFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

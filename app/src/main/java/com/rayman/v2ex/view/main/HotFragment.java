@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 11:31 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainVM.
- * Author: Lena; Last Modified: 1/18/16 11:31 PM.
+ * Created on 1/19/16 11:49 AM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: HotFragment.
+ * Author: Lena; Last Modified: 1/19/16 11:48 AM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,29 +20,23 @@
  *
  */
 
-package com.rayman.v2ex.vm.main;
+package com.rayman.v2ex.view.main;
 
-import javax.inject.Inject;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 23:31
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
-public class MainVM implements IMainVM {
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-    @Inject public MainVM() {
+import com.rayman.v2ex.R;
+import com.rayman.v2ex.view.base.BaseFragment;
+
+public class HotFragment extends BaseFragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_hot, container, false);
     }
+
 }

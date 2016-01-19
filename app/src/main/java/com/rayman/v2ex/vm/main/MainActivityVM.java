@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 11:33 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainVMModule.
- * Author: Lena; Last Modified: 1/18/16 11:33 PM.
+ * Created on 1/18/16 11:31 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainVM.
+ * Author: Lena; Last Modified: 1/18/16 11:31 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,20 +20,16 @@
  *
  */
 
-package com.rayman.v2ex.di.modules.activity;
+package com.rayman.v2ex.vm.main;
 
-import com.rayman.v2ex.di.scope.PerActivity;
-import com.rayman.v2ex.vm.main.MainVM;
-
-import dagger.Module;
-import dagger.Provides;
+import com.rayman.v2ex.adapter.MainPagerAdapter;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/18/16
- * Time: 23:33
+ * Time: 23:31
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -45,11 +41,16 @@ import dagger.Provides;
  * \               ||----w |
  * \               ||     ||
  */
-@Module
-public class MainVMModule {
+public class MainActivityVM implements IMainVM {
 
-    @Provides @PerActivity MainVM provideMainVM() {
-        return new MainVM();
+    private MainPagerAdapter adapter;
+
+    public MainActivityVM(MainPagerAdapter adapter) {
+        this.adapter = adapter;
+    }
+
+    public MainPagerAdapter getAdapter() {
+        return adapter;
     }
 
 }

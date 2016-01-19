@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 9:56 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: BindingAdapter.
- * Author: Lena; Last Modified: 1/18/16 9:56 PM.
+ * Created on 1/19/16 11:56 AM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: PerBindingFragment.
+ * Author: Lena; Last Modified: 1/19/16 11:56 AM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,18 +20,20 @@
  *
  */
 
-package com.rayman.v2ex.vm;
+package com.rayman.v2ex.di.scope;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+import javax.inject.Scope;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/18/16
- * Time: 21:56
+ * Time: 22:10
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -43,19 +45,8 @@ import android.support.v4.view.ViewPager;
  * \               ||----w |
  * \               ||     ||
  */
-public class BindingAdapter {
-
-    @android.databinding.BindingAdapter(value = {"normalTitleColor", "selectedTitleColor"}, requireAll = true)
-    public static void setTabLayoutTextColor(TabLayout tabLayout, int normalTitleColor, int selectedTitleColor) {
-        tabLayout.setTabTextColors(normalTitleColor, selectedTitleColor);
-    }
-
-    @android.databinding.BindingAdapter(value = {"viewPager", "adapter"})
-    public static void setTabLayoutIcons(TabLayout tabLayout, int viewPagerId, PagerAdapter pagerAdapter) {
-        ViewPager viewPager = (ViewPager) tabLayout.getRootView().findViewById(viewPagerId);
-        if (viewPager.getAdapter() == null)
-            viewPager.setAdapter(pagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-    }
-
+@Scope
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+public @interface PerBindingFragment {
 }

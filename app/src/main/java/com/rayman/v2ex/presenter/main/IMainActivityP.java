@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
  * Created on 1/18/16 9:55 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainP.
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: IMainP.
  * Author: Lena; Last Modified: 1/18/16 9:55 PM.
  * This file is originally created by Lena.
  *
@@ -19,7 +19,6 @@
  * limitations under the License.
  *
  */
-
 package com.rayman.v2ex.presenter.main;
 
 /**
@@ -27,7 +26,7 @@ package com.rayman.v2ex.presenter.main;
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/18/16
- * Time: 21:42
+ * Time: 21:43
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -39,5 +38,5 @@ package com.rayman.v2ex.presenter.main;
  * \               ||----w |
  * \               ||     ||
  */
-public class MainP {
+public interface IMainActivityP {
 }

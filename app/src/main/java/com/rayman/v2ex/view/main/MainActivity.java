@@ -26,17 +26,18 @@ import android.os.Bundle;
 
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.databinding.ActivityMainBinding;
-import com.rayman.v2ex.di.component.activity.ActivityComp;
 import com.rayman.v2ex.di.component.activity.DaggerMainComp;
+import com.rayman.v2ex.di.component.activity.MainComp;
+import com.rayman.v2ex.di.modules.activity.MainActivityVMModule;
 import com.rayman.v2ex.presenter.IPresenter;
 import com.rayman.v2ex.view.base.BaseActivity;
-import com.rayman.v2ex.vm.main.MainVM;
+import com.rayman.v2ex.vm.main.MainActivityVM;
 
 import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity {
 
-    @Inject MainVM viewModel;
+    @Inject MainActivityVM viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,10 @@ public class MainActivity extends BaseActivity {
         binding.setViewModel(viewModel);
     }
 
-    @Override public ActivityComp buildComp() {
+    @Override public MainComp buildComp() {
         return DaggerMainComp.builder()
                 .activityComp(super.buildComp())
+                .mainActivityVMModule(new MainActivityVMModule(this))
                 .build();
     }
 

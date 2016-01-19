@@ -3,22 +3,24 @@
 
     <data>
 
-        <import type="com.rayman.v2ex.vm.main.MainVM" />
+        <import type="com.rayman.v2ex.R" />
+
+        <import type="com.rayman.v2ex.vm.main.MainActivityVM" />
 
         <variable
             name="viewModel"
-            type="MainVM" />
+            type="MainActivityVM" />
     </data>
 
     <android.support.v4.widget.DrawerLayout android:id="@+id/drawer_layout"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true">
 
-        <android.support.design.widget.CoordinatorLayout
+        <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
@@ -40,12 +42,19 @@
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:adapter="@{viewModel.adapter}"
+                    app:normalTitleColor="@{@color/text_white_transparent}"
+                    app:selectedTitleColor="@{@color/text_white}"
                     app:tabIndicatorColor="@color/text_white_transparent"
-                    app:tabTextAppearance="@style/TabTitleAppearance" />
+                    app:tabMode="scrollable"
+                    app:tabTextAppearance="@style/TabTitleAppearance"
+                    app:viewPager="@{R.id.viewpager}" />
             </android.support.design.widget.AppBarLayout>
 
-
-            <include layout="@layout/content_main" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </android.support.design.widget.CoordinatorLayout>
 

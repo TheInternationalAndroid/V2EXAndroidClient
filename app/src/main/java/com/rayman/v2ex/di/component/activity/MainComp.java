@@ -22,10 +22,10 @@
 
 package com.rayman.v2ex.di.component.activity;
 
-import com.rayman.v2ex.di.modules.activity.MainVMModule;
+import com.rayman.v2ex.di.modules.activity.MainActivityVMModule;
 import com.rayman.v2ex.di.scope.PerActivity;
 import com.rayman.v2ex.view.main.MainActivity;
-import com.rayman.v2ex.vm.main.MainVM;
+import com.rayman.v2ex.vm.main.MainActivityVM;
 
 import dagger.Component;
 
@@ -47,10 +47,10 @@ import dagger.Component;
  * \               ||     ||
  */
 @PerActivity
-@Component(modules = {MainVMModule.class}, dependencies = ActivityComp.class)
+@Component(modules = {MainActivityVMModule.class}, dependencies = ActivityComp.class)
 public interface MainComp extends ActivityComp {
 
     void inject(MainActivity mainActivity);
 
-    MainVM viewModel();
+    MainActivityVM viewModel();
 }

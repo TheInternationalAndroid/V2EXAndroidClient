@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 9:56 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: BindingAdapter.
- * Author: Lena; Last Modified: 1/18/16 9:56 PM.
+ * Created on 1/18/16 11:33 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainVMModule.
+ * Author: Lena; Last Modified: 1/18/16 11:33 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,18 +20,25 @@
  *
  */
 
-package com.rayman.v2ex.vm;
+package com.rayman.v2ex.di.modules.activity;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.annotation.NonNull;
+
+import com.rayman.v2ex.R;
+import com.rayman.v2ex.adapter.MainPagerAdapter;
+import com.rayman.v2ex.di.scope.PerActivity;
+import com.rayman.v2ex.view.main.MainActivity;
+import com.rayman.v2ex.vm.main.MainActivityVM;
+
+import dagger.Module;
+import dagger.Provides;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/18/16
- * Time: 21:56
+ * Time: 23:33
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -43,19 +50,18 @@ import android.support.v4.view.ViewPager;
  * \               ||----w |
  * \               ||     ||
  */
-public class BindingAdapter {
+@Module
+public class MainActivityVMModule {
 
-    @android.databinding.BindingAdapter(value = {"normalTitleColor", "selectedTitleColor"}, requireAll = true)
-    public static void setTabLayoutTextColor(TabLayout tabLayout, int normalTitleColor, int selectedTitleColor) {
-        tabLayout.setTabTextColors(normalTitleColor, selectedTitleColor);
+    private MainActivity mainActivity;
+
+    public MainActivityVMModule(@NonNull MainActivity mainActivity) {
+        this.mainActivity = mainActivity;
     }
 
-    @android.databinding.BindingAdapter(value = {"viewPager", "adapter"})
-    public static void setTabLayoutIcons(TabLayout tabLayout, int viewPagerId, PagerAdapter pagerAdapter) {
-        ViewPager viewPager = (ViewPager) tabLayout.getRootView().findViewById(viewPagerId);
-        if (viewPager.getAdapter() == null)
-            viewPager.setAdapter(pagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+    @Provides @PerActivity MainActivityVM provideMainActivityVM() {
+        MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(mainActivity.getSupportFragmentManager(), mainActivity.getResources().getStringArray(R.array.main_tab_title));
+        return new MainActivityVM(mainPagerAdapter);
     }
 
 }

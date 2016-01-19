@@ -37,13 +37,11 @@ dependencies {
     compile "com.android.support:design:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
     compile "com.android.support:appcompat-v7:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
 
-
     apt 'com.google.dagger:dagger-compiler:2.0.2'
 
     testCompile "junit:junit:${project.JUNIT_VERSION}"
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.alibaba:fastjson:1.1.45.android'
-    compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'com.squareup.okhttp:okhttp:2.6.0'
     compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
     compile 'com.squareup.okhttp:okhttp-ws:2.6.0'

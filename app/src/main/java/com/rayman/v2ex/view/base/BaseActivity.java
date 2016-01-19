@@ -62,13 +62,15 @@ import com.rayman.v2ex.utils.ToastUtil;
 public class BaseActivity extends AppCompatActivity implements IPageControl, IInject, IRedirect {
 
     private ProgressDialog progressDialog;
+    ActivityComp activityComp;
 
     @Override public ActivityComp buildComp() {
-        return DaggerActivityComp
+        activityComp = DaggerActivityComp
                 .builder()
                 .appComp(getAppComp())
                 .activityModule(new ActivityModule(this))
                 .build();
+        return activityComp;
     }
 
     @Override public void onInject() {
@@ -160,6 +162,10 @@ public class BaseActivity extends AppCompatActivity implements IPageControl, IIn
         intent.putExtras(bundle);
         setResult(action, intent);
         finish();
+    }
+
+    public ActivityComp getActivityComp() {
+        return activityComp;
     }
 
     public <T extends ViewDataBinding> T bindLayout(int layoutRes) {

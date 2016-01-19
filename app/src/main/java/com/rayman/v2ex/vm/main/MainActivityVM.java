@@ -22,6 +22,15 @@
 
 package com.rayman.v2ex.vm.main;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.view.View;
+
+import com.android.databinding.library.baseAdapters.BR;
+import com.balysv.materialmenu.MaterialMenuDrawable;
+import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
 import com.rayman.v2ex.adapter.MainPagerAdapter;
 
 /**
@@ -41,12 +50,53 @@ import com.rayman.v2ex.adapter.MainPagerAdapter;
  * \               ||----w |
  * \               ||     ||
  */
-public class MainActivityVM implements IMainVM {
+public class MainActivityVM extends BaseObservable implements IMainVM, DrawerLayout.DrawerListener {
 
     private MainPagerAdapter adapter;
+    private MaterialMenuIconToolbar menuIconToolbar;
+    private boolean isDrawerOpen = false;
 
-    public MainActivityVM(MainPagerAdapter adapter) {
+    public MainActivityVM(MainPagerAdapter adapter, MaterialMenuIconToolbar menuIconToolbar) {
         this.adapter = adapter;
+        this.menuIconToolbar = menuIconToolbar;
+    }
+
+
+    @Override public void onDrawerSlide(View drawerView, float slideOffset) {
+        menuIconToolbar.setTransformationOffset(MaterialMenuDrawable.AnimationState.BURGER_ARROW, isDrawerOpen ? 2 - slideOffset : slideOffset);
+    }
+
+    @Override public void onDrawerOpened(View drawerView) {
+        isDrawerOpen = true;
+    }
+
+    @Override public void onDrawerClosed(View drawerView) {
+        isDrawerOpen = false;
+    }
+
+    @Override public void onDrawerStateChanged(int newState) {
+
+    }
+
+    public void onSaveInstanceState(Bundle bundle) {
+        menuIconToolbar.onSaveInstanceState(bundle);
+    }
+
+    public void syncState(Bundle bundle) {
+        menuIconToolbar.syncState(bundle);
+    }
+
+    public void homeClicked() {
+        setDrawerOpen(!isDrawerOpen);
+    }
+
+    @Bindable public boolean isDrawerOpen() {
+        return isDrawerOpen;
+    }
+
+    public void setDrawerOpen(boolean drawerOpen) {
+        isDrawerOpen = drawerOpen;
+        notifyPropertyChanged(BR.drawerOpen);
     }
 
     public MainPagerAdapter getAdapter() {

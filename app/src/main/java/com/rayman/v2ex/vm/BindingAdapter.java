@@ -25,6 +25,7 @@ package com.rayman.v2ex.vm;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 
 /**
  * Created by Android Studio.
@@ -56,6 +57,15 @@ public class BindingAdapter {
         if (viewPager.getAdapter() == null)
             viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @android.databinding.BindingAdapter(value = {"isDrawerOpen", "drawerGravity"})
+    public static void controlDrawer(DrawerLayout drawerLayout, boolean isDrawerOpen, int gravity) {
+        if (isDrawerOpen) {
+            drawerLayout.openDrawer(gravity);
+        } else {
+            drawerLayout.closeDrawer(gravity);
+        }
     }
 
 }

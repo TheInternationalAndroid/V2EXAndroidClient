@@ -23,6 +23,7 @@
 package com.rayman.v2ex.view.main;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.databinding.ActivityMainBinding;
@@ -59,5 +60,24 @@ public class MainActivity extends BaseActivity {
 
     @Override protected IPresenter getPresenter() {
         return null;
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        viewModel.syncState(savedInstanceState);
+    }
+
+    @Override public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            viewModel.homeClicked();
+        }
+        return true;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        viewModel.onSaveInstanceState(outState);
+        super.onSaveInstanceState(outState);
     }
 }

@@ -22,8 +22,11 @@
 
 package com.rayman.v2ex.di.modules.activity;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 
+import com.balysv.materialmenu.MaterialMenuDrawable;
+import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.adapter.MainPagerAdapter;
 import com.rayman.v2ex.di.scope.PerActivity;
@@ -61,7 +64,15 @@ public class MainActivityVMModule {
 
     @Provides @PerActivity MainActivityVM provideMainActivityVM() {
         MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(mainActivity.getSupportFragmentManager(), mainActivity.getResources().getStringArray(R.array.main_tab_title));
-        return new MainActivityVM(mainPagerAdapter);
+
+        MaterialMenuIconToolbar menuIconToolbar = new MaterialMenuIconToolbar(mainActivity, Color.WHITE, MaterialMenuDrawable.Stroke.THIN) {
+            @Override
+            public int getToolbarViewId() {
+                return R.id.toolbar;
+            }
+        };
+        menuIconToolbar.setNeverDrawTouch(false);
+        return new MainActivityVM(mainPagerAdapter, menuIconToolbar);
     }
 
 }

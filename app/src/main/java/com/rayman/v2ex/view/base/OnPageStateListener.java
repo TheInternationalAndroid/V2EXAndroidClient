@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:56 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: HotFragVM.
- * Author: Lena; Last Modified: 1/19/16 3:56 PM.
+ * Created on 1/19/16 6:07 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: OnPageStateListener.
+ * Author: Lena; Last Modified: 1/19/16 6:07 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,22 +20,14 @@
  *
  */
 
-package com.rayman.v2ex.vm.main;
-
-import android.view.View;
-
-import com.rayman.v2ex.http.callback.ReqCallback;
-import com.rayman.v2ex.http.event.ErrorEvent;
-import com.rayman.v2ex.presenter.main.HotFragP;
-import com.rayman.v2ex.presenter.main.IHotFragP;
-import com.rayman.v2ex.vm.BaseStateVM;
+package com.rayman.v2ex.view.base;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/19/16
- * Time: 15:56
+ * Time: 18:07
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -47,32 +39,38 @@ import com.rayman.v2ex.vm.BaseStateVM;
  * \               ||----w |
  * \               ||     ||
  */
-public class HotFragVM extends BaseStateVM implements IHotFragVM {
+public interface OnPageStateListener {
 
-    private IHotFragP presenter;
+    void onRetryClicked();
 
-    public HotFragVM(HotFragP presenter) {
-        this.presenter = presenter;
-    }
+    void hideContent();
 
-    @Override public void onRetryClicked(View view) {
+    void showContent();
 
-    }
+    void onEmptyAddClicked();
 
-    public void requestHotTopicList() {
-        presenter.hot(new ReqCallback<String>() {
-            @Override public void onReqStart() {
+    void setEmptyMessage(int stringRes);
 
-            }
+    boolean isLoading();
 
-            @Override public void onNetResp(String response) {
+    void showEmptyView();
 
-            }
+    void showEmptyView(boolean showButton);
 
-            @Override public void onError(ErrorEvent errorEvent) {
+    void showEmptyView(int stringRes);
 
-            }
-        });
-    }
+    void showEmptyView(int stringRes, boolean showButton);
+
+    void showErrorVew();
+
+    void showLoadingView();
+
+    void hideEmptyView();
+
+    void hideErrorView();
+
+    void hideLoadingView();
+
+    void hideStateViews();
 
 }

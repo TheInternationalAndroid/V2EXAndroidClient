@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:56 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: HotFragVM.
- * Author: Lena; Last Modified: 1/19/16 3:56 PM.
+ * Created on 1/19/16 6:19 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: PageState.
+ * Author: Lena; Last Modified: 1/19/16 6:19 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,22 +20,24 @@
  *
  */
 
-package com.rayman.v2ex.vm.main;
+package com.rayman.v2ex.anotations;
 
-import android.view.View;
+import android.support.annotation.IntDef;
 
-import com.rayman.v2ex.http.callback.ReqCallback;
-import com.rayman.v2ex.http.event.ErrorEvent;
-import com.rayman.v2ex.presenter.main.HotFragP;
-import com.rayman.v2ex.presenter.main.IHotFragP;
-import com.rayman.v2ex.vm.BaseStateVM;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+import static com.rayman.v2ex.anotations.PageState.STATE_CONTENT;
+import static com.rayman.v2ex.anotations.PageState.STATE_ERROR;
+import static com.rayman.v2ex.anotations.PageState.STATE_LOADING;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/19/16
- * Time: 15:56
+ * Time: 18:19
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -47,32 +49,11 @@ import com.rayman.v2ex.vm.BaseStateVM;
  * \               ||----w |
  * \               ||     ||
  */
-public class HotFragVM extends BaseStateVM implements IHotFragVM {
-
-    private IHotFragP presenter;
-
-    public HotFragVM(HotFragP presenter) {
-        this.presenter = presenter;
-    }
-
-    @Override public void onRetryClicked(View view) {
-
-    }
-
-    public void requestHotTopicList() {
-        presenter.hot(new ReqCallback<String>() {
-            @Override public void onReqStart() {
-
-            }
-
-            @Override public void onNetResp(String response) {
-
-            }
-
-            @Override public void onError(ErrorEvent errorEvent) {
-
-            }
-        });
-    }
-
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@IntDef({STATE_LOADING, STATE_ERROR, STATE_CONTENT})
+public @interface PageState {
+    int STATE_LOADING = 0;
+    int STATE_ERROR = 1;
+    int STATE_CONTENT = 2;
 }

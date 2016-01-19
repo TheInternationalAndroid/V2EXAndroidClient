@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 11:36 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainComp.
- * Author: Lena; Last Modified: 1/18/16 11:36 PM.
+ * Created on 1/19/16 4:19 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: LatestFragComp.
+ * Author: Lena; Last Modified: 1/19/16 4:19 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,12 +20,14 @@
  *
  */
 
-package com.rayman.v2ex.di.component.activity;
+package com.rayman.v2ex.di.component.view.main;
 
-import com.rayman.v2ex.di.modules.activity.MainActivityVMModule;
-import com.rayman.v2ex.di.scope.PerActivity;
-import com.rayman.v2ex.view.main.MainActivity;
-import com.rayman.v2ex.vm.main.MainActivityVM;
+import com.rayman.v2ex.di.component.view.base.FragmentComp;
+import com.rayman.v2ex.di.modules.vm.main.LatestFragVMModule;
+import com.rayman.v2ex.di.scope.PerBindingFragment;
+import com.rayman.v2ex.presenter.main.LatestFragP;
+import com.rayman.v2ex.view.main.LatestFragment;
+import com.rayman.v2ex.vm.main.LatestFragVM;
 
 import dagger.Component;
 
@@ -33,8 +35,8 @@ import dagger.Component;
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 23:36
+ * Date: 1/19/16
+ * Time: 16:19
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -46,11 +48,13 @@ import dagger.Component;
  * \               ||----w |
  * \               ||     ||
  */
-@PerActivity
-@Component(modules = {MainActivityVMModule.class}, dependencies = ActivityComp.class)
-public interface MainComp extends ActivityComp {
+@PerBindingFragment
+@Component(modules = {LatestFragVMModule.class}, dependencies = FragmentComp.class)
+public interface LatestFragComp extends FragmentComp {
 
-    void inject(MainActivity mainActivity);
+    void inject(LatestFragment latestFragment);
 
-    MainActivityVM viewModel();
+    LatestFragVM viewModel();
+
+    LatestFragP presenter();
 }

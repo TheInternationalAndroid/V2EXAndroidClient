@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 2:55 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: Header.
- * Author: Lena; Last Modified: 1/19/16 2:55 PM.
+ * Created on 1/19/16 4:08 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: LatestedFragVMModule.
+ * Author: Lena; Last Modified: 1/19/16 4:08 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,14 +20,21 @@
  *
  */
 
-package com.rayman.v2ex.http;
+package com.rayman.v2ex.di.modules.vm.main;
+
+import com.rayman.v2ex.di.scope.PerBindingFragment;
+import com.rayman.v2ex.presenter.main.LatestFragP;
+import com.rayman.v2ex.vm.main.LatestFragVM;
+
+import dagger.Module;
+import dagger.Provides;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/19/16
- * Time: 14:55
+ * Time: 16:08
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -39,10 +46,11 @@ package com.rayman.v2ex.http;
  * \               ||----w |
  * \               ||     ||
  */
-public interface Header {
+@Module
+public class LatestFragVMModule {
 
-    String LIMIT_TOTAL = "X-Rate-Limit-Limit";
-    String LIMIT_RESET = "X-Rate-Limit-Reset";
-    String LIMIT_REMAINING = "X-Rate-Limit-Remaining";
+    @Provides @PerBindingFragment LatestFragVM provideLatestFragVM(LatestFragP presenter) {
+        return new LatestFragVM(presenter);
+    }
 
 }

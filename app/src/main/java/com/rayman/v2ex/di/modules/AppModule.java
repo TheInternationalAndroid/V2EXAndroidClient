@@ -52,7 +52,13 @@ import dagger.Provides;
  * \               ||----w |
  * \               ||     ||
  */
-@Module(includes = {SPModule.class, OkHttpModule.class, RetrofitModule.class, FileCacheModule.class})
+@Module(includes = {
+        SPModule.class,
+        OkHttpModule.class,
+        RetrofitModule.class,
+        FileCacheModule.class,
+        APIServiceModule.class
+})
 public class AppModule {
 
     private Context application;

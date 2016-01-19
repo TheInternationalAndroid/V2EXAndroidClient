@@ -41,6 +41,6 @@ package com.rayman.v2ex.http;
  */
 public interface Host {
 
-    String BASE_URL = "";
+    String BASE_URL = "https://www.v2ex.com/api/";
 
 }

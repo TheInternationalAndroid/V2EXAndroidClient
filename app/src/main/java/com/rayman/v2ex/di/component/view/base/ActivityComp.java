@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 10:08 PM
+ * Created on 1/19/16 4:03 PM
  * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: ActivityComp.
- * Author: Lena; Last Modified: 1/18/16 10:08 PM.
+ * Author: Lena; Last Modified: 1/19/16 4:03 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@
  *
  */
 
-package com.rayman.v2ex.di.component.activity;
+package com.rayman.v2ex.di.component.view.base;
 
 import android.content.Context;
 

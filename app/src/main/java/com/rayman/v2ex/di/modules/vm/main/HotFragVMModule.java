@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 11:55 AM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: FragmentComp.
- * Author: Lena; Last Modified: 1/19/16 11:55 AM.
+ * Created on 1/19/16 4:06 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: HotFragVMModule.
+ * Author: Lena; Last Modified: 1/19/16 4:06 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,19 +20,21 @@
  *
  */
 
-package com.rayman.v2ex.di.component.activity;
+package com.rayman.v2ex.di.modules.vm.main;
 
-import com.rayman.v2ex.di.scope.PerFragment;
-import com.rayman.v2ex.view.base.BaseFragment;
+import com.rayman.v2ex.di.scope.PerBindingFragment;
+import com.rayman.v2ex.presenter.main.HotFragP;
+import com.rayman.v2ex.vm.main.HotFragVM;
 
-import dagger.Component;
+import dagger.Module;
+import dagger.Provides;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/19/16
- * Time: 11:55
+ * Time: 16:04
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -44,10 +46,11 @@ import dagger.Component;
  * \               ||----w |
  * \               ||     ||
  */
-@PerFragment
-@Component(dependencies = ActivityComp.class)
-public interface FragmentComp extends ActivityComp {
+@Module
+public class HotFragVMModule {
 
-    void inject(BaseFragment baseFragment);
+    @Provides @PerBindingFragment HotFragVM provideHotFragVM(HotFragP presenter) {
+        return new HotFragVM(presenter);
+    }
 
 }

@@ -24,19 +24,45 @@ package com.rayman.v2ex.view.main;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rayman.v2ex.R;
+import com.rayman.v2ex.databinding.FragmentHotBinding;
+import com.rayman.v2ex.di.component.view.main.DaggerHotFragComp;
+import com.rayman.v2ex.di.component.view.main.HotFragComp;
+import com.rayman.v2ex.di.modules.vm.main.HotFragVMModule;
 import com.rayman.v2ex.view.base.BaseFragment;
+import com.rayman.v2ex.vm.main.HotFragVM;
+
+import javax.inject.Inject;
 
 public class HotFragment extends BaseFragment {
 
+    @Inject HotFragVM viewModel;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_hot, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        FragmentHotBinding binding = FragmentHotBinding.inflate(inflater, container, false);
+        binding.setViewModel(viewModel);
+        return binding.getRoot();
+    }
+
+    @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        viewModel.requestHotTopicList();
+    }
+
+    @Override public HotFragComp buildComp() {
+        return DaggerHotFragComp.builder()
+                .fragmentComp(super.buildComp())
+                .hotFragVMModule(new HotFragVMModule())
+                .build();
+    }
+
+    @Override public void onInject() {
+        buildComp().inject(this);
     }
 
 }

@@ -35,9 +35,9 @@ import android.view.ViewGroup;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.anotations.ActivityAction;
 import com.rayman.v2ex.di.IInject;
-import com.rayman.v2ex.di.component.activity.ActivityComp;
-import com.rayman.v2ex.di.component.activity.DaggerFragmentComp;
-import com.rayman.v2ex.di.component.activity.FragmentComp;
+import com.rayman.v2ex.di.component.view.base.ActivityComp;
+import com.rayman.v2ex.di.component.view.base.DaggerFragmentComp;
+import com.rayman.v2ex.di.component.view.base.FragmentComp;
 import com.rayman.v2ex.presenter.IPresenter;
 import com.rayman.v2ex.utils.ToastUtil;
 

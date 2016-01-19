@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 2:55 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: Header.
- * Author: Lena; Last Modified: 1/19/16 2:55 PM.
+ * Created on 1/19/16 3:26 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainService.
+ * Author: Lena; Last Modified: 1/19/16 3:26 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,14 +20,17 @@
  *
  */
 
-package com.rayman.v2ex.http;
+package com.rayman.v2ex.http.service;
+
+import retrofit.Call;
+import retrofit.http.GET;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/19/16
- * Time: 14:55
+ * Time: 15:26
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -39,10 +42,10 @@ package com.rayman.v2ex.http;
  * \               ||----w |
  * \               ||     ||
  */
-public interface Header {
+public interface TopicService {
 
-    String LIMIT_TOTAL = "X-Rate-Limit-Limit";
-    String LIMIT_RESET = "X-Rate-Limit-Reset";
-    String LIMIT_REMAINING = "X-Rate-Limit-Remaining";
+    @GET("topics/hot.json") Call<String> hot();
+
+    @GET("topics/latest.json") Call<String> latest();
 
 }

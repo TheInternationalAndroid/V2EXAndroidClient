@@ -24,19 +24,45 @@ package com.rayman.v2ex.view.main;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rayman.v2ex.R;
+import com.rayman.v2ex.databinding.FragmentLatestBinding;
+import com.rayman.v2ex.di.component.view.main.DaggerLatestFragComp;
+import com.rayman.v2ex.di.component.view.main.LatestFragComp;
+import com.rayman.v2ex.di.modules.vm.main.LatestFragVMModule;
 import com.rayman.v2ex.view.base.BaseFragment;
+import com.rayman.v2ex.vm.main.LatestFragVM;
+
+import javax.inject.Inject;
 
 public class LatestFragment extends BaseFragment {
+
+    @Inject LatestFragVM viewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_latest, container, false);
+        FragmentLatestBinding binding = FragmentLatestBinding.inflate(inflater, container, false);
+        binding.setViewModel(viewModel);
+        return binding.getRoot();
     }
 
+    @Override public LatestFragComp buildComp() {
+        return DaggerLatestFragComp.builder()
+                .fragmentComp(super.buildComp())
+                .latestFragVMModule(new LatestFragVMModule())
+                .build();
+    }
+
+    @Override public void onInject() {
+        buildComp().inject(this);
+    }
+
+    @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        viewModel.requestLatestTopic();
+    }
 }

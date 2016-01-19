@@ -39,5 +39,13 @@ package com.rayman.v2ex.presenter.main;
  * \               ||----w |
  * \               ||     ||
  */
-public class MainActivityP {
+public class MainActivityP implements IMainActivityP {
+
+    @Override public void onViewAttach() {
+
+    }
+
+    @Override public void onViewDetach() {
+
+    }
 }

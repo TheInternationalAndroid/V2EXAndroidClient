@@ -27,9 +27,9 @@ import android.view.MenuItem;
 
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.databinding.ActivityMainBinding;
-import com.rayman.v2ex.di.component.activity.DaggerMainComp;
-import com.rayman.v2ex.di.component.activity.MainComp;
-import com.rayman.v2ex.di.modules.activity.MainActivityVMModule;
+import com.rayman.v2ex.di.component.view.main.DaggerMainComp;
+import com.rayman.v2ex.di.component.view.main.MainComp;
+import com.rayman.v2ex.di.modules.vm.main.MainActivityVMModule;
 import com.rayman.v2ex.presenter.IPresenter;
 import com.rayman.v2ex.view.base.BaseActivity;
 import com.rayman.v2ex.vm.main.MainActivityVM;

@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 10:08 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AppComp.
- * Author: Lena; Last Modified: 1/18/16 10:08 PM.
+ * Created on 1/19/16 2:55 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: Header.
+ * Author: Lena; Last Modified: 1/19/16 2:55 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,29 +20,14 @@
  *
  */
 
-package com.rayman.v2ex.di.component.app;
-
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import com.rayman.v2ex.anotations.ContextType;
-import com.rayman.v2ex.app.V2EXApplication;
-import com.rayman.v2ex.cache.IFileControl;
-import com.rayman.v2ex.di.modules.AppModule;
-import com.rayman.v2ex.di.scope.PerApplication;
-import com.squareup.okhttp.OkHttpClient;
-
-import javax.inject.Named;
-
-import dagger.Component;
-import retrofit.Retrofit;
+package com.rayman.v2ex.http;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 22:07
+ * Date: 1/19/16
+ * Time: 14:55
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -54,20 +39,5 @@ import retrofit.Retrofit;
  * \               ||----w |
  * \               ||     ||
  */
-@PerApplication
-@Component(modules = {AppModule.class})
-public interface AppComp {
-
-    void inject(V2EXApplication application);
-
-    @Named(ContextType.APPLICATION) Context applicationContext();
-
-    SharedPreferences preference();
-
-    Retrofit retrofit();
-
-    IFileControl fileCache();
-
-    OkHttpClient httpClient();
-
+public interface Header {
 }

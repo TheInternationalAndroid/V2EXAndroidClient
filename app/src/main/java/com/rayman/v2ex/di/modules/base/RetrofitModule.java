@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 10:08 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AppComp.
- * Author: Lena; Last Modified: 1/18/16 10:08 PM.
+ * Created on 1/19/16 3:05 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: RetrofitModule.
+ * Author: Lena; Last Modified: 1/19/16 3:05 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,31 +20,26 @@
  *
  */
 
-package com.rayman.v2ex.di.component.app;
+package com.rayman.v2ex.di.modules.base;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import com.rayman.v2ex.anotations.ContextType;
-import com.rayman.v2ex.app.V2EXApplication;
-import com.rayman.v2ex.cache.IFileControl;
-import com.rayman.v2ex.di.modules.AppModule;
 import com.rayman.v2ex.di.scope.PerApplication;
+import com.rayman.v2ex.http.Host;
+import com.rayman.v2ex.http.okhttp.convertor.FastJsonConvertFactory;
 import com.squareup.okhttp.OkHttpClient;
 
-import javax.inject.Named;
-
-import dagger.Component;
+import dagger.Module;
+import dagger.Provides;
 import retrofit.Retrofit;
+import retrofit.RxJavaCallAdapterFactory;
 
 /**
  * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
+ * ProjectName: shenbian_android_cloud_speaker
  * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 22:07
+ * Date: 12/21/15
+ * Time: 16:14
  * \ ___________________
- * \| Happy New Year!  |
+ * \| Merry Christmas!  |
  * \ -------------------
  * \  \
  * \   \   \_\_    _/_/
@@ -54,20 +49,17 @@ import retrofit.Retrofit;
  * \               ||----w |
  * \               ||     ||
  */
-@PerApplication
-@Component(modules = {AppModule.class})
-public interface AppComp {
+@Module
+public class RetrofitModule {
 
-    void inject(V2EXApplication application);
-
-    @Named(ContextType.APPLICATION) Context applicationContext();
-
-    SharedPreferences preference();
-
-    Retrofit retrofit();
-
-    IFileControl fileCache();
-
-    OkHttpClient httpClient();
+    @Provides @PerApplication Retrofit provideRetrofit(OkHttpClient okHttpClient) {
+        return new Retrofit
+                .Builder()
+                .baseUrl(Host.BASE_URL)
+                .client(okHttpClient)
+                .addConverterFactory(FastJsonConvertFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+    }
 
 }

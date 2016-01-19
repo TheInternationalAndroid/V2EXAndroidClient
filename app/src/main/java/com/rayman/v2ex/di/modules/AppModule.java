@@ -25,6 +25,9 @@ package com.rayman.v2ex.di.modules;
 import android.content.Context;
 
 import com.rayman.v2ex.anotations.ContextType;
+import com.rayman.v2ex.di.modules.base.FileCacheModule;
+import com.rayman.v2ex.di.modules.base.OkHttpModule;
+import com.rayman.v2ex.di.modules.base.RetrofitModule;
 import com.rayman.v2ex.di.modules.base.SPModule;
 
 import javax.inject.Named;
@@ -49,8 +52,9 @@ import dagger.Provides;
  * \               ||----w |
  * \               ||     ||
  */
-@Module(includes = {SPModule.class})
+@Module(includes = {SPModule.class, OkHttpModule.class, RetrofitModule.class, FileCacheModule.class})
 public class AppModule {
+
     private Context application;
 
     public AppModule(Context application) {

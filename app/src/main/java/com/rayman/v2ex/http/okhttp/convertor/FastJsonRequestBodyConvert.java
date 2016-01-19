@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 10:08 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AppComp.
- * Author: Lena; Last Modified: 1/18/16 10:08 PM.
+ * Created on 1/19/16 2:52 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: FastJsonRequestBodyConvert.
+ * Author: Lena; Last Modified: 1/19/16 2:52 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,29 +20,24 @@
  *
  */
 
-package com.rayman.v2ex.di.component.app;
+package com.rayman.v2ex.http.okhttp.convertor;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import com.alibaba.fastjson.JSON;
+import com.rayman.v2ex.utils.LogUtil;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.RequestBody;
 
-import com.rayman.v2ex.anotations.ContextType;
-import com.rayman.v2ex.app.V2EXApplication;
-import com.rayman.v2ex.cache.IFileControl;
-import com.rayman.v2ex.di.modules.AppModule;
-import com.rayman.v2ex.di.scope.PerApplication;
-import com.squareup.okhttp.OkHttpClient;
+import java.io.IOException;
+import java.nio.charset.Charset;
 
-import javax.inject.Named;
-
-import dagger.Component;
-import retrofit.Retrofit;
+import retrofit.Converter;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 22:07
+ * Date: 1/19/16
+ * Time: 14:50
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -54,20 +49,16 @@ import retrofit.Retrofit;
  * \               ||----w |
  * \               ||     ||
  */
-@PerApplication
-@Component(modules = {AppModule.class})
-public interface AppComp {
 
-    void inject(V2EXApplication application);
+public class FastJsonRequestBodyConvert<T> implements Converter<T, RequestBody> {
 
-    @Named(ContextType.APPLICATION) Context applicationContext();
+    private static final Charset UTF_8 = Charset.forName("UTF-8");
+    private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=UTF-8");
 
-    SharedPreferences preference();
-
-    Retrofit retrofit();
-
-    IFileControl fileCache();
-
-    OkHttpClient httpClient();
-
+    @Override
+    public RequestBody convert(T value) throws IOException {
+        String postBody = JSON.toJSONString(value);
+        LogUtil.i("Http: Post Json Body " + postBody);
+        return RequestBody.create(MEDIA_TYPE, postBody.getBytes(UTF_8));
+    }
 }

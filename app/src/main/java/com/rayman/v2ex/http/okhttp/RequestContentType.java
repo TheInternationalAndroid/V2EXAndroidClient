@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 10:08 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AppComp.
- * Author: Lena; Last Modified: 1/18/16 10:08 PM.
+ * Created on 1/19/16 2:52 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: RequestContentType.
+ * Author: Lena; Last Modified: 1/19/16 2:52 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,29 +20,16 @@
  *
  */
 
-package com.rayman.v2ex.di.component.app;
+package com.rayman.v2ex.http.okhttp;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
-import com.rayman.v2ex.anotations.ContextType;
-import com.rayman.v2ex.app.V2EXApplication;
-import com.rayman.v2ex.cache.IFileControl;
-import com.rayman.v2ex.di.modules.AppModule;
-import com.rayman.v2ex.di.scope.PerApplication;
-import com.squareup.okhttp.OkHttpClient;
-
-import javax.inject.Named;
-
-import dagger.Component;
-import retrofit.Retrofit;
+import com.squareup.okhttp.MediaType;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 22:07
+ * Date: 1/19/16
+ * Time: 14:52
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -54,20 +41,15 @@ import retrofit.Retrofit;
  * \               ||----w |
  * \               ||     ||
  */
-@PerApplication
-@Component(modules = {AppModule.class})
-public interface AppComp {
+public interface RequestContentType {
+    String CHARSET = "utf-8";
+    String CONTENT_TYPE_JSON = "application/json; charset=" + CHARSET;
+    String CONTENT_TYPE_TEXT_PLAIN = "text/plain; charset=" + CHARSET;
+    String CONTENT_TYPE_MULTIPART = "multipart/form-data; charset=" + CHARSET;
 
-    void inject(V2EXApplication application);
-
-    @Named(ContextType.APPLICATION) Context applicationContext();
-
-    SharedPreferences preference();
-
-    Retrofit retrofit();
-
-    IFileControl fileCache();
-
-    OkHttpClient httpClient();
-
+    MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
+    MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse("text/x-markdown; " + CHARSET);
+    MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; " + CHARSET);
+    MediaType MEDIA_TYPE_TEXT_PLAIN = MediaType.parse("text/plain; " + CHARSET);
+    MediaType MEDIA_TYPE_MULTIPART = MediaType.parse("multipart/form-data; " + CHARSET);
 }

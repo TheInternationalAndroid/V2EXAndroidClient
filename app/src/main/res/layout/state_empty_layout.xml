@@ -3,36 +3,37 @@
 
     <data>
 
+        <import type="com.rayman.v2ex.anotations.PageState" />
+
         <import type="com.rayman.v2ex.vm.BaseStateVM" />
+
+        <import type="android.view.View" />
 
         <variable
             name="viewModel"
             type="BaseStateVM" />
     </data>
 
-    <merge xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+    <FrameLayout android:id="@+id/empty_layout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_l"
+        android:visibility="@{viewModel.state==PageState.EMPTY?View.VISIBLE:View.GONE,default=gone}"
+        tools:visibility="visible">
 
-        <FrameLayout
-            android:id="@+id/empty_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar"
-            android:orientation="vertical"
-            android:padding="@dimen/padding_l"
-            android:visibility="gone"
-            tools:visibility="visible">
+        <TextView
+            android:id="@+id/empty_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/padding_xxl"
+            android:gravity="center"
+            android:text="@{viewModel.emptyString??@string/state_empty_msg}"
+            android:textColor="@color/text_blue_dark"
+            android:textSize="@dimen/text_l" />
 
-            <TextView
-                android:id="@+id/empty_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/padding_xxl"
-                android:gravity="center"
-                android:text="@{viewModel.emptyString??@string/state_empty_msg}"
-                android:textColor="@color/text_blue_dark"
-                android:textSize="@dimen/text_l" />
-
-        </FrameLayout>
-    </merge>
+    </FrameLayout>
 </layout>

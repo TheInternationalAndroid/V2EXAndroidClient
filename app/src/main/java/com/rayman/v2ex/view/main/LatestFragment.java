@@ -33,6 +33,7 @@ import com.rayman.v2ex.databinding.FragmentLatestBinding;
 import com.rayman.v2ex.di.component.view.main.DaggerLatestFragComp;
 import com.rayman.v2ex.di.component.view.main.LatestFragComp;
 import com.rayman.v2ex.di.modules.vm.main.LatestFragVMModule;
+import com.rayman.v2ex.presenter.IPresenter;
 import com.rayman.v2ex.view.base.BaseFragment;
 import com.rayman.v2ex.vm.main.LatestFragVM;
 
@@ -55,6 +56,10 @@ public class LatestFragment extends BaseFragment {
                 .fragmentComp(super.buildComp())
                 .latestFragVMModule(new LatestFragVMModule())
                 .build();
+    }
+
+    @Override protected IPresenter getPresenter() {
+        return viewModel.getPresenter();
     }
 
     @Override public void onInject() {

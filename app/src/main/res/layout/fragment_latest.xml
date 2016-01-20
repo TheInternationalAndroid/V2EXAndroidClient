@@ -26,22 +26,38 @@
 
         <import type="com.rayman.v2ex.vm.main.LatestFragVM" />
 
+        <import type="android.view.View" />
+
+        <import type="com.rayman.v2ex.anotations.PageState" />
+
         <variable
             name="viewModel"
             type="LatestFragVM" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.rayman.v2ex.view.main.LatestFragment">
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:text="@string/hello_blank_fragment"
+            android:visibility="@{viewModel.state==PageState.CONTENT?View.VISIBLE:View.GONE,default=gone}" />
 
+        <include
+            layout="@layout/state_empty_layout"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            layout="@layout/state_loading_layout"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            layout="@layout/state_error_layout"
+            app:viewModel="@{viewModel}" />
     </FrameLayout>
 </layout>

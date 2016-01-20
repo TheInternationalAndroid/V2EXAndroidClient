@@ -22,6 +22,10 @@
 
 package com.rayman.v2ex.http.service;
 
+import com.rayman.v2ex.model.topic.TopicEntity;
+
+import java.util.List;
+
 import retrofit.Call;
 import retrofit.http.GET;
 
@@ -44,8 +48,8 @@ import retrofit.http.GET;
  */
 public interface TopicService {
 
-    @GET("topics/hot.json") Call<String> hot();
+    @GET("topics/hot.json") Call<List<TopicEntity>> hot();
 
-    @GET("topics/latest.json") Call<String> latest();
+    @GET("topics/latest.json") Call<List<TopicEntity>> latest();
 
 }

@@ -33,6 +33,7 @@ import com.rayman.v2ex.databinding.FragmentHotBinding;
 import com.rayman.v2ex.di.component.view.main.DaggerHotFragComp;
 import com.rayman.v2ex.di.component.view.main.HotFragComp;
 import com.rayman.v2ex.di.modules.vm.main.HotFragVMModule;
+import com.rayman.v2ex.presenter.IPresenter;
 import com.rayman.v2ex.view.base.BaseFragment;
 import com.rayman.v2ex.vm.main.HotFragVM;
 
@@ -59,6 +60,10 @@ public class HotFragment extends BaseFragment {
                 .fragmentComp(super.buildComp())
                 .hotFragVMModule(new HotFragVMModule())
                 .build();
+    }
+
+    @Override protected IPresenter getPresenter() {
+        return viewModel.getPresenter();
     }
 
     @Override public void onInject() {

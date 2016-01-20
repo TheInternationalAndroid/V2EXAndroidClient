@@ -26,6 +26,9 @@ import com.rayman.v2ex.http.callback.LCallback;
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.http.event.ErrorEvent;
 import com.rayman.v2ex.http.service.TopicService;
+import com.rayman.v2ex.model.topic.TopicEntity;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -54,11 +57,11 @@ public class TopicWorker extends BaseWorker {
         this.topicService = topicService;
     }
 
-    public void hot(final ReqCallback<String> callback) {
+    public void hot(final ReqCallback<List<TopicEntity>> callback) {
         callback.onReqStart();
         topicService.hot()
-                .enqueue(new LCallback<String>() {
-                    @Override public void onSuccess(String respEntity) {
+                .enqueue(new LCallback<List<TopicEntity>>() {
+                    @Override public void onSuccess(List<TopicEntity> respEntity) {
                         if (!isAlive()) return;
                         callback.onNetResp(respEntity);
                     }
@@ -70,11 +73,11 @@ public class TopicWorker extends BaseWorker {
                 });
     }
 
-    public void latest(final ReqCallback<String> callback) {
+    public void latest(final ReqCallback<List<TopicEntity>> callback) {
         callback.onReqStart();
         topicService.latest()
-                .enqueue(new LCallback<String>() {
-                    @Override public void onSuccess(String respEntity) {
+                .enqueue(new LCallback<List<TopicEntity>>() {
+                    @Override public void onSuccess(List<TopicEntity> respEntity) {
                         if (!isAlive()) return;
                         callback.onNetResp(respEntity);
                     }

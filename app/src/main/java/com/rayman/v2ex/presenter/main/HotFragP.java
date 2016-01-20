@@ -23,7 +23,10 @@
 package com.rayman.v2ex.presenter.main;
 
 import com.rayman.v2ex.http.callback.ReqCallback;
+import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.worker.TopicWorker;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -60,7 +63,7 @@ public class HotFragP implements IHotFragP {
         topicWorker.onViewDetach();
     }
 
-    @Override public void hot(ReqCallback<String> callback) {
+    @Override public void hot(ReqCallback<List<TopicEntity>> callback) {
         topicWorker.hot(callback);
     }
 }

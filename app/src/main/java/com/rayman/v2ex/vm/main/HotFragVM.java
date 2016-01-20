@@ -24,11 +24,16 @@ package com.rayman.v2ex.vm.main;
 
 import android.view.View;
 
+import com.rayman.v2ex.anotations.PageState;
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.http.event.ErrorEvent;
+import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.main.HotFragP;
 import com.rayman.v2ex.presenter.main.IHotFragP;
+import com.rayman.v2ex.utils.LogUtil;
 import com.rayman.v2ex.vm.BaseStateVM;
+
+import java.util.List;
 
 /**
  * Created by Android Studio.
@@ -56,21 +61,26 @@ public class HotFragVM extends BaseStateVM implements IHotFragVM {
     }
 
     @Override public void onRetryClicked(View view) {
+        requestHotTopicList();
+    }
 
+    public IHotFragP getPresenter() {
+        return presenter;
     }
 
     public void requestHotTopicList() {
-        presenter.hot(new ReqCallback<String>() {
+        presenter.hot(new ReqCallback<List<TopicEntity>>() {
             @Override public void onReqStart() {
-
+                setState(PageState.LOADING);
             }
 
-            @Override public void onNetResp(String response) {
-
+            @Override public void onNetResp(List<TopicEntity> response) {
+                setState(PageState.CONTENT);
+                LogUtil.i("HotFragVM Size :" + response.size());
             }
 
             @Override public void onError(ErrorEvent errorEvent) {
-
+                showError(PageState.ERROR, errorEvent.getMessage());
             }
         });
     }

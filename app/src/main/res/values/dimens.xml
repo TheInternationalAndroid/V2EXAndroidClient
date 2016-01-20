@@ -20,9 +20,7 @@
     <dimen name="text_xl">15sp</dimen>
     <dimen name="text_xxl">17sp</dimen>
     <dimen name="text_xxxl">23sp</dimen>
-    <dimen name="text_phone_num_large">37sp</dimen>
-    <dimen name="text_phone_num_middle">32sp</dimen>
-    <dimen name="text_phone_num_small">23sp</dimen>
+
     <!--Padding-->
     <dimen name="padding_ss">1.5dp</dimen>
     <dimen name="padding_s">3dp</dimen>

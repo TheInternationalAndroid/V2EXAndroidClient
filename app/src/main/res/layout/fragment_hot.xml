@@ -25,6 +25,10 @@
 
         <import type="com.rayman.v2ex.vm.main.HotFragVM" />
 
+        <import type="android.view.View" />
+
+        <import type="com.rayman.v2ex.anotations.PageState" />
+
         <variable
             name="viewModel"
             type="HotFragVM" />
@@ -38,9 +42,12 @@
         tools:context="com.rayman.v2ex.view.main.HotFragment">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/hello_blank_fragment}"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_xl"
+            android:visibility="@{viewModel.state==PageState.CONTENT?View.VISIBLE:View.GONE,default=gone}" />
 
         <include
             layout="@layout/state_empty_layout"

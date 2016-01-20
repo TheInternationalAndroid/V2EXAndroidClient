@@ -23,7 +23,10 @@
 package com.rayman.v2ex.presenter.main;
 
 import com.rayman.v2ex.http.callback.ReqCallback;
+import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.IPresenter;
+
+import java.util.List;
 
 /**
  * Created by Android Studio.
@@ -44,6 +47,6 @@ import com.rayman.v2ex.presenter.IPresenter;
  */
 public interface IHotFragP extends IPresenter {
 
-    void hot(ReqCallback<String> callback);
+    void hot(ReqCallback<List<TopicEntity>> callback);
 
 }

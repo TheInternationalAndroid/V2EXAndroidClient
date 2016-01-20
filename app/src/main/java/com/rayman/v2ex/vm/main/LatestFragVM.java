@@ -22,9 +22,16 @@
 
 package com.rayman.v2ex.vm.main;
 
+import android.view.View;
+
+import com.rayman.v2ex.anotations.PageState;
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.http.event.ErrorEvent;
+import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.main.ILatestFragP;
+import com.rayman.v2ex.vm.BaseStateVM;
+
+import java.util.List;
 
 /**
  * Created by Android Studio.
@@ -43,7 +50,7 @@ import com.rayman.v2ex.presenter.main.ILatestFragP;
  * \               ||----w |
  * \               ||     ||
  */
-public class LatestFragVM implements ILatestFragVM {
+public class LatestFragVM extends BaseStateVM implements ILatestFragVM {
 
     private ILatestFragP presenter;
 
@@ -51,18 +58,26 @@ public class LatestFragVM implements ILatestFragVM {
         this.presenter = presenter;
     }
 
-    public void requestLatestTopic() {
-        presenter.latest(new ReqCallback<String>() {
-            @Override public void onReqStart() {
+    public ILatestFragP getPresenter() {
+        return presenter;
+    }
 
+    @Override public void onRetryClicked(View view) {
+        requestLatestTopic();
+    }
+
+    public void requestLatestTopic() {
+        presenter.latest(new ReqCallback<List<TopicEntity>>() {
+            @Override public void onReqStart() {
+                setState(PageState.LOADING);
             }
 
-            @Override public void onNetResp(String response) {
-
+            @Override public void onNetResp(List<TopicEntity> response) {
+                setState(PageState.CONTENT);
             }
 
             @Override public void onError(ErrorEvent errorEvent) {
-
+                showError(PageState.ERROR, errorEvent.getMessage());
             }
         });
     }

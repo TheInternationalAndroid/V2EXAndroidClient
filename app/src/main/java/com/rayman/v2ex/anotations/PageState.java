@@ -28,9 +28,10 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import static com.rayman.v2ex.anotations.PageState.STATE_CONTENT;
-import static com.rayman.v2ex.anotations.PageState.STATE_ERROR;
-import static com.rayman.v2ex.anotations.PageState.STATE_LOADING;
+import static com.rayman.v2ex.anotations.PageState.CONTENT;
+import static com.rayman.v2ex.anotations.PageState.EMPTY;
+import static com.rayman.v2ex.anotations.PageState.ERROR;
+import static com.rayman.v2ex.anotations.PageState.LOADING;
 
 /**
  * Created by Android Studio.
@@ -51,9 +52,10 @@ import static com.rayman.v2ex.anotations.PageState.STATE_LOADING;
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@IntDef({STATE_LOADING, STATE_ERROR, STATE_CONTENT})
+@IntDef({LOADING, ERROR, CONTENT, EMPTY})
 public @interface PageState {
-    int STATE_LOADING = 0;
-    int STATE_ERROR = 1;
-    int STATE_CONTENT = 2;
+    int LOADING = 0;
+    int ERROR = 1;
+    int CONTENT = 2;
+    int EMPTY = 3;
 }

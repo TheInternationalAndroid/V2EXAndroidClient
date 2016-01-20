@@ -23,7 +23,10 @@
 package com.rayman.v2ex.presenter.main;
 
 import com.rayman.v2ex.http.callback.ReqCallback;
+import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.worker.TopicWorker;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -60,7 +63,7 @@ public class LatestFragP implements ILatestFragP {
         topicWorker.onViewDetach();
     }
 
-    @Override public void latest(ReqCallback<String> callback) {
+    @Override public void latest(ReqCallback<List<TopicEntity>> callback) {
         topicWorker.latest(callback);
     }
 }

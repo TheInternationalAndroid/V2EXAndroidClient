@@ -27,6 +27,7 @@ import android.databinding.Bindable;
 import android.view.View;
 
 import com.android.databinding.library.baseAdapters.BR;
+import com.google.repacked.apache.commons.lang3.StringUtils;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.anotations.PageState;
 import com.rayman.v2ex.anotations.ViewClick;
@@ -76,7 +77,13 @@ public abstract class BaseStateVM extends BaseObservable {
         return errorString;
     }
 
+    protected void showError(@PageState int state, String message) {
+        setState(state);
+        setErrorString(message);
+    }
+
     public void setErrorString(String errorString) {
+        if (StringUtils.isEmpty(errorString)) return;
         this.errorString = errorString;
         notifyPropertyChanged(BR.errorString);
     }

@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:26 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainService.
- * Author: Lena; Last Modified: 1/19/16 3:26 PM.
+ * Created on 1/20/16 6:18 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicCellClicked.
+ * Author: Lena; Last Modified: 1/20/16 6:18 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,22 +20,18 @@
  *
  */
 
-package com.rayman.v2ex.http.service;
+package com.rayman.v2ex.view.main;
 
+import com.rayman.v2ex.model.member.MemberBaseEntity;
+import com.rayman.v2ex.model.node.NodeEntity;
 import com.rayman.v2ex.model.topic.TopicEntity;
-
-import java.util.List;
-
-import retrofit.Call;
-import retrofit.http.GET;
-import retrofit.http.Query;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 15:26
+ * Date: 1/20/16
+ * Time: 18:18
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -47,12 +43,12 @@ import retrofit.http.Query;
  * \               ||----w |
  * \               ||     ||
  */
-public interface TopicService {
+public interface OnTopicCellClicked {
 
-    @GET("topics/hot.json") Call<List<TopicEntity>> hot();
+    void onUserClicked(MemberBaseEntity memberBaseEntity);
 
-    @GET("topics/latest.json") Call<List<TopicEntity>> latest();
+    void onTopicCliced(TopicEntity topicEntity);
 
-    @GET("topics/show.json") Call<List<TopicEntity>> topics(@Query(value = "username") String userName);
+    void onNodeClicked(NodeEntity nodeEntity);
 
 }

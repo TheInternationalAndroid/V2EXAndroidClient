@@ -29,6 +29,7 @@ import com.rayman.v2ex.anotations.ListType;
 import com.rayman.v2ex.di.modules.base.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerBindingFragment;
 import com.rayman.v2ex.presenter.main.LatestFragP;
+import com.rayman.v2ex.view.main.OnTopicCellClicked;
 import com.rayman.v2ex.vm.main.LatestFragVM;
 
 import javax.inject.Named;
@@ -56,8 +57,14 @@ import dagger.Provides;
 @Module(includes = {LayoutManagerModule.class})
 public class LatestFragVMModule {
 
+    private OnTopicCellClicked onTopicCellClicked;
+
+    public LatestFragVMModule(OnTopicCellClicked onTopicCellClicked) {
+        this.onTopicCellClicked = onTopicCellClicked;
+    }
+
     @Provides @PerBindingFragment LatestFragVM provideLatestFragVM(LatestFragP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
-        TopicListAdapter topicListAdapter = new TopicListAdapter();
+        TopicListAdapter topicListAdapter = new TopicListAdapter(onTopicCellClicked);
         return new LatestFragVM(presenter, topicListAdapter, layoutManager);
     }
 

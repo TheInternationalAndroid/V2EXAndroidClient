@@ -13,7 +13,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/V2EXTheme">
-
         <activity
             android:name=".view.main.MainActivity"
             android:label="@string/app_name">
@@ -23,7 +22,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".view.account.AccountActivity"
+            android:label="@string/title_activity_account"
+            android:theme="@style/V2EXTheme" />
+        <activity
+            android:name=".view.node.NodeActivity"
+            android:label="@string/title_activity_node"
+            android:theme="@style/V2EXTheme" />
+        <activity
+            android:name=".view.topic.TopicActivity"
+            android:label="@string/title_activity_topic"
+            android:theme="@style/V2EXTheme"></activity>
     </application>
 
 </manifest>

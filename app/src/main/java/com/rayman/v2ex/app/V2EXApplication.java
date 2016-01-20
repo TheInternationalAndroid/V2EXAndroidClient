@@ -24,7 +24,6 @@ package com.rayman.v2ex.app;
 
 import android.app.Application;
 
-import com.google.repacked.apache.commons.lang3.StringUtils;
 import com.rayman.v2ex.di.IInject;
 import com.rayman.v2ex.di.component.app.AppComp;
 import com.rayman.v2ex.di.component.app.DaggerAppComp;
@@ -32,6 +31,7 @@ import com.rayman.v2ex.di.modules.AppModule;
 import com.rayman.v2ex.http.event.ErrorEvent;
 import com.rayman.v2ex.utils.LogUtil;
 import com.rayman.v2ex.utils.ScopedBus;
+import com.rayman.v2ex.utils.StringUtil;
 import com.rayman.v2ex.utils.ToastUtil;
 import com.squareup.otto.Subscribe;
 
@@ -93,7 +93,7 @@ public class V2EXApplication extends Application implements IInject {
     }
 
     @Subscribe public void handleRequestError(ErrorEvent errorEvent) {
-        if (!StringUtils.isEmpty(errorEvent.getMessage()))
+        if (!StringUtil.isEmpty(errorEvent.getMessage()))
             ToastUtil.show(this, errorEvent.getMessage());
     }
 

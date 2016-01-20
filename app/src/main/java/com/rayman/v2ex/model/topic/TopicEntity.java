@@ -23,7 +23,7 @@
 package com.rayman.v2ex.model.topic;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.rayman.v2ex.model.member.MemberEntity;
+import com.rayman.v2ex.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.node.NodeEntity;
 
 /**
@@ -51,7 +51,7 @@ public class TopicEntity {
     @JSONField(name = "content_rendered")
     private String contentRendered;
     private int replies;
-    private MemberEntity member;
+    private MemberBaseEntity member;
     private NodeEntity node;
     private long created;
     @JSONField(name = "last_modified")
@@ -107,11 +107,11 @@ public class TopicEntity {
         this.replies = replies;
     }
 
-    public MemberEntity getMember() {
+    public MemberBaseEntity getMember() {
         return member;
     }
 
-    public void setMember(MemberEntity member) {
+    public void setMember(MemberBaseEntity member) {
         this.member = member;
     }
 

@@ -164,7 +164,7 @@ public class BaseActivity extends AppCompatActivity implements IPageControl, IIn
         finish();
     }
 
-    public ActivityComp getActivityComp() {
+    ActivityComp getActivityComp() {
         return activityComp;
     }
 

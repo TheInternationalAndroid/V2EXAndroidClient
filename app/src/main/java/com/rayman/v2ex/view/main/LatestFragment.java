@@ -23,23 +23,29 @@
 package com.rayman.v2ex.view.main;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.FragmentLatestBinding;
 import com.rayman.v2ex.di.component.view.main.DaggerLatestFragComp;
 import com.rayman.v2ex.di.component.view.main.LatestFragComp;
 import com.rayman.v2ex.di.modules.vm.main.LatestFragVMModule;
+import com.rayman.v2ex.model.member.MemberBaseEntity;
+import com.rayman.v2ex.model.node.NodeEntity;
+import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.IPresenter;
+import com.rayman.v2ex.view.account.AccountActivity;
 import com.rayman.v2ex.view.base.BaseFragment;
 import com.rayman.v2ex.vm.main.LatestFragVM;
 
 import javax.inject.Inject;
 
-public class LatestFragment extends BaseFragment {
+public class LatestFragment extends BaseFragment implements OnTopicCellClicked {
 
     @Inject LatestFragVM viewModel;
 
@@ -54,7 +60,7 @@ public class LatestFragment extends BaseFragment {
     @Override public LatestFragComp buildComp() {
         return DaggerLatestFragComp.builder()
                 .fragmentComp(super.buildComp())
-                .latestFragVMModule(new LatestFragVMModule())
+                .latestFragVMModule(new LatestFragVMModule(this))
                 .build();
     }
 
@@ -69,5 +75,19 @@ public class LatestFragment extends BaseFragment {
     @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         viewModel.requestLatestTopic();
+    }
+
+    @Override public void onUserClicked(MemberBaseEntity memberBaseEntity) {
+        Intent intent = new Intent(getActivity(), AccountActivity.class);
+        intent.putExtra(ParaKeys.MEMBER_BASE_KEY, memberBaseEntity);
+        intent(intent);
+    }
+
+    @Override public void onTopicCliced(TopicEntity topicEntity) {
+
+    }
+
+    @Override public void onNodeClicked(NodeEntity nodeEntity) {
+
     }
 }

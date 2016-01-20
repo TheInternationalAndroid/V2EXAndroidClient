@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:26 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainService.
- * Author: Lena; Last Modified: 1/19/16 3:26 PM.
+ * Created on 1/20/16 4:38 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: IAccountP.
+ * Author: Lena; Last Modified: 1/20/16 4:38 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,22 +20,20 @@
  *
  */
 
-package com.rayman.v2ex.http.service;
+package com.rayman.v2ex.presenter.account;
 
+import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.model.topic.TopicEntity;
+import com.rayman.v2ex.presenter.IPresenter;
 
 import java.util.List;
-
-import retrofit.Call;
-import retrofit.http.GET;
-import retrofit.http.Query;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 15:26
+ * Date: 1/20/16
+ * Time: 16:38
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -47,12 +45,8 @@ import retrofit.http.Query;
  * \               ||----w |
  * \               ||     ||
  */
-public interface TopicService {
+public interface IAccountP extends IPresenter {
 
-    @GET("topics/hot.json") Call<List<TopicEntity>> hot();
-
-    @GET("topics/latest.json") Call<List<TopicEntity>> latest();
-
-    @GET("topics/show.json") Call<List<TopicEntity>> topics(@Query(value = "username") String userName);
+    void topics(String userName, ReqCallback<List<TopicEntity>> callback);
 
 }

@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:26 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainService.
- * Author: Lena; Last Modified: 1/19/16 3:26 PM.
+ * Created on 1/20/16 5:50 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AccountComp.
+ * Author: Lena; Last Modified: 1/20/16 5:50 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,22 +20,22 @@
  *
  */
 
-package com.rayman.v2ex.http.service;
+package com.rayman.v2ex.di.component.view;
 
-import com.rayman.v2ex.model.topic.TopicEntity;
+import com.rayman.v2ex.di.component.view.base.ActivityComp;
+import com.rayman.v2ex.di.modules.vm.account.AccountVMModule;
+import com.rayman.v2ex.di.scope.PerActivity;
+import com.rayman.v2ex.view.account.AccountActivity;
+import com.rayman.v2ex.vm.account.AccountVM;
 
-import java.util.List;
-
-import retrofit.Call;
-import retrofit.http.GET;
-import retrofit.http.Query;
+import dagger.Component;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 15:26
+ * Date: 1/20/16
+ * Time: 17:50
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -47,12 +47,12 @@ import retrofit.http.Query;
  * \               ||----w |
  * \               ||     ||
  */
-public interface TopicService {
+@PerActivity
+@Component(modules = AccountVMModule.class, dependencies = ActivityComp.class)
+public interface AccountComp extends ActivityComp {
 
-    @GET("topics/hot.json") Call<List<TopicEntity>> hot();
+    void inject(AccountActivity accountActivity);
 
-    @GET("topics/latest.json") Call<List<TopicEntity>> latest();
-
-    @GET("topics/show.json") Call<List<TopicEntity>> topics(@Query(value = "username") String userName);
+    AccountVM viewModel();
 
 }

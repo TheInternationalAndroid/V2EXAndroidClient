@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import com.rayman.v2ex.adapter.list.viewholder.TopicViewHolder;
 import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.model.topic.TopicEntity;
+import com.rayman.v2ex.view.main.OnTopicCellClicked;
 import com.rayman.v2ex.vm.topic.TopicCellVM;
 
 import java.util.List;
@@ -53,8 +54,10 @@ import java.util.List;
 public class TopicListAdapter extends RecyclerView.Adapter<TopicViewHolder> {
 
     private List<TopicEntity> topicEntities;
+    private OnTopicCellClicked onTopicCellClicked;
 
-    public TopicListAdapter() {
+    public TopicListAdapter(OnTopicCellClicked onTopicCellClicked) {
+        this.onTopicCellClicked = onTopicCellClicked;
     }
 
     @Override public TopicViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -63,7 +66,7 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicViewHolder> {
     }
 
     @Override public void onBindViewHolder(TopicViewHolder holder, int position) {
-        holder.bindData(new TopicCellVM(getItem(position)));
+        holder.bindData(new TopicCellVM(getItem(position), onTopicCellClicked));
     }
 
     @Override public int getItemCount() {

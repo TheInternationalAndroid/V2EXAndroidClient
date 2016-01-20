@@ -53,5 +53,6 @@ dependencies {
     compile 'javax.annotation:jsr250-api:1.0'
     compile 'com.balysv.materialmenu:material-menu-toolbar:1.5.0'
     compile 'com.makeramen:roundedimageview:2.2.1'
+    compile "com.wefika:flowlayout:0.4.1"
 
 }

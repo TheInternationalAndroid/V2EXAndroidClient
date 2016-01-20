@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 4:06 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: HotFragVMModule.
- * Author: Lena; Last Modified: 1/19/16 4:06 PM.
+ * Created on 1/20/16 4:36 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AccountVMModule.
+ * Author: Lena; Last Modified: 1/20/16 4:36 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,17 +20,16 @@
  *
  */
 
-package com.rayman.v2ex.di.modules.vm.main;
+package com.rayman.v2ex.di.modules.vm.account;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.rayman.v2ex.adapter.list.TopicListAdapter;
+import com.rayman.v2ex.adapter.list.AccountPageAdapter;
 import com.rayman.v2ex.anotations.ListType;
 import com.rayman.v2ex.di.modules.base.LayoutManagerModule;
-import com.rayman.v2ex.di.scope.PerBindingFragment;
-import com.rayman.v2ex.presenter.main.HotFragP;
-import com.rayman.v2ex.view.main.OnTopicCellClicked;
-import com.rayman.v2ex.vm.main.HotFragVM;
+import com.rayman.v2ex.di.scope.PerActivity;
+import com.rayman.v2ex.presenter.account.AccountP;
+import com.rayman.v2ex.vm.account.AccountVM;
 
 import javax.inject.Named;
 
@@ -41,8 +40,8 @@ import dagger.Provides;
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 16:04
+ * Date: 1/20/16
+ * Time: 16:36
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -55,16 +54,11 @@ import dagger.Provides;
  * \               ||     ||
  */
 @Module(includes = {LayoutManagerModule.class})
-public class HotFragVMModule {
-    private OnTopicCellClicked onTopicCellClicked;
+public class AccountVMModule {
 
-    public HotFragVMModule(OnTopicCellClicked onTopicCellClicked) {
-        this.onTopicCellClicked = onTopicCellClicked;
-    }
-
-    @Provides @PerBindingFragment HotFragVM provideHotFragVM(HotFragP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
-        TopicListAdapter topicListAdapter = new TopicListAdapter(onTopicCellClicked);
-        return new HotFragVM(presenter, topicListAdapter, layoutManager);
+    @Provides @PerActivity AccountVM provideAccountVM(AccountP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
+        AccountPageAdapter adapter = new AccountPageAdapter();
+        return new AccountVM(adapter, layoutManager, presenter);
     }
 
 }

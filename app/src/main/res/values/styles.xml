@@ -193,4 +193,14 @@
         <item name="android:layout_height">@dimen/point_dia</item>
     </style>
 
+    <style name="IconTagStyle" parent="ClickableStyle">
+        <item name="android:paddingTop">@dimen/padding_s</item>
+        <item name="android:paddingBottom">@dimen/padding_s</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:paddingLeft">@dimen/padding_l</item>
+        <item name="android:paddingRight">@dimen/padding_l</item>
+        <item name="android:background">@drawable/bg_tag_icon</item>
+        <item name="android:drawablePadding">@dimen/padding_m</item>
+    </style>
+
 </resources>

@@ -27,10 +27,10 @@ import android.databinding.Bindable;
 import android.view.View;
 
 import com.android.databinding.library.baseAdapters.BR;
-import com.google.repacked.apache.commons.lang3.StringUtils;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.anotations.PageState;
 import com.rayman.v2ex.anotations.ViewClick;
+import com.rayman.v2ex.utils.StringUtil;
 
 /**
  * Created by Android Studio.
@@ -83,7 +83,7 @@ public abstract class BaseStateVM extends BaseObservable {
     }
 
     public void setErrorString(String errorString) {
-        if (StringUtils.isEmpty(errorString)) return;
+        if (StringUtil.isEmpty(errorString)) return;
         this.errorString = errorString;
         notifyPropertyChanged(BR.errorString);
     }

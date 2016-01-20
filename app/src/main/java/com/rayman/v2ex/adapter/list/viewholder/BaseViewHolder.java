@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:26 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainService.
- * Author: Lena; Last Modified: 1/19/16 3:26 PM.
+ * Created on 1/20/16 5:20 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AccountListViewHolder.
+ * Author: Lena; Last Modified: 1/20/16 5:20 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,22 +20,17 @@
  *
  */
 
-package com.rayman.v2ex.http.service;
+package com.rayman.v2ex.adapter.list.viewholder;
 
-import com.rayman.v2ex.model.topic.TopicEntity;
-
-import java.util.List;
-
-import retrofit.Call;
-import retrofit.http.GET;
-import retrofit.http.Query;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 15:26
+ * Date: 1/20/16
+ * Time: 17:20
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -47,12 +42,11 @@ import retrofit.http.Query;
  * \               ||----w |
  * \               ||     ||
  */
-public interface TopicService {
+public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
 
-    @GET("topics/hot.json") Call<List<TopicEntity>> hot();
+    public BaseViewHolder(View itemView) {
+        super(itemView);
+    }
 
-    @GET("topics/latest.json") Call<List<TopicEntity>> latest();
-
-    @GET("topics/show.json") Call<List<TopicEntity>> topics(@Query(value = "username") String userName);
-
+    public abstract void bindData(T t);
 }

@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:26 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainService.
- * Author: Lena; Last Modified: 1/19/16 3:26 PM.
+ * Created on 1/20/16 4:53 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AccountHeaderCellVM.
+ * Author: Lena; Last Modified: 1/20/16 4:53 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,22 +20,20 @@
  *
  */
 
-package com.rayman.v2ex.http.service;
+package com.rayman.v2ex.vm.account;
 
-import com.rayman.v2ex.model.topic.TopicEntity;
+import android.databinding.BaseObservable;
 
-import java.util.List;
+import com.rayman.v2ex.model.member.MemberEntity;
 
-import retrofit.Call;
-import retrofit.http.GET;
-import retrofit.http.Query;
+import javax.inject.Inject;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 15:26
+ * Date: 1/20/16
+ * Time: 16:53
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -47,12 +45,19 @@ import retrofit.http.Query;
  * \               ||----w |
  * \               ||     ||
  */
-public interface TopicService {
+public class AccountHeaderCellVM extends BaseObservable {
 
-    @GET("topics/hot.json") Call<List<TopicEntity>> hot();
+    private MemberEntity member;
 
-    @GET("topics/latest.json") Call<List<TopicEntity>> latest();
+    public AccountHeaderCellVM(MemberEntity member) {
+        this.member = member;
+    }
 
-    @GET("topics/show.json") Call<List<TopicEntity>> topics(@Query(value = "username") String userName);
+    @Inject public MemberEntity getMember() {
+        return member;
+    }
 
+    public void setMember(MemberEntity member) {
+        this.member = member;
+    }
 }

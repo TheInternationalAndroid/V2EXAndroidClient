@@ -89,4 +89,20 @@ public class TopicWorker extends BaseWorker {
                 });
     }
 
+    public void topics(String userName, final ReqCallback<List<TopicEntity>> callback) {
+        callback.onReqStart();
+        topicService.topics(userName)
+                .enqueue(new LCallback<List<TopicEntity>>() {
+                    @Override public void onSuccess(List<TopicEntity> respEntity) {
+                        if (!isAlive()) return;
+                        callback.onNetResp(respEntity);
+                    }
+
+                    @Override public void onError(ErrorEvent errorEvent) {
+                        if (!isAlive()) return;
+                        callback.onError(errorEvent);
+                    }
+                });
+    }
+
 }

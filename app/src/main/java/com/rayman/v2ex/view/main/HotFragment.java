@@ -23,23 +23,29 @@
 package com.rayman.v2ex.view.main;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.FragmentHotBinding;
 import com.rayman.v2ex.di.component.view.main.DaggerHotFragComp;
 import com.rayman.v2ex.di.component.view.main.HotFragComp;
 import com.rayman.v2ex.di.modules.vm.main.HotFragVMModule;
+import com.rayman.v2ex.model.member.MemberBaseEntity;
+import com.rayman.v2ex.model.node.NodeEntity;
+import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.IPresenter;
+import com.rayman.v2ex.view.account.AccountActivity;
 import com.rayman.v2ex.view.base.BaseFragment;
 import com.rayman.v2ex.vm.main.HotFragVM;
 
 import javax.inject.Inject;
 
-public class HotFragment extends BaseFragment {
+public class HotFragment extends BaseFragment implements OnTopicCellClicked {
 
     @Inject HotFragVM viewModel;
 
@@ -58,7 +64,7 @@ public class HotFragment extends BaseFragment {
     @Override public HotFragComp buildComp() {
         return DaggerHotFragComp.builder()
                 .fragmentComp(super.buildComp())
-                .hotFragVMModule(new HotFragVMModule())
+                .hotFragVMModule(new HotFragVMModule(this))
                 .build();
     }
 
@@ -70,4 +76,17 @@ public class HotFragment extends BaseFragment {
         buildComp().inject(this);
     }
 
+    @Override public void onUserClicked(MemberBaseEntity memberBaseEntity) {
+        Intent intent = new Intent(getActivity(), AccountActivity.class);
+        intent.putExtra(ParaKeys.MEMBER_BASE_KEY, memberBaseEntity);
+        intent(intent);
+    }
+
+    @Override public void onTopicCliced(TopicEntity topicEntity) {
+
+    }
+
+    @Override public void onNodeClicked(NodeEntity nodeEntity) {
+
+    }
 }

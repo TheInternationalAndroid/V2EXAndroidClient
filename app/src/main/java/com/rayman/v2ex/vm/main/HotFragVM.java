@@ -22,15 +22,15 @@
 
 package com.rayman.v2ex.vm.main;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.rayman.v2ex.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.anotations.PageState;
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.http.event.ErrorEvent;
 import com.rayman.v2ex.model.topic.TopicEntity;
-import com.rayman.v2ex.presenter.main.HotFragP;
 import com.rayman.v2ex.presenter.main.IHotFragP;
-import com.rayman.v2ex.utils.LogUtil;
 import com.rayman.v2ex.vm.BaseStateVM;
 
 import java.util.List;
@@ -52,12 +52,16 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class HotFragVM extends BaseStateVM implements IHotFragVM {
+public class HotFragVM extends BaseStateVM {
 
     private IHotFragP presenter;
+    private TopicListAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
-    public HotFragVM(HotFragP presenter) {
+    public HotFragVM(IHotFragP presenter, TopicListAdapter adapter, RecyclerView.LayoutManager layoutManager) {
         this.presenter = presenter;
+        this.adapter = adapter;
+        this.layoutManager = layoutManager;
     }
 
     @Override public void onRetryClicked(View view) {
@@ -68,6 +72,14 @@ public class HotFragVM extends BaseStateVM implements IHotFragVM {
         return presenter;
     }
 
+    public TopicListAdapter getAdapter() {
+        return adapter;
+    }
+
+    public RecyclerView.LayoutManager getLayoutManager() {
+        return layoutManager;
+    }
+
     public void requestHotTopicList() {
         presenter.hot(new ReqCallback<List<TopicEntity>>() {
             @Override public void onReqStart() {
@@ -75,8 +87,12 @@ public class HotFragVM extends BaseStateVM implements IHotFragVM {
             }
 
             @Override public void onNetResp(List<TopicEntity> response) {
-                setState(PageState.CONTENT);
-                LogUtil.i("HotFragVM Size :" + response.size());
+                if (response.size() > 0) {
+                    setState(PageState.CONTENT);
+                    adapter.setTopicEntities(response);
+                } else {
+                    setState(PageState.EMPTY);
+                }
             }
 
             @Override public void onError(ErrorEvent errorEvent) {

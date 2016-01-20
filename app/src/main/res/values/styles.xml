@@ -159,4 +159,38 @@
         <item name="android:textSize">@dimen/text_xl</item>
     </style>
 
+    <style name="ClickableStyle">
+        <item name="android:background">@drawable/list_selector</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="ClickableStyle.Corner">
+        <item name="android:background">@drawable/list_selector_corner</item>
+    </style>
+
+    <style name="CountTagStyle">
+        <item name="android:background">@drawable/bg_tag_count</item>
+        <item name="android:paddingBottom">@dimen/padding_ss</item>
+        <item name="android:paddingTop">@dimen/padding_ss</item>
+        <item name="android:paddingLeft">@dimen/padding_l</item>
+        <item name="android:paddingRight">@dimen/padding_l</item>
+    </style>
+
+    <style name="NodeTagStyle" parent="ClickableStyle">
+        <item name="android:background">@drawable/bg_tag_node</item>
+        <item name="android:paddingBottom">@dimen/padding_ss</item>
+        <item name="android:paddingTop">@dimen/padding_ss</item>
+        <item name="android:paddingLeft">@dimen/padding_m</item>
+        <item name="android:paddingRight">@dimen/padding_m</item>
+    </style>
+
+    <style name="PointStyle">
+        <item name="android:layout_marginRight">@dimen/padding_xl</item>
+        <item name="android:layout_marginLeft">@dimen/padding_xl</item>
+        <item name="android:background">@drawable/bg_point</item>
+        <item name="android:layout_width">@dimen/point_dia</item>
+        <item name="android:layout_height">@dimen/point_dia</item>
+    </style>
+
 </resources>

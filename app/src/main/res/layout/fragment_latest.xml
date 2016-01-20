@@ -42,11 +42,12 @@
         android:layout_height="match_parent"
         tools:context="com.rayman.v2ex.view.main.LatestFragment">
 
-        <TextView
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment"
-            android:visibility="@{viewModel.state==PageState.CONTENT?View.VISIBLE:View.GONE,default=gone}" />
+            android:visibility="@{viewModel.state==PageState.CONTENT?View.VISIBLE:View.GONE,default=gone}"
+            app:adapter="@{viewModel.adapter}"
+            app:layoutManager="@{viewModel.layoutManager}" />
 
         <include
             layout="@layout/state_empty_layout"

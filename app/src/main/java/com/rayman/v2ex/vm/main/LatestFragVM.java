@@ -22,8 +22,10 @@
 
 package com.rayman.v2ex.vm.main;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.rayman.v2ex.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.anotations.PageState;
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.http.event.ErrorEvent;
@@ -50,12 +52,16 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class LatestFragVM extends BaseStateVM implements ILatestFragVM {
+public class LatestFragVM extends BaseStateVM {
 
     private ILatestFragP presenter;
+    private TopicListAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
-    public LatestFragVM(ILatestFragP presenter) {
+    public LatestFragVM(ILatestFragP presenter, TopicListAdapter adapter, RecyclerView.LayoutManager layoutManager) {
         this.presenter = presenter;
+        this.adapter = adapter;
+        this.layoutManager = layoutManager;
     }
 
     public ILatestFragP getPresenter() {
@@ -66,6 +72,14 @@ public class LatestFragVM extends BaseStateVM implements ILatestFragVM {
         requestLatestTopic();
     }
 
+    public TopicListAdapter getAdapter() {
+        return adapter;
+    }
+
+    public RecyclerView.LayoutManager getLayoutManager() {
+        return layoutManager;
+    }
+
     public void requestLatestTopic() {
         presenter.latest(new ReqCallback<List<TopicEntity>>() {
             @Override public void onReqStart() {
@@ -73,7 +87,12 @@ public class LatestFragVM extends BaseStateVM implements ILatestFragVM {
             }
 
             @Override public void onNetResp(List<TopicEntity> response) {
-                setState(PageState.CONTENT);
+                if (response.size() > 0) {
+                    setState(PageState.CONTENT);
+                    adapter.setTopicEntities(response);
+                } else {
+                    setState(PageState.EMPTY);
+                }
             }
 
             @Override public void onError(ErrorEvent errorEvent) {

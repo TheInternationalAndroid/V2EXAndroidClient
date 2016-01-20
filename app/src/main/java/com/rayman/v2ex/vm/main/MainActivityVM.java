@@ -31,7 +31,7 @@ import android.view.View;
 import com.android.databinding.library.baseAdapters.BR;
 import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
-import com.rayman.v2ex.adapter.MainPagerAdapter;
+import com.rayman.v2ex.adapter.pager.MainPagerAdapter;
 
 /**
  * Created by Android Studio.
@@ -50,7 +50,7 @@ import com.rayman.v2ex.adapter.MainPagerAdapter;
  * \               ||----w |
  * \               ||     ||
  */
-public class MainActivityVM extends BaseObservable implements IMainVM, DrawerLayout.DrawerListener {
+public class MainActivityVM extends BaseObservable implements DrawerLayout.DrawerListener {
 
     private MainPagerAdapter adapter;
     private MaterialMenuIconToolbar menuIconToolbar;

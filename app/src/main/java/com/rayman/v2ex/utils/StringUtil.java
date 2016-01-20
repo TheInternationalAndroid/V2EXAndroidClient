@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:56 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: IHotFragVM.
- * Author: Lena; Last Modified: 1/19/16 3:56 PM.
+ * Created on 1/20/16 2:10 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: StringUtil.
+ * Author: Lena; Last Modified: 1/20/16 2:10 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,14 +20,16 @@
  *
  */
 
-package com.rayman.v2ex.vm.main;
+package com.rayman.v2ex.utils;
+
+import android.text.TextUtils;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 15:56
+ * Date: 1/20/16
+ * Time: 14:10
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -39,5 +41,10 @@ package com.rayman.v2ex.vm.main;
  * \               ||----w |
  * \               ||     ||
  */
-public interface IHotFragVM {
+public class StringUtil {
+
+    public static boolean isEmpty(CharSequence charSequence) {
+        if (TextUtils.isEmpty(charSequence)) return true;
+        return TextUtils.isEmpty(charSequence.toString().trim());
+    }
 }

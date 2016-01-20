@@ -26,6 +26,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.ImageView;
+
+import com.rayman.v2ex.R;
+import com.rayman.v2ex.utils.StringUtil;
+import com.squareup.picasso.Picasso;
 
 /**
  * Created by Android Studio.
@@ -66,6 +71,19 @@ public class BindingAdapter {
         } else {
             drawerLayout.closeDrawer(gravity);
         }
+    }
+
+    @android.databinding.BindingAdapter(value = "android:src")
+    public static void loadImageByUrl(ImageView imageView, String url) {
+        if (StringUtil.isEmpty(url)) return;
+        url = getFormatImageUrl(url);
+        Picasso.with(imageView.getContext()).load(url).placeholder(R.mipmap.ic_launcher).into(imageView);
+    }
+
+    public static String getFormatImageUrl(String imageUrl) {
+        if (imageUrl.startsWith("//"))
+            imageUrl = "http:" + imageUrl;
+        return imageUrl;
     }
 
 }

@@ -13,8 +13,8 @@
     <!--Text Colors-->
     <color name="text_white">#FFFFFF</color>
     <color name="text_black">#0A0A0A</color>
-    <color name="text_gray">#CACACA</color>
-    <color name="text_gray_dark">#858687</color>
+    <color name="text_gray">#A1A1A1</color>
+    <color name="text_gray_dark">#778087</color>
     <color name="text_yellow_dark">#AA9024</color>
     <color name="text_blue">#00B0FF</color>
     <color name="text_blue_dark">#0091EA</color>
@@ -29,7 +29,8 @@
     <!--Bg Colors-->
     <color name="bg_gray_transparent">#6FD6D6D6</color>
     <color name="bg_black_light">#1C1D20</color>
-    <color name="bg_gray">#D4D3D4</color>
+    <color name="bg_gray">#E5E5E5</color>
+    <color name="bg_gray_dark">#E2E2E2</color>
     <color name="bg_gray_light">#E8E8E8</color>
     <color name="bg_white">#FFFFFF</color>
     <color name="bg_yellow">#E7CA50</color>
@@ -45,5 +46,18 @@
     <color name="bg_red">#F44336</color>
     <color name="bg_gray_light_F4">#f4f5f6</color>
     <color name="bg_toast">#B9000000</color>
+    <color name="bg_tag_gray">#AAB0C6</color>
+    <color name="bg_tag_gray_light">#E5E5E5</color>
+
+    <!--Drawable-->
+    <drawable name="transparent">@android:color/transparent</drawable>
+    <drawable name="bg_gray_transparent">#6F363636</drawable>
+    <drawable name="bg_black_light">#1C1D20</drawable>
+    <drawable name="bg_green">#6EAF20</drawable>
+    <drawable name="bg_red">#BA3223</drawable>
+    <drawable name="bg_blue">#00B0FF</drawable>
+    <drawable name="bg_gray">#D4D3D4</drawable>
+    <drawable name="bg_white">#FFFFFF</drawable>
+    <drawable name="divider">@color/divider_gray</drawable>
 
 </resources>

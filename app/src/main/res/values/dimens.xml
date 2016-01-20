@@ -2,11 +2,12 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="point_dia">3dp</dimen>
 
     <dimen name="drawer_header_height">140dp</dimen>
     <dimen name="item_height">45dp</dimen>
 
-    <dimen name="tag_corner">20dp</dimen>
+    <dimen name="tag_corner">10dp</dimen>
     <dimen name="btn_corner">5dp</dimen>
     <dimen name="divider">0.5dp</dimen>
 
@@ -22,7 +23,7 @@
     <dimen name="text_xxxl">23sp</dimen>
 
     <!--Padding-->
-    <dimen name="padding_ss">1.5dp</dimen>
+    <dimen name="padding_ss">1dp</dimen>
     <dimen name="padding_s">3dp</dimen>
     <dimen name="padding_m">5dp</dimen>
     <dimen name="padding_l">8dp</dimen>

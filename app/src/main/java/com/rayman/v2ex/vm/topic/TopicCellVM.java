@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 4:06 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: HotFragVMModule.
- * Author: Lena; Last Modified: 1/19/16 4:06 PM.
+ * Created on 1/20/16 12:18 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
+ * Author: Lena; Last Modified: 1/20/16 12:18 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,28 +20,23 @@
  *
  */
 
-package com.rayman.v2ex.di.modules.vm.main;
+package com.rayman.v2ex.vm.topic;
 
-import android.support.v7.widget.RecyclerView;
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+import android.view.View;
 
-import com.rayman.v2ex.adapter.list.TopicListAdapter;
-import com.rayman.v2ex.anotations.ListType;
-import com.rayman.v2ex.di.modules.base.LayoutManagerModule;
-import com.rayman.v2ex.di.scope.PerBindingFragment;
-import com.rayman.v2ex.presenter.main.HotFragP;
-import com.rayman.v2ex.vm.main.HotFragVM;
-
-import javax.inject.Named;
-
-import dagger.Module;
-import dagger.Provides;
+import com.android.databinding.library.baseAdapters.BR;
+import com.rayman.v2ex.R;
+import com.rayman.v2ex.anotations.ViewClick;
+import com.rayman.v2ex.model.topic.TopicEntity;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 16:04
+ * Date: 1/20/16
+ * Time: 12:18
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -53,12 +48,31 @@ import dagger.Provides;
  * \               ||----w |
  * \               ||     ||
  */
-@Module(includes = {LayoutManagerModule.class})
-public class HotFragVMModule {
+public class TopicCellVM extends BaseObservable {
 
-    @Provides @PerBindingFragment HotFragVM provideHotFragVM(HotFragP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
-        TopicListAdapter topicListAdapter = new TopicListAdapter();
-        return new HotFragVM(presenter, topicListAdapter, layoutManager);
+    private TopicEntity topic;
+
+    public TopicCellVM(TopicEntity topic) {
+        this.topic = topic;
+    }
+
+    @Bindable public TopicEntity getTopic() {
+        return topic;
+    }
+
+    @ViewClick(R.id.content) public void onContentClicked(View view) {
+    }
+
+    @ViewClick(R.id.image) public void onAvatarClicked(View view) {
+    }
+
+    @ViewClick(R.id.node) public void onNodeClicked(View view) {
+
+    }
+
+    public void setTopic(TopicEntity topic) {
+        this.topic = topic;
+        notifyPropertyChanged(BR.topic);
     }
 
 }

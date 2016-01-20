@@ -28,7 +28,7 @@ import android.support.annotation.NonNull;
 import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
 import com.rayman.v2ex.R;
-import com.rayman.v2ex.adapter.MainPagerAdapter;
+import com.rayman.v2ex.adapter.pager.MainPagerAdapter;
 import com.rayman.v2ex.di.scope.PerActivity;
 import com.rayman.v2ex.view.main.MainActivity;
 import com.rayman.v2ex.vm.main.MainActivityVM;

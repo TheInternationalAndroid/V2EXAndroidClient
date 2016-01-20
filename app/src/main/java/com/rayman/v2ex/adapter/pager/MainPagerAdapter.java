@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 12:05 PM
+ * Created on 1/20/16 11:20 AM
  * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainPagerAdapter.
- * Author: Lena; Last Modified: 1/19/16 12:05 PM.
+ * Author: Lena; Last Modified: 1/20/16 11:20 AM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@
  *
  */
 
-package com.rayman.v2ex.adapter;
+package com.rayman.v2ex.adapter.pager;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;

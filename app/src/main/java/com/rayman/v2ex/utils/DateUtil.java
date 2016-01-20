@@ -82,4 +82,22 @@ public class DateUtil {
         return leftTime - period / 1000;
     }
 
+    public static String getFormatPassTime(long lastTime) {
+        long leftSecondsMM = System.currentTimeMillis() - lastTime;
+        if (leftSecondsMM > 0) {
+            long leftSeconds = leftSecondsMM / 1000;
+            long minutes = leftSeconds / 60;
+            long hours = minutes / 60;
+            long day = hours / 24;
+            if (day >= 1)
+                return formatDateMMddHHmm(lastTime);
+            if (hours >= 1)
+                return DateUtil.formatDateHHmm(lastTime);
+            if (minutes >= 1)
+                return minutes + "分钟前";
+            return "刚刚";
+        }
+        return "刚刚";
+    }
+
 }

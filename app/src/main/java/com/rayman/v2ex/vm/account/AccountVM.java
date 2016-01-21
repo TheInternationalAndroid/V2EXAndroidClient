@@ -26,7 +26,6 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
 
-import com.android.databinding.library.baseAdapters.BR;
 import com.rayman.v2ex.adapter.list.AccountPageAdapter;
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.http.event.ErrorEvent;
@@ -96,7 +95,7 @@ public class AccountVM extends BaseObservable {
 
     public void setMember(MemberEntity member) {
         this.member = member;
-        notifyPropertyChanged(BR.member);
+        adapter.setMemberEntity(member);
     }
 
 }

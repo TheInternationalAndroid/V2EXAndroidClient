@@ -114,6 +114,7 @@
                         android:text="@{@string/created_at_format(DateUtil.formatRecordDate(viewModel.member.created))}"
                         android:textColor="@color/text_gray"
                         android:textSize="@dimen/text_m"
+                        android:visibility="@{viewModel.member.created>0?View.VISIBLE:View.GONE}"
                         tools:text="" />
                 </LinearLayout>
             </LinearLayout>

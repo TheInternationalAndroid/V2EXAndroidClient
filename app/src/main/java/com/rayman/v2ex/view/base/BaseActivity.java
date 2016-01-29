@@ -39,7 +39,7 @@ import com.rayman.v2ex.di.component.app.AppComp;
 import com.rayman.v2ex.di.component.view.base.ActivityComp;
 import com.rayman.v2ex.di.component.view.base.DaggerActivityComp;
 import com.rayman.v2ex.di.modules.ActivityModule;
-import com.rayman.v2ex.presenter.IPresenter;
+import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.utils.ToastUtil;
 
 /**
@@ -116,9 +116,9 @@ public class BaseActivity extends AppCompatActivity implements IPageControl, IIn
 
 
     @Override protected void onDestroy() {
-        IPresenter presenter = getPresenter();
-        if (presenter != null)
-            presenter.onViewDetach();
+        IPage pager = getPageCallBack();
+        if (pager != null)
+            pager.onViewDetach();
         super.onDestroy();
     }
 
@@ -183,14 +183,14 @@ public class BaseActivity extends AppCompatActivity implements IPageControl, IIn
         }
         onInject();
 
-        IPresenter presenter = getPresenter();
-        if (presenter != null)
-            presenter.onViewAttach();
+        IPage page = getPageCallBack();
+        if (page != null)
+            page.onViewAttach();
 
         return binding;
     }
 
-    protected IPresenter getPresenter() {
+    protected IPage getPageCallBack() {
         return null;
     }
 

@@ -38,7 +38,7 @@ import com.rayman.v2ex.di.IInject;
 import com.rayman.v2ex.di.component.view.base.ActivityComp;
 import com.rayman.v2ex.di.component.view.base.DaggerFragmentComp;
 import com.rayman.v2ex.di.component.view.base.FragmentComp;
-import com.rayman.v2ex.presenter.IPresenter;
+import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.utils.ToastUtil;
 
 /**
@@ -77,15 +77,15 @@ public class BaseFragment extends Fragment implements IPageControl, IInject, IRe
 
     @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        IPresenter presenter = getPresenter();
-        if (presenter != null)
-            presenter.onViewAttach();
+        IPage page = getPageCallBack();
+        if (page != null)
+            page.onViewAttach();
     }
 
     @Override public void onDetach() {
-        IPresenter presenter = getPresenter();
-        if (presenter != null)
-            presenter.onViewDetach();
+        IPage page = getPageCallBack();
+        if (page != null)
+            page.onViewDetach();
         super.onDetach();
     }
 
@@ -182,7 +182,7 @@ public class BaseFragment extends Fragment implements IPageControl, IInject, IRe
         getActivity().finish();
     }
 
-    protected IPresenter getPresenter() {
+    protected IPage getPageCallBack() {
         return null;
     }
 }

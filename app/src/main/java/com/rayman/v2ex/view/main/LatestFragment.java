@@ -38,7 +38,7 @@ import com.rayman.v2ex.di.modules.vm.main.LatestFragVMModule;
 import com.rayman.v2ex.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.node.NodeEntity;
 import com.rayman.v2ex.model.topic.TopicEntity;
-import com.rayman.v2ex.presenter.IPresenter;
+import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.view.account.AccountActivity;
 import com.rayman.v2ex.view.base.BaseFragment;
 import com.rayman.v2ex.vm.main.LatestFragVM;
@@ -64,7 +64,7 @@ public class LatestFragment extends BaseFragment implements OnTopicCellClicked {
                 .build();
     }
 
-    @Override protected IPresenter getPresenter() {
+    @Override protected IPage getPageCallBack() {
         return viewModel.getPresenter();
     }
 

@@ -22,7 +22,7 @@
 
 package com.rayman.v2ex.worker;
 
-import com.rayman.v2ex.http.callback.LCallback;
+import com.rayman.v2ex.http.callback.LSubscriber;
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.http.event.ErrorEvent;
 import com.rayman.v2ex.http.service.TopicService;
@@ -31,6 +31,9 @@ import com.rayman.v2ex.model.topic.TopicEntity;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Android Studio.
@@ -60,7 +63,9 @@ public class TopicWorker extends BaseWorker {
     public void hot(final ReqCallback<List<TopicEntity>> callback) {
         callback.onReqStart();
         topicService.hot()
-                .enqueue(new LCallback<List<TopicEntity>>() {
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new LSubscriber<List<TopicEntity>>() {
                     @Override public void onSuccess(List<TopicEntity> respEntity) {
                         if (!isAlive()) return;
                         callback.onNetResp(respEntity);
@@ -76,7 +81,9 @@ public class TopicWorker extends BaseWorker {
     public void latest(final ReqCallback<List<TopicEntity>> callback) {
         callback.onReqStart();
         topicService.latest()
-                .enqueue(new LCallback<List<TopicEntity>>() {
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new LSubscriber<List<TopicEntity>>() {
                     @Override public void onSuccess(List<TopicEntity> respEntity) {
                         if (!isAlive()) return;
                         callback.onNetResp(respEntity);
@@ -92,7 +99,9 @@ public class TopicWorker extends BaseWorker {
     public void topics(String userName, final ReqCallback<List<TopicEntity>> callback) {
         callback.onReqStart();
         topicService.topics(userName)
-                .enqueue(new LCallback<List<TopicEntity>>() {
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new LSubscriber<List<TopicEntity>>() {
                     @Override public void onSuccess(List<TopicEntity> respEntity) {
                         if (!isAlive()) return;
                         callback.onNetResp(respEntity);

@@ -22,8 +22,10 @@
 
 package com.rayman.v2ex.adapter.list.viewholder;
 
+import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+
+import com.android.databinding.library.baseAdapters.BR;
 
 /**
  * Created by Android Studio.
@@ -42,11 +44,23 @@ import android.view.View;
  * \               ||----w |
  * \               ||     ||
  */
-public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
+public class BaseViewHolder extends RecyclerView.ViewHolder {
 
-    public BaseViewHolder(View itemView) {
-        super(itemView);
+    private ViewDataBinding binding;
+
+    public BaseViewHolder(ViewDataBinding binding) {
+        super(binding.getRoot());
+        this.binding = binding;
     }
 
-    public abstract void bindData(T t);
+    //    TODO Warning : All viewModels in list cell layout must be named as "viewModel"!!!!!!!!!
+    public void bindData(Object t) {
+        binding.setVariable(BR.viewModel, t);
+        binding.executePendingBindings();
+    }
+
+    public void bindData(int viewModelId, Object t) {
+        binding.setVariable(viewModelId, t);
+        binding.executePendingBindings();
+    }
 }

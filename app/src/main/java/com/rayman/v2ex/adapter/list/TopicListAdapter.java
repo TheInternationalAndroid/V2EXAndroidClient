@@ -26,7 +26,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.rayman.v2ex.adapter.list.viewholder.TopicViewHolder;
+import com.rayman.v2ex.adapter.list.viewholder.BaseViewHolder;
 import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.view.main.OnTopicCellClicked;
@@ -51,7 +51,7 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicListAdapter extends RecyclerView.Adapter<TopicViewHolder> {
+public class TopicListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private List<TopicEntity> topicEntities;
     private OnTopicCellClicked onTopicCellClicked;
@@ -60,12 +60,12 @@ public class TopicListAdapter extends RecyclerView.Adapter<TopicViewHolder> {
         this.onTopicCellClicked = onTopicCellClicked;
     }
 
-    @Override public TopicViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @Override public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ListCellTopicBinding binding = ListCellTopicBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new TopicViewHolder(binding);
+        return new BaseViewHolder(binding);
     }
 
-    @Override public void onBindViewHolder(TopicViewHolder holder, int position) {
+    @Override public void onBindViewHolder(BaseViewHolder holder, int position) {
         holder.bindData(new TopicCellVM(getItem(position), onTopicCellClicked));
     }
 

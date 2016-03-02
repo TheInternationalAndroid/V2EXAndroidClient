@@ -22,13 +22,12 @@
 
 package com.rayman.v2ex.adapter.list;
 
+import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.rayman.v2ex.adapter.list.viewholder.AccountHeaderViewHolder;
 import com.rayman.v2ex.adapter.list.viewholder.BaseViewHolder;
-import com.rayman.v2ex.adapter.list.viewholder.AccountTopicCellViewHolder;
 import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.databinding.ListHeaderUserDetailBinding;
 import com.rayman.v2ex.model.member.MemberEntity;
@@ -59,7 +58,6 @@ public class AccountPageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private static final int VIEW_HEADER = 0;
     private static final int VIEW_TOPIC = 1;
-    private static final int HEADER_COUNT = 1;
 
     private List<TopicEntity> topicEntities;
     private MemberEntity memberEntity;
@@ -68,15 +66,17 @@ public class AccountPageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     @Override public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        ViewDataBinding binding;
         switch (viewType) {
             case VIEW_HEADER:
-                ListHeaderUserDetailBinding headerUserDetailBinding = ListHeaderUserDetailBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-                return new AccountHeaderViewHolder(headerUserDetailBinding);
+                binding = ListHeaderUserDetailBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+                break;
             default:
             case VIEW_TOPIC:
-                ListCellTopicBinding listCellTopicBinding = ListCellTopicBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-                return new AccountTopicCellViewHolder(listCellTopicBinding);
+                binding = ListCellTopicBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+                break;
         }
+        return new BaseViewHolder(binding);
     }
 
     @Override public void onBindViewHolder(BaseViewHolder holder, int position) {

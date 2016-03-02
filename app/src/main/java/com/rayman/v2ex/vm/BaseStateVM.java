@@ -22,7 +22,6 @@
 
 package com.rayman.v2ex.vm;
 
-import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.view.View;
 
@@ -30,6 +29,7 @@ import com.android.databinding.library.baseAdapters.BR;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.anotations.PageState;
 import com.rayman.v2ex.anotations.ViewClick;
+import com.rayman.v2ex.presenter.BasePresenter;
 import com.rayman.v2ex.utils.StringUtil;
 
 /**
@@ -49,11 +49,15 @@ import com.rayman.v2ex.utils.StringUtil;
  * \               ||----w |
  * \               ||     ||
  */
-public abstract class BaseStateVM extends BaseObservable {
+public abstract class BaseStateVM<T extends BasePresenter> extends BaseVM<T>{
 
     private int state;
     private String emptyString;
     private String errorString;
+
+    public BaseStateVM(T presenter) {
+        super(presenter);
+    }
 
     @Bindable public int getState() {
         return state;

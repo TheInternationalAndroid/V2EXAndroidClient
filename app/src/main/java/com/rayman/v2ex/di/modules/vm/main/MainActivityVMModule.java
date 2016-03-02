@@ -30,6 +30,7 @@ import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.adapter.pager.MainPagerAdapter;
 import com.rayman.v2ex.di.scope.PerActivity;
+import com.rayman.v2ex.presenter.main.MainActivityP;
 import com.rayman.v2ex.view.main.MainActivity;
 import com.rayman.v2ex.vm.main.MainActivityVM;
 
@@ -62,7 +63,7 @@ public class MainActivityVMModule {
         this.mainActivity = mainActivity;
     }
 
-    @Provides @PerActivity MainActivityVM provideMainActivityVM() {
+    @Provides @PerActivity MainActivityVM provideMainActivityVM(MainActivityP presenter) {
         MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(mainActivity.getSupportFragmentManager(), mainActivity.getResources().getStringArray(R.array.main_tab_title));
 
         MaterialMenuIconToolbar menuIconToolbar = new MaterialMenuIconToolbar(mainActivity, Color.WHITE, MaterialMenuDrawable.Stroke.THIN) {
@@ -72,7 +73,7 @@ public class MainActivityVMModule {
             }
         };
         menuIconToolbar.setNeverDrawTouch(false);
-        return new MainActivityVM(mainPagerAdapter, menuIconToolbar);
+        return new MainActivityVM(presenter, mainPagerAdapter, menuIconToolbar);
     }
 
 }

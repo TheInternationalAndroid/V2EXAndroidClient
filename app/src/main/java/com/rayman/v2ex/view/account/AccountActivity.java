@@ -28,17 +28,17 @@ import android.os.Bundle;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.ActivityAccountBinding;
-import com.rayman.v2ex.di.component.view.AccountComp;
 import com.rayman.v2ex.di.component.view.DaggerAccountComp;
 import com.rayman.v2ex.di.modules.vm.account.AccountVMModule;
 import com.rayman.v2ex.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.member.MemberEntity;
-import com.rayman.v2ex.view.base.BaseActivity;
+import com.rayman.v2ex.presenter.IPage;
+import com.rayman.v2ex.view.base.BaseDIActivity;
 import com.rayman.v2ex.vm.account.AccountVM;
 
 import javax.inject.Inject;
 
-public class AccountActivity extends BaseActivity {
+public class AccountActivity extends BaseDIActivity {
 
     @Inject AccountVM viewModel;
 
@@ -53,15 +53,15 @@ public class AccountActivity extends BaseActivity {
         viewModel.requestTopics();
     }
 
-    @Override public AccountComp buildComp() {
-        return DaggerAccountComp.builder()
-                .activityComp(super.buildComp())
-                .accountVMModule(new AccountVMModule())
-                .build();
-    }
-
     @Override public void onInject() {
-        buildComp().inject(this);
+        DaggerAccountComp.builder()
+                .activityComp(getActivityComp())
+                .accountVMModule(new AccountVMModule())
+                .build()
+                .inject(this);
     }
 
+    @Override protected IPage getPageCallback() {
+        return viewModel;
+    }
 }

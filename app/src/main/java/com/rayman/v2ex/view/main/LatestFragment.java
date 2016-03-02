@@ -33,19 +33,18 @@ import android.view.ViewGroup;
 import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.FragmentLatestBinding;
 import com.rayman.v2ex.di.component.view.main.DaggerLatestFragComp;
-import com.rayman.v2ex.di.component.view.main.LatestFragComp;
 import com.rayman.v2ex.di.modules.vm.main.LatestFragVMModule;
 import com.rayman.v2ex.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.node.NodeEntity;
 import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.view.account.AccountActivity;
-import com.rayman.v2ex.view.base.BaseFragment;
+import com.rayman.v2ex.view.base.BaseDIFragment;
 import com.rayman.v2ex.vm.main.LatestFragVM;
 
 import javax.inject.Inject;
 
-public class LatestFragment extends BaseFragment implements OnTopicCellClicked {
+public class LatestFragment extends BaseDIFragment implements OnTopicCellClicked {
 
     @Inject LatestFragVM viewModel;
 
@@ -57,19 +56,16 @@ public class LatestFragment extends BaseFragment implements OnTopicCellClicked {
         return binding.getRoot();
     }
 
-    @Override public LatestFragComp buildComp() {
-        return DaggerLatestFragComp.builder()
-                .fragmentComp(super.buildComp())
+    @Override public void onInject() {
+        DaggerLatestFragComp.builder()
+                .fragmentComp(getFragmentComp())
                 .latestFragVMModule(new LatestFragVMModule(this))
-                .build();
+                .build()
+                .inject(this);
     }
 
     @Override protected IPage getPageCallBack() {
-        return viewModel.getPresenter();
-    }
-
-    @Override public void onInject() {
-        buildComp().inject(this);
+        return viewModel;
     }
 
     @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {

@@ -22,8 +22,6 @@
 
 package com.rayman.v2ex.di;
 
-import com.rayman.v2ex.di.component.app.AppComp;
-
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
@@ -41,9 +39,7 @@ import com.rayman.v2ex.di.component.app.AppComp;
  * \               ||----w |
  * \               ||     ||
  */
-public interface IInject {
-
-    <T extends AppComp> T buildComp();
+public interface IInject{
 
     void onInject();
 

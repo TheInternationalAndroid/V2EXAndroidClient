@@ -33,19 +33,18 @@ import android.view.ViewGroup;
 import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.FragmentHotBinding;
 import com.rayman.v2ex.di.component.view.main.DaggerHotFragComp;
-import com.rayman.v2ex.di.component.view.main.HotFragComp;
 import com.rayman.v2ex.di.modules.vm.main.HotFragVMModule;
 import com.rayman.v2ex.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.node.NodeEntity;
 import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.view.account.AccountActivity;
-import com.rayman.v2ex.view.base.BaseFragment;
+import com.rayman.v2ex.view.base.BaseDIFragment;
 import com.rayman.v2ex.vm.main.HotFragVM;
 
 import javax.inject.Inject;
 
-public class HotFragment extends BaseFragment implements OnTopicCellClicked {
+public class HotFragment extends BaseDIFragment implements OnTopicCellClicked {
 
     @Inject HotFragVM viewModel;
 
@@ -61,19 +60,16 @@ public class HotFragment extends BaseFragment implements OnTopicCellClicked {
         viewModel.requestHotTopicList();
     }
 
-    @Override public HotFragComp buildComp() {
-        return DaggerHotFragComp.builder()
-                .fragmentComp(super.buildComp())
+    @Override public void onInject() {
+        DaggerHotFragComp.builder()
+                .fragmentComp(getFragmentComp())
                 .hotFragVMModule(new HotFragVMModule(this))
-                .build();
+                .build()
+                .inject(this);
     }
 
     @Override protected IPage getPageCallBack() {
-        return viewModel.getPresenter();
-    }
-
-    @Override public void onInject() {
-        buildComp().inject(this);
+        return viewModel;
     }
 
     @Override public void onUserClicked(MemberBaseEntity memberBaseEntity) {

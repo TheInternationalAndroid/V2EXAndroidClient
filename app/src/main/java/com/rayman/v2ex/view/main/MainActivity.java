@@ -28,15 +28,14 @@ import android.view.MenuItem;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.databinding.ActivityMainBinding;
 import com.rayman.v2ex.di.component.view.main.DaggerMainComp;
-import com.rayman.v2ex.di.component.view.main.MainComp;
 import com.rayman.v2ex.di.modules.vm.main.MainActivityVMModule;
 import com.rayman.v2ex.presenter.IPage;
-import com.rayman.v2ex.view.base.BaseActivity;
+import com.rayman.v2ex.view.base.BaseDIActivity;
 import com.rayman.v2ex.vm.main.MainActivityVM;
 
 import javax.inject.Inject;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseDIActivity {
 
     @Inject MainActivityVM viewModel;
 
@@ -47,19 +46,16 @@ public class MainActivity extends BaseActivity {
         binding.setViewModel(viewModel);
     }
 
-    @Override public MainComp buildComp() {
-        return DaggerMainComp.builder()
-                .activityComp(super.buildComp())
-                .mainActivityVMModule(new MainActivityVMModule(this))
-                .build();
-    }
-
     @Override public void onInject() {
-        buildComp().inject(this);
+        DaggerMainComp.builder()
+                .activityComp(getActivityComp())
+                .mainActivityVMModule(new MainActivityVMModule(this))
+                .build()
+                .inject(this);
     }
 
-    @Override protected IPage getPageCallBack() {
-        return null;
+    @Override protected IPage getPageCallback() {
+        return viewModel;
     }
 
     @Override

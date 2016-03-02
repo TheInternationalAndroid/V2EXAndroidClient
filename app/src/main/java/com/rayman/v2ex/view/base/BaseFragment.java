@@ -23,22 +23,12 @@
 package com.rayman.v2ex.view.base;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.anotations.ActivityAction;
-import com.rayman.v2ex.di.IInject;
-import com.rayman.v2ex.di.component.view.base.ActivityComp;
-import com.rayman.v2ex.di.component.view.base.DaggerFragmentComp;
-import com.rayman.v2ex.di.component.view.base.FragmentComp;
-import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.utils.ToastUtil;
 
 /**
@@ -58,50 +48,9 @@ import com.rayman.v2ex.utils.ToastUtil;
  * \               ||----w |
  * \               ||     ||
  */
-public class BaseFragment extends Fragment implements IPageControl, IInject, IRedirect {
+public class BaseFragment extends Fragment implements IPageControl, IRedirect {
 
     private ProgressDialog progressDialog;
-
-    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        onInject();
-    }
-
-    @Override public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Nullable @Override public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
-    }
-
-    @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        IPage page = getPageCallBack();
-        if (page != null)
-            page.onViewAttach();
-    }
-
-    @Override public void onDetach() {
-        IPage page = getPageCallBack();
-        if (page != null)
-            page.onViewDetach();
-        super.onDetach();
-    }
-
-    @Override public FragmentComp buildComp() {
-        return DaggerFragmentComp.builder()
-                .activityComp(activityComp())
-                .build();
-    }
-
-    @Override public void onInject() {
-        buildComp().inject(this);
-    }
-
-    protected ActivityComp activityComp() {
-        return ((BaseActivity) getActivity()).getActivityComp();
-    }
 
     public boolean isFragmentActive() {
         return getActivity() != null && !isDetached() && isAdded();
@@ -180,9 +129,5 @@ public class BaseFragment extends Fragment implements IPageControl, IInject, IRe
         intent.putExtras(bundle);
         getActivity().setResult(action, intent);
         getActivity().finish();
-    }
-
-    protected IPage getPageCallBack() {
-        return null;
     }
 }

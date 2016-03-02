@@ -24,6 +24,7 @@ package com.rayman.v2ex.presenter.main;
 
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.model.topic.TopicEntity;
+import com.rayman.v2ex.presenter.BasePresenter;
 import com.rayman.v2ex.worker.TopicWorker;
 
 import java.util.List;
@@ -47,20 +48,13 @@ import javax.inject.Inject;
  * \               ||----w |
  * \               ||     ||
  */
-public class HotFragP implements IHotFragP {
+public class HotFragP extends BasePresenter implements IHotFragP {
 
     private TopicWorker topicWorker;
 
     @Inject public HotFragP(TopicWorker topicWorker) {
         this.topicWorker = topicWorker;
-    }
-
-    @Override public void onViewAttach() {
-        topicWorker.onViewAttach();
-    }
-
-    @Override public void onViewDetach() {
-        topicWorker.onViewDetach();
+        bindLifecycleCallback(topicWorker);
     }
 
     @Override public void hot(ReqCallback<List<TopicEntity>> callback) {

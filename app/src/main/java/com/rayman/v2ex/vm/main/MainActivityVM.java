@@ -22,7 +22,6 @@
 
 package com.rayman.v2ex.vm.main;
 
-import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -32,6 +31,8 @@ import com.android.databinding.library.baseAdapters.BR;
 import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
 import com.rayman.v2ex.adapter.pager.MainPagerAdapter;
+import com.rayman.v2ex.presenter.main.MainActivityP;
+import com.rayman.v2ex.vm.BaseVM;
 
 /**
  * Created by Android Studio.
@@ -50,17 +51,17 @@ import com.rayman.v2ex.adapter.pager.MainPagerAdapter;
  * \               ||----w |
  * \               ||     ||
  */
-public class MainActivityVM extends BaseObservable implements DrawerLayout.DrawerListener {
+public class MainActivityVM extends BaseVM<MainActivityP> implements DrawerLayout.DrawerListener {
 
     private MainPagerAdapter adapter;
     private MaterialMenuIconToolbar menuIconToolbar;
     private boolean isDrawerOpen = false;
 
-    public MainActivityVM(MainPagerAdapter adapter, MaterialMenuIconToolbar menuIconToolbar) {
+    public MainActivityVM(MainActivityP presenter, MainPagerAdapter adapter, MaterialMenuIconToolbar menuIconToolbar) {
+        super(presenter);
         this.adapter = adapter;
         this.menuIconToolbar = menuIconToolbar;
     }
-
 
     @Override public void onDrawerSlide(View drawerView, float slideOffset) {
         menuIconToolbar.setTransformationOffset(MaterialMenuDrawable.AnimationState.BURGER_ARROW, isDrawerOpen ? 2 - slideOffset : slideOffset);
@@ -75,7 +76,6 @@ public class MainActivityVM extends BaseObservable implements DrawerLayout.Drawe
     }
 
     @Override public void onDrawerStateChanged(int newState) {
-
     }
 
     public void onSaveInstanceState(Bundle bundle) {

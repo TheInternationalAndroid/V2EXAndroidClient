@@ -24,6 +24,7 @@ package com.rayman.v2ex.presenter.account;
 
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.model.topic.TopicEntity;
+import com.rayman.v2ex.presenter.BasePresenter;
 import com.rayman.v2ex.worker.TopicWorker;
 
 import java.util.List;
@@ -47,20 +48,13 @@ import javax.inject.Inject;
  * \               ||----w |
  * \               ||     ||
  */
-public class AccountP implements IAccountP {
+public class AccountP extends BasePresenter implements IAccountP {
 
     private TopicWorker topicWorker;
 
     @Inject public AccountP(TopicWorker topicWorker) {
         this.topicWorker = topicWorker;
-    }
-
-    @Override public void onViewAttach() {
-        topicWorker.onViewAttach();
-    }
-
-    @Override public void onViewDetach() {
-        topicWorker.onViewDetach();
+        bindLifecycleCallback(topicWorker);
     }
 
     @Override public void topics(String userName, ReqCallback<List<TopicEntity>> callback) {

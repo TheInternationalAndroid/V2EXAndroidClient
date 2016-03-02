@@ -22,7 +22,6 @@
 
 package com.rayman.v2ex.vm.account;
 
-import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
 
@@ -31,7 +30,8 @@ import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.http.event.ErrorEvent;
 import com.rayman.v2ex.model.member.MemberEntity;
 import com.rayman.v2ex.model.topic.TopicEntity;
-import com.rayman.v2ex.presenter.account.IAccountP;
+import com.rayman.v2ex.presenter.account.AccountP;
+import com.rayman.v2ex.vm.BaseVM;
 
 import java.util.List;
 
@@ -52,17 +52,16 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class AccountVM extends BaseObservable {
+public class AccountVM extends BaseVM<AccountP> {
 
     private MemberEntity member;
     private AccountPageAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private IAccountP presenter;
 
-    public AccountVM(AccountPageAdapter adapter, RecyclerView.LayoutManager layoutManager, IAccountP presenter) {
+    public AccountVM(AccountPageAdapter adapter, RecyclerView.LayoutManager layoutManager, AccountP presenter) {
+        super(presenter);
         this.adapter = adapter;
         this.layoutManager = layoutManager;
-        this.presenter = presenter;
     }
 
     public void requestTopics() {

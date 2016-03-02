@@ -30,7 +30,7 @@ import com.rayman.v2ex.anotations.PageState;
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.http.event.ErrorEvent;
 import com.rayman.v2ex.model.topic.TopicEntity;
-import com.rayman.v2ex.presenter.main.ILatestFragP;
+import com.rayman.v2ex.presenter.main.LatestFragP;
 import com.rayman.v2ex.vm.BaseStateVM;
 
 import java.util.List;
@@ -52,20 +52,15 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class LatestFragVM extends BaseStateVM {
+public class LatestFragVM extends BaseStateVM<LatestFragP> {
 
-    private ILatestFragP presenter;
     private TopicListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    public LatestFragVM(ILatestFragP presenter, TopicListAdapter adapter, RecyclerView.LayoutManager layoutManager) {
-        this.presenter = presenter;
+    public LatestFragVM(LatestFragP presenter, TopicListAdapter adapter, RecyclerView.LayoutManager layoutManager) {
+        super(presenter);
         this.adapter = adapter;
         this.layoutManager = layoutManager;
-    }
-
-    public ILatestFragP getPresenter() {
-        return presenter;
     }
 
     @Override public void onRetryClicked(View view) {

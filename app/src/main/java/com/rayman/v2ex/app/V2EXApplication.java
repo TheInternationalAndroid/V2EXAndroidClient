@@ -76,16 +76,12 @@ public class V2EXApplication extends Application implements IInject {
         ScopedBus.instance().unregister(this);
     }
 
-    @Override public AppComp buildComp() {
+    @Override public void onInject() {
         appComp = DaggerAppComp
                 .builder()
                 .appModule(new AppModule(this))
                 .build();
-        return appComp;
-    }
-
-    @Override public void onInject() {
-        buildComp().inject(this);
+        appComp.inject(this);
     }
 
     public AppComp appComp() {

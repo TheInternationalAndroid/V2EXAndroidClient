@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/18/16 9:55 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainP.
- * Author: Lena; Last Modified: 1/18/16 9:55 PM.
+ * Created on 3/2/16 11:16 AM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: BaseVM.
+ * Author: Lena; Last Modified: 3/2/16 11:16 AM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,31 +20,32 @@
  *
  */
 
-package com.rayman.v2ex.presenter.main;
+package com.rayman.v2ex.vm;
+
+import android.databinding.BaseObservable;
 
 import com.rayman.v2ex.presenter.BasePresenter;
+import com.rayman.v2ex.presenter.IPage;
 
-import javax.inject.Inject;
+public class BaseVM<T extends BasePresenter> extends BaseObservable implements IPage {
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 21:42
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
-public class MainActivityP extends BasePresenter implements IMainActivityP {
+    protected T presenter;
 
-    @Inject public MainActivityP() {
+    protected T presenter() {
+        return presenter;
+    }
+
+    public BaseVM(T presenter) {
+        this.presenter = presenter;
+    }
+
+    @Override public void onViewAttach() {
+        if (presenter != null)
+            presenter.onViewAttach();
+    }
+
+    @Override public void onViewDetach() {
+        if (presenter != null)
+            presenter.onViewDetach();
     }
 }

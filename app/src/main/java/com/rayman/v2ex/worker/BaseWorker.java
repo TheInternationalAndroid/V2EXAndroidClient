@@ -22,7 +22,16 @@
 
 package com.rayman.v2ex.worker;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+
+import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.presenter.IPage;
+
+import retrofit.Response;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Android Studio.
@@ -55,6 +64,19 @@ public class BaseWorker implements IPage {
 
     public boolean isAlive() {
         return isAlive;
+    }
+
+    private <T> WorkerCallback<T> defaultCallback(ReqCallback<T> callback) {
+        return new WorkerCallback<>(this, callback);
+    }
+
+    <T> void defaultCall(@NonNull Observable<Response<T>> observable, @Nullable ReqCallback<T> callback) {
+        if (callback != null)
+            callback.onReqStart();
+        observable
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(defaultCallback(callback));
     }
 
 }

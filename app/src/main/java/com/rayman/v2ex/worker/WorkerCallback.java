@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:30 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicWorker.
- * Author: Lena; Last Modified: 1/19/16 3:30 PM.
+ * Created on 3/2/16 6:36 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: WorkerCallback.
+ * Author: Lena; Last Modified: 3/2/16 6:36 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,20 +22,16 @@
 
 package com.rayman.v2ex.worker;
 
+import com.rayman.v2ex.http.callback.LSubscriber;
 import com.rayman.v2ex.http.callback.ReqCallback;
-import com.rayman.v2ex.http.service.TopicService;
-import com.rayman.v2ex.model.topic.TopicEntity;
-
-import java.util.List;
-
-import javax.inject.Inject;
+import com.rayman.v2ex.http.event.ErrorEvent;
 
 /**
  * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
+ * ProjectName: shenbian_android_cloud_speaker
  * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 15:30
+ * Date: 2/22/16
+ * Time: 18:28
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -47,27 +43,23 @@ import javax.inject.Inject;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicWorker extends BaseWorker {
+public class WorkerCallback<T> extends LSubscriber<T> {
 
-    private TopicService topicService;
+    private BaseWorker worker;
+    private ReqCallback<T> callback;
 
-    @Inject public TopicWorker(TopicService topicService) {
-        this.topicService = topicService;
+    public WorkerCallback(BaseWorker worker, ReqCallback<T> callback) {
+        this.worker = worker;
+        this.callback = callback;
     }
 
-    public void hot(final ReqCallback<List<TopicEntity>> callback) {
-        callback.onReqStart();
-        defaultCall(topicService.hot(), callback);
+    @Override public void onSuccess(T respEntity) {
+        if (callback != null && worker.isAlive())
+            callback.onNetResp(respEntity);
     }
 
-    public void latest(final ReqCallback<List<TopicEntity>> callback) {
-        callback.onReqStart();
-        defaultCall(topicService.latest(), callback);
+    @Override public void onError(ErrorEvent errorEvent) {
+        if (callback != null && worker.isAlive())
+            callback.onError(errorEvent);
     }
-
-    public void topics(String userName, final ReqCallback<List<TopicEntity>> callback) {
-        callback.onReqStart();
-        defaultCall(topicService.topics(userName), callback);
-    }
-
 }

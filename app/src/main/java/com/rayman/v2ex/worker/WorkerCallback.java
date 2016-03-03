@@ -53,6 +53,12 @@ public class WorkerCallback<T> extends LSubscriber<T> {
         this.callback = callback;
     }
 
+    @Override public void onStart() {
+        super.onStart();
+        if (callback != null && worker.isAlive())
+            callback.onReqStart();
+    }
+
     @Override public void onSuccess(T respEntity) {
         if (callback != null && worker.isAlive())
             callback.onNetResp(respEntity);

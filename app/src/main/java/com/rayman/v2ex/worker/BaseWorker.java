@@ -32,6 +32,7 @@ import retrofit.Response;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by Android Studio.
@@ -53,6 +54,7 @@ import rx.schedulers.Schedulers;
 public class BaseWorker implements IPage {
 
     private boolean isAlive;
+    private CompositeSubscription subscription = new CompositeSubscription();
 
     @Override public void onViewAttach() {
         isAlive = true;
@@ -60,6 +62,7 @@ public class BaseWorker implements IPage {
 
     @Override public void onViewDetach() {
         isAlive = false;
+        subscription.unsubscribe();
     }
 
     public boolean isAlive() {
@@ -71,12 +74,10 @@ public class BaseWorker implements IPage {
     }
 
     <T> void defaultCall(@NonNull Observable<Response<T>> observable, @Nullable ReqCallback<T> callback) {
-        if (callback != null)
-            callback.onReqStart();
-        observable
+        subscription.add(observable
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(defaultCallback(callback));
+                .subscribe(defaultCallback(callback)));
     }
 
 }

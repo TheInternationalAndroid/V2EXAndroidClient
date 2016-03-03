@@ -56,17 +56,14 @@ public class TopicWorker extends BaseWorker {
     }
 
     public void hot(final ReqCallback<List<TopicEntity>> callback) {
-        callback.onReqStart();
         defaultCall(topicService.hot(), callback);
     }
 
     public void latest(final ReqCallback<List<TopicEntity>> callback) {
-        callback.onReqStart();
         defaultCall(topicService.latest(), callback);
     }
 
     public void topics(String userName, final ReqCallback<List<TopicEntity>> callback) {
-        callback.onReqStart();
         defaultCall(topicService.topics(userName), callback);
     }
 

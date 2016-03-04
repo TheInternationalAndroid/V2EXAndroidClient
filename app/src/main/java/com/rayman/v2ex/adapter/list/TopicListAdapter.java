@@ -22,17 +22,14 @@
 
 package com.rayman.v2ex.adapter.list;
 
-import android.support.v7.widget.RecyclerView;
+import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.rayman.v2ex.adapter.list.viewholder.BaseViewHolder;
 import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.view.main.OnTopicCellClicked;
 import com.rayman.v2ex.vm.topic.TopicCellVM;
-
-import java.util.List;
 
 /**
  * Created by Android Studio.
@@ -51,35 +48,20 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+public class TopicListAdapter extends BaseListAdapter<TopicEntity, TopicCellVM> {
 
-    private List<TopicEntity> topicEntities;
     private OnTopicCellClicked onTopicCellClicked;
 
     public TopicListAdapter(OnTopicCellClicked onTopicCellClicked) {
         this.onTopicCellClicked = onTopicCellClicked;
     }
 
-    @Override public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ListCellTopicBinding binding = ListCellTopicBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new BaseViewHolder(binding);
+    @Override protected ViewDataBinding buildBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
+        return ListCellTopicBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
     }
 
-    @Override public void onBindViewHolder(BaseViewHolder holder, int position) {
-        holder.bindData(new TopicCellVM(getItem(position), onTopicCellClicked));
-    }
-
-    @Override public int getItemCount() {
-        return topicEntities == null ? 0 : topicEntities.size();
-    }
-
-    public void setTopicEntities(List<TopicEntity> topicEntities) {
-        this.topicEntities = topicEntities;
-        notifyDataSetChanged();
-    }
-
-    public TopicEntity getItem(int position) {
-        return topicEntities == null ? null : topicEntities.get(position);
+    @Override protected TopicCellVM getViewModel(int position) {
+        return new TopicCellVM(getItem(position), onTopicCellClicked);
     }
 
 }

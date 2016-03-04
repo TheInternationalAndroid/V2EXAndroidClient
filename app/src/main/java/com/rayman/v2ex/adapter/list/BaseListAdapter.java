@@ -23,6 +23,7 @@
 package com.rayman.v2ex.adapter.list;
 
 import android.databinding.ViewDataBinding;
+import android.support.v4.util.LongSparseArray;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -30,7 +31,6 @@ import android.view.ViewGroup;
 import com.rayman.v2ex.adapter.list.viewholder.BaseViewHolder;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -53,7 +53,7 @@ import java.util.List;
 public abstract class BaseListAdapter<T, P> extends RecyclerView.Adapter<BaseViewHolder> {
 
     protected List<T> list;
-    protected HashMap<Long, T> wrapMap = new HashMap<>();
+    protected LongSparseArray<T> wrapMap = new LongSparseArray<>();
 
     public void setList(List<T> list) {
         this.list = list;
@@ -98,8 +98,8 @@ public abstract class BaseListAdapter<T, P> extends RecyclerView.Adapter<BaseVie
             wrapMap.clear();
         }
         list.add(position, t);
-        notifyItemInserted(position);
         wrapMap.put(getIndex(t), t);
+        notifyItemInserted(position);
     }
 
     public void addItem(T t) {
@@ -108,7 +108,7 @@ public abstract class BaseListAdapter<T, P> extends RecyclerView.Adapter<BaseVie
 
     public boolean updateItem(T t) {
         if (t == null) return false;
-        Long key = getIndex(t);
+        long key = getIndex(t);
         T localItem = wrapMap.get(key);
         if (localItem == null) return false;
         final int position = list.indexOf(localItem);
@@ -119,7 +119,7 @@ public abstract class BaseListAdapter<T, P> extends RecyclerView.Adapter<BaseVie
         return true;
     }
 
-    public void removeItem(Long key) {
+    public void removeItemByIndex(long key) {
         T localItem = wrapMap.get(key);
         if (localItem == null) return;
         final int position = list.indexOf(localItem);
@@ -129,9 +129,17 @@ public abstract class BaseListAdapter<T, P> extends RecyclerView.Adapter<BaseVie
         notifyItemRemoved(position);
     }
 
+    public void removeItemByPosition(int position) {
+        T t = list.get(position);
+        if (t == null) return;
+        wrapMap.remove(getIndex(t));
+        list.remove(position);
+        notifyItemRemoved(position);
+    }
+
     public void removeItem(T t) {
         if (t == null) return;
-        Long key = getIndex(t);
+        long key = getIndex(t);
         T localItem = wrapMap.get(key);
         if (localItem == null) return;
         final int position = list.indexOf(localItem);
@@ -157,8 +165,8 @@ public abstract class BaseListAdapter<T, P> extends RecyclerView.Adapter<BaseVie
         }
     }
 
-    public Long getIndex(T t) {
-        return null;
+    public long getIndex(T t) {
+        return -1;
     }
 
 }

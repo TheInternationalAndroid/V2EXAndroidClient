@@ -24,12 +24,11 @@ package com.rayman.v2ex.di.modules.vm.main;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.rayman.v2ex.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.anotations.ListType;
 import com.rayman.v2ex.di.modules.base.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerBindingFragment;
 import com.rayman.v2ex.presenter.main.LatestFragP;
-import com.rayman.v2ex.view.main.ITopicCellView;
+import com.rayman.v2ex.view.main.ILatestFragView;
 import com.rayman.v2ex.vm.main.LatestFragVM;
 
 import javax.inject.Named;
@@ -57,15 +56,14 @@ import dagger.Provides;
 @Module(includes = {LayoutManagerModule.class})
 public class LatestFragVMModule {
 
-    private ITopicCellView onTopicCellClicked;
+    private ILatestFragView latestFragView;
 
-    public LatestFragVMModule(ITopicCellView onTopicCellClicked) {
-        this.onTopicCellClicked = onTopicCellClicked;
+    public LatestFragVMModule(ILatestFragView latestFragView) {
+        this.latestFragView = latestFragView;
     }
 
     @Provides @PerBindingFragment LatestFragVM provideLatestFragVM(LatestFragP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
-        TopicListAdapter topicListAdapter = new TopicListAdapter(onTopicCellClicked);
-        return new LatestFragVM(presenter, topicListAdapter, layoutManager);
+        return new LatestFragVM(presenter, latestFragView, layoutManager);
     }
 
 }

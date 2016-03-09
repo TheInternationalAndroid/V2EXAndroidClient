@@ -24,12 +24,11 @@ package com.rayman.v2ex.di.modules.vm.main;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.rayman.v2ex.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.anotations.ListType;
 import com.rayman.v2ex.di.modules.base.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerBindingFragment;
 import com.rayman.v2ex.presenter.main.HotFragP;
-import com.rayman.v2ex.view.main.ITopicCellView;
+import com.rayman.v2ex.view.main.IHotFragView;
 import com.rayman.v2ex.vm.main.HotFragVM;
 
 import javax.inject.Named;
@@ -56,15 +55,15 @@ import dagger.Provides;
  */
 @Module(includes = {LayoutManagerModule.class})
 public class HotFragVMModule {
-    private ITopicCellView onTopicCellClicked;
 
-    public HotFragVMModule(ITopicCellView onTopicCellClicked) {
-        this.onTopicCellClicked = onTopicCellClicked;
+    private IHotFragView hotFragView;
+
+    public HotFragVMModule(IHotFragView hotFragView) {
+        this.hotFragView = hotFragView;
     }
 
     @Provides @PerBindingFragment HotFragVM provideHotFragVM(HotFragP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
-        TopicListAdapter topicListAdapter = new TopicListAdapter(onTopicCellClicked);
-        return new HotFragVM(presenter, topicListAdapter, layoutManager);
+        return new HotFragVM(presenter, hotFragView, layoutManager);
     }
 
 }

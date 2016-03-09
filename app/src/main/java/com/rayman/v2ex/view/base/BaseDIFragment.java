@@ -71,6 +71,11 @@ public abstract class BaseDIFragment extends BaseFragment implements IInject {
         super.onDetach();
     }
 
+    @Override public void onDestroy() {
+        super.onDestroy();
+        fragmentComp.refWatchwer().watch(this);
+    }
+
     protected FragmentComp getFragmentComp() {
         if (fragmentComp == null)
             fragmentComp = DaggerFragmentComp.builder()

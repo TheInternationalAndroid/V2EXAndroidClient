@@ -60,6 +60,7 @@ public abstract class BaseDIActivity extends BaseActivity implements IInject {
         IPage pager = getPageCallback();
         if (pager != null)
             pager.onViewDetach();
+        activityComp.refWatchwer().watch(this);
         super.onDestroy();
     }
 

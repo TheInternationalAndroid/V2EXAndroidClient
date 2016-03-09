@@ -52,10 +52,6 @@ public class BaseFragment extends Fragment implements IPageControl, IRedirect {
 
     private ProgressDialog progressDialog;
 
-    public boolean isFragmentActive() {
-        return getActivity() != null && !isDetached() && isAdded();
-    }
-
     @Override public void showToast(int stringRes) {
         ToastUtil.show(getActivity(), getString(stringRes));
     }
@@ -130,4 +126,9 @@ public class BaseFragment extends Fragment implements IPageControl, IRedirect {
         getActivity().setResult(action, intent);
         getActivity().finish();
     }
+
+    public boolean isFragmentActive() {
+        return getActivity() != null && !isDetached() && isAdded();
+    }
+
 }

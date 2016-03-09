@@ -22,6 +22,7 @@
 
 package com.rayman.v2ex.di.component.app;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -31,6 +32,7 @@ import com.rayman.v2ex.cache.IFileControl;
 import com.rayman.v2ex.di.modules.AppModule;
 import com.rayman.v2ex.di.scope.PerApplication;
 import com.rayman.v2ex.http.service.TopicService;
+import com.squareup.leakcanary.RefWatcher;
 
 import javax.inject.Named;
 
@@ -60,7 +62,11 @@ public interface AppComp {
 
     void inject(V2EXApplication application);
 
-    @Named(ContextType.APPLICATION) Context applicationContext();
+    @Named(ContextType.APPLICATION) Context appContext();
+
+    Application app();
+
+    RefWatcher refWatchwer();
 
     SharedPreferences preference();
 
@@ -70,5 +76,4 @@ public interface AppComp {
 
     TopicService topicService();
 
-//    TopicWorker topicWorker();
 }

@@ -22,6 +22,7 @@
 
 package com.rayman.v2ex.di.modules;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.rayman.v2ex.anotations.ContextType;
@@ -29,6 +30,9 @@ import com.rayman.v2ex.di.modules.base.FileCacheModule;
 import com.rayman.v2ex.di.modules.base.OkHttpModule;
 import com.rayman.v2ex.di.modules.base.RetrofitModule;
 import com.rayman.v2ex.di.modules.base.SPModule;
+import com.rayman.v2ex.di.scope.PerApplication;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import javax.inject.Named;
 
@@ -61,14 +65,22 @@ import dagger.Provides;
 })
 public class AppModule {
 
-    private Context application;
+    private Application application;
 
-    public AppModule(Context application) {
+    public AppModule(Application application) {
         this.application = application;
     }
 
-    @Provides @Named(ContextType.APPLICATION) Context provideApp() {
+    @Provides @Named(ContextType.APPLICATION) Context provideAppContext() {
         return application;
+    }
+
+    @Provides @PerApplication Application provideApp() {
+        return application;
+    }
+
+    @Provides @PerApplication RefWatcher provideRefWatcher() {
+        return LeakCanary.install(application);
     }
 
 }

@@ -29,7 +29,7 @@ import com.rayman.v2ex.anotations.ListType;
 import com.rayman.v2ex.di.modules.base.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerBindingFragment;
 import com.rayman.v2ex.presenter.main.LatestFragP;
-import com.rayman.v2ex.view.main.OnTopicCellClicked;
+import com.rayman.v2ex.view.main.ITopicCellView;
 import com.rayman.v2ex.vm.main.LatestFragVM;
 
 import javax.inject.Named;
@@ -57,9 +57,9 @@ import dagger.Provides;
 @Module(includes = {LayoutManagerModule.class})
 public class LatestFragVMModule {
 
-    private OnTopicCellClicked onTopicCellClicked;
+    private ITopicCellView onTopicCellClicked;
 
-    public LatestFragVMModule(OnTopicCellClicked onTopicCellClicked) {
+    public LatestFragVMModule(ITopicCellView onTopicCellClicked) {
         this.onTopicCellClicked = onTopicCellClicked;
     }
 

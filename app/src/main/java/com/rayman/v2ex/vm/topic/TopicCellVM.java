@@ -30,7 +30,7 @@ import com.android.databinding.library.baseAdapters.BR;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.anotations.ViewClick;
 import com.rayman.v2ex.model.topic.TopicEntity;
-import com.rayman.v2ex.view.main.OnTopicCellClicked;
+import com.rayman.v2ex.view.main.ITopicCellView;
 
 /**
  * Created by Android Studio.
@@ -52,13 +52,13 @@ import com.rayman.v2ex.view.main.OnTopicCellClicked;
 public class TopicCellVM extends BaseObservable {
 
     private TopicEntity topic;
-    private OnTopicCellClicked onTopicCellClicked;
+    private ITopicCellView onTopicCellClicked;
 
     public TopicCellVM(TopicEntity topic) {
         this.topic = topic;
     }
 
-    public TopicCellVM(TopicEntity topic, OnTopicCellClicked onTopicCellClicked) {
+    public TopicCellVM(TopicEntity topic, ITopicCellView onTopicCellClicked) {
         this.topic = topic;
         this.onTopicCellClicked = onTopicCellClicked;
     }

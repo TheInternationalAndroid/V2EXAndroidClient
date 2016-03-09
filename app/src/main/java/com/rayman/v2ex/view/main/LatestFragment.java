@@ -44,7 +44,7 @@ import com.rayman.v2ex.vm.main.LatestFragVM;
 
 import javax.inject.Inject;
 
-public class LatestFragment extends BaseDIFragment implements OnTopicCellClicked {
+public class LatestFragment extends BaseDIFragment implements ILatestFragView {
 
     @Inject LatestFragVM viewModel;
 

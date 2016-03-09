@@ -44,7 +44,7 @@ import com.rayman.v2ex.vm.main.HotFragVM;
 
 import javax.inject.Inject;
 
-public class HotFragment extends BaseDIFragment implements OnTopicCellClicked {
+public class HotFragment extends BaseDIFragment implements IHotFragView {
 
     @Inject HotFragVM viewModel;
 

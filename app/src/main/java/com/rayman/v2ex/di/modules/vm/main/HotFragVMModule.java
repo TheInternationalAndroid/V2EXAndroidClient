@@ -29,7 +29,7 @@ import com.rayman.v2ex.anotations.ListType;
 import com.rayman.v2ex.di.modules.base.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerBindingFragment;
 import com.rayman.v2ex.presenter.main.HotFragP;
-import com.rayman.v2ex.view.main.OnTopicCellClicked;
+import com.rayman.v2ex.view.main.ITopicCellView;
 import com.rayman.v2ex.vm.main.HotFragVM;
 
 import javax.inject.Named;
@@ -56,9 +56,9 @@ import dagger.Provides;
  */
 @Module(includes = {LayoutManagerModule.class})
 public class HotFragVMModule {
-    private OnTopicCellClicked onTopicCellClicked;
+    private ITopicCellView onTopicCellClicked;
 
-    public HotFragVMModule(OnTopicCellClicked onTopicCellClicked) {
+    public HotFragVMModule(ITopicCellView onTopicCellClicked) {
         this.onTopicCellClicked = onTopicCellClicked;
     }
 

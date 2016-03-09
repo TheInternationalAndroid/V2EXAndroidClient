@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/20/16 6:18 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicCellClicked.
- * Author: Lena; Last Modified: 1/20/16 6:18 PM.
+ * Created on 3/9/16 12:29 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: IHotFragView.
+ * Author: Lena; Last Modified: 3/9/16 12:29 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,16 +22,12 @@
 
 package com.rayman.v2ex.view.main;
 
-import com.rayman.v2ex.model.member.MemberBaseEntity;
-import com.rayman.v2ex.model.node.NodeEntity;
-import com.rayman.v2ex.model.topic.TopicEntity;
-
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/20/16
- * Time: 18:18
+ * Date: 3/9/16
+ * Time: 12:29
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -43,12 +39,5 @@ import com.rayman.v2ex.model.topic.TopicEntity;
  * \               ||----w |
  * \               ||     ||
  */
-public interface OnTopicCellClicked {
-
-    void onUserClicked(MemberBaseEntity memberBaseEntity);
-
-    void onTopicCliced(TopicEntity topicEntity);
-
-    void onNodeClicked(NodeEntity nodeEntity);
-
+public interface IHotFragView extends ITopicCellView {
 }

@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/20/16 11:20 AM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: HotTopicListAdapter.
- * Author: Lena; Last Modified: 1/20/16 11:20 AM.
+ * Created on 1/20/16 6:18 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicCellClicked.
+ * Author: Lena; Last Modified: 1/20/16 6:18 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,23 +20,18 @@
  *
  */
 
-package com.rayman.v2ex.adapter.list;
+package com.rayman.v2ex.view.main;
 
-import android.databinding.ViewDataBinding;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-
-import com.rayman.v2ex.databinding.ListCellTopicBinding;
+import com.rayman.v2ex.model.member.MemberBaseEntity;
+import com.rayman.v2ex.model.node.NodeEntity;
 import com.rayman.v2ex.model.topic.TopicEntity;
-import com.rayman.v2ex.view.main.ITopicCellView;
-import com.rayman.v2ex.vm.topic.TopicCellVM;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/20/16
- * Time: 11:20
+ * Time: 18:18
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -48,20 +43,12 @@ import com.rayman.v2ex.vm.topic.TopicCellVM;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicListAdapter extends BaseListAdapter<TopicEntity, TopicCellVM> {
+public interface ITopicCellView {
 
-    private ITopicCellView onTopicCellClicked;
+    void onUserClicked(MemberBaseEntity memberBaseEntity);
 
-    public TopicListAdapter(ITopicCellView onTopicCellClicked) {
-        this.onTopicCellClicked = onTopicCellClicked;
-    }
+    void onTopicCliced(TopicEntity topicEntity);
 
-    @Override protected ViewDataBinding buildBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
-        return ListCellTopicBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-    }
-
-    @Override protected TopicCellVM getViewModel(int position) {
-        return new TopicCellVM(getItem(position), onTopicCellClicked);
-    }
+    void onNodeClicked(NodeEntity nodeEntity);
 
 }

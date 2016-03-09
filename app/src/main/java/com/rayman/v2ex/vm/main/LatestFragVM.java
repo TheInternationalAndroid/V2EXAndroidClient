@@ -84,7 +84,7 @@ public class LatestFragVM extends BaseStateVM<LatestFragP> {
             @Override public void onNetResp(List<TopicEntity> response) {
                 if (response.size() > 0) {
                     setState(PageState.CONTENT);
-                    adapter.setTopicEntities(response);
+                    adapter.setList(response);
                 } else {
                     setState(PageState.EMPTY);
                 }

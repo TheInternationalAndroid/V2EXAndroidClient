@@ -22,7 +22,10 @@
 
 package com.rayman.v2ex.di.modules;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 
 import com.rayman.v2ex.anotations.ContextType;
 import com.rayman.v2ex.di.scope.PerBaseActivity;
@@ -51,14 +54,22 @@ import dagger.Provides;
  */
 @Module
 public class ActivityModule {
-    private Context activity;
+    private AppCompatActivity activity;
 
-    public ActivityModule(Context activity) {
+    public ActivityModule(AppCompatActivity activity) {
         this.activity = activity;
     }
 
-    @Provides @PerBaseActivity @Named(ContextType.ACTIVITY) Context provideActivity() {
+    @Provides @PerBaseActivity @Named(ContextType.ACTIVITY) Context provideActivityContext() {
         return activity;
+    }
+
+    @Provides @PerBaseActivity Activity provideActivity() {
+        return activity;
+    }
+
+    @Provides @PerBaseActivity FragmentManager provideFragmentManager() {
+        return activity.getSupportFragmentManager();
     }
 
 }

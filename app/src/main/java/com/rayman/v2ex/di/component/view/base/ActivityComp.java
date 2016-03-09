@@ -22,7 +22,9 @@
 
 package com.rayman.v2ex.di.component.view.base;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
 
 import com.rayman.v2ex.anotations.ContextType;
 import com.rayman.v2ex.di.component.app.AppComp;
@@ -58,5 +60,9 @@ public interface ActivityComp extends AppComp {
     void inject(BaseActivity baseActivity);
 
     @Named(ContextType.ACTIVITY) Context activityContext();
+
+    Activity activity();
+
+    FragmentManager fragmentManager();
 
 }

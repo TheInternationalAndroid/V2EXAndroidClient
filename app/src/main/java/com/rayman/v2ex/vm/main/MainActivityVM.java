@@ -31,8 +31,13 @@ import com.android.databinding.library.baseAdapters.BR;
 import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
 import com.rayman.v2ex.adapter.pager.MainPagerAdapter;
+import com.rayman.v2ex.eventbus.RxBus;
+import com.rayman.v2ex.eventbus.event.BaseEvent;
 import com.rayman.v2ex.presenter.main.MainActivityP;
 import com.rayman.v2ex.vm.BaseVM;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 /**
  * Created by Android Studio.
@@ -51,7 +56,7 @@ import com.rayman.v2ex.vm.BaseVM;
  * \               ||----w |
  * \               ||     ||
  */
-public class MainActivityVM extends BaseVM<MainActivityP> implements DrawerLayout.DrawerListener {
+public class MainActivityVM extends BaseVM<MainActivityP> implements DrawerLayout.DrawerListener, Action1<BaseEvent> {
 
     private MainPagerAdapter adapter;
     private MaterialMenuIconToolbar menuIconToolbar;
@@ -61,21 +66,34 @@ public class MainActivityVM extends BaseVM<MainActivityP> implements DrawerLayou
         super(presenter);
         this.adapter = adapter;
         this.menuIconToolbar = menuIconToolbar;
+        presenter.subcribe(RxBus.getInstance()
+                .asObservable(BaseEvent.class)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this));
     }
 
-    @Override public void onDrawerSlide(View drawerView, float slideOffset) {
+    @Override
+    public void call(BaseEvent baseEvent) {
+//       TODO  catch event
+    }
+
+    @Override
+    public void onDrawerSlide(View drawerView, float slideOffset) {
         menuIconToolbar.setTransformationOffset(MaterialMenuDrawable.AnimationState.BURGER_ARROW, isDrawerOpen ? 2 - slideOffset : slideOffset);
     }
 
-    @Override public void onDrawerOpened(View drawerView) {
+    @Override
+    public void onDrawerOpened(View drawerView) {
         isDrawerOpen = true;
     }
 
-    @Override public void onDrawerClosed(View drawerView) {
+    @Override
+    public void onDrawerClosed(View drawerView) {
         isDrawerOpen = false;
     }
 
-    @Override public void onDrawerStateChanged(int newState) {
+    @Override
+    public void onDrawerStateChanged(int newState) {
     }
 
     public void onSaveInstanceState(Bundle bundle) {
@@ -90,7 +108,8 @@ public class MainActivityVM extends BaseVM<MainActivityP> implements DrawerLayou
         setDrawerOpen(!isDrawerOpen);
     }
 
-    @Bindable public boolean isDrawerOpen() {
+    @Bindable
+    public boolean isDrawerOpen() {
         return isDrawerOpen;
     }
 

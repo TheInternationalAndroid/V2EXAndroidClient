@@ -22,25 +22,45 @@
 
 package com.rayman.v2ex.presenter;
 
+import com.rayman.v2ex.worker.BaseWorker;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import rx.Subscription;
 
 public class BasePresenter implements IPresenter {
 
     private List<IPage> lifecycleCallbacks = new ArrayList<>();
 
-    @Override public void onViewAttach() {
+    private BaseWorker observerWorker = new BaseWorker();
+
+    public BasePresenter() {
+        bindLifecycleCallback(observerWorker);
+    }
+
+    @Override
+    public void onViewAttach() {
         for (IPage iPageLifecycle : lifecycleCallbacks) {
             iPageLifecycle.onViewAttach();
         }
     }
 
-    @Override public void onViewDetach() {
+    @Override
+    public void onViewDetach() {
         for (IPage iPageLifecycle : lifecycleCallbacks) {
             iPageLifecycle.onViewDetach();
         }
         lifecycleCallbacks.clear();
+    }
+
+    public void subcribe(Subscription subscription) {
+        observerWorker.subscribe(subscription);
+    }
+
+    public void subcribeEvent(Subscription subscription) {
+        observerWorker.subscribe(subscription);
     }
 
     protected void bindLifecycleCallback(IPage... lifecycles) {

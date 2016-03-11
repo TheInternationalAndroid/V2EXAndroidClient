@@ -30,6 +30,7 @@ import com.rayman.v2ex.presenter.IPage;
 
 import retrofit.Response;
 import rx.Observable;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
@@ -82,5 +83,8 @@ public class BaseWorker implements IPage {
                 .subscribe(defaultCallback(callback)));
     }
 
+    public void subscribe(Subscription subscription) {
+        this.subscription.add(subscription);
+    }
 
 }

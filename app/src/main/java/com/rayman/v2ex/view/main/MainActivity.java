@@ -28,45 +28,22 @@ import android.view.MenuItem;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.databinding.ActivityMainBinding;
 import com.rayman.v2ex.di.component.view.main.DaggerMainComp;
-import com.rayman.v2ex.eventbus.RxBus;
-import com.rayman.v2ex.eventbus.event.BaseEvent;
 import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.view.base.BaseDIActivity;
 import com.rayman.v2ex.vm.main.MainActivityVM;
 
 import javax.inject.Inject;
 
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-
 public class MainActivity extends BaseDIActivity {
 
     @Inject
     MainActivityVM viewModel;
-
-    private Subscription subscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = bindLayout(R.layout.activity_main, false);
         binding.setViewModel(viewModel);
-        subscription = RxBus.getInstance()
-                .asObservable(BaseEvent.class)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<BaseEvent>() {
-                    @Override
-                    public void call(BaseEvent baseEvent) {
-                        showToast(baseEvent.getMessage());
-                    }
-                });
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        subscription.unsubscribe();
     }
 
     @Override

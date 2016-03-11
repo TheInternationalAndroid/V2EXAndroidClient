@@ -2,15 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion project.COMPILE_SDK_VERSION.toInteger()
-    buildToolsVersion project.BUILD_TOOLS_VERSION
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.rayman.v2ex"
-        minSdkVersion project.MIN_SDK_VERSION.toInteger()
-        targetSdkVersion project.TARGET_SDK_VERSION.toInteger()
-        versionCode project.VERSION_CODE.toInteger()
-        versionName project.VERSION_NAME
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
     buildTypes {
         debug {
@@ -36,32 +36,34 @@ dependencies {
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile "com.android.support:recyclerview-v7:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
-    compile "com.android.support:cardview-v7:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
-    compile "com.android.support:design:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
-    compile "com.android.support:appcompat-v7:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
+    compile depMap.RecyclerView
+    compile depMap.CardView
+    compile depMap.Design
+    compile depMap.AppCompat
 
-    compile 'com.alibaba:fastjson:1.1.45.android'
+    compile depMap.FastJson
 
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.squareup.okhttp:okhttp:2.6.0'
-    compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
-    compile 'com.squareup.okhttp:okhttp-ws:2.6.0'
-    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
-    compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
-    compile 'com.squareup:otto:1.3.8'
+    compile depMap.Picasso
+    compile depMap.OkHttp
+    compile depMap.LoggingInterceptor
+    compile depMap.OkHttpWS
+    compile depMap.Retrofit
+    compile depMap.RxJavaAdapter
+    compile depMap.Otto
+    compile depMap.RxAndroid
+    compile depMap.Dagger
+    compile depMap.AnnotationJsr250
+    compile depMap.MaterialMenuToolbar
+    compile depMap.RoundedImageview
+    compile depMap.FlowLayout
 
-    compile 'io.reactivex:rxandroid:1.0.1'
-    compile 'com.google.dagger:dagger:2.0.2'
-    compile 'javax.annotation:jsr250-api:1.0'
-    compile 'com.balysv.materialmenu:material-menu-toolbar:1.5.0'
-    compile 'com.makeramen:roundedimageview:2.2.1'
-    compile "com.wefika:flowlayout:0.4.1"
+    debugCompile depMap.LeakCanary
+    releaseCompile depMap.LeakCanaryAndroidNoOp
+    testCompile depMap.LeakCanaryAndroidNoOp
 
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
-
-    testCompile "junit:junit:${project.JUNIT_VERSION}"
-
+    testCompile depMap.FestAssert
+    testCompile depMap.FestAndroid
+    testCompile depMap.MockitoCore
+    testCompile depMap.Robolectric
+    testCompile depMap.JUnit
 }

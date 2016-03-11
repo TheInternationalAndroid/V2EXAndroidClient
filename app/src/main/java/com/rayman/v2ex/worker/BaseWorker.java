@@ -56,11 +56,13 @@ public class BaseWorker implements IPage {
     private boolean isAlive;
     private CompositeSubscription subscription = new CompositeSubscription();
 
-    @Override public void onViewAttach() {
+    @Override
+    public void onViewAttach() {
         isAlive = true;
     }
 
-    @Override public void onViewDetach() {
+    @Override
+    public void onViewDetach() {
         isAlive = false;
         subscription.unsubscribe();
     }
@@ -79,5 +81,6 @@ public class BaseWorker implements IPage {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(defaultCallback(callback)));
     }
+
 
 }

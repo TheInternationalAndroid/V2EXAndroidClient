@@ -53,18 +53,21 @@ public class BaseActivity extends AppCompatActivity implements IPageControl, IRe
 
     private ProgressDialog progressDialog;
 
-    @Override public boolean onOptionsItemSelected(MenuItem item) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    @Override public void showProgressDialog() {
+    @Override
+    public void showProgressDialog() {
         showProgressDialog(true);
     }
 
-    @Override public void showProgressDialog(boolean cancelable) {
+    @Override
+    public void showProgressDialog(boolean cancelable) {
         if (isFinishing()) return;
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(this);
@@ -77,56 +80,67 @@ public class BaseActivity extends AppCompatActivity implements IPageControl, IRe
         }
     }
 
-    @Override public void hideProgressDialog() {
+    @Override
+    public void hideProgressDialog() {
         if (isFinishing()) return;
         if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
     }
 
-    @Override public void showToast(int stringRes) {
-        ToastUtil.show(this, getString(stringRes));
+    @Override
+    public void showToast(int stringRes) {
+        ToastUtil.show(getApplicationContext(), getString(stringRes));
     }
 
-    @Override public void showToast(String string) {
-        ToastUtil.show(this, string);
+    @Override
+    public void showToast(String string) {
+        ToastUtil.show(getApplicationContext(), string);
     }
 
 
-    @Override public void intent(Class aClass) {
+    @Override
+    public void intent(Class aClass) {
         intent(aClass, null);
     }
 
-    @Override public void intentForResult(Class aClass, int requestCode) {
+    @Override
+    public void intentForResult(Class aClass, int requestCode) {
         intentForResult(aClass, requestCode, null);
     }
 
-    @Override public void intent(Class aClass, Bundle bundle) {
+    @Override
+    public void intent(Class aClass, Bundle bundle) {
         Intent intent = new Intent(this, aClass);
         if (bundle != null)
             intent.putExtras(bundle);
         startActivity(intent);
     }
 
-    @Override public void intent(Intent intent) {
+    @Override
+    public void intent(Intent intent) {
         startActivity(intent);
     }
 
-    @Override public void intent(Intent intent, Class<?> aClass) {
+    @Override
+    public void intent(Intent intent, Class<?> aClass) {
         intent.setClass(this, aClass);
         startActivity(intent);
     }
 
-    @Override public void intentForResult(Class aClass, int requestCode, Bundle bundle) {
+    @Override
+    public void intentForResult(Class aClass, int requestCode, Bundle bundle) {
         Intent intent = new Intent(this, aClass);
         if (bundle != null)
             intent.putExtras(bundle);
         startActivityForResult(intent, requestCode);
     }
 
-    @Override public void intentFinish() {
+    @Override
+    public void intentFinish() {
         finish();
     }
 
-    @Override public void intentFinish(Bundle bundle, @ActivityAction int action) {
+    @Override
+    public void intentFinish(Bundle bundle, @ActivityAction int action) {
         Intent intent = new Intent();
         intent.putExtras(bundle);
         setResult(action, intent);

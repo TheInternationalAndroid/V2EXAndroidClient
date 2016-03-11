@@ -42,7 +42,7 @@ ext.depMap = [
         AppCompat            : "com.android.support:appcompat-v7:${supportLibraryVersion}",
 
         FastJson             : 'com.alibaba:fastjson:1.1.45.android',
-        Picasso              : 'com.squareup.okhttp:okhttp:2.6.0',
+        Picasso              : 'com.squareup.picasso:picasso:2.5.2',
         OkHttp               : 'com.squareup.okhttp:okhttp:2.6.0',
         LoggingInterceptor   : 'com.squareup.okhttp:logging-interceptor:2.6.0',
         OkHttpWS             : 'com.squareup.okhttp:okhttp-ws:2.6.0',

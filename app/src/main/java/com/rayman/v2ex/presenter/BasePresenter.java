@@ -22,6 +22,7 @@
 
 package com.rayman.v2ex.presenter;
 
+import com.rayman.v2ex.eventbus.event.BaseEvent;
 import com.rayman.v2ex.worker.BaseWorker;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import rx.Subscription;
+import rx.functions.Action1;
 
 public class BasePresenter implements IPresenter {
 
@@ -59,8 +61,8 @@ public class BasePresenter implements IPresenter {
         observerWorker.subscribe(subscription);
     }
 
-    public void subcribeEvent(Subscription subscription) {
-        observerWorker.subscribe(subscription);
+    public <T extends BaseEvent> void subcribeEvent(Class<T> aClass, Action1<T> action1) {
+        observerWorker.subscribeEvent(aClass, action1);
     }
 
     protected void bindLifecycleCallback(IPage... lifecycles) {

@@ -31,12 +31,10 @@ import com.android.databinding.library.baseAdapters.BR;
 import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
 import com.rayman.v2ex.adapter.pager.MainPagerAdapter;
-import com.rayman.v2ex.eventbus.RxBus;
-import com.rayman.v2ex.eventbus.event.BaseEvent;
+import com.rayman.v2ex.eventbus.event.HttpEvent;
 import com.rayman.v2ex.presenter.main.MainActivityP;
 import com.rayman.v2ex.vm.BaseVM;
 
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 
 /**
@@ -56,7 +54,7 @@ import rx.functions.Action1;
  * \               ||----w |
  * \               ||     ||
  */
-public class MainActivityVM extends BaseVM<MainActivityP> implements DrawerLayout.DrawerListener, Action1<BaseEvent> {
+public class MainActivityVM extends BaseVM<MainActivityP> implements DrawerLayout.DrawerListener, Action1<HttpEvent> {
 
     private MainPagerAdapter adapter;
     private MaterialMenuIconToolbar menuIconToolbar;
@@ -66,14 +64,12 @@ public class MainActivityVM extends BaseVM<MainActivityP> implements DrawerLayou
         super(presenter);
         this.adapter = adapter;
         this.menuIconToolbar = menuIconToolbar;
-        presenter.subcribe(RxBus.getInstance()
-                .asObservable(BaseEvent.class)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this));
+
+        presenter.subcribeEvent(HttpEvent.class, this);
     }
 
     @Override
-    public void call(BaseEvent baseEvent) {
+    public void call(HttpEvent baseEvent) {
 //       TODO  catch event
     }
 

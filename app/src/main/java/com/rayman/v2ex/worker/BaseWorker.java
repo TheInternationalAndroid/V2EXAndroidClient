@@ -25,6 +25,8 @@ package com.rayman.v2ex.worker;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.rayman.v2ex.eventbus.RxBus;
+import com.rayman.v2ex.eventbus.event.BaseEvent;
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.presenter.IPage;
 
@@ -32,6 +34,7 @@ import retrofit.Response;
 import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
@@ -85,6 +88,13 @@ public class BaseWorker implements IPage {
 
     public void subscribe(Subscription subscription) {
         this.subscription.add(subscription);
+    }
+
+    public <T extends BaseEvent> void subscribeEvent(Class<T> aClass, Action1<T> eventAction) {
+        subscribe(RxBus.getInstance()
+                .asObservable(aClass)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(eventAction));
     }
 
 }

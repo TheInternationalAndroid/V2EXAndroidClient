@@ -91,10 +91,12 @@ public class BaseWorker implements IPage {
     }
 
     public <T extends BaseEvent> void subscribeEvent(Class<T> aClass, Action1<T> eventAction) {
-        subscribe(RxBus.getInstance()
-                .asObservable(aClass)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(eventAction));
+        subscribe(
+                RxBus.getInstance()
+                        .asObservable(aClass)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(eventAction)
+        );
     }
 
 }

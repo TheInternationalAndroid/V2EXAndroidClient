@@ -31,7 +31,7 @@ public class RxBus {
 
     private Subject<Object, Object> bus = new SerializedSubject<>(PublishSubject.create());
 
-    public static RxBus getInstance() {
+    public static RxBus instance() {
         RxBus rxBus = instance;
         if (rxBus == null) {
             synchronized (RxBus.class) {

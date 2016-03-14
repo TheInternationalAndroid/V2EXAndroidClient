@@ -22,9 +22,9 @@
 
 package com.rayman.v2ex.http.callback;
 
+import com.rayman.v2ex.eventbus.RxBus;
 import com.rayman.v2ex.http.ErrorType;
 import com.rayman.v2ex.http.event.ErrorEvent;
-import com.rayman.v2ex.utils.ScopedBus;
 
 import java.io.IOException;
 
@@ -50,21 +50,24 @@ import rx.Subscriber;
  */
 public abstract class LSubscriber<T> extends Subscriber<Response<T>> {
 
-    @Override public void onCompleted() {
+    @Override
+    public void onCompleted() {
     }
 
-    @Override public void onError(Throwable e) {
+    @Override
+    public void onError(Throwable e) {
         ErrorEvent errorEvent;
         if (e instanceof IOException) {
             errorEvent = new ErrorEvent(ErrorType.ERROR_NETWORK, "网络异常");
         } else {
             errorEvent = new ErrorEvent(ErrorType.ERROR_OTHER, "未知异常");
         }
-        ScopedBus.instance().post(errorEvent);
+        RxBus.instance().post(errorEvent);
         onError(errorEvent);
     }
 
-    @Override public void onNext(Response<T> response) {
+    @Override
+    public void onNext(Response<T> response) {
         if (response.isSuccess()) {
             if (response.body() == null) {
                 onError(new Exception("Response body is empty."));
@@ -74,7 +77,7 @@ public abstract class LSubscriber<T> extends Subscriber<Response<T>> {
         } else {
             ErrorEvent errorEvent;
             errorEvent = new ErrorEvent(response.code(), response.message());
-            ScopedBus.instance().post(errorEvent);
+            RxBus.instance().post(errorEvent);
             onError(errorEvent);
         }
     }

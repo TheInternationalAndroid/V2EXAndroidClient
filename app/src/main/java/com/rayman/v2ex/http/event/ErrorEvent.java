@@ -22,6 +22,8 @@
 
 package com.rayman.v2ex.http.event;
 
+import com.rayman.v2ex.eventbus.event.BaseEvent;
+
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
@@ -39,29 +41,9 @@ package com.rayman.v2ex.http.event;
  * \               ||----w |
  * \               ||     ||
  */
-public class ErrorEvent {
+public class ErrorEvent extends BaseEvent {
 
-    private int errorType;
-    private String message;
-
-    public ErrorEvent(int errorType, String message) {
-        this.errorType = errorType;
-        this.message = message;
-    }
-
-    public int getErrorType() {
-        return errorType;
-    }
-
-    public void setErrorType(int errorType) {
-        this.errorType = errorType;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+    public ErrorEvent(int code, String message) {
+        super(code, message);
     }
 }

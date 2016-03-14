@@ -22,9 +22,9 @@
 
 package com.rayman.v2ex.http.callback;
 
+import com.rayman.v2ex.eventbus.RxBus;
 import com.rayman.v2ex.http.ErrorType;
 import com.rayman.v2ex.http.event.ErrorEvent;
-import com.rayman.v2ex.utils.ScopedBus;
 
 import java.io.IOException;
 
@@ -52,7 +52,8 @@ import retrofit.Retrofit;
 
 public abstract class LCallback<P> implements Callback<P> {
 
-    @Override public void onResponse(Response<P> response, Retrofit retrofit) {
+    @Override
+    public void onResponse(Response<P> response, Retrofit retrofit) {
         if (response.isSuccess()) {
             if (response.body() == null) {
                 onFailure(new Exception());
@@ -62,7 +63,7 @@ public abstract class LCallback<P> implements Callback<P> {
         } else {
             ErrorEvent errorEvent;
             errorEvent = new ErrorEvent(response.code(), response.message());
-            ScopedBus.instance().post(errorEvent);
+            RxBus.instance().post(errorEvent);
             onError(errorEvent);
         }
     }
@@ -71,14 +72,15 @@ public abstract class LCallback<P> implements Callback<P> {
 
     abstract public void onError(ErrorEvent errorEvent);
 
-    @Override public void onFailure(Throwable t) {
+    @Override
+    public void onFailure(Throwable t) {
         ErrorEvent errorEvent;
         if (t instanceof IOException) {
             errorEvent = new ErrorEvent(ErrorType.ERROR_NETWORK, "网络异常");
         } else {
             errorEvent = new ErrorEvent(ErrorType.ERROR_OTHER, "未知异常");
         }
-        ScopedBus.instance().post(errorEvent);
+        RxBus.instance().post(errorEvent);
         onError(errorEvent);
     }
 }

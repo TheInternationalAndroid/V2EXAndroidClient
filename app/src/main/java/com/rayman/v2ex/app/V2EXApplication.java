@@ -28,12 +28,15 @@ import com.rayman.v2ex.di.IInject;
 import com.rayman.v2ex.di.component.app.AppComp;
 import com.rayman.v2ex.di.component.app.DaggerAppComp;
 import com.rayman.v2ex.di.modules.AppModule;
+import com.rayman.v2ex.eventbus.RxBus;
 import com.rayman.v2ex.http.event.ErrorEvent;
 import com.rayman.v2ex.utils.LogUtil;
-import com.rayman.v2ex.utils.ScopedBus;
 import com.rayman.v2ex.utils.StringUtil;
 import com.rayman.v2ex.utils.ToastUtil;
-import com.squareup.otto.Subscribe;
+
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 
 /**
  * Created by Android Studio.
@@ -52,31 +55,50 @@ import com.squareup.otto.Subscribe;
  * \               ||----w |
  * \               ||     ||
  */
-public class V2EXApplication extends Application implements IInject {
+public class V2EXApplication extends Application implements IInject, Action1<ErrorEvent> {
 
     private AppComp appComp;
+    private Subscription subscription;
 
-    @Override public void onCreate() {
+    @Override
+    public void onCreate() {
         super.onCreate();
 
         LogUtil.setDebug(true);
 
         onInject();
 
-        ScopedBus.instance().register(this);
+        if (subscription != null && !subscription.isUnsubscribed()) {
+            subscription.unsubscribe();
+        }
+        subscription = RxBus.instance()
+                .asObservable(ErrorEvent.class)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this);
     }
 
-    @Override public void onTrimMemory(int level) {
+    @Override
+    public void call(ErrorEvent errorEvent) {
+        if (!StringUtil.isEmpty(errorEvent.getMessage()))
+            ToastUtil.show(this, errorEvent.getMessage());
+    }
+
+    @Override
+    public void onTrimMemory(int level) {
         super.onTrimMemory(level);
-        ScopedBus.instance().unregister(this);
+        if (subscription != null && !subscription.isUnsubscribed())
+            subscription.unsubscribe();
     }
 
-    @Override public void onLowMemory() {
+    @Override
+    public void onLowMemory() {
         super.onLowMemory();
-        ScopedBus.instance().unregister(this);
+        if (subscription != null && !subscription.isUnsubscribed())
+            subscription.unsubscribe();
     }
 
-    @Override public void onInject() {
+    @Override
+    public void onInject() {
         appComp = DaggerAppComp
                 .builder()
                 .appModule(new AppModule(this))
@@ -86,11 +108,6 @@ public class V2EXApplication extends Application implements IInject {
 
     public AppComp appComp() {
         return appComp;
-    }
-
-    @Subscribe public void handleRequestError(ErrorEvent errorEvent) {
-        if (!StringUtil.isEmpty(errorEvent.getMessage()))
-            ToastUtil.show(this, errorEvent.getMessage());
     }
 
 }

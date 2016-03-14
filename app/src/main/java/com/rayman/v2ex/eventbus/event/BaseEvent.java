@@ -20,14 +20,14 @@ package com.rayman.v2ex.eventbus.event;
 public class BaseEvent {
 
     private int code;
-    private String Message;
+    private String message;
 
     public BaseEvent() {
     }
 
     public BaseEvent(int code, String message) {
         this.code = code;
-        Message = message;
+        this.message = message;
     }
 
     public int getCode() {
@@ -39,10 +39,10 @@ public class BaseEvent {
     }
 
     public String getMessage() {
-        return Message;
+        return message;
     }
 
     public void setMessage(String message) {
-        Message = message;
+        message = message;
     }
 }

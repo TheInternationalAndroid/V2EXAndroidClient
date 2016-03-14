@@ -38,10 +38,6 @@ public class BasePresenter implements IPresenter {
 
     private BaseWorker observerWorker = new BaseWorker();
 
-    public BasePresenter() {
-        bindLifecycleCallback(observerWorker);
-    }
-
     @Override
     public void onViewAttach() {
         for (IPage iPageLifecycle : lifecycleCallbacks) {
@@ -58,10 +54,14 @@ public class BasePresenter implements IPresenter {
     }
 
     public void subcribe(Subscription subscription) {
+        if (!lifecycleCallbacks.contains(observerWorker))
+            bindLifecycleCallback(observerWorker);
         observerWorker.subscribe(subscription);
     }
 
     public <T extends BaseEvent> void subcribeEvent(Class<T> aClass, Action1<T> action1) {
+        if (!lifecycleCallbacks.contains(observerWorker))
+            bindLifecycleCallback(observerWorker);
         observerWorker.subscribeEvent(aClass, action1);
     }
 

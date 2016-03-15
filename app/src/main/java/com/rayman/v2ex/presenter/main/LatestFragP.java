@@ -26,6 +26,7 @@ import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.BasePresenter;
 import com.rayman.v2ex.worker.TopicWorker;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
 
@@ -52,12 +53,15 @@ public class LatestFragP extends BasePresenter implements ILatestFragP {
 
     private TopicWorker topicWorker;
 
-    @Inject public LatestFragP(TopicWorker topicWorker) {
+    @Inject
+    public LatestFragP(TopicWorker topicWorker, RefWatcher refWatcher) {
+        super(refWatcher);
         this.topicWorker = topicWorker;
         bindLifecycleCallback(topicWorker);
     }
 
-    @Override public void latest(ReqCallback<List<TopicEntity>> callback) {
+    @Override
+    public void latest(ReqCallback<List<TopicEntity>> callback) {
         topicWorker.latest(callback);
     }
 }

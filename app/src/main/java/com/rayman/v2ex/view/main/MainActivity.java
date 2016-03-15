@@ -47,6 +47,12 @@ public class MainActivity extends BaseDIActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getActivityComp().refWatchwer().watch(viewModel);
+    }
+
+    @Override
     public void onInject() {
         DaggerMainComp.builder()
                 .activityComp(getActivityComp())

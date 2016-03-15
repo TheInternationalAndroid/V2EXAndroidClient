@@ -23,6 +23,7 @@
 package com.rayman.v2ex.presenter.main;
 
 import com.rayman.v2ex.presenter.BasePresenter;
+import com.squareup.leakcanary.RefWatcher;
 
 import javax.inject.Inject;
 
@@ -45,6 +46,8 @@ import javax.inject.Inject;
  */
 public class MainActivityP extends BasePresenter implements IMainActivityP {
 
-    @Inject public MainActivityP() {
+    @Inject
+    public MainActivityP(RefWatcher refWatcher) {
+        super(refWatcher);
     }
 }

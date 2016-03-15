@@ -60,6 +60,12 @@ public class HotFragment extends BaseDIFragment implements IHotFragView {
         viewModel.requestHotTopicList();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getFragmentComp().refWatchwer().watch(viewModel);
+    }
+
     @Override public void onInject() {
         DaggerHotFragComp.builder()
                 .fragmentComp(getFragmentComp())

@@ -53,7 +53,14 @@ public class AccountActivity extends BaseDIActivity {
         viewModel.requestTopics();
     }
 
-    @Override public void onInject() {
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        getActivityComp().refWatchwer().watch(viewModel);
+    }
+
+    @Override
+    public void onInject() {
         DaggerAccountComp.builder()
                 .activityComp(getActivityComp())
                 .accountVMModule(new AccountVMModule())
@@ -61,7 +68,8 @@ public class AccountActivity extends BaseDIActivity {
                 .inject(this);
     }
 
-    @Override protected IPage getPageCallback() {
+    @Override
+    protected IPage getPageCallback() {
         return viewModel;
     }
 }

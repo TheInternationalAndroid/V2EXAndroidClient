@@ -25,6 +25,7 @@ package com.rayman.v2ex.view.base;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -146,4 +147,9 @@ public class BaseActivity extends AppCompatActivity implements IPageControl, IRe
         setResult(action, intent);
         finish();
     }
+
+    protected boolean isCurrentlyOnMainThread() {
+        return Looper.myLooper() == Looper.getMainLooper();
+    }
+
 }

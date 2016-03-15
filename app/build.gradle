@@ -40,7 +40,7 @@ android {
 
 dependencies {
 
-    apt 'com.google.dagger:dagger-compiler:2.0.2'
+    apt depMap.DaggerCompile
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -50,7 +50,6 @@ dependencies {
     compile depMap.AppCompat
 
     compile depMap.FastJson
-
     compile depMap.Picasso
     compile depMap.OkHttp
     compile depMap.LoggingInterceptor
@@ -64,6 +63,12 @@ dependencies {
     compile depMap.MaterialMenuToolbar
     compile depMap.RoundedImageview
     compile depMap.FlowLayout
+    compile depMap.RxBinding
+    compile depMap.RxBindingSupportV4
+    compile depMap.RxBindingAppcompat
+    compile depMap.RxBindingDesign
+    compile depMap.RxBindingRecyclerView
+//    compile depMap.RxLeanBack
 
     debugCompile depMap.LeakCanary
     releaseCompile depMap.LeakCanaryAndroidNoOp

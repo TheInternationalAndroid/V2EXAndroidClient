@@ -56,6 +56,12 @@ public class LatestFragment extends BaseDIFragment implements ILatestFragView {
         return binding.getRoot();
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getFragmentComp().refWatchwer().watch(viewModel);
+    }
+
     @Override public void onInject() {
         DaggerLatestFragComp.builder()
                 .fragmentComp(getFragmentComp())

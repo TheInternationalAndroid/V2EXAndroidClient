@@ -24,6 +24,7 @@ package com.rayman.v2ex.presenter;
 
 import com.rayman.v2ex.eventbus.event.BaseEvent;
 import com.rayman.v2ex.worker.BaseWorker;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +39,12 @@ public class BasePresenter implements IPresenter {
 
     private BaseWorker observerWorker = new BaseWorker();
 
+    private final RefWatcher refWatcher;
+
+    public BasePresenter(RefWatcher refWatcher) {
+        this.refWatcher = refWatcher;
+    }
+
     @Override
     public void onViewAttach() {
         for (IPage iPageLifecycle : lifecycleCallbacks) {
@@ -49,8 +56,10 @@ public class BasePresenter implements IPresenter {
     public void onViewDetach() {
         for (IPage iPageLifecycle : lifecycleCallbacks) {
             iPageLifecycle.onViewDetach();
+            refWatcher.watch(iPageLifecycle);
         }
         lifecycleCallbacks.clear();
+        refWatcher.watch(this);
     }
 
     public void subcribe(Subscription subscription) {

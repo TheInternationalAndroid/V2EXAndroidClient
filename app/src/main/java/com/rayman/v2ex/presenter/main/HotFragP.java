@@ -26,6 +26,7 @@ import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.BasePresenter;
 import com.rayman.v2ex.worker.TopicWorker;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
 
@@ -52,12 +53,15 @@ public class HotFragP extends BasePresenter implements IHotFragP {
 
     private TopicWorker topicWorker;
 
-    @Inject public HotFragP(TopicWorker topicWorker) {
+    @Inject
+    public HotFragP(TopicWorker topicWorker, RefWatcher refWatcher) {
+        super(refWatcher);
         this.topicWorker = topicWorker;
         bindLifecycleCallback(topicWorker);
     }
 
-    @Override public void hot(ReqCallback<List<TopicEntity>> callback) {
+    @Override
+    public void hot(ReqCallback<List<TopicEntity>> callback) {
         topicWorker.hot(callback);
     }
 }

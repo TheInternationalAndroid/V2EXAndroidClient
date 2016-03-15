@@ -37,8 +37,6 @@ import com.squareup.okhttp.Response;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import dagger.Module;
 import dagger.Provides;
@@ -70,18 +68,20 @@ public class OkHttpModule {
     private static final int POOLING_MAX_CONNECTIONS = 5;
     private static final int REQUEST_KEEP_ALIVE_DEFAULT = 30000;
 
-    @Provides @PerApplication OkHttpClient provideOkHttp(IFileControl fileCache) {
+    @Provides
+    @PerApplication
+    OkHttpClient provideOkHttp(IFileControl fileCache) {
         final OkHttpClient httpClient = new OkHttpClient();
-        final Logger sLogger = Logger.getLogger(LogUtil.sLogTag);
-
-        sLogger.setLevel(Level.FINE);
+//        final Logger sLogger = Logger.getLogger(LogUtil.sLogTag);
+//        sLogger.setLevel(Level.FINE);
         httpClient.setConnectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS);
         httpClient.setWriteTimeout(WRITE_TIMEOUT, TimeUnit.MILLISECONDS);
         httpClient.setReadTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS);
         httpClient.setCache(new Cache(new File(fileCache.requestCacheFloderPath()), REQUEST_CACHE_SIZE));
         httpClient.setConnectionPool(new ConnectionPool(POOLING_MAX_CONNECTIONS, REQUEST_KEEP_ALIVE_DEFAULT));
         httpClient.interceptors().add(new Interceptor() {
-            @Override public Response intercept(Chain chain) throws IOException {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
                 long t1 = System.nanoTime();
                 Request request = chain.request();
                 Request.Builder builder = request.newBuilder();
@@ -92,7 +92,7 @@ public class OkHttpModule {
                 request = builder
                         .addHeader("User-Agent", System.getProperty("http.agent"))
                         .build();
-                sLogger.info(String.format("Sending request %s on Connecttion: %s %n Headers: %s ",
+                LogUtil.i(String.format("Sending request %s on Connecttion: %s %n Headers: %s ",
                         request.httpUrl(),
                         chain.connection(),
                         request.headers()));
@@ -100,7 +100,7 @@ public class OkHttpModule {
                 Response response = chain.proceed(request);
 
                 long t2 = System.nanoTime();
-                sLogger.info(
+                LogUtil.i(
                         String.format(
                                 "Received response for " +
                                         "%s in %.1fms %n" +

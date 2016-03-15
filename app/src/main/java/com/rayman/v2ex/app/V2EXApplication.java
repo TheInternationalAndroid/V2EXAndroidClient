@@ -34,6 +34,8 @@ import com.rayman.v2ex.utils.LogUtil;
 import com.rayman.v2ex.utils.StringUtil;
 import com.rayman.v2ex.utils.ToastUtil;
 
+import java.lang.ref.WeakReference;
+
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -74,27 +76,15 @@ public class V2EXApplication extends Application implements IInject, Action1<Err
         subscription = RxBus.instance()
                 .asObservable(ErrorEvent.class)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this);
+                .subscribe(new WeakReference<Action1<ErrorEvent>>(this).get());
     }
 
     @Override
     public void call(ErrorEvent errorEvent) {
-        if (!StringUtil.isEmpty(errorEvent.getMessage()))
+        if (errorEvent != null && !StringUtil.isEmpty(errorEvent.getMessage())) {
+            LogUtil.e(" V2EXApplication catch event : " + errorEvent.getMessage());
             ToastUtil.show(this, errorEvent.getMessage());
-    }
-
-    @Override
-    public void onTrimMemory(int level) {
-        super.onTrimMemory(level);
-        if (subscription != null && !subscription.isUnsubscribed())
-            subscription.unsubscribe();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        if (subscription != null && !subscription.isUnsubscribed())
-            subscription.unsubscribe();
+        }
     }
 
     @Override

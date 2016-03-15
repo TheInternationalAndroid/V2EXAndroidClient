@@ -34,8 +34,6 @@ import com.rayman.v2ex.utils.LogUtil;
 import com.rayman.v2ex.utils.StringUtil;
 import com.rayman.v2ex.utils.ToastUtil;
 
-import java.lang.ref.WeakReference;
-
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -76,7 +74,7 @@ public class V2EXApplication extends Application implements IInject, Action1<Err
         subscription = RxBus.instance()
                 .asObservable(ErrorEvent.class)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new WeakReference<Action1<ErrorEvent>>(this).get());
+                .subscribe(this);
     }
 
     @Override

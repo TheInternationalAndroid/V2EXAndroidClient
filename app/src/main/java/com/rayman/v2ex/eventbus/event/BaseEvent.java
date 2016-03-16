@@ -1,5 +1,7 @@
 package com.rayman.v2ex.eventbus.event;
 
+import android.os.Bundle;
+
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
@@ -21,6 +23,7 @@ public class BaseEvent {
 
     private int code;
     private String message;
+    private Bundle bundle;
 
     public BaseEvent() {
     }
@@ -44,5 +47,13 @@ public class BaseEvent {
 
     public void setMessage(String message) {
         message = message;
+    }
+
+    public Bundle getBundle() {
+        return bundle;
+    }
+
+    public void setBundle(Bundle bundle) {
+        this.bundle = bundle;
     }
 }

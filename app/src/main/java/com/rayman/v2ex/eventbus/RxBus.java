@@ -59,6 +59,11 @@ public class RxBus {
                 .cast(aClass);
     }
 
+    public Observable<BaseEvent> asObservable() {
+        return bus.asObservable().cast(BaseEvent.class);
+    }
+
+
     public boolean hasObservers() {
         return bus.hasObservers();
     }

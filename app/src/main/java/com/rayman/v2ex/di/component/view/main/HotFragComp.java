@@ -26,7 +26,7 @@ import com.rayman.v2ex.di.component.view.base.FragmentComp;
 import com.rayman.v2ex.di.modules.vm.main.HotFragVMModule;
 import com.rayman.v2ex.di.scope.PerBindingFragment;
 import com.rayman.v2ex.presenter.main.HotFragP;
-import com.rayman.v2ex.view.main.HotFragment;
+import com.rayman.v2ex.ui.view.main.HotFragment;
 import com.rayman.v2ex.vm.main.HotFragVM;
 
 import dagger.Component;

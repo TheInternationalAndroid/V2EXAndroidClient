@@ -25,7 +25,7 @@ package com.rayman.v2ex.vm.account;
 import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
 
-import com.rayman.v2ex.adapter.list.AccountPageAdapter;
+import com.rayman.v2ex.ui.adapter.list.AccountPageAdapter;
 import com.rayman.v2ex.http.callback.ReqCallback;
 import com.rayman.v2ex.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.member.MemberEntity;

@@ -30,7 +30,7 @@ import com.rayman.v2ex.anotations.ContextType;
 import com.rayman.v2ex.di.component.app.AppComp;
 import com.rayman.v2ex.di.modules.ActivityModule;
 import com.rayman.v2ex.di.scope.PerBaseActivity;
-import com.rayman.v2ex.view.base.BaseActivity;
+import com.rayman.v2ex.ui.view.base.BaseActivity;
 
 import javax.inject.Named;
 

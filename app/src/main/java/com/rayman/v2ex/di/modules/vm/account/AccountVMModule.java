@@ -24,7 +24,7 @@ package com.rayman.v2ex.di.modules.vm.account;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.rayman.v2ex.adapter.list.AccountPageAdapter;
+import com.rayman.v2ex.ui.adapter.list.AccountPageAdapter;
 import com.rayman.v2ex.anotations.ListType;
 import com.rayman.v2ex.di.modules.base.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerActivity;

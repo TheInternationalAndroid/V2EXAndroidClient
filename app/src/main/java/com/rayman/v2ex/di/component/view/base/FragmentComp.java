@@ -23,7 +23,7 @@
 package com.rayman.v2ex.di.component.view.base;
 
 import com.rayman.v2ex.di.scope.PerFragment;
-import com.rayman.v2ex.view.base.BaseFragment;
+import com.rayman.v2ex.ui.view.base.BaseFragment;
 
 import dagger.Component;
 

@@ -40,7 +40,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.rayman.v2ex.view.main.LatestFragment">
+        tools:context=".ui.view.main.LatestFragment">
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

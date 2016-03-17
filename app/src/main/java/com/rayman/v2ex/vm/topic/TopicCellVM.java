@@ -30,7 +30,7 @@ import com.rayman.v2ex.BR;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.anotations.ViewClick;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.view.main.ITopicCellView;
+import com.rayman.v2ex.ui.view.main.ITopicCellView;
 
 /**
  * Created by Android Studio.

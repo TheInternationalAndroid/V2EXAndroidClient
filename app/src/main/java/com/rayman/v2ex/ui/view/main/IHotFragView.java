@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/20/16 5:50 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AccountComp.
- * Author: Lena; Last Modified: 1/20/16 5:50 PM.
+ * Created on 3/9/16 12:29 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: IHotFragView.
+ * Author: Lena; Last Modified: 3/9/16 12:29 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,22 +20,14 @@
  *
  */
 
-package com.rayman.v2ex.di.component.view;
-
-import com.rayman.v2ex.di.component.view.base.ActivityComp;
-import com.rayman.v2ex.di.modules.vm.account.AccountVMModule;
-import com.rayman.v2ex.di.scope.PerActivity;
-import com.rayman.v2ex.ui.view.account.AccountActivity;
-import com.rayman.v2ex.vm.account.AccountVM;
-
-import dagger.Component;
+package com.rayman.v2ex.ui.view.main;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/20/16
- * Time: 17:50
+ * Date: 3/9/16
+ * Time: 12:29
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -47,12 +39,5 @@ import dagger.Component;
  * \               ||----w |
  * \               ||     ||
  */
-@PerActivity
-@Component(modules = AccountVMModule.class, dependencies = ActivityComp.class)
-public interface AccountComp extends ActivityComp {
-
-    void inject(AccountActivity accountActivity);
-
-    AccountVM viewModel();
-
+public interface IHotFragView extends ITopicCellView {
 }

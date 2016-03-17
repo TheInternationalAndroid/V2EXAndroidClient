@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:26 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainService.
- * Author: Lena; Last Modified: 1/19/16 3:26 PM.
+ * Created on 1/19/16 2:52 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: RequestContentType.
+ * Author: Lena; Last Modified: 1/19/16 2:52 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,23 +20,16 @@
  *
  */
 
-package com.rayman.v2ex.http.service;
+package com.rayman.v2ex.model.http.okhttp;
 
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-
-import java.util.List;
-
-import retrofit.Response;
-import retrofit.http.GET;
-import retrofit.http.Query;
-import rx.Observable;
+import com.squareup.okhttp.MediaType;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/19/16
- * Time: 15:26
+ * Time: 14:52
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -48,16 +41,15 @@ import rx.Observable;
  * \               ||----w |
  * \               ||     ||
  */
-public interface TopicService {
+public interface RequestContentType {
+    String CHARSET = "utf-8";
+    String CONTENT_TYPE_JSON = "application/json; charset=" + CHARSET;
+    String CONTENT_TYPE_TEXT_PLAIN = "text/plain; charset=" + CHARSET;
+    String CONTENT_TYPE_MULTIPART = "multipart/form-data; charset=" + CHARSET;
 
-    //    @GET("topics/hot.json") Call<List<TopicEntity>> hot();
-    //    @GET("topics/latest.json") Call<List<TopicEntity>> latest();
-    //    @GET("topics/show.json") Call<List<TopicEntity>> topics(@Query(value = "username") String userName);
-
-    @GET("topics/hot.json") Observable<Response<List<TopicEntity>>> hot();
-
-    @GET("topics/latest.json") Observable<Response<List<TopicEntity>>> latest();
-
-    @GET("topics/show.json") Observable<Response<List<TopicEntity>>> topics(@Query(value = "username") String userName);
-
+    MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
+    MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse("text/x-markdown; " + CHARSET);
+    MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; " + CHARSET);
+    MediaType MEDIA_TYPE_TEXT_PLAIN = MediaType.parse("text/plain; " + CHARSET);
+    MediaType MEDIA_TYPE_MULTIPART = MediaType.parse("multipart/form-data; " + CHARSET);
 }

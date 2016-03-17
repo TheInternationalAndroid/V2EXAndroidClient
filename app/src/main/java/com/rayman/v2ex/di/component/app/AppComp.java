@@ -31,7 +31,7 @@ import com.rayman.v2ex.app.V2EXApplication;
 import com.rayman.v2ex.cache.IFileControl;
 import com.rayman.v2ex.di.modules.AppModule;
 import com.rayman.v2ex.di.scope.PerApplication;
-import com.rayman.v2ex.http.service.TopicService;
+import com.rayman.v2ex.model.http.service.TopicService;
 import com.squareup.leakcanary.RefWatcher;
 
 import javax.inject.Named;

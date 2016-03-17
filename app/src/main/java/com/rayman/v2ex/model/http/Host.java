@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 2:54 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: FastJsonConvertFactory.
- * Author: Lena; Last Modified: 1/19/16 2:54 PM.
+ * Created on 1/19/16 2:50 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: Host.
+ * Author: Lena; Last Modified: 1/19/16 2:50 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,22 +20,14 @@
  *
  */
 
-package com.rayman.v2ex.http.okhttp.convertor;
-
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.ResponseBody;
-
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Type;
-
-import retrofit.Converter;
+package com.rayman.v2ex.model.http;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/19/16
- * Time: 14:54
+ * Time: 14:50
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -47,20 +39,8 @@ import retrofit.Converter;
  * \               ||----w |
  * \               ||     ||
  */
+public interface Host {
 
-public class FastJsonConvertFactory extends Converter.Factory {
+    String BASE_URL = "https://www.v2ex.com/api/";
 
-    public static FastJsonConvertFactory create() {
-        return new FastJsonConvertFactory();
-    }
-
-    @Override
-    public Converter<ResponseBody, ?> fromResponseBody(Type type, Annotation[] annotations) {
-        return new FastJsonResponseBodyConverter<>(type);
-    }
-
-    @Override
-    public Converter<?, RequestBody> toRequestBody(Type type, Annotation[] annotations) {
-        return new FastJsonRequestBodyConvert<>();
-    }
 }

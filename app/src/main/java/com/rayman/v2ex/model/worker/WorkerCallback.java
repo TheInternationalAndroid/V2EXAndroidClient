@@ -22,9 +22,9 @@
 
 package com.rayman.v2ex.model.worker;
 
-import com.rayman.v2ex.http.callback.LSubscriber;
-import com.rayman.v2ex.http.callback.ReqCallback;
-import com.rayman.v2ex.http.event.ErrorEvent;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
+import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.event.ErrorEvent;
 
 /**
  * Created by Android Studio.

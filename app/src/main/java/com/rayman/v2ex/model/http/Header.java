@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 4:36 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: ILatestFragP.
- * Author: Lena; Last Modified: 1/19/16 4:36 PM.
+ * Created on 1/19/16 2:55 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: Header.
+ * Author: Lena; Last Modified: 1/19/16 2:55 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,19 +20,14 @@
  *
  */
 
-package com.rayman.v2ex.presenter.main;
-
-import com.rayman.v2ex.model.http.callback.ReqCallback;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-
-import java.util.List;
+package com.rayman.v2ex.model.http;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/19/16
- * Time: 16:36
+ * Time: 14:55
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -44,8 +39,10 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public interface ILatestFragP {
+public interface Header {
 
-    void latest(ReqCallback<List<TopicEntity>> callback);
+    String LIMIT_TOTAL = "X-Rate-Limit-Limit";
+    String LIMIT_RESET = "X-Rate-Limit-Reset";
+    String LIMIT_REMAINING = "X-Rate-Limit-Remaining";
 
 }

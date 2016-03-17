@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:47 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: ReqCallback.
- * Author: Lena; Last Modified: 1/19/16 3:47 PM.
+ * Created on 1/19/16 3:43 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: ErrorType.
+ * Author: Lena; Last Modified: 1/19/16 3:43 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,16 +20,14 @@
  *
  */
 
-package com.rayman.v2ex.http.callback;
-
-import com.rayman.v2ex.http.event.ErrorEvent;
+package com.rayman.v2ex.model.http;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/19/16
- * Time: 15:47
+ * Time: 15:43
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -41,12 +39,16 @@ import com.rayman.v2ex.http.event.ErrorEvent;
  * \               ||----w |
  * \               ||     ||
  */
-public interface ReqCallback<T> {
+public interface ErrorType {
 
-    void onReqStart();
+    int ERROR_INVALID_USER = 401;
+    int ERROR_AUTH = 403;
+    int ERROR_SERVER_AUTH = 1001;
+    int ERROR_SERVER = 1003;
+    int ERROR_NETWORK = 1004;
+    int ERROR_ALREADY_REGIST = 5001;
+    int ERROR_UN_REGIST_YET = 5002;
+    int ERROR_LIMITED_USER = 5003;
 
-    void onNetResp(T response);
-
-    void onError(ErrorEvent errorEvent);
-
+    int ERROR_OTHER = 9999;
 }

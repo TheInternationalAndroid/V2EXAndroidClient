@@ -27,8 +27,8 @@ import android.view.View;
 
 import com.rayman.v2ex.ui.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.anotations.PageState;
-import com.rayman.v2ex.http.callback.ReqCallback;
-import com.rayman.v2ex.http.event.ErrorEvent;
+import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.main.LatestFragP;
 import com.rayman.v2ex.ui.view.main.ILatestFragView;

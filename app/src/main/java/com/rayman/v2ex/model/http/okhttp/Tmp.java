@@ -20,7 +20,7 @@
  *
  */
 
-package com.rayman.v2ex.http.okhttp;
+package com.rayman.v2ex.model.http.okhttp;
 
 /**
  * Created by Android Studio.

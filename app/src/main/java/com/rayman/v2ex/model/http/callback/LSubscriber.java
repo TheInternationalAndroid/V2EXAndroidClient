@@ -20,11 +20,11 @@
  *
  */
 
-package com.rayman.v2ex.http.callback;
+package com.rayman.v2ex.model.http.callback;
 
 import com.rayman.v2ex.eventbus.RxBus;
-import com.rayman.v2ex.http.ErrorType;
-import com.rayman.v2ex.http.event.ErrorEvent;
+import com.rayman.v2ex.model.http.ErrorType;
+import com.rayman.v2ex.model.http.event.ErrorEvent;
 
 import java.io.IOException;
 

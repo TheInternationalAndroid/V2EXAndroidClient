@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:40 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: ErrorEvent.
- * Author: Lena; Last Modified: 1/19/16 3:40 PM.
+ * Created on 1/19/16 3:47 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: ReqCallback.
+ * Author: Lena; Last Modified: 1/19/16 3:47 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,16 +20,16 @@
  *
  */
 
-package com.rayman.v2ex.http.event;
+package com.rayman.v2ex.model.http.callback;
 
-import com.rayman.v2ex.eventbus.event.BaseEvent;
+import com.rayman.v2ex.model.http.event.ErrorEvent;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/4/16
- * Time: 16:59
+ * Date: 1/19/16
+ * Time: 15:47
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -41,9 +41,12 @@ import com.rayman.v2ex.eventbus.event.BaseEvent;
  * \               ||----w |
  * \               ||     ||
  */
-public class ErrorEvent extends BaseEvent {
+public interface ReqCallback<T> {
 
-    public ErrorEvent(int code, String message) {
-        super(code, message);
-    }
+    void onReqStart();
+
+    void onNetResp(T response);
+
+    void onError(ErrorEvent errorEvent);
+
 }

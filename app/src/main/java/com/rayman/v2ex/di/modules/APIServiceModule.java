@@ -23,7 +23,7 @@
 package com.rayman.v2ex.di.modules;
 
 import com.rayman.v2ex.di.scope.PerApplication;
-import com.rayman.v2ex.http.service.TopicService;
+import com.rayman.v2ex.model.http.service.TopicService;
 
 import dagger.Module;
 import dagger.Provides;

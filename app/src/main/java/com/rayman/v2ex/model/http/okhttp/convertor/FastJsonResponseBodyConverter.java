@@ -2,7 +2,7 @@
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
  * Created on 1/19/16 2:52 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: RequestContentType.
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: FastJsonResponseBodyConverter.
  * Author: Lena; Last Modified: 1/19/16 2:52 PM.
  * This file is originally created by Lena.
  *
@@ -20,9 +20,18 @@
  *
  */
 
-package com.rayman.v2ex.http.okhttp;
+package com.rayman.v2ex.model.http.okhttp.convertor;
 
-import com.squareup.okhttp.MediaType;
+import com.alibaba.fastjson.JSON;
+import com.rayman.v2ex.model.http.okhttp.RequestContentType;
+import com.rayman.v2ex.utils.LogUtil;
+import com.squareup.okhttp.ResponseBody;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.nio.charset.Charset;
+
+import retrofit.Converter;
 
 /**
  * Created by Android Studio.
@@ -41,15 +50,26 @@ import com.squareup.okhttp.MediaType;
  * \               ||----w |
  * \               ||     ||
  */
-public interface RequestContentType {
-    String CHARSET = "utf-8";
-    String CONTENT_TYPE_JSON = "application/json; charset=" + CHARSET;
-    String CONTENT_TYPE_TEXT_PLAIN = "text/plain; charset=" + CHARSET;
-    String CONTENT_TYPE_MULTIPART = "multipart/form-data; charset=" + CHARSET;
 
-    MediaType MEDIA_TYPE_PNG = MediaType.parse("image/png");
-    MediaType MEDIA_TYPE_MARKDOWN = MediaType.parse("text/x-markdown; " + CHARSET);
-    MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json; " + CHARSET);
-    MediaType MEDIA_TYPE_TEXT_PLAIN = MediaType.parse("text/plain; " + CHARSET);
-    MediaType MEDIA_TYPE_MULTIPART = MediaType.parse("multipart/form-data; " + CHARSET);
+public class FastJsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
+
+    private static final Charset UTF_8 = Charset.forName("UTF-8");
+
+    private Type type;
+
+    public FastJsonResponseBodyConverter(Type type) {
+        this.type = type;
+    }
+
+    @Override
+    public T convert(ResponseBody value) throws IOException {
+        try {
+            String jsonString = new String(value.bytes(), RequestContentType.CHARSET);
+            LogUtil.i("Request: Parse Response Json :\n" + jsonString);
+            return JSON.parseObject(jsonString, type);
+        } catch (Exception e) {
+            LogUtil.e("Request: Parse Json Error :" + e.getMessage());
+        }
+        return null;
+    }
 }

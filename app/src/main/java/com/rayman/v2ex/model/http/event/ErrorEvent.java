@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 3:43 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: ErrorType.
- * Author: Lena; Last Modified: 1/19/16 3:43 PM.
+ * Created on 1/19/16 3:40 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: ErrorEvent.
+ * Author: Lena; Last Modified: 1/19/16 3:40 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,14 +20,16 @@
  *
  */
 
-package com.rayman.v2ex.http;
+package com.rayman.v2ex.model.http.event;
+
+import com.rayman.v2ex.eventbus.event.BaseEvent;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 15:43
+ * Date: 1/4/16
+ * Time: 16:59
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -39,16 +41,9 @@ package com.rayman.v2ex.http;
  * \               ||----w |
  * \               ||     ||
  */
-public interface ErrorType {
+public class ErrorEvent extends BaseEvent {
 
-    int ERROR_INVALID_USER = 401;
-    int ERROR_AUTH = 403;
-    int ERROR_SERVER_AUTH = 1001;
-    int ERROR_SERVER = 1003;
-    int ERROR_NETWORK = 1004;
-    int ERROR_ALREADY_REGIST = 5001;
-    int ERROR_UN_REGIST_YET = 5002;
-    int ERROR_LIMITED_USER = 5003;
-
-    int ERROR_OTHER = 9999;
+    public ErrorEvent(int code, String message) {
+        super(code, message);
+    }
 }

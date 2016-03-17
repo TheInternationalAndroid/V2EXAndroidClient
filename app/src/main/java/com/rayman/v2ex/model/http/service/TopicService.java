@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/19/16 2:50 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: Host.
- * Author: Lena; Last Modified: 1/19/16 2:50 PM.
+ * Created on 1/19/16 3:26 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainService.
+ * Author: Lena; Last Modified: 1/19/16 3:26 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,14 +20,23 @@
  *
  */
 
-package com.rayman.v2ex.http;
+package com.rayman.v2ex.model.http.service;
+
+import com.rayman.v2ex.model.model.topic.TopicEntity;
+
+import java.util.List;
+
+import retrofit.Response;
+import retrofit.http.GET;
+import retrofit.http.Query;
+import rx.Observable;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
  * Date: 1/19/16
- * Time: 14:50
+ * Time: 15:26
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -39,8 +48,16 @@ package com.rayman.v2ex.http;
  * \               ||----w |
  * \               ||     ||
  */
-public interface Host {
+public interface TopicService {
 
-    String BASE_URL = "https://www.v2ex.com/api/";
+    //    @GET("topics/hot.json") Call<List<TopicEntity>> hot();
+    //    @GET("topics/latest.json") Call<List<TopicEntity>> latest();
+    //    @GET("topics/show.json") Call<List<TopicEntity>> topics(@Query(value = "username") String userName);
+
+    @GET("topics/hot.json") Observable<Response<List<TopicEntity>>> hot();
+
+    @GET("topics/latest.json") Observable<Response<List<TopicEntity>>> latest();
+
+    @GET("topics/show.json") Observable<Response<List<TopicEntity>>> topics(@Query(value = "username") String userName);
 
 }

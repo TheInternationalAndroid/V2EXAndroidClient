@@ -22,7 +22,7 @@
 
 package com.rayman.v2ex.presenter.main;
 
-import com.rayman.v2ex.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.ReqCallback;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.model.worker.TopicWorker;
 import com.rayman.v2ex.presenter.BasePresenter;

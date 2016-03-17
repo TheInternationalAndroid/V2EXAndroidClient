@@ -29,7 +29,7 @@ import com.rayman.v2ex.di.component.app.AppComp;
 import com.rayman.v2ex.di.component.app.DaggerAppComp;
 import com.rayman.v2ex.di.modules.AppModule;
 import com.rayman.v2ex.eventbus.RxBus;
-import com.rayman.v2ex.http.event.ErrorEvent;
+import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.utils.LogUtil;
 import com.rayman.v2ex.utils.StringUtil;
 import com.rayman.v2ex.utils.ToastUtil;

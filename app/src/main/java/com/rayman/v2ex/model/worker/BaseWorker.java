@@ -27,7 +27,7 @@ import android.support.annotation.Nullable;
 
 import com.rayman.v2ex.eventbus.RxBus;
 import com.rayman.v2ex.eventbus.event.BaseEvent;
-import com.rayman.v2ex.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.ReqCallback;
 import com.rayman.v2ex.presenter.IPage;
 
 import retrofit.Response;

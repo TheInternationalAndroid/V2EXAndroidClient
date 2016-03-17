@@ -20,7 +20,7 @@
  *
  */
 
-package com.rayman.v2ex.http.okhttp.convertor;
+package com.rayman.v2ex.model.http.okhttp.convertor;
 
 import com.alibaba.fastjson.JSON;
 import com.rayman.v2ex.utils.LogUtil;

@@ -23,8 +23,8 @@
 package com.rayman.v2ex.di.modules.base;
 
 import com.rayman.v2ex.di.scope.PerApplication;
-import com.rayman.v2ex.http.Host;
-import com.rayman.v2ex.http.okhttp.convertor.FastJsonConvertFactory;
+import com.rayman.v2ex.model.http.Host;
+import com.rayman.v2ex.model.http.okhttp.convertor.FastJsonConvertFactory;
 import com.squareup.okhttp.OkHttpClient;
 
 import dagger.Module;

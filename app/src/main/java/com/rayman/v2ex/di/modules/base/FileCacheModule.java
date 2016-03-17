@@ -25,9 +25,9 @@ package com.rayman.v2ex.di.modules.base;
 import android.content.Context;
 
 import com.rayman.v2ex.anotations.ContextType;
-import com.rayman.v2ex.cache.FileControl;
-import com.rayman.v2ex.cache.IFileControl;
 import com.rayman.v2ex.di.scope.PerApplication;
+import com.rayman.v2ex.model.cache.FileControl;
+import com.rayman.v2ex.model.cache.IFileControl;
 
 import javax.inject.Named;
 
@@ -43,7 +43,9 @@ import dagger.Provides;
 @Module
 public class FileCacheModule {
 
-    @Provides @PerApplication IFileControl provideFileCache(@Named(ContextType.APPLICATION) Context context) {
+    @Provides
+    @PerApplication
+    IFileControl provideFileCache(@Named(ContextType.APPLICATION) Context context) {
         return new FileControl(context);
     }
 

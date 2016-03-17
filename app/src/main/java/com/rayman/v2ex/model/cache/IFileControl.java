@@ -20,7 +20,7 @@
  *
  */
 
-package com.rayman.v2ex.cache;
+package com.rayman.v2ex.model.cache;
 
 public interface IFileControl {
 

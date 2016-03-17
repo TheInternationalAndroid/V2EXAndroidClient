@@ -24,8 +24,8 @@ package com.rayman.v2ex.di.modules.base;
 
 import android.text.TextUtils;
 
-import com.rayman.v2ex.cache.IFileControl;
 import com.rayman.v2ex.di.scope.PerApplication;
+import com.rayman.v2ex.model.cache.IFileControl;
 import com.rayman.v2ex.utils.LogUtil;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.ConnectionPool;

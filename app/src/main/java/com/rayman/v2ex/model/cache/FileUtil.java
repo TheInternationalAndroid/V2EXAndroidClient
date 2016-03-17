@@ -20,7 +20,7 @@
  *
  */
 
-package com.rayman.v2ex.cache;
+package com.rayman.v2ex.model.cache;
 
 import com.rayman.v2ex.utils.LogUtil;
 

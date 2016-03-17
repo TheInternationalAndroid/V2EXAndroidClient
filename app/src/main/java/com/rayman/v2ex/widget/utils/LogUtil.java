@@ -45,7 +45,7 @@ public class LogUtil {
 
     public static String sLogTag = "Rayman";
 
-    private static boolean DEBUG = true;
+    private static boolean DEBUG = false;
 
     public static void setDebug(boolean debug) {
         DEBUG = debug;

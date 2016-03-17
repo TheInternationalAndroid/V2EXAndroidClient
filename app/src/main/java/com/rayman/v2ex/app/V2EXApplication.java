@@ -24,9 +24,11 @@ package com.rayman.v2ex.app;
 
 import android.app.Application;
 
+import com.frogermcs.androiddevmetrics.AndroidDevMetrics;
+import com.rayman.v2ex.BuildConfig;
 import com.rayman.v2ex.di.IBuildComp;
-import com.rayman.v2ex.viewmodel.AppModule;
 import com.rayman.v2ex.model.http.event.ErrorEvent;
+import com.rayman.v2ex.viewmodel.AppModule;
 import com.rayman.v2ex.widget.eventbus.RxBus;
 import com.rayman.v2ex.widget.utils.LogUtil;
 import com.rayman.v2ex.widget.utils.StringUtil;
@@ -62,7 +64,10 @@ public class V2EXApplication extends Application implements IBuildComp, Action1<
     public void onCreate() {
         super.onCreate();
 
-        LogUtil.setDebug(true);
+        if (BuildConfig.DEBUG) {
+            LogUtil.setDebug(true);
+            AndroidDevMetrics.initWith(this);
+        }
 
         buildComp();
 
@@ -78,7 +83,6 @@ public class V2EXApplication extends Application implements IBuildComp, Action1<
     @Override
     public void call(ErrorEvent errorEvent) {
         if (errorEvent != null && !StringUtil.isEmpty(errorEvent.getMessage())) {
-            LogUtil.e(" V2EXApplication catch event : " + errorEvent.getMessage());
             ToastUtil.show(this, errorEvent.getMessage());
         }
     }

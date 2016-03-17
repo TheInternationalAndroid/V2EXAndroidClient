@@ -26,7 +26,7 @@ import com.rayman.v2ex.di.component.view.base.ActivityComp;
 import com.rayman.v2ex.di.modules.vm.account.AccountVMModule;
 import com.rayman.v2ex.di.scope.PerActivity;
 import com.rayman.v2ex.ui.view.account.AccountActivity;
-import com.rayman.v2ex.vm.account.AccountVM;
+import com.rayman.v2ex.viewmodel.account.AccountVM;
 
 import dagger.Component;
 

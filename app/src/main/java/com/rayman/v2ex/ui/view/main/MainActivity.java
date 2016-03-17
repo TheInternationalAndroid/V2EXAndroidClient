@@ -30,7 +30,7 @@ import com.rayman.v2ex.databinding.ActivityMainBinding;
 import com.rayman.v2ex.di.component.view.main.DaggerMainComp;
 import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.ui.view.base.BaseDIActivity;
-import com.rayman.v2ex.vm.main.MainActivityVM;
+import com.rayman.v2ex.viewmodel.main.MainActivityVM;
 
 import javax.inject.Inject;
 

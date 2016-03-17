@@ -28,11 +28,11 @@ import com.rayman.v2ex.di.IInject;
 import com.rayman.v2ex.di.component.app.AppComp;
 import com.rayman.v2ex.di.component.app.DaggerAppComp;
 import com.rayman.v2ex.di.modules.AppModule;
-import com.rayman.v2ex.eventbus.RxBus;
 import com.rayman.v2ex.model.http.event.ErrorEvent;
-import com.rayman.v2ex.utils.LogUtil;
-import com.rayman.v2ex.utils.StringUtil;
-import com.rayman.v2ex.utils.ToastUtil;
+import com.rayman.v2ex.widget.eventbus.RxBus;
+import com.rayman.v2ex.widget.utils.LogUtil;
+import com.rayman.v2ex.widget.utils.StringUtil;
+import com.rayman.v2ex.widget.utils.ToastUtil;
 
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;

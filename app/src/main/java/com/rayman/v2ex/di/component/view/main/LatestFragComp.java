@@ -27,7 +27,7 @@ import com.rayman.v2ex.di.modules.vm.main.LatestFragVMModule;
 import com.rayman.v2ex.di.scope.PerBindingFragment;
 import com.rayman.v2ex.presenter.main.LatestFragP;
 import com.rayman.v2ex.ui.view.main.LatestFragment;
-import com.rayman.v2ex.vm.main.LatestFragVM;
+import com.rayman.v2ex.viewmodel.main.LatestFragVM;
 
 import dagger.Component;
 

@@ -40,7 +40,7 @@ import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.ui.view.account.AccountActivity;
 import com.rayman.v2ex.ui.view.base.BaseDIFragment;
-import com.rayman.v2ex.vm.main.LatestFragVM;
+import com.rayman.v2ex.viewmodel.main.LatestFragVM;
 
 import javax.inject.Inject;
 

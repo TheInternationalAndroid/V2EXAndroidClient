@@ -22,7 +22,8 @@
 
 package com.rayman.v2ex.model.cache;
 
-import com.rayman.v2ex.utils.LogUtil;
+
+import com.rayman.v2ex.widget.utils.LogUtil;
 
 import java.io.File;
 

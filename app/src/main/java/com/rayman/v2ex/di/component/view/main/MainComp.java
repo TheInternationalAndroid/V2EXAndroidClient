@@ -26,7 +26,7 @@ import com.rayman.v2ex.di.component.view.base.ActivityComp;
 import com.rayman.v2ex.di.modules.vm.main.MainActivityVMModule;
 import com.rayman.v2ex.di.scope.PerActivity;
 import com.rayman.v2ex.ui.view.main.MainActivity;
-import com.rayman.v2ex.vm.main.MainActivityVM;
+import com.rayman.v2ex.viewmodel.main.MainActivityVM;
 
 import dagger.Component;
 

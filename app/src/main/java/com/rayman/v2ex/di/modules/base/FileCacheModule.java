@@ -24,10 +24,10 @@ package com.rayman.v2ex.di.modules.base;
 
 import android.content.Context;
 
-import com.rayman.v2ex.anotations.ContextType;
 import com.rayman.v2ex.di.scope.PerApplication;
 import com.rayman.v2ex.model.cache.FileControl;
 import com.rayman.v2ex.model.cache.IFileControl;
+import com.rayman.v2ex.widget.anotations.ContextType;
 
 import javax.inject.Named;
 

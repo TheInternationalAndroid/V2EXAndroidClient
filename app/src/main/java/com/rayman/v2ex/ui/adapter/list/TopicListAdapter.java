@@ -29,7 +29,7 @@ import android.view.ViewGroup;
 import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.main.ITopicCellView;
-import com.rayman.v2ex.vm.topic.TopicCellVM;
+import com.rayman.v2ex.viewmodel.topic.TopicCellVM;
 
 /**
  * Created by Android Studio.

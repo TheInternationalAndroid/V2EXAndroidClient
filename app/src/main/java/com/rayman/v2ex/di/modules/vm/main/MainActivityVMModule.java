@@ -32,7 +32,7 @@ import com.rayman.v2ex.R;
 import com.rayman.v2ex.ui.adapter.pager.MainPagerAdapter;
 import com.rayman.v2ex.di.scope.PerActivity;
 import com.rayman.v2ex.presenter.main.MainActivityP;
-import com.rayman.v2ex.vm.main.MainActivityVM;
+import com.rayman.v2ex.viewmodel.main.MainActivityVM;
 
 import dagger.Module;
 import dagger.Provides;

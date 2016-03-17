@@ -26,12 +26,12 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.rayman.v2ex.anotations.ContextType;
 import com.rayman.v2ex.app.V2EXApplication;
 import com.rayman.v2ex.di.modules.AppModule;
 import com.rayman.v2ex.di.scope.PerApplication;
 import com.rayman.v2ex.model.cache.IFileControl;
 import com.rayman.v2ex.model.http.service.TopicService;
+import com.rayman.v2ex.widget.anotations.ContextType;
 import com.squareup.leakcanary.RefWatcher;
 
 import javax.inject.Named;

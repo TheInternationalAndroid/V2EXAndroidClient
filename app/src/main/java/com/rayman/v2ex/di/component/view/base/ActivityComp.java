@@ -26,11 +26,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
-import com.rayman.v2ex.anotations.ContextType;
 import com.rayman.v2ex.di.component.app.AppComp;
 import com.rayman.v2ex.di.modules.ActivityModule;
 import com.rayman.v2ex.di.scope.PerBaseActivity;
 import com.rayman.v2ex.ui.view.base.BaseActivity;
+import com.rayman.v2ex.widget.anotations.ContextType;
 
 import javax.inject.Named;
 

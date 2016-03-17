@@ -27,8 +27,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.rayman.v2ex.anotations.ContextType;
-import com.rayman.v2ex.anotations.ListType;
+import com.rayman.v2ex.widget.anotations.ContextType;
+import com.rayman.v2ex.widget.anotations.ListType;
 
 import javax.inject.Named;
 

@@ -22,7 +22,7 @@
 
 package com.rayman.v2ex.presenter;
 
-import com.rayman.v2ex.eventbus.event.BaseEvent;
+import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
 import com.rayman.v2ex.model.worker.BaseWorker;
 import com.squareup.leakcanary.RefWatcher;
 

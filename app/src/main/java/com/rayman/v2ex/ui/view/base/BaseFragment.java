@@ -28,8 +28,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.rayman.v2ex.R;
-import com.rayman.v2ex.anotations.ActivityAction;
-import com.rayman.v2ex.utils.ToastUtil;
+import com.rayman.v2ex.widget.anotations.ActivityAction;
+import com.rayman.v2ex.widget.utils.ToastUtil;
 
 /**
  * Created by Android Studio.
@@ -52,11 +52,13 @@ public class BaseFragment extends Fragment implements IPageControl, IRedirect {
 
     private ProgressDialog progressDialog;
 
-    @Override public void showToast(int stringRes) {
+    @Override
+    public void showToast(int stringRes) {
         ToastUtil.show(getActivity(), getString(stringRes));
     }
 
-    @Override public void showToast(String string) {
+    @Override
+    public void showToast(String string) {
         ToastUtil.show(getActivity(), string);
     }
 
@@ -85,42 +87,50 @@ public class BaseFragment extends Fragment implements IPageControl, IRedirect {
             progressDialog.dismiss();
     }
 
-    @Override public void intent(Class aClass) {
+    @Override
+    public void intent(Class aClass) {
         intent(aClass, null);
     }
 
-    @Override public void intentForResult(Class aClass, int requestCode) {
+    @Override
+    public void intentForResult(Class aClass, int requestCode) {
         intentForResult(aClass, requestCode, null);
     }
 
-    @Override public void intent(Class aClass, Bundle bundle) {
+    @Override
+    public void intent(Class aClass, Bundle bundle) {
         Intent intent = new Intent(getActivity(), aClass);
         if (bundle != null)
             intent.putExtras(bundle);
         startActivity(intent);
     }
 
-    @Override public void intent(Intent intent) {
+    @Override
+    public void intent(Intent intent) {
         startActivity(intent);
     }
 
-    @Override public void intent(Intent intent, Class<?> aClass) {
+    @Override
+    public void intent(Intent intent, Class<?> aClass) {
         intent.setClass(getActivity(), aClass);
         startActivity(intent);
     }
 
-    @Override public void intentForResult(Class aClass, int requestCode, Bundle bundle) {
+    @Override
+    public void intentForResult(Class aClass, int requestCode, Bundle bundle) {
         Intent intent = new Intent(getActivity(), aClass);
         if (bundle != null)
             intent.putExtras(bundle);
         startActivityForResult(intent, requestCode);
     }
 
-    @Override public void intentFinish() {
+    @Override
+    public void intentFinish() {
         getActivity().finish();
     }
 
-    @Override public void intentFinish(Bundle bundle, @ActivityAction int action) {
+    @Override
+    public void intentFinish(Bundle bundle, @ActivityAction int action) {
         Intent intent = new Intent();
         intent.putExtras(bundle);
         getActivity().setResult(action, intent);

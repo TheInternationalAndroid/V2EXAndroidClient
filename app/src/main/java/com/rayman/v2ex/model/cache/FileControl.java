@@ -31,9 +31,8 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 
-import com.rayman.v2ex.tools.LAsyncTask;
-import com.rayman.v2ex.utils.DateUtil;
-import com.rayman.v2ex.utils.LogUtil;
+import com.rayman.v2ex.widget.utils.DateUtil;
+import com.rayman.v2ex.widget.utils.LogUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -86,7 +85,8 @@ public class FileControl implements IFileControl {
             mListenerHashMap.remove(key);
     }
 
-    @Inject public FileControl(Context context) {
+    @Inject
+    public FileControl(Context context) {
         install(context);
         cacheCheck();
     }
@@ -299,40 +299,6 @@ public class FileControl implements IFileControl {
                 }
             }
         }
-    }
-
-    public <T> void sysPut(final String key, final T value) {
-        new LAsyncTask<Void, Void, Void>() {
-            @Override protected void onPostExecute(Void aVoid) {
-
-            }
-
-            @Override protected Void doInBackground(Void... params) {
-                try {
-                    put(key, value);
-                } catch (Exception e) {
-                    LogUtil.e("getLocalCurrencyCountryList UnknownException" + e.getMessage());
-                }
-                return null;
-            }
-        }.executeParallel();
-    }
-
-    public <T> void sysGet(final String key, final OnFileLoaded<T> onFileLoaded) {
-        new LAsyncTask<Void, Void, T>() {
-            @Override protected void onPostExecute(T t) {
-                onFileLoaded.onLoaded(t);
-            }
-
-            @Override protected T doInBackground(Void... params) {
-                try {
-                    return FileControl.this.get(key);
-                } catch (Exception e) {
-                    LogUtil.e("getLocalCurrencyCountryList UnknownException" + e.getMessage());
-                }
-                return null;
-            }
-        }.executeParallel();
     }
 
     @Override

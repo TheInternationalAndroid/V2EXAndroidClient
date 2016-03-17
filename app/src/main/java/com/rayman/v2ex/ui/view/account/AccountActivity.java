@@ -34,7 +34,7 @@ import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.ui.view.base.BaseDIActivity;
-import com.rayman.v2ex.vm.account.AccountVM;
+import com.rayman.v2ex.viewmodel.account.AccountVM;
 
 import javax.inject.Inject;
 

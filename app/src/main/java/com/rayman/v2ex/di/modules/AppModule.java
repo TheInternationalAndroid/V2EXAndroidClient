@@ -25,12 +25,12 @@ package com.rayman.v2ex.di.modules;
 import android.app.Application;
 import android.content.Context;
 
-import com.rayman.v2ex.anotations.ContextType;
 import com.rayman.v2ex.di.modules.base.FileCacheModule;
 import com.rayman.v2ex.di.modules.base.OkHttpModule;
 import com.rayman.v2ex.di.modules.base.RetrofitModule;
 import com.rayman.v2ex.di.modules.base.SPModule;
 import com.rayman.v2ex.di.scope.PerApplication;
+import com.rayman.v2ex.widget.anotations.ContextType;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 

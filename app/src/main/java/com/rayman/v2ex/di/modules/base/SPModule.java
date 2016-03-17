@@ -27,8 +27,8 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 
-import com.rayman.v2ex.anotations.ContextType;
 import com.rayman.v2ex.di.scope.PerApplication;
+import com.rayman.v2ex.widget.anotations.ContextType;
 
 import javax.inject.Named;
 

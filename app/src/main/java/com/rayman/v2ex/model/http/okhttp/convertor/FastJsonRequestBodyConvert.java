@@ -23,7 +23,7 @@
 package com.rayman.v2ex.model.http.okhttp.convertor;
 
 import com.alibaba.fastjson.JSON;
-import com.rayman.v2ex.utils.LogUtil;
+import com.rayman.v2ex.widget.utils.LogUtil;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.RequestBody;
 

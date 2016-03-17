@@ -22,7 +22,7 @@
 
 package com.rayman.v2ex.model.http.event;
 
-import com.rayman.v2ex.eventbus.event.BaseEvent;
+import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
 
 /**
  * Created by Android Studio.

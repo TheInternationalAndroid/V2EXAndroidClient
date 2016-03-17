@@ -30,8 +30,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.rayman.v2ex.R;
-import com.rayman.v2ex.anotations.ActivityAction;
-import com.rayman.v2ex.utils.ToastUtil;
+import com.rayman.v2ex.widget.anotations.ActivityAction;
+import com.rayman.v2ex.widget.utils.ToastUtil;
 
 /**
  * Created by Android Studio.

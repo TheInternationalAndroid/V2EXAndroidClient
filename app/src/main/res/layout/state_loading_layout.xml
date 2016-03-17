@@ -3,9 +3,9 @@
 
     <data>
 
-        <import type="com.rayman.v2ex.anotations.PageState" />
+        <import type="com.rayman.v2ex.widget.anotations.PageState" />
 
-        <import type="com.rayman.v2ex.vm.BaseStateVM" />
+        <import type="com.rayman.v2ex.viewmodel.BaseStateVM" />
 
         <import type="android.view.View" />
 

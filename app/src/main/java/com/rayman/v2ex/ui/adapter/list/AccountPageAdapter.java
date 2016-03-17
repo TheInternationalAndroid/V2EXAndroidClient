@@ -32,8 +32,8 @@ import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.databinding.ListHeaderUserDetailBinding;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.vm.account.AccountHeaderCellVM;
-import com.rayman.v2ex.vm.topic.TopicCellVM;
+import com.rayman.v2ex.viewmodel.account.AccountHeaderCellVM;
+import com.rayman.v2ex.viewmodel.topic.TopicCellVM;
 
 import java.util.List;
 

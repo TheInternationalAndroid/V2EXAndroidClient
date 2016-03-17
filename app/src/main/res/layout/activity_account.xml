@@ -23,7 +23,7 @@
 
     <data>
 
-        <import type="com.rayman.v2ex.vm.account.AccountVM" />
+        <import type="com.rayman.v2ex.viewmodel.account.AccountVM" />
 
         <variable
             name="viewModel"

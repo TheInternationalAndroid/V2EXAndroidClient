@@ -27,8 +27,8 @@ import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.rayman.v2ex.anotations.ContextType;
 import com.rayman.v2ex.di.scope.PerBaseActivity;
+import com.rayman.v2ex.widget.anotations.ContextType;
 
 import javax.inject.Named;
 

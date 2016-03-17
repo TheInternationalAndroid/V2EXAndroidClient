@@ -25,10 +25,10 @@ package com.rayman.v2ex.model.worker;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.rayman.v2ex.eventbus.RxBus;
-import com.rayman.v2ex.eventbus.event.BaseEvent;
 import com.rayman.v2ex.model.http.callback.ReqCallback;
 import com.rayman.v2ex.presenter.IPage;
+import com.rayman.v2ex.widget.eventbus.RxBus;
+import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
 
 import retrofit.Response;
 import rx.Observable;

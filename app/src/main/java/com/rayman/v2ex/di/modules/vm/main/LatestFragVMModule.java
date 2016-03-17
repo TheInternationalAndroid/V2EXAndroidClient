@@ -24,12 +24,12 @@ package com.rayman.v2ex.di.modules.vm.main;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.rayman.v2ex.anotations.ListType;
 import com.rayman.v2ex.di.modules.base.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerBindingFragment;
 import com.rayman.v2ex.presenter.main.LatestFragP;
 import com.rayman.v2ex.ui.view.main.ILatestFragView;
-import com.rayman.v2ex.vm.main.LatestFragVM;
+import com.rayman.v2ex.viewmodel.main.LatestFragVM;
+import com.rayman.v2ex.widget.anotations.ListType;
 
 import javax.inject.Named;
 

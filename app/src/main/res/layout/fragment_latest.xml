@@ -24,11 +24,11 @@
 
     <data>
 
-        <import type="com.rayman.v2ex.vm.main.LatestFragVM" />
+        <import type="com.rayman.v2ex.viewmodel.main.LatestFragVM" />
 
         <import type="android.view.View" />
 
-        <import type="com.rayman.v2ex.anotations.PageState" />
+        <import type="com.rayman.v2ex.widget.anotations.PageState" />
 
         <variable
             name="viewModel"

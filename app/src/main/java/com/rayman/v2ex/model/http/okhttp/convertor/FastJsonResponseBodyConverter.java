@@ -24,14 +24,13 @@ package com.rayman.v2ex.model.http.okhttp.convertor;
 
 import com.alibaba.fastjson.JSON;
 import com.rayman.v2ex.model.http.okhttp.RequestContentType;
-import com.rayman.v2ex.widget.utils.LogUtil;
 import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.nio.charset.Charset;
 
 import retrofit.Converter;
+import timber.log.Timber;
 
 /**
  * Created by Android Studio.
@@ -53,8 +52,6 @@ import retrofit.Converter;
 
 public class FastJsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
 
-    private static final Charset UTF_8 = Charset.forName("UTF-8");
-
     private Type type;
 
     public FastJsonResponseBodyConverter(Type type) {
@@ -65,10 +62,10 @@ public class FastJsonResponseBodyConverter<T> implements Converter<ResponseBody,
     public T convert(ResponseBody value) throws IOException {
         try {
             String jsonString = new String(value.bytes(), RequestContentType.CHARSET);
-            LogUtil.i("Request: Parse Response Json :\n" + jsonString);
+            Timber.i("Request: Parse Response Json : %s %n", jsonString);
             return JSON.parseObject(jsonString, type);
         } catch (Exception e) {
-            LogUtil.e("Request: Parse Json Error :" + e.getMessage());
+            Timber.e("Request: Parse Json Error : %s", e.getMessage());
         }
         return null;
     }

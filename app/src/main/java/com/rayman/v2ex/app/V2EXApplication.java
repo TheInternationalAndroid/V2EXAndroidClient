@@ -30,13 +30,13 @@ import com.rayman.v2ex.di.IBuildComp;
 import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.viewmodel.AppModule;
 import com.rayman.v2ex.widget.eventbus.RxBus;
-import com.rayman.v2ex.widget.utils.LogUtil;
 import com.rayman.v2ex.widget.utils.StringUtil;
 import com.rayman.v2ex.widget.utils.ToastUtil;
 
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import timber.log.Timber;
 
 /**
  * Created by Android Studio.
@@ -65,8 +65,8 @@ public class V2EXApplication extends Application implements IBuildComp, Action1<
         super.onCreate();
 
         if (BuildConfig.DEBUG) {
-            LogUtil.setDebug(true);
             AndroidDevMetrics.initWith(this);
+            Timber.plant(new Timber.DebugTree());
         }
 
         buildComp();

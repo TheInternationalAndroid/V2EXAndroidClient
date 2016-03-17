@@ -29,10 +29,8 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 
 import com.rayman.v2ex.widget.utils.DateUtil;
-import com.rayman.v2ex.widget.utils.LogUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -42,12 +40,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
-import java.nio.channels.FileChannel;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import timber.log.Timber;
 
 public class FileControl implements IFileControl {
 
@@ -73,16 +72,16 @@ public class FileControl implements IFileControl {
     public String sFileCacheRootPath;
     public String sDownLoadFileRootPath;
 
-    private LinkedList<String> mFileLRU = new LinkedList<String>();
-    private HashMap<String, OnFileChangedListener> mListenerHashMap = new HashMap<>();
+    private LinkedList<String> fileLRU = new LinkedList<>();
+    private HashMap<String, OnFileChangedListener> listenerHashMap = new HashMap<>();
 
     public void addCallBack(String key, OnFileChangedListener onFileChangedListener) {
-        mListenerHashMap.put(key, onFileChangedListener);
+        listenerHashMap.put(key, onFileChangedListener);
     }
 
     public void removeCallBack(String key) {
-        if (mListenerHashMap.containsKey(key))
-            mListenerHashMap.remove(key);
+        if (listenerHashMap.containsKey(key))
+            listenerHashMap.remove(key);
     }
 
     @Inject
@@ -163,7 +162,7 @@ public class FileControl implements IFileControl {
             tmpFile = new File(files[i].getAbsolutePath());
             FileUtil.delete(tmpFile);
             synchronized (LRU_LOCK) {
-                mFileLRU.remove(tmpFile.getAbsolutePath());
+                fileLRU.remove(tmpFile.getAbsolutePath());
             }
         }
         put(FILE_CACHE_VERSION_CODE_KEY, FILE_CACHE_VERSION_CODE);
@@ -177,7 +176,7 @@ public class FileControl implements IFileControl {
     public void clearFileCache() {
         FileUtil.deleteChild(sFileCacheRootPath);
         synchronized (LRU_LOCK) {
-            mFileLRU.clear();
+            fileLRU.clear();
         }
     }
 
@@ -187,7 +186,7 @@ public class FileControl implements IFileControl {
 
     @Override
     public <T> T get(String key) {
-        LogUtil.i(LOG_TAG, "Get  " + key);
+        Timber.i("Get%s", key);
         File file = getCacheFile(key);
         if (file.exists()) {
             FileInputStream stream = null;
@@ -200,31 +199,31 @@ public class FileControl implements IFileControl {
 
                 // Update position within LRU.
                 String filePath = file.getAbsolutePath();
-                synchronized (mFileLRU) {
-                    mFileLRU.remove(filePath);
-                    mFileLRU.addLast(filePath);
+                synchronized (fileLRU) {
+                    fileLRU.remove(filePath);
+                    fileLRU.addLast(filePath);
                 }
 
                 return value;
             } catch (FileNotFoundException ex) {
                 // Will not happen.
-                LogUtil.e(LOG_TAG, "File " + key + " not found");
+                Timber.e("File %s %s", key, " not found");
             } catch (StreamCorruptedException ex) {
                 remove(key);
-                LogUtil.e(LOG_TAG, "Get File " + key + " cast StreamCorruptedException  ");
+                Timber.e("Get File %s %s", key, " cast StreamCorruptedException  ");
             } catch (IOException ex) {
                 remove(key);
-                LogUtil.e(LOG_TAG, "Get File " + key + " cast IOException  " + ex.getMessage());
+                Timber.e("Get File  %s %s %s", key, " cast IOException  ", ex.getMessage());
             } catch (ClassNotFoundException ex) {
                 // Will not happen.
-                LogUtil.e(LOG_TAG, "Get File " + key + " cast ClassNotFoundException  ");
+                Timber.e("Get File  %s %s", key, " cast ClassNotFoundException  ");
             } finally {
                 if (objectStream != null) {
                     try {
                         objectStream.close();
                     } catch (IOException ex) {
                         // Do nothing.
-                        LogUtil.e(LOG_TAG, "Get File " + key + " cast IOException");
+                        Timber.e("Get File %s %s", key, " cast IOException");
                     }
                 }
                 if (stream != null) {
@@ -232,7 +231,7 @@ public class FileControl implements IFileControl {
                         stream.close();
                     } catch (IOException ex) {
                         // Do nothing.
-                        LogUtil.e(LOG_TAG, "Get File " + key + " cast IOException");
+                        Timber.e("Get File %s %s", key, " cast IOException");
                     }
                 }
             }
@@ -250,21 +249,15 @@ public class FileControl implements IFileControl {
         }
     }
 
-    public synchronized <T> void putHistory(String key, T value, String newHistory) {
-        put(key, value);
-        if (mListenerHashMap.containsKey(key))
-            mListenerHashMap.get(key).onChanged(newHistory);
-    }
-
     @Override
     public synchronized <T> void put(String key, T value) {
-        LogUtil.i(LOG_TAG, "Put  " + key);
+        Timber.i("Put  %s", key);
         File file = getCacheFile(key);
         boolean fileExists = true;
         try {
             fileExists = !file.createNewFile();
         } catch (IOException ex) {
-            Log.e(LOG_TAG, ex.getMessage());
+            Timber.e(ex.getMessage());
             // Will not happen.
         }
 
@@ -276,11 +269,11 @@ public class FileControl implements IFileControl {
             objectStream.writeObject(value);
 
             if (!fileExists) {
-                mFileLRU.addLast(file.getAbsolutePath());
+                fileLRU.addLast(file.getAbsolutePath());
             }
         } catch (Exception ex) {
             if (ex.getMessage() != null) {
-                Log.e(LOG_TAG, ex.getMessage());
+                Timber.e(ex.getMessage());
             }
             // In case this happens, just ignore it.
         } finally {
@@ -288,14 +281,14 @@ public class FileControl implements IFileControl {
                 try {
                     objectStream.close();
                 } catch (IOException ex) {
-                    LogUtil.e(LOG_TAG, "Put File " + key + " cast IOException  " + ex.getMessage());
+                    Timber.e("Put File %s %s %s", key, " cast IOException  ", ex.getMessage());
                 }
             }
             if (stream != null) {
                 try {
                     stream.close();
                 } catch (IOException ex) {
-                    LogUtil.e(LOG_TAG, "Put File " + key + " cast IOException  " + ex.getMessage());
+                    Timber.e("Put File %s %s %s ", key, " cast IOException  ", ex.getMessage());
                 }
             }
         }
@@ -311,7 +304,7 @@ public class FileControl implements IFileControl {
             file.deleteOnExit();
         }
         synchronized (LRU_LOCK) {
-            mFileLRU.remove(file.getAbsolutePath());
+            fileLRU.remove(file.getAbsolutePath());
         }
         if (exists(key)) {
             return REMOVE_CACHE_FAILURE;
@@ -351,7 +344,7 @@ public class FileControl implements IFileControl {
     public String getValidFloderPath(String florderPath) {
         File file = new File(florderPath);
         if (!file.exists() && !file.mkdirs()) {
-            LogUtil.e(LOG_TAG, "Create floder falure.Key = " + florderPath);
+            Timber.e("Create floder falure.Key = %s", florderPath);
         }
         return florderPath;
     }
@@ -390,13 +383,13 @@ public class FileControl implements IFileControl {
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    LogUtil.e(LOG_TAG, "Save Image cast Exception : " + e.getMessage());
+                    Timber.e("Save Image cast Exception : %s", e.getMessage());
                 } finally {
                     try {
                         if (out != null)
                             out.close();
                     } catch (IOException e) {
-                        LogUtil.e(LOG_TAG, "Save Image cast IOException : " + e.getMessage());
+                        Timber.e("Save Image cast IOException : %s", e.getMessage());
                     }
                 }
             }
@@ -419,46 +412,6 @@ public class FileControl implements IFileControl {
         final Intent intent = new Intent(action);
         List<ResolveInfo> list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
         return list.size() > 0;
-    }
-
-    private static class CacheOutputStream extends FileOutputStream {
-        private int length;
-
-        private FileChannel channel;
-
-        public CacheOutputStream(File file, int length) throws FileNotFoundException {
-            super(file);
-            this.length = length;
-            this.channel = getChannel();
-        }
-
-        @Override
-        public void write(byte[] buffer) throws IOException {
-            super.write(buffer);
-            if (channel.size() >= length) {
-                close();
-            }
-        }
-
-        @Override
-        public void write(byte[] buffer, int offset, int count) throws IOException {
-            super.write(buffer, offset, count);
-            if (channel.size() >= length) {
-                close();
-            }
-        }
-
-        @Override
-        public void write(int oneByte) throws IOException {
-            super.write(oneByte);
-            if (channel.size() >= length) {
-                close();
-            }
-        }
-    }
-
-    public interface OnFileLoaded<T> {
-        void onLoaded(T result);
     }
 
 }

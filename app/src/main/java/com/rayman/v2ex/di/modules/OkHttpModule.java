@@ -26,7 +26,6 @@ import android.text.TextUtils;
 
 import com.rayman.v2ex.di.scope.PerApplication;
 import com.rayman.v2ex.model.cache.IFileControl;
-import com.rayman.v2ex.widget.utils.LogUtil;
 import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.ConnectionPool;
 import com.squareup.okhttp.Interceptor;
@@ -40,6 +39,7 @@ import java.util.concurrent.TimeUnit;
 
 import dagger.Module;
 import dagger.Provides;
+import timber.log.Timber;
 
 /**
  * Created by Android Studio.
@@ -92,30 +92,22 @@ public class OkHttpModule {
                 request = builder
                         .addHeader("User-Agent", System.getProperty("http.agent"))
                         .build();
-                LogUtil.i(String.format("Sending request %s on Connecttion: %s %n Headers: %s ",
+                Timber.i("Sending request %s on Connecttion: %s %n Headers: %s ",
                         request.httpUrl(),
                         chain.connection(),
-                        request.headers()));
+                        request.headers());
 
                 Response response = chain.proceed(request);
 
                 long t2 = System.nanoTime();
-                LogUtil.i(
-                        String.format(
-                                "Received response for " +
-                                        "%s in %.1fms %n" +
-                                        "Response Status Code: %s %n" +
-                                        "Response Headers: %s %n" +
-                                        "Response CacheControl:%s %n" +
-                                        "Response Body :%s %n" +
-                                        "Is From Cached Response: %s %n",
-                                request.httpUrl(),
-                                (t2 - t1) / 1e6d,
-                                response.code(),
-                                response.headers(),
-                                response.cacheControl(),
-                                response,
-                                response.cacheResponse() == response.networkResponse()));
+                Timber.i("Received response for %s in %.1fms %n Response Status Code: %s %n Response Headers: %s %nResponse CacheControl:%s %n Response Body :%s %n Is From Cached Response: %s %n",
+                        request.httpUrl(),
+                        (t2 - t1) / 1e6d,
+                        response.code(),
+                        response.headers(),
+                        response.cacheControl(),
+                        response,
+                        response.cacheResponse() == response.networkResponse());
                 return response;
             }
         });

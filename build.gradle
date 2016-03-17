@@ -58,6 +58,7 @@ ext.depMap = [
         RxBindingDesign      : 'com.jakewharton.rxbinding:rxbinding-design:0.4.0',
         RxBindingRecyclerView: 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.4.0',
         RxLeanBack           : 'com.jakewharton.rxbinding:rxbinding-leanback-v17:0.4.0',
+        Timber               : 'com.jakewharton.timber:timber:4.1.1',
 
         Dagger               : 'com.google.dagger:dagger:2.0.2',
         AnnotationJsr250     : 'javax.annotation:jsr250-api:1.0',

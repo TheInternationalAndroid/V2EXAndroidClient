@@ -23,7 +23,6 @@
 package com.rayman.v2ex.model.http.okhttp.convertor;
 
 import com.alibaba.fastjson.JSON;
-import com.rayman.v2ex.widget.utils.LogUtil;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.RequestBody;
 
@@ -31,6 +30,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 import retrofit.Converter;
+import timber.log.Timber;
 
 /**
  * Created by Android Studio.
@@ -58,7 +58,7 @@ public class FastJsonRequestBodyConvert<T> implements Converter<T, RequestBody> 
     @Override
     public RequestBody convert(T value) throws IOException {
         String postBody = JSON.toJSONString(value);
-        LogUtil.i("Http: Post Json Body " + postBody);
+        Timber.i("Http: Post Json Body %s", postBody);
         return RequestBody.create(MEDIA_TYPE, postBody.getBytes(UTF_8));
     }
 }

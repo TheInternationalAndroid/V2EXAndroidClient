@@ -70,6 +70,7 @@ dependencies {
     compile depMap.RxBindingDesign
     compile depMap.RxBindingRecyclerView
 //    compile depMap.RxLeanBack
+    compile depMap.Timber
 
     debugCompile depMap.LeakCanary
     releaseCompile depMap.LeakCanaryAndroidNoOp

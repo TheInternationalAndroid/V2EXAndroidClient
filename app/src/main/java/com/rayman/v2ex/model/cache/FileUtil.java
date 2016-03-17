@@ -23,13 +23,11 @@
 package com.rayman.v2ex.model.cache;
 
 
-import com.rayman.v2ex.widget.utils.LogUtil;
-
 import java.io.File;
 
-public class FileUtil {
+import timber.log.Timber;
 
-    private static final String TAG = "FileUtil";
+public class FileUtil {
 
     public static boolean delete(String fileName) {
         return delete(new File(fileName));
@@ -37,7 +35,7 @@ public class FileUtil {
 
     public static boolean delete(File file) {
         if (!file.exists()) {
-            LogUtil.i(TAG + "Delete " + file.getPath() + " Fail.");
+            Timber.i("Delete %s %s", file.getPath(), " Fail.");
             return false;
         } else {
             if (file.isFile()) {
@@ -54,11 +52,11 @@ public class FileUtil {
 
     public static boolean deleteChild(File file) {
         if (!file.exists()) {
-            LogUtil.i(TAG + "Delete Child " + file.getPath() + " Fail.");
+            Timber.i("Delete Child %s %s", file.getPath(), " Fail.");
             return false;
         } else {
             if (file.isFile()) {
-                LogUtil.i(TAG + "Delete Child in" + file.getPath() + " Fail," + file.getPath() + " is not a directory.");
+                Timber.i("Delete Child in %s %s %s %s", file.getPath(), " Fail,", file.getPath(), " is not a directory.");
                 return false;
             } else {
                 return deleteDirectory(file.getPath(), false);
@@ -74,7 +72,7 @@ public class FileUtil {
         if (file.isFile() && file.exists()) {
             return file.delete();
         } else {
-            LogUtil.i(TAG + "Delete " + file.getPath() + " Fail");
+            Timber.i("Delete %s %s", file.getPath(), " Fail");
             return false;
         }
     }
@@ -88,7 +86,7 @@ public class FileUtil {
 
     public static boolean deleteDirectory(File dirFile, boolean deleteSelf) {
         if (!dirFile.exists() || !dirFile.isDirectory()) {
-            LogUtil.i(TAG + "Derectory" + dirFile.getPath() + " not exist");
+            Timber.i("Derectory %s %s", dirFile.getPath(), " not exist");
             return false;
         }
         boolean flag = true;
@@ -108,14 +106,14 @@ public class FileUtil {
         }
 
         if (!flag) {
-            LogUtil.i(TAG + "Delete Derectory " + dirFile.getPath() + " Fail");
+            Timber.i("Delete Derectory %s %s", dirFile.getPath(), " Fail");
             return false;
         }
         if (deleteSelf) {
             if (dirFile.delete()) {
                 return true;
             } else {
-                LogUtil.i(TAG + "Delete Derectory " + dirFile.getPath() + " Fail");
+                Timber.i("Delete Derectory %s %s", dirFile.getPath(), " Fail");
                 return false;
             }
         }

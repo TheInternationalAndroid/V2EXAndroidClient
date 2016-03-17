@@ -28,13 +28,12 @@ import android.os.Bundle;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.ActivityAccountBinding;
-import com.rayman.v2ex.di.component.view.DaggerAccountComp;
-import com.rayman.v2ex.di.modules.vm.account.AccountVMModule;
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.ui.view.base.BaseDIActivity;
 import com.rayman.v2ex.viewmodel.account.AccountVM;
+import com.rayman.v2ex.viewmodel.account.AccountVMModule;
 
 import javax.inject.Inject;
 
@@ -60,7 +59,7 @@ public class AccountActivity extends BaseDIActivity {
     }
 
     @Override
-    public void onInject() {
+    public void buildComp() {
         DaggerAccountComp.builder()
                 .activityComp(getActivityComp())
                 .accountVMModule(new AccountVMModule())

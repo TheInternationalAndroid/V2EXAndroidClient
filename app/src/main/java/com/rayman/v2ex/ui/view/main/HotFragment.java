@@ -32,15 +32,16 @@ import android.view.ViewGroup;
 
 import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.FragmentHotBinding;
-import com.rayman.v2ex.di.component.view.main.DaggerHotFragComp;
-import com.rayman.v2ex.di.modules.vm.main.HotFragVMModule;
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.ui.view.account.AccountActivity;
 import com.rayman.v2ex.ui.view.base.BaseDIFragment;
+import com.rayman.v2ex.ui.view.main.comp.DaggerHotFragComp;
+import com.rayman.v2ex.ui.view.main.view.IHotFragView;
 import com.rayman.v2ex.viewmodel.main.HotFragVM;
+import com.rayman.v2ex.viewmodel.main.HotFragVMModule;
 
 import javax.inject.Inject;
 
@@ -55,7 +56,8 @@ public class HotFragment extends BaseDIFragment implements IHotFragView {
         return binding.getRoot();
     }
 
-    @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         viewModel.requestHotTopicList();
     }
@@ -66,7 +68,8 @@ public class HotFragment extends BaseDIFragment implements IHotFragView {
         getFragmentComp().refWatchwer().watch(viewModel);
     }
 
-    @Override public void onInject() {
+    @Override
+    public void buildComp() {
         DaggerHotFragComp.builder()
                 .fragmentComp(getFragmentComp())
                 .hotFragVMModule(new HotFragVMModule(this))
@@ -74,21 +77,25 @@ public class HotFragment extends BaseDIFragment implements IHotFragView {
                 .inject(this);
     }
 
-    @Override protected IPage getPageCallBack() {
+    @Override
+    protected IPage getPageCallBack() {
         return viewModel;
     }
 
-    @Override public void onUserClicked(MemberBaseEntity memberBaseEntity) {
+    @Override
+    public void onUserClicked(MemberBaseEntity memberBaseEntity) {
         Intent intent = new Intent(getActivity(), AccountActivity.class);
         intent.putExtra(ParaKeys.MEMBER_BASE_KEY, memberBaseEntity);
         intent(intent);
     }
 
-    @Override public void onTopicCliced(TopicEntity topicEntity) {
+    @Override
+    public void onTopicCliced(TopicEntity topicEntity) {
 
     }
 
-    @Override public void onNodeClicked(NodeEntity nodeEntity) {
+    @Override
+    public void onNodeClicked(NodeEntity nodeEntity) {
 
     }
 }

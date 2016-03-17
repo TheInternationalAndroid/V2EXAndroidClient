@@ -25,11 +25,11 @@ package com.rayman.v2ex.ui.view.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.rayman.v2ex.di.IInject;
-import com.rayman.v2ex.di.component.view.base.ActivityComp;
-import com.rayman.v2ex.di.component.view.base.DaggerFragmentComp;
-import com.rayman.v2ex.di.component.view.base.FragmentComp;
+import com.rayman.v2ex.di.IBuildComp;
 import com.rayman.v2ex.presenter.IPage;
+import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
+import com.rayman.v2ex.ui.view.base.comp.DaggerFragmentComp;
+import com.rayman.v2ex.ui.view.base.comp.FragmentComp;
 
 /**
  * Created by Android Studio.
@@ -48,13 +48,13 @@ import com.rayman.v2ex.presenter.IPage;
  * \               ||----w |
  * \               ||     ||
  */
-public abstract class BaseDIFragment extends BaseFragment implements IInject {
+public abstract class BaseDIFragment extends BaseFragment implements IBuildComp {
 
     private FragmentComp fragmentComp;
 
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        onInject();
+        buildComp();
     }
 
     @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {

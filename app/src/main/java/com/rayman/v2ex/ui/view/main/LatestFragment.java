@@ -32,15 +32,16 @@ import android.view.ViewGroup;
 
 import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.FragmentLatestBinding;
-import com.rayman.v2ex.di.component.view.main.DaggerLatestFragComp;
-import com.rayman.v2ex.di.modules.vm.main.LatestFragVMModule;
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.IPage;
 import com.rayman.v2ex.ui.view.account.AccountActivity;
 import com.rayman.v2ex.ui.view.base.BaseDIFragment;
+import com.rayman.v2ex.ui.view.main.comp.DaggerLatestFragComp;
+import com.rayman.v2ex.ui.view.main.view.ILatestFragView;
 import com.rayman.v2ex.viewmodel.main.LatestFragVM;
+import com.rayman.v2ex.viewmodel.main.LatestFragVMModule;
 
 import javax.inject.Inject;
 
@@ -62,7 +63,8 @@ public class LatestFragment extends BaseDIFragment implements ILatestFragView {
         getFragmentComp().refWatchwer().watch(viewModel);
     }
 
-    @Override public void onInject() {
+    @Override
+    public void buildComp() {
         DaggerLatestFragComp.builder()
                 .fragmentComp(getFragmentComp())
                 .latestFragVMModule(new LatestFragVMModule(this))
@@ -70,26 +72,31 @@ public class LatestFragment extends BaseDIFragment implements ILatestFragView {
                 .inject(this);
     }
 
-    @Override protected IPage getPageCallBack() {
+    @Override
+    protected IPage getPageCallBack() {
         return viewModel;
     }
 
-    @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         viewModel.requestLatestTopic();
     }
 
-    @Override public void onUserClicked(MemberBaseEntity memberBaseEntity) {
+    @Override
+    public void onUserClicked(MemberBaseEntity memberBaseEntity) {
         Intent intent = new Intent(getActivity(), AccountActivity.class);
         intent.putExtra(ParaKeys.MEMBER_BASE_KEY, memberBaseEntity);
         intent(intent);
     }
 
-    @Override public void onTopicCliced(TopicEntity topicEntity) {
+    @Override
+    public void onTopicCliced(TopicEntity topicEntity) {
 
     }
 
-    @Override public void onNodeClicked(NodeEntity nodeEntity) {
+    @Override
+    public void onNodeClicked(NodeEntity nodeEntity) {
 
     }
 }

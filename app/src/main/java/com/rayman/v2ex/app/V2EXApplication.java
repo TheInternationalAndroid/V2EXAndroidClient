@@ -24,10 +24,8 @@ package com.rayman.v2ex.app;
 
 import android.app.Application;
 
-import com.rayman.v2ex.di.IInject;
-import com.rayman.v2ex.di.component.app.AppComp;
-import com.rayman.v2ex.di.component.app.DaggerAppComp;
-import com.rayman.v2ex.di.modules.AppModule;
+import com.rayman.v2ex.di.IBuildComp;
+import com.rayman.v2ex.viewmodel.AppModule;
 import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.widget.eventbus.RxBus;
 import com.rayman.v2ex.widget.utils.LogUtil;
@@ -55,7 +53,7 @@ import rx.functions.Action1;
  * \               ||----w |
  * \               ||     ||
  */
-public class V2EXApplication extends Application implements IInject, Action1<ErrorEvent> {
+public class V2EXApplication extends Application implements IBuildComp, Action1<ErrorEvent> {
 
     private AppComp appComp;
     private Subscription subscription;
@@ -66,7 +64,7 @@ public class V2EXApplication extends Application implements IInject, Action1<Err
 
         LogUtil.setDebug(true);
 
-        onInject();
+        buildComp();
 
         if (subscription != null && !subscription.isUnsubscribed()) {
             subscription.unsubscribe();
@@ -86,7 +84,7 @@ public class V2EXApplication extends Application implements IInject, Action1<Err
     }
 
     @Override
-    public void onInject() {
+    public void buildComp() {
         appComp = DaggerAppComp
                 .builder()
                 .appModule(new AppModule(this))

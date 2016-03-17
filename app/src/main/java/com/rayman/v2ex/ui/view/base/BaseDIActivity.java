@@ -27,13 +27,13 @@ import android.databinding.ViewDataBinding;
 import android.support.v7.widget.Toolbar;
 
 import com.rayman.v2ex.R;
+import com.rayman.v2ex.app.AppComp;
 import com.rayman.v2ex.app.V2EXApplication;
-import com.rayman.v2ex.di.IInject;
-import com.rayman.v2ex.di.component.app.AppComp;
-import com.rayman.v2ex.di.component.view.base.ActivityComp;
-import com.rayman.v2ex.di.component.view.base.DaggerActivityComp;
-import com.rayman.v2ex.di.modules.ActivityModule;
+import com.rayman.v2ex.di.IBuildComp;
+import com.rayman.v2ex.viewmodel.ActivityModule;
 import com.rayman.v2ex.presenter.IPage;
+import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
+import com.rayman.v2ex.ui.view.base.comp.DaggerActivityComp;
 
 /**
  * Created by Android Studio.
@@ -52,7 +52,7 @@ import com.rayman.v2ex.presenter.IPage;
  * \               ||----w |
  * \               ||     ||
  */
-public abstract class BaseDIActivity extends BaseActivity implements IInject {
+public abstract class BaseDIActivity extends BaseActivity implements IBuildComp {
 
     private ActivityComp activityComp;
 
@@ -91,7 +91,7 @@ public abstract class BaseDIActivity extends BaseActivity implements IInject {
             if (getSupportActionBar() != null)
                 getSupportActionBar().setDisplayHomeAsUpEnabled(homeAsUp);
         }
-        onInject();
+        buildComp();
 
         IPage page = getPageCallback();
         if (page != null)

@@ -30,7 +30,7 @@ import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.main.HotFragP;
 import com.rayman.v2ex.ui.adapter.list.TopicListAdapter;
-import com.rayman.v2ex.ui.view.main.IHotFragView;
+import com.rayman.v2ex.ui.view.main.view.IHotFragView;
 import com.rayman.v2ex.viewmodel.BaseStateVM;
 import com.rayman.v2ex.widget.anotations.PageState;
 

@@ -20,11 +20,11 @@
  *
  */
 
-package com.rayman.v2ex.model.topic;
+package com.rayman.v2ex.model.model.topic;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.rayman.v2ex.model.member.MemberBaseEntity;
-import com.rayman.v2ex.model.node.NodeEntity;
+import com.rayman.v2ex.model.model.member.MemberBaseEntity;
+import com.rayman.v2ex.model.model.node.NodeEntity;
 
 /**
  * Created by Android Studio.

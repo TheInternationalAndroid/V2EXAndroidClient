@@ -22,7 +22,7 @@
 
 package com.rayman.v2ex.http.service;
 
-import com.rayman.v2ex.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 
 import java.util.List;
 

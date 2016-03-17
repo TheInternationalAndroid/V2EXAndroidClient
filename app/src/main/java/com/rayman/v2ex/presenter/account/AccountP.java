@@ -23,9 +23,9 @@
 package com.rayman.v2ex.presenter.account;
 
 import com.rayman.v2ex.http.callback.ReqCallback;
-import com.rayman.v2ex.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.worker.TopicWorker;
 import com.rayman.v2ex.presenter.BasePresenter;
-import com.rayman.v2ex.worker.TopicWorker;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
@@ -53,13 +53,15 @@ public class AccountP extends BasePresenter implements IAccountP {
 
     private TopicWorker topicWorker;
 
-    @Inject public AccountP(TopicWorker topicWorker, RefWatcher refWatcher) {
+    @Inject
+    public AccountP(TopicWorker topicWorker, RefWatcher refWatcher) {
         super(refWatcher);
         this.topicWorker = topicWorker;
         bindLifecycleCallback(topicWorker);
     }
 
-    @Override public void topics(String userName, ReqCallback<List<TopicEntity>> callback) {
+    @Override
+    public void topics(String userName, ReqCallback<List<TopicEntity>> callback) {
         topicWorker.topics(userName, callback);
     }
 

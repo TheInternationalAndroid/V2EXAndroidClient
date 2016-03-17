@@ -24,7 +24,7 @@ package com.rayman.v2ex.vm.account;
 
 import android.databinding.BaseObservable;
 
-import com.rayman.v2ex.model.member.MemberEntity;
+import com.rayman.v2ex.model.model.member.MemberEntity;
 
 import javax.inject.Inject;
 
@@ -53,7 +53,8 @@ public class AccountHeaderCellVM extends BaseObservable {
         this.member = member;
     }
 
-    @Inject public MemberEntity getMember() {
+    @Inject
+    public MemberEntity getMember() {
         return member;
     }
 

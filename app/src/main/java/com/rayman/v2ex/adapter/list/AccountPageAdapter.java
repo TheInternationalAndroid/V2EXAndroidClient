@@ -30,8 +30,8 @@ import android.view.ViewGroup;
 import com.rayman.v2ex.adapter.list.viewholder.BaseViewHolder;
 import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.databinding.ListHeaderUserDetailBinding;
-import com.rayman.v2ex.model.member.MemberEntity;
-import com.rayman.v2ex.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.member.MemberEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.vm.account.AccountHeaderCellVM;
 import com.rayman.v2ex.vm.topic.TopicCellVM;
 

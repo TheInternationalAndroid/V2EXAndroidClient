@@ -22,9 +22,9 @@
 
 package com.rayman.v2ex.view.main;
 
-import com.rayman.v2ex.model.member.MemberBaseEntity;
-import com.rayman.v2ex.model.node.NodeEntity;
-import com.rayman.v2ex.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.member.MemberBaseEntity;
+import com.rayman.v2ex.model.model.node.NodeEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 
 /**
  * Created by Android Studio.

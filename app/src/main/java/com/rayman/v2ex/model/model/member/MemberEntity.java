@@ -20,7 +20,7 @@
  *
  */
 
-package com.rayman.v2ex.model.member;
+package com.rayman.v2ex.model.model.member;
 
 import android.os.Parcel;
 

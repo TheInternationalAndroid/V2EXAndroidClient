@@ -27,7 +27,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.rayman.v2ex.databinding.ListCellTopicBinding;
-import com.rayman.v2ex.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.view.main.ITopicCellView;
 import com.rayman.v2ex.vm.topic.TopicCellVM;
 

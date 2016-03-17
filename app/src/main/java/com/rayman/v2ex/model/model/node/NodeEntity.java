@@ -20,7 +20,7 @@
  *
  */
 
-package com.rayman.v2ex.model.node;
+package com.rayman.v2ex.model.model.node;
 
 import com.alibaba.fastjson.annotation.JSONField;
 

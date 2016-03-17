@@ -26,10 +26,10 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.view.View;
 
-import com.android.databinding.library.baseAdapters.BR;
+import com.rayman.v2ex.BR;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.anotations.ViewClick;
-import com.rayman.v2ex.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.view.main.ITopicCellView;
 
 /**
@@ -63,21 +63,25 @@ public class TopicCellVM extends BaseObservable {
         this.onTopicCellClicked = onTopicCellClicked;
     }
 
-    @Bindable public TopicEntity getTopic() {
+    @Bindable
+    public TopicEntity getTopic() {
         return topic;
     }
 
-    @ViewClick(R.id.content) public void onContentClicked(View view) {
+    @ViewClick(R.id.content)
+    public void onContentClicked(View view) {
         if (onTopicCellClicked != null)
             onTopicCellClicked.onTopicCliced(topic);
     }
 
-    @ViewClick(R.id.image) public void onAvatarClicked(View view) {
+    @ViewClick(R.id.image)
+    public void onAvatarClicked(View view) {
         if (onTopicCellClicked != null)
             onTopicCellClicked.onUserClicked(topic.getMember());
     }
 
-    @ViewClick(R.id.node) public void onNodeClicked(View view) {
+    @ViewClick(R.id.node)
+    public void onNodeClicked(View view) {
         if (onTopicCellClicked != null)
             onTopicCellClicked.onNodeClicked(topic.getNode());
     }

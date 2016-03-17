@@ -20,7 +20,7 @@
  *
  */
 
-package com.rayman.v2ex.worker;
+package com.rayman.v2ex.model.worker;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

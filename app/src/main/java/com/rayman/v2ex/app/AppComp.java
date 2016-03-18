@@ -26,10 +26,11 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.rayman.v2ex.viewmodel.AppModule;
 import com.rayman.v2ex.di.scope.PerApplication;
 import com.rayman.v2ex.model.cache.IFileControl;
 import com.rayman.v2ex.model.http.service.TopicService;
+import com.rayman.v2ex.model.worker.TopicWorker;
+import com.rayman.v2ex.viewmodel.AppModule;
 import com.rayman.v2ex.widget.anotations.ContextType;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -61,7 +62,8 @@ public interface AppComp {
 
     void inject(V2EXApplication application);
 
-    @Named(ContextType.APPLICATION) Context appContext();
+    @Named(ContextType.APPLICATION)
+    Context appContext();
 
     Application app();
 
@@ -74,5 +76,7 @@ public interface AppComp {
     IFileControl fileCache();
 
     TopicService topicService();
+
+    TopicWorker topicWorker();
 
 }

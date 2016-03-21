@@ -25,7 +25,7 @@ ext {
     versionName = '1.0.0'
     versionCode = 1
     applicationId = 'com.rayman.v2ex'
-    minSdkVersion = 15
+    minSdkVersion = 21
     compileSdkVersion = 23
     targetSdkVersion = 23
     buildToolsVersion = '23.0.2'

@@ -23,7 +23,9 @@
 package com.rayman.v2ex.di.modules;
 
 import com.rayman.v2ex.di.scope.PerApplication;
+import com.rayman.v2ex.model.http.service.MemberService;
 import com.rayman.v2ex.model.http.service.NodeService;
+import com.rayman.v2ex.model.http.service.ReplyService;
 import com.rayman.v2ex.model.http.service.TopicService;
 
 import dagger.Module;
@@ -60,6 +62,18 @@ public class APIServiceModule {
     @PerApplication
     NodeService provideNodeService(Retrofit retrofit) {
         return retrofit.create(NodeService.class);
+    }
+
+    @Provides
+    @PerApplication
+    MemberService provideMemberService(Retrofit retrofit) {
+        return retrofit.create(MemberService.class);
+    }
+
+    @Provides
+    @PerApplication
+    ReplyService provideReplyService(Retrofit retrofit) {
+        return retrofit.create(ReplyService.class);
     }
 
 }

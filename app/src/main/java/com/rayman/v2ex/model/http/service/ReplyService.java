@@ -1,6 +1,6 @@
 package com.rayman.v2ex.model.http.service;
 
-import com.rayman.v2ex.model.model.node.NodeEntity;
+import com.rayman.v2ex.model.model.reply.ReplyEntity;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import rx.Observable;
  * ProjectName: V2EXAndroidClient
  * Author:  Lena
  * Date: 3/21/16
- * Time: 3:50 PM
+ * Time: 10:28 PM
  * \ ----------------------------------------
  * \| A small leak will sink a great ship.!  |
  * \ ----------------------------------------
@@ -26,12 +26,9 @@ import rx.Observable;
  * \               ||----w |
  * \               ||     ||
  */
-public interface NodeService {
+public interface ReplyService {
 
-    @GET("nodes/show.json")
-    Observable<Response<NodeEntity>> nodeByName(@Query(value = "name") String name);
-
-    @GET("nodes/all.json")
-    Observable<Response<List<NodeEntity>>> nodes();
+    @GET("replies/show.json")
+    Observable<Response<List<ReplyEntity>>> replies(@Query(value = "topic_id") long id);
 
 }

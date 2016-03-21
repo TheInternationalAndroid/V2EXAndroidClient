@@ -28,7 +28,9 @@ import android.content.SharedPreferences;
 
 import com.rayman.v2ex.di.scope.PerApplication;
 import com.rayman.v2ex.model.cache.IFileControl;
+import com.rayman.v2ex.model.worker.MemberWorker;
 import com.rayman.v2ex.model.worker.NodeWorker;
+import com.rayman.v2ex.model.worker.ReplyWorker;
 import com.rayman.v2ex.model.worker.TopicWorker;
 import com.rayman.v2ex.viewmodel.AppModule;
 import com.rayman.v2ex.widget.anotations.ContextType;
@@ -78,5 +80,9 @@ public interface AppComp {
     TopicWorker topicWorker();
 
     NodeWorker nodeWorker();
+
+    MemberWorker memberWorker();
+
+    ReplyWorker replyWorker();
 
 }

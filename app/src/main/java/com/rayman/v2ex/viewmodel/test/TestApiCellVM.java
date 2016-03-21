@@ -40,6 +40,10 @@ public class TestApiCellVM {
         return entity;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     @ViewClick(R.id.cell_content)
     public void onContentClicked(View view) {
         if (onItemClick != null)

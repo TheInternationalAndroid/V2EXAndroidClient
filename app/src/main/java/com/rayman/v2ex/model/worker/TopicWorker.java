@@ -56,16 +56,28 @@ public class TopicWorker extends BaseWorker {
         this.topicService = topicService;
     }
 
-    public void hot(final ReqCallback<List<TopicEntity>> callback) {
+    public void hot(ReqCallback<List<TopicEntity>> callback) {
         defaultCall(topicService.hot(), callback);
     }
 
-    public void latest(final ReqCallback<List<TopicEntity>> callback) {
+    public void latest(ReqCallback<List<TopicEntity>> callback) {
         defaultCall(topicService.latest(), callback);
     }
 
-    public void topics(String userName, final ReqCallback<List<TopicEntity>> callback) {
-        defaultCall(topicService.topics(userName), callback);
+    public void topics(String userName, ReqCallback<List<TopicEntity>> callback) {
+        defaultCall(topicService.topicsByUserName(userName), callback);
+    }
+
+    public void topicsByNodeId(long nodeId, ReqCallback<List<TopicEntity>> callback) {
+        defaultCall(topicService.topicsByNodeId(nodeId), callback);
+    }
+
+    public void topicsByNodeName(String nodeName, ReqCallback<List<TopicEntity>> callback) {
+        defaultCall(topicService.topicsByNodeName(nodeName), callback);
+    }
+
+    public void topicById(long nodeId, ReqCallback<List<TopicEntity>> callback) {
+        defaultCall(topicService.topicById(nodeId), callback);
     }
 
 }

@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.entity.url}" />
+                android:text="@{@string/index_format(viewModel.position,viewModel.entity.url)}" />
 
             <TextView
                 android:layout_width="wrap_content"

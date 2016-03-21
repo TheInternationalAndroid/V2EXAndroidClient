@@ -57,6 +57,14 @@ public interface TopicService {
     Observable<Response<List<TopicEntity>>> latest();
 
     @GET("topics/show.json")
-    Observable<Response<List<TopicEntity>>> topics(@Query(value = "username") String userName);
+    Observable<Response<List<TopicEntity>>> topicsByUserName(@Query(value = "username") String userName);
 
+    @GET("topics/show.json")
+    Observable<Response<List<TopicEntity>>> topicsByNodeId(@Query(value = "node_id") long nodeId);
+
+    @GET("topics/show.json")
+    Observable<Response<List<TopicEntity>>> topicsByNodeName(@Query(value = "node_name") String nodeName);
+
+    @GET("topics/show.json")
+    Observable<Response<List<TopicEntity>>> topicById(@Query(value = "id") long id);
 }

@@ -28,6 +28,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ImageView;
 
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.widget.utils.StringUtil;
 import com.squareup.picasso.Picasso;
@@ -76,8 +77,13 @@ public class BindingAdapter {
     @android.databinding.BindingAdapter(value = "android:src")
     public static void loadImageByUrl(ImageView imageView, String url) {
         if (StringUtil.isEmpty(url)) return;
-        url = getFormatImageUrl(url);
-        Picasso.with(imageView.getContext()).load(url).placeholder(R.mipmap.ic_launcher).into(imageView);
+        Picasso.with(imageView.getContext()).load(getFormatImageUrl(url)).placeholder(R.mipmap.ic_launcher).into(imageView);
+    }
+
+    @android.databinding.BindingAdapter(value = "android:src")
+    public static void loadImageByUrl(RoundedImageView imageView, String url) {
+        if (StringUtil.isEmpty(url)) return;
+        Picasso.with(imageView.getContext()).load(getFormatImageUrl(url)).placeholder(R.mipmap.ic_launcher).into(imageView);
     }
 
     public static String getFormatImageUrl(String imageUrl) {

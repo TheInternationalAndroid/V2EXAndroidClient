@@ -56,7 +56,9 @@ import dagger.Provides;
 @Module
 public class MainActivityVMModule {
 
-    @Provides @PerActivity MainActivityVM provideMainActivityVM(MainActivityP presenter, FragmentManager fragmentManager, Activity activity) {
+    @Provides
+    @PerActivity
+    MainActivityVM provideMainActivityVM(MainActivityP presenter, FragmentManager fragmentManager, Activity activity) {
         MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(fragmentManager, activity.getResources().getStringArray(R.array.main_tab_title));
         MaterialMenuIconToolbar menuIconToolbar = new MaterialMenuIconToolbar(activity, Color.WHITE, MaterialMenuDrawable.Stroke.THIN) {
             @Override

@@ -30,7 +30,7 @@ import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.ActivityAccountBinding;
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.member.MemberEntity;
-import com.rayman.v2ex.presenter.IPage;
+import com.rayman.v2ex.presenter.ILifeCycle;
 import com.rayman.v2ex.ui.view.base.BaseDIActivity;
 import com.rayman.v2ex.viewmodel.account.AccountVM;
 import com.rayman.v2ex.viewmodel.account.AccountVMModule;
@@ -68,7 +68,7 @@ public class AccountActivity extends BaseDIActivity {
     }
 
     @Override
-    protected IPage getPageCallback() {
-        return viewModel;
+    protected ILifeCycle getPageLifeCycle() {
+        return viewModel.presenter();
     }
 }

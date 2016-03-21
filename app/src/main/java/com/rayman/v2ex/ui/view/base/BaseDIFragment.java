@@ -26,7 +26,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.rayman.v2ex.di.IBuildComp;
-import com.rayman.v2ex.presenter.IPage;
+import com.rayman.v2ex.presenter.ILifeCycle;
 import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
 import com.rayman.v2ex.ui.view.base.comp.DaggerFragmentComp;
 import com.rayman.v2ex.ui.view.base.comp.FragmentComp;
@@ -59,13 +59,13 @@ public abstract class BaseDIFragment extends BaseFragment implements IBuildComp 
 
     @Override public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        IPage page = getPageCallBack();
+        ILifeCycle page = getPageLifeCycle();
         if (page != null)
             page.onViewAttach();
     }
 
     @Override public void onDetach() {
-        IPage page = getPageCallBack();
+        ILifeCycle page = getPageLifeCycle();
         if (page != null)
             page.onViewDetach();
         super.onDetach();
@@ -88,6 +88,6 @@ public abstract class BaseDIFragment extends BaseFragment implements IBuildComp 
         return ((BaseDIActivity) getActivity()).getActivityComp();
     }
 
-    protected abstract IPage getPageCallBack();
+    protected abstract ILifeCycle getPageLifeCycle();
 
 }

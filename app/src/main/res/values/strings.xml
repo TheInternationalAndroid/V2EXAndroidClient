@@ -22,5 +22,6 @@
     <!--Account-->
     <string name="number_format">V2EX 第%1$s号会员</string>
     <string name="created_at_format">加入于%1$s</string>
+    <string name="title_activity_test_api">TestAPIActivity</string>
 
 </resources>

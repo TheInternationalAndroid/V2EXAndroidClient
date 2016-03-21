@@ -34,6 +34,10 @@
             android:name=".ui.view.topic.TopicActivity"
             android:label="@string/title_activity_topic"
             android:theme="@style/V2EXTheme" />
+        <activity
+            android:name=".ui.view.test.TestAPIActivity"
+            android:label="@string/title_activity_test_api"
+            android:theme="@style/V2EXTheme"></activity>
     </application>
 
 </manifest>

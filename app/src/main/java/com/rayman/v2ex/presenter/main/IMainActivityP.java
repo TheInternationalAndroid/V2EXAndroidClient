@@ -21,6 +21,8 @@
  */
 package com.rayman.v2ex.presenter.main;
 
+import com.rayman.v2ex.presenter.IPresenter;
+
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
@@ -38,6 +40,6 @@ package com.rayman.v2ex.presenter.main;
  * \               ||----w |
  * \               ||     ||
  */
-public interface IMainActivityP {
+public interface IMainActivityP extends IPresenter {
 
 }

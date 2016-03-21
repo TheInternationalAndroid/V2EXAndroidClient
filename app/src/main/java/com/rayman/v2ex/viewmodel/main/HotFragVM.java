@@ -29,6 +29,7 @@ import com.rayman.v2ex.model.http.callback.ReqCallback;
 import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.main.HotFragP;
+import com.rayman.v2ex.presenter.main.IHotFragP;
 import com.rayman.v2ex.ui.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.ui.view.main.view.IHotFragView;
 import com.rayman.v2ex.viewmodel.BaseStateVM;
@@ -53,7 +54,7 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class HotFragVM extends BaseStateVM<HotFragP> {
+public class HotFragVM extends BaseStateVM<IHotFragP> {
 
     private TopicListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -79,7 +80,7 @@ public class HotFragVM extends BaseStateVM<HotFragP> {
     }
 
     public void requestHotTopicList() {
-        presenter.hot(new ReqCallback<List<TopicEntity>>() {
+        presenter.requestHotList(new ReqCallback<List<TopicEntity>>() {
             @Override public void onReqStart() {
                 setState(PageState.LOADING);
             }

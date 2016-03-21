@@ -27,7 +27,6 @@ import android.view.View;
 
 import com.android.databinding.library.baseAdapters.BR;
 import com.rayman.v2ex.R;
-import com.rayman.v2ex.presenter.BasePresenter;
 import com.rayman.v2ex.widget.anotations.PageState;
 import com.rayman.v2ex.widget.anotations.ViewClick;
 import com.rayman.v2ex.widget.utils.StringUtil;
@@ -49,7 +48,7 @@ import com.rayman.v2ex.widget.utils.StringUtil;
  * \               ||----w |
  * \               ||     ||
  */
-public abstract class BaseStateVM<T extends BasePresenter> extends BaseVM<T> {
+public abstract class BaseStateVM<T> extends BasePVM<T> {
 
     private int state;
     private String emptyString;

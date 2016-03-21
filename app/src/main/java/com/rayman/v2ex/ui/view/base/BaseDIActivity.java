@@ -30,10 +30,10 @@ import com.rayman.v2ex.R;
 import com.rayman.v2ex.app.AppComp;
 import com.rayman.v2ex.app.V2EXApplication;
 import com.rayman.v2ex.di.IBuildComp;
-import com.rayman.v2ex.viewmodel.ActivityModule;
-import com.rayman.v2ex.presenter.IPage;
+import com.rayman.v2ex.presenter.ILifeCycle;
 import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
 import com.rayman.v2ex.ui.view.base.comp.DaggerActivityComp;
+import com.rayman.v2ex.viewmodel.ActivityModule;
 
 /**
  * Created by Android Studio.
@@ -56,10 +56,12 @@ public abstract class BaseDIActivity extends BaseActivity implements IBuildComp 
 
     private ActivityComp activityComp;
 
-    @Override protected void onDestroy() {
-        IPage pager = getPageCallback();
+    @Override
+    protected void onDestroy() {
+        ILifeCycle pager = getPageLifeCycle();
         if (pager != null)
             pager.onViewDetach();
+        activityComp.refWatchwer().watch(pager);
         activityComp.refWatchwer().watch(this);
         super.onDestroy();
     }
@@ -93,13 +95,13 @@ public abstract class BaseDIActivity extends BaseActivity implements IBuildComp 
         }
         buildComp();
 
-        IPage page = getPageCallback();
+        ILifeCycle page = getPageLifeCycle();
         if (page != null)
             page.onViewAttach();
 
         return binding;
     }
 
-    protected abstract IPage getPageCallback();
+    protected abstract ILifeCycle getPageLifeCycle();
 
 }

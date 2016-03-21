@@ -50,4 +50,5 @@ public class MainActivityP extends BasePresenter implements IMainActivityP {
     public MainActivityP(RefWatcher refWatcher) {
         super(refWatcher);
     }
+
 }

@@ -24,6 +24,7 @@ package com.rayman.v2ex.presenter.main;
 
 import com.rayman.v2ex.model.http.callback.ReqCallback;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.rayman.v2ex.presenter.IPresenter;
 
 import java.util.List;
 
@@ -44,8 +45,8 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public interface ILatestFragP {
+public interface ILatestFragP extends IPresenter {
 
-    void latest(ReqCallback<List<TopicEntity>> callback);
+    void requestLatestList(ReqCallback<List<TopicEntity>> callback);
 
 }

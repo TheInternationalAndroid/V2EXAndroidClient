@@ -22,8 +22,8 @@
 
 package com.rayman.v2ex.presenter;
 
-import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
 import com.rayman.v2ex.model.worker.BaseWorker;
+import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ import rx.functions.Action1;
 
 public class BasePresenter implements IPresenter {
 
-    private List<IPage> lifecycleCallbacks = new ArrayList<>();
+    private List<ILifeCycle> lifecycleCallbacks = new ArrayList<>();
 
     private BaseWorker observerWorker = new BaseWorker();
 
@@ -47,14 +47,14 @@ public class BasePresenter implements IPresenter {
 
     @Override
     public void onViewAttach() {
-        for (IPage iPageLifecycle : lifecycleCallbacks) {
+        for (ILifeCycle iPageLifecycle : lifecycleCallbacks) {
             iPageLifecycle.onViewAttach();
         }
     }
 
     @Override
     public void onViewDetach() {
-        for (IPage iPageLifecycle : lifecycleCallbacks) {
+        for (ILifeCycle iPageLifecycle : lifecycleCallbacks) {
             iPageLifecycle.onViewDetach();
             refWatcher.watch(iPageLifecycle);
         }
@@ -62,19 +62,22 @@ public class BasePresenter implements IPresenter {
         refWatcher.watch(this);
     }
 
+    @Override
     public void subcribe(Subscription subscription) {
         if (!lifecycleCallbacks.contains(observerWorker))
             bindLifecycleCallback(observerWorker);
         observerWorker.subscribe(subscription);
     }
 
+    @Override
     public <T extends BaseEvent> void subcribeEvent(Class<T> aClass, Action1<T> action1) {
         if (!lifecycleCallbacks.contains(observerWorker))
             bindLifecycleCallback(observerWorker);
         observerWorker.subscribeEvent(aClass, action1);
     }
 
-    protected void bindLifecycleCallback(IPage... lifecycles) {
+    @Override
+    public void bindLifecycleCallback(ILifeCycle... lifecycles) {
         lifecycleCallbacks.addAll(Arrays.asList(lifecycles));
     }
 }

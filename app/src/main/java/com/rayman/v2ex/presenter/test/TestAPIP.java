@@ -1,11 +1,14 @@
-package com.rayman.v2ex.ui.view.main.view;
+package com.rayman.v2ex.presenter.test;
+
+import com.rayman.v2ex.presenter.BasePresenter;
+import com.squareup.leakcanary.RefWatcher;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena
- * Date: 3/14/16
- * Time: 2:07 PM
+ * Date: 3/21/16
+ * Time: 2:40 PM
  * \ ----------------------------------------
  * \| A small leak will sink a great ship.!  |
  * \ ----------------------------------------
@@ -17,5 +20,10 @@ package com.rayman.v2ex.ui.view.main.view;
  * \               ||----w |
  * \               ||     ||
  */
-public interface IMainView {
+public class TestApiP extends BasePresenter implements ITestApiP {
+
+    public TestApiP(RefWatcher refWatcher) {
+        super(refWatcher);
+    }
+
 }

@@ -26,7 +26,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.rayman.v2ex.model.http.callback.ReqCallback;
-import com.rayman.v2ex.presenter.IPage;
+import com.rayman.v2ex.presenter.ILifeCycle;
 import com.rayman.v2ex.widget.eventbus.RxBus;
 import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
 
@@ -55,7 +55,7 @@ import rx.subscriptions.CompositeSubscription;
  * \               ||----w |
  * \               ||     ||
  */
-public class BaseWorker implements IPage {
+public class BaseWorker implements ILifeCycle {
 
     private boolean isAlive;
     private CompositeSubscription subscription = new CompositeSubscription();

@@ -39,7 +39,7 @@ package com.rayman.v2ex.presenter;
  * \               ||     ||
  */
 
-public interface IPage {
+public interface ILifeCycle {
 
     void onViewAttach();
 

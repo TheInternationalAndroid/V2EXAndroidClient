@@ -30,10 +30,10 @@ import android.view.View;
 import com.android.databinding.library.baseAdapters.BR;
 import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
+import com.rayman.v2ex.presenter.main.IMainActivityP;
 import com.rayman.v2ex.ui.adapter.pager.MainPagerAdapter;
+import com.rayman.v2ex.viewmodel.BasePVM;
 import com.rayman.v2ex.widget.eventbus.event.HttpEvent;
-import com.rayman.v2ex.presenter.main.MainActivityP;
-import com.rayman.v2ex.viewmodel.BaseVM;
 
 import rx.functions.Action1;
 
@@ -54,17 +54,16 @@ import rx.functions.Action1;
  * \               ||----w |
  * \               ||     ||
  */
-public class MainActivityVM extends BaseVM<MainActivityP> implements DrawerLayout.DrawerListener, Action1<HttpEvent> {
+public class MainActivityVM extends BasePVM<IMainActivityP> implements DrawerLayout.DrawerListener, Action1<HttpEvent> {
 
     private MainPagerAdapter adapter;
     private MaterialMenuIconToolbar menuIconToolbar;
     private boolean isDrawerOpen = false;
 
-    public MainActivityVM(MainActivityP presenter, MainPagerAdapter adapter, MaterialMenuIconToolbar menuIconToolbar) {
+    public MainActivityVM(IMainActivityP presenter, MainPagerAdapter adapter, MaterialMenuIconToolbar menuIconToolbar) {
         super(presenter);
         this.adapter = adapter;
         this.menuIconToolbar = menuIconToolbar;
-
         presenter.subcribeEvent(HttpEvent.class, this);
     }
 

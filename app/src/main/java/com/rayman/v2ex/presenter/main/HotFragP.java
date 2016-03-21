@@ -61,7 +61,7 @@ public class HotFragP extends BasePresenter implements IHotFragP {
     }
 
     @Override
-    public void hot(ReqCallback<List<TopicEntity>> callback) {
+    public void requestHotList(ReqCallback<List<TopicEntity>> callback) {
         topicWorker.hot(callback);
     }
 }

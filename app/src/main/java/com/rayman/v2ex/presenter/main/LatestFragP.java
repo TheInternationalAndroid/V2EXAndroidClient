@@ -61,7 +61,7 @@ public class LatestFragP extends BasePresenter implements ILatestFragP {
     }
 
     @Override
-    public void latest(ReqCallback<List<TopicEntity>> callback) {
+    public void requestLatestList(ReqCallback<List<TopicEntity>> callback) {
         topicWorker.latest(callback);
     }
 }

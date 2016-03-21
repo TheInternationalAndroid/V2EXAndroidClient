@@ -24,28 +24,16 @@ package com.rayman.v2ex.viewmodel;
 
 import android.databinding.BaseObservable;
 
-import com.rayman.v2ex.presenter.BasePresenter;
-import com.rayman.v2ex.presenter.IPage;
-
-public class BaseVM<T extends BasePresenter> extends BaseObservable implements IPage {
+public class BasePVM<T> extends BaseObservable {
 
     protected T presenter;
 
-    protected T presenter() {
+    public T presenter() {
         return presenter;
     }
 
-    public BaseVM(T presenter) {
+    public BasePVM(T presenter) {
         this.presenter = presenter;
     }
 
-    @Override public void onViewAttach() {
-        if (presenter != null)
-            presenter.onViewAttach();
-    }
-
-    @Override public void onViewDetach() {
-        if (presenter != null)
-            presenter.onViewDetach();
-    }
 }

@@ -35,7 +35,7 @@ import com.rayman.v2ex.databinding.FragmentHotBinding;
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.presenter.IPage;
+import com.rayman.v2ex.presenter.ILifeCycle;
 import com.rayman.v2ex.ui.view.account.AccountActivity;
 import com.rayman.v2ex.ui.view.base.BaseDIFragment;
 import com.rayman.v2ex.ui.view.main.comp.DaggerHotFragComp;
@@ -78,8 +78,8 @@ public class HotFragment extends BaseDIFragment implements IHotFragView {
     }
 
     @Override
-    protected IPage getPageCallBack() {
-        return viewModel;
+    protected ILifeCycle getPageLifeCycle() {
+        return viewModel.presenter();
     }
 
     @Override
@@ -91,7 +91,6 @@ public class HotFragment extends BaseDIFragment implements IHotFragView {
 
     @Override
     public void onTopicCliced(TopicEntity topicEntity) {
-
     }
 
     @Override

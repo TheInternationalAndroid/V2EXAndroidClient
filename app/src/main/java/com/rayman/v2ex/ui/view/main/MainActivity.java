@@ -27,7 +27,7 @@ import android.view.MenuItem;
 
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.databinding.ActivityMainBinding;
-import com.rayman.v2ex.presenter.IPage;
+import com.rayman.v2ex.presenter.ILifeCycle;
 import com.rayman.v2ex.ui.view.base.BaseDIActivity;
 import com.rayman.v2ex.ui.view.main.comp.DaggerMainComp;
 import com.rayman.v2ex.viewmodel.main.MainActivityVM;
@@ -61,8 +61,8 @@ public class MainActivity extends BaseDIActivity {
     }
 
     @Override
-    protected IPage getPageCallback() {
-        return viewModel;
+    protected ILifeCycle getPageLifeCycle() {
+        return viewModel.presenter();
     }
 
     @Override

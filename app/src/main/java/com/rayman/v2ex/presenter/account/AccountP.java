@@ -61,7 +61,7 @@ public class AccountP extends BasePresenter implements IAccountP {
     }
 
     @Override
-    public void topics(String userName, ReqCallback<List<TopicEntity>> callback) {
+    public void requestTopicList(String userName, ReqCallback<List<TopicEntity>> callback) {
         topicWorker.topics(userName, callback);
     }
 

@@ -24,6 +24,7 @@ package com.rayman.v2ex.presenter.main;
 
 import com.rayman.v2ex.model.http.callback.ReqCallback;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.rayman.v2ex.presenter.IPresenter;
 
 import java.util.List;
 
@@ -44,8 +45,8 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public interface IHotFragP {
+public interface IHotFragP extends IPresenter {
 
-    void hot(ReqCallback<List<TopicEntity>> callback);
+    void requestHotList(ReqCallback<List<TopicEntity>> callback);
 
 }

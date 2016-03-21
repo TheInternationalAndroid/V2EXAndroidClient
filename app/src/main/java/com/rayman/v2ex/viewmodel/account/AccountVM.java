@@ -25,13 +25,14 @@ package com.rayman.v2ex.viewmodel.account;
 import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
 
-import com.rayman.v2ex.ui.adapter.list.AccountPageAdapter;
 import com.rayman.v2ex.model.http.callback.ReqCallback;
 import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.account.AccountP;
-import com.rayman.v2ex.viewmodel.BaseVM;
+import com.rayman.v2ex.presenter.account.IAccountP;
+import com.rayman.v2ex.ui.adapter.list.AccountPageAdapter;
+import com.rayman.v2ex.viewmodel.BasePVM;
 
 import java.util.List;
 
@@ -52,7 +53,7 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class AccountVM extends BaseVM<AccountP> {
+public class AccountVM extends BasePVM<IAccountP> {
 
     private MemberEntity member;
     private AccountPageAdapter adapter;
@@ -65,7 +66,7 @@ public class AccountVM extends BaseVM<AccountP> {
     }
 
     public void requestTopics() {
-        presenter.topics(member.getUsername(), new ReqCallback<List<TopicEntity>>() {
+        presenter.requestTopicList(member.getUsername(), new ReqCallback<List<TopicEntity>>() {
             @Override
             public void onReqStart() {
 

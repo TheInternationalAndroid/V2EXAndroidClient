@@ -22,6 +22,11 @@
 
 package com.rayman.v2ex.presenter;
 
+import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
+
+import rx.Subscription;
+import rx.functions.Action1;
+
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
@@ -40,6 +45,11 @@ package com.rayman.v2ex.presenter;
  * \               ||     ||
  */
 
-public interface IPresenter extends IPage {
+public interface IPresenter extends ILifeCycle {
 
+    void subcribe(Subscription subscription);
+
+    <T extends BaseEvent> void subcribeEvent(Class<T> aClass, Action1<T> action1);
+
+    void bindLifecycleCallback(ILifeCycle... lifecycles);
 }

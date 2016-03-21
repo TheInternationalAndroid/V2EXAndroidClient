@@ -24,20 +24,16 @@
         </activity>
         <activity
             android:name=".ui.view.account.AccountActivity"
-            android:label="@string/title_activity_account"
-            android:theme="@style/V2EXTheme" />
+            android:label="@string/title_activity_account" />
         <activity
             android:name=".ui.view.node.NodeActivity"
-            android:label="@string/title_activity_node"
-            android:theme="@style/V2EXTheme" />
+            android:label="@string/title_activity_node" />
         <activity
             android:name=".ui.view.topic.TopicActivity"
-            android:label="@string/title_activity_topic"
-            android:theme="@style/V2EXTheme" />
+            android:label="@string/title_activity_topic" />
         <activity
-            android:name=".ui.view.test.TestAPIActivity"
-            android:label="@string/title_activity_test_api"
-            android:theme="@style/V2EXTheme"></activity>
+            android:name=".ui.view.test.TestApiActivity"
+            android:label="@string/title_activity_test_api" />
     </application>
 
 </manifest>

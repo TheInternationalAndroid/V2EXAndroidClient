@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">V2EX</string>
     <string name="action_settings">Settings</string>
+    <string name="action_test_api">TestApi</string>
+
+    <string name="success">Success</string>
+    <string name="error">Error</string>
+    <string name="click_test">Click to Test</string>
+    <string name="sending">SendingRequest</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

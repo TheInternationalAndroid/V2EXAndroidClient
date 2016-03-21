@@ -50,14 +50,13 @@ import rx.Observable;
  */
 public interface TopicService {
 
-    //    @GET("topics/hot.json") Call<List<TopicEntity>> hot();
-    //    @GET("topics/latest.json") Call<List<TopicEntity>> latest();
-    //    @GET("topics/show.json") Call<List<TopicEntity>> topics(@Query(value = "username") String userName);
+    @GET("topics/hot.json")
+    Observable<Response<List<TopicEntity>>> hot();
 
-    @GET("topics/hot.json") Observable<Response<List<TopicEntity>>> hot();
+    @GET("topics/latest.json")
+    Observable<Response<List<TopicEntity>>> latest();
 
-    @GET("topics/latest.json") Observable<Response<List<TopicEntity>>> latest();
-
-    @GET("topics/show.json") Observable<Response<List<TopicEntity>>> topics(@Query(value = "username") String userName);
+    @GET("topics/show.json")
+    Observable<Response<List<TopicEntity>>> topics(@Query(value = "username") String userName);
 
 }

@@ -28,7 +28,7 @@ import android.content.SharedPreferences;
 
 import com.rayman.v2ex.di.scope.PerApplication;
 import com.rayman.v2ex.model.cache.IFileControl;
-import com.rayman.v2ex.model.http.service.TopicService;
+import com.rayman.v2ex.model.worker.NodeWorker;
 import com.rayman.v2ex.model.worker.TopicWorker;
 import com.rayman.v2ex.viewmodel.AppModule;
 import com.rayman.v2ex.widget.anotations.ContextType;
@@ -75,8 +75,8 @@ public interface AppComp {
 
     IFileControl fileCache();
 
-    TopicService topicService();
-
     TopicWorker topicWorker();
+
+    NodeWorker nodeWorker();
 
 }

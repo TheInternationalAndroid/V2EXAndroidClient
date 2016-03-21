@@ -1,18 +1,17 @@
-package com.rayman.v2ex.presenter.test;
+package com.rayman.v2ex.model.worker;
 
 import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.service.NodeService;
 import com.rayman.v2ex.model.model.node.NodeEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.presenter.IPresenter;
 
-import java.util.List;
+import javax.inject.Inject;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena
  * Date: 3/21/16
- * Time: 2:40 PM
+ * Time: 3:53 PM
  * \ ----------------------------------------
  * \| A small leak will sink a great ship.!  |
  * \ ----------------------------------------
@@ -24,13 +23,17 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public interface ITestApiP extends IPresenter {
+public class NodeWorker extends BaseWorker {
 
-    void requestLastestList(ReqCallback<List<TopicEntity>> callback);
+    private NodeService nodeService;
 
-    void requestHotList(ReqCallback<List<TopicEntity>> callback);
+    @Inject
+    public NodeWorker(NodeService nodeService) {
+        this.nodeService = nodeService;
+    }
 
-    void requestTopicListByName(String name, ReqCallback<List<TopicEntity>> callback);
+    public void node(String name, ReqCallback<NodeEntity> callback) {
+        defaultCall(nodeService.node(name), callback);
+    }
 
-    void requestNode(String name, ReqCallback<NodeEntity> callback);
 }

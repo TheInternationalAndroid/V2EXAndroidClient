@@ -45,6 +45,11 @@ public class BasePresenter implements IPresenter {
         this.refWatcher = refWatcher;
     }
 
+    public BasePresenter(RefWatcher refWatcher, ILifeCycle... lifecycles) {
+        this.refWatcher = refWatcher;
+        bindLifecycleCallback(lifecycles);
+    }
+
     @Override
     public void onViewAttach() {
         for (ILifeCycle iPageLifecycle : lifecycleCallbacks) {

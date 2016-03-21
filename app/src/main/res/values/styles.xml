@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="V2EXTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="V2EXTheme" parent="Theme.AppCompat.Light">
         <item name="toolbarStyle">@style/ToolBar</item>
         <item name="android:editTextStyle">@style/EditTextStyle</item>
         <item name="editTextStyle">@style/EditTextStyle</item>

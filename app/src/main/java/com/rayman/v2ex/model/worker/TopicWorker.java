@@ -79,5 +79,5 @@ public class TopicWorker extends BaseWorker {
     public void topicById(long nodeId, ReqCallback<List<TopicEntity>> callback) {
         defaultCall(topicService.topicById(nodeId), callback);
     }
-
+    
 }

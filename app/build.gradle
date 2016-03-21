@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.frogermcs.androiddevmetrics'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -29,7 +30,10 @@ android {
     dataBinding {
         enabled = true
     }
-
+    compileOptions {
+        sourceCompatibility rootProject.ext.sourceCompatibilityVersion
+        targetCompatibility rootProject.ext.targetCompatibilityVersion
+    }
     lintOptions {
         checkReleaseBuilds false
         // Or, if you prefer, you can continue to check for errors in release builds,
@@ -37,6 +41,15 @@ android {
         abortOnError false
     }
 
+}
+
+retrolambda {
+    jdk System.getenv("JAVA8_HOME")
+    oldJdk System.getenv("JAVA7_HOME")
+    javaVersion JavaVersion.VERSION_1_7
+    jvmArgs '-arg1', '-arg2'
+    defaultMethods false
+    incremental true
 }
 
 dependencies {
@@ -71,6 +84,7 @@ dependencies {
     compile depMap.RxBindingRecyclerView
 //    compile depMap.RxLeanBack
     compile depMap.Timber
+    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.1.0'
 
     debugCompile depMap.LeakCanary
     releaseCompile depMap.LeakCanaryAndroidNoOp

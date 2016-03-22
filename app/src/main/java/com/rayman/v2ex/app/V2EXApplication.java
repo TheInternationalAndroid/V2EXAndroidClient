@@ -35,7 +35,6 @@ import com.rayman.v2ex.widget.utils.ToastUtil;
 
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import timber.log.Timber;
 
 /**
@@ -55,7 +54,7 @@ import timber.log.Timber;
  * \               ||----w |
  * \               ||     ||
  */
-public class V2EXApplication extends Application implements IBuildComp, Action1<ErrorEvent> {
+public class V2EXApplication extends Application implements IBuildComp {
 
     private AppComp appComp;
     private Subscription subscription;
@@ -77,13 +76,12 @@ public class V2EXApplication extends Application implements IBuildComp, Action1<
         subscription = RxBus.instance()
                 .asObservable(ErrorEvent.class)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this);
+                .subscribe(this::handleEvent);
     }
 
-    @Override
-    public void call(ErrorEvent errorEvent) {
+    public void handleEvent(ErrorEvent errorEvent) {
         if (errorEvent != null && !StringUtil.isEmpty(errorEvent.getMessage())) {
-            ToastUtil.show(this, errorEvent.getMessage());
+            ToastUtil.show(V2EXApplication.this, errorEvent.getMessage());
         }
     }
 

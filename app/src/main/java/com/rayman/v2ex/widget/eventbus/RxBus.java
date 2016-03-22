@@ -3,7 +3,6 @@ package com.rayman.v2ex.widget.eventbus;
 import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
 
 import rx.Observable;
-import rx.functions.Func1;
 import rx.subjects.PublishSubject;
 import rx.subjects.SerializedSubject;
 import rx.subjects.Subject;
@@ -50,12 +49,9 @@ public class RxBus {
 
     public <T extends BaseEvent> Observable<T> asObservable(final Class<T> aClass) {
         return bus.asObservable()
-                .filter(new Func1<Object, Boolean>() {
-                    @Override
-                    public Boolean call(Object event) {
-                        return aClass.isInstance(event);
-                    }
-                })
+                .filter(event ->
+                        aClass.isInstance(event)
+                )
                 .cast(aClass);
     }
 

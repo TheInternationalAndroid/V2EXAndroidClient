@@ -11,7 +11,6 @@ import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.test.ITestApiP;
-import com.rayman.v2ex.ui.adapter.OnItemClick;
 import com.rayman.v2ex.ui.adapter.list.TestApiListAdapter;
 import com.rayman.v2ex.viewmodel.BasePVM;
 
@@ -35,7 +34,7 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class TestApiVM extends BasePVM<ITestApiP> implements OnItemClick<TestApiEntity> {
+public class TestApiVM extends BasePVM<ITestApiP> {
 
     private TestApiListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -43,11 +42,10 @@ public class TestApiVM extends BasePVM<ITestApiP> implements OnItemClick<TestApi
     public TestApiVM(ITestApiP presenter, RecyclerView.LayoutManager layoutManager) {
         super(presenter);
         this.layoutManager = layoutManager;
-        adapter = new TestApiListAdapter(this);
+        adapter = new TestApiListAdapter(this::onItemClick);
         initData();
     }
 
-    @Override
     public void onItemClick(final int position, final TestApiEntity testApiEntity) {
         switch (position) {
             case 0:

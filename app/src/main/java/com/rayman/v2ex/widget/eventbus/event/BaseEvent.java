@@ -46,7 +46,7 @@ public class BaseEvent {
     }
 
     public void setMessage(String message) {
-        message = message;
+        this.message = message;
     }
 
     public Bundle getBundle() {

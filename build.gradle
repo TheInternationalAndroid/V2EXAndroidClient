@@ -40,6 +40,7 @@ ext {
     sourceCompatibilityVersion = JavaVersion.VERSION_1_8
     targetCompatibilityVersion = JavaVersion.VERSION_1_8
     retrolambdaJavaVersion = JavaVersion.VERSION_1_7
+    okHttpVersion = '2.7.5'
 }
 
 ext.depMap = [
@@ -58,9 +59,11 @@ ext.depMap = [
         DSLJsonProcessor     : 'com.dslplatform:dsl-json-processor:0.4',
 
         Picasso              : 'com.squareup.picasso:picasso:2.5.2',
-        OkHttp               : 'com.squareup.okhttp:okhttp:2.7.5',
-        LoggingInterceptor   : 'com.squareup.okhttp:logging-interceptor:2.6.0',
-        OkHttpWS             : 'com.squareup.okhttp:okhttp-ws:2.6.0',
+
+        OkHttp               : "com.squareup.okhttp:okhttp:${okHttpVersion}",
+        LoggingInterceptor   : "com.squareup.okhttp:logging-interceptor:${okHttpVersion}",
+        OkHttpWS             : "com.squareup.okhttp:okhttp-ws:${okHttpVersion}",
+
         Retrofit             : 'com.squareup.retrofit:retrofit:2.0.0-beta3',
         RxJavaAdapter        : 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2',
         Otto                 : 'com.squareup:otto:1.3.8',

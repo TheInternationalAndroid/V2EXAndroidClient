@@ -81,8 +81,9 @@ public class BaseWorker implements ILifeCycle {
 
     <T> void defaultCall(@NonNull Observable<Response<T>> observable, @Nullable ReqCallback<T> callback) {
         subscription.add(observable
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .unsubscribeOn(Schedulers.io())
                 .subscribe(defaultCallback(callback)));
     }
 

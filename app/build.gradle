@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.frogermcs.androiddevmetrics'
 apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'android-apt'
+//apply plugin: 'android-apt'
 
-apt {
-    processor 'com.dslplatform.json.CompiledJsonProcessor'
-}
+//apt {
+//    processor 'com.dslplatform.json.CompiledJsonProcessor'
+//}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -71,8 +71,9 @@ dependencies {
     apt depMap.AutoParcelProcessor
 
     compile depMap.FastJson
-    compile depMap.DSLJson
-    apt depMap.DSLJsonProcessor
+
+//    compile depMap.DSLJson
+//    apt depMap.DSLJsonProcessor
 
     compile depMap.Picasso
     compile depMap.OkHttp

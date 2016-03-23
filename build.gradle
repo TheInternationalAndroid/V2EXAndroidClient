@@ -39,6 +39,7 @@ ext {
     junitVersion = '4.12'
     sourceCompatibilityVersion = JavaVersion.VERSION_1_8
     targetCompatibilityVersion = JavaVersion.VERSION_1_8
+    retrolambdaJavaVersion = JavaVersion.VERSION_1_7
 }
 
 ext.depMap = [
@@ -46,14 +47,21 @@ ext.depMap = [
         CardView             : "com.android.support:cardview-v7:${supportLibraryVersion}",
         Design               : "com.android.support:design:${supportLibraryVersion}",
         AppCompat            : "com.android.support:appcompat-v7:${supportLibraryVersion}",
-        Multidex             : "com.android.support:multidex:1.0.0",
+        Multidex             : 'com.android.support:multidex:1.0.0',
+
+        AutoValue            : 'com.google.auto.value:auto-value:1.1',
+        AutoParcel           : 'com.github.frankiesardo:auto-parcel:0.3.1',
+        AutoParcelProcessor  : 'com.github.frankiesardo:auto-parcel-processor:0.3.1',
 
         FastJson             : 'com.alibaba:fastjson:1.1.45.android',
+        DSLJson              : 'com.dslplatform:dsl-json:0.9.5',
+        DSLJsonProcessor     : 'com.dslplatform:dsl-json-processor:0.4',
+
         Picasso              : 'com.squareup.picasso:picasso:2.5.2',
-        OkHttp               : 'com.squareup.okhttp:okhttp:2.6.0',
+        OkHttp               : 'com.squareup.okhttp:okhttp:2.7.5',
         LoggingInterceptor   : 'com.squareup.okhttp:logging-interceptor:2.6.0',
         OkHttpWS             : 'com.squareup.okhttp:okhttp-ws:2.6.0',
-        Retrofit             : 'com.squareup.retrofit:retrofit:2.0.0-beta2',
+        Retrofit             : 'com.squareup.retrofit:retrofit:2.0.0-beta3',
         RxJavaAdapter        : 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2',
         Otto                 : 'com.squareup:otto:1.3.8',
 
@@ -70,7 +78,7 @@ ext.depMap = [
         AnnotationJsr250     : 'javax.annotation:jsr250-api:1.0',
         MaterialMenuToolbar  : 'com.balysv.materialmenu:material-menu-toolbar:1.5.0',
         RoundedImageview     : 'com.makeramen:roundedimageview:2.2.1',
-        FlowLayout           : "com.wefika:flowlayout:0.4.1",
+        FlowLayout           : 'com.wefika:flowlayout:0.4.1',
         DaggerCompile        : 'com.google.dagger:dagger-compiler:2.0.2',
 
         //Leakcanary

@@ -2,6 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.frogermcs.androiddevmetrics'
 apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'android-apt'
+
+apt {
+    processor 'com.dslplatform.json.CompiledJsonProcessor'
+}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -46,15 +51,13 @@ android {
 retrolambda {
 //    jdk System.getenv("JAVA8_HOME")
 //    oldJdk System.getenv("JAVA7_HOME")
-    javaVersion JavaVersion.VERSION_1_7
+    javaVersion rootProject.ext.retrolambdaJavaVersion
 //    jvmArgs '-arg1', '-arg2'
 //    defaultMethods false
 //    incremental true
 }
 
 dependencies {
-
-    apt depMap.DaggerCompile
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -63,7 +66,14 @@ dependencies {
     compile depMap.Design
     compile depMap.AppCompat
 
+    compile depMap.AutoValue
+    compile depMap.AutoParcel
+    apt depMap.AutoParcelProcessor
+
     compile depMap.FastJson
+    compile depMap.DSLJson
+    apt depMap.DSLJsonProcessor
+
     compile depMap.Picasso
     compile depMap.OkHttp
     compile depMap.LoggingInterceptor
@@ -73,6 +83,7 @@ dependencies {
     compile depMap.Otto
     compile depMap.RxAndroid
     compile depMap.Dagger
+    apt depMap.DaggerCompile
     compile depMap.AnnotationJsr250
     compile depMap.MaterialMenuToolbar
     compile depMap.RoundedImageview

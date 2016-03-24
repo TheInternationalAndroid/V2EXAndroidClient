@@ -27,7 +27,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.rayman.v2ex.di.scope.PerApplication;
-import com.rayman.v2ex.model.cache.IFileControl;
 import com.rayman.v2ex.model.worker.MemberWorker;
 import com.rayman.v2ex.model.worker.NodeWorker;
 import com.rayman.v2ex.model.worker.ReplyWorker;
@@ -39,7 +38,6 @@ import com.squareup.leakcanary.RefWatcher;
 import javax.inject.Named;
 
 import dagger.Component;
-import retrofit2.Retrofit;
 
 /**
  * Created by Android Studio.
@@ -72,10 +70,6 @@ public interface AppComp {
     RefWatcher refWatchwer();
 
     SharedPreferences preference();
-
-    Retrofit retrofit();
-
-    IFileControl fileCache();
 
     TopicWorker topicWorker();
 

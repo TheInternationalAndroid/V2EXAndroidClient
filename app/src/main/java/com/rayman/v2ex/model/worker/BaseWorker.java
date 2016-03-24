@@ -30,7 +30,7 @@ import com.rayman.v2ex.presenter.ILifeCycle;
 import com.rayman.v2ex.widget.eventbus.RxBus;
 import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
 
-import retrofit.Response;
+import retrofit2.Response;
 import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;

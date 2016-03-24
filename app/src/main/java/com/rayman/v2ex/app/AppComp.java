@@ -39,7 +39,7 @@ import com.squareup.leakcanary.RefWatcher;
 import javax.inject.Named;
 
 import dagger.Component;
-import retrofit.Retrofit;
+import retrofit2.Retrofit;
 
 /**
  * Created by Android Studio.

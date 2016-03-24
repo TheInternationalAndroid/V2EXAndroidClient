@@ -26,17 +26,17 @@ import android.text.TextUtils;
 
 import com.rayman.v2ex.di.scope.PerApplication;
 import com.rayman.v2ex.model.cache.IFileControl;
-import com.squareup.okhttp.Cache;
-import com.squareup.okhttp.ConnectionPool;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.Cache;
+import okhttp3.ConnectionPool;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import timber.log.Timber;
 
 /**
@@ -59,35 +59,35 @@ import timber.log.Timber;
 @Module
 public class OkHttpModule {
 
-    private static final long CONNECT_TIMEOUT = 30_000;
-    private static final long WRITE_TIMEOUT = 30_000;
-    private static final long READ_TIMEOUT = 30_000;
+    private static final long CONNECT_TIMEOUT = 30;
+    private static final long WRITE_TIMEOUT = 30;
+    private static final long READ_TIMEOUT = 30;
     private static final int REQUEST_CACHE_SIZE = 10 * 1024 * 1024;
     private static final int POOLING_MAX_CONNECTIONS = 5;
-    private static final int REQUEST_KEEP_ALIVE_DEFAULT = 30000;
+    private static final int REQUEST_KEEP_ALIVE_DEFAULT = 30;
 
     @Provides
     @PerApplication
     OkHttpClient provideOkHttp(IFileControl fileCache) {
-        final OkHttpClient httpClient = new OkHttpClient();
-        httpClient.setConnectTimeout(CONNECT_TIMEOUT, TimeUnit.MILLISECONDS);
-        httpClient.setWriteTimeout(WRITE_TIMEOUT, TimeUnit.MILLISECONDS);
-        httpClient.setReadTimeout(READ_TIMEOUT, TimeUnit.MILLISECONDS);
-        httpClient.setCache(new Cache(new File(fileCache.requestCacheFloderPath()), REQUEST_CACHE_SIZE));
-        httpClient.setConnectionPool(new ConnectionPool(POOLING_MAX_CONNECTIONS, REQUEST_KEEP_ALIVE_DEFAULT));
-        httpClient.interceptors().add(chain -> {
+        final OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS);
+        builder.writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS);
+        builder.readTimeout(READ_TIMEOUT, TimeUnit.SECONDS);
+        builder.cache(new Cache(new File(fileCache.requestCacheFloderPath()), REQUEST_CACHE_SIZE));
+        builder.connectionPool(new ConnectionPool(POOLING_MAX_CONNECTIONS, REQUEST_KEEP_ALIVE_DEFAULT, TimeUnit.SECONDS));
+        builder.interceptors().add(chain -> {
                     long t1 = System.nanoTime();
                     Request request = chain.request();
-                    Request.Builder builder = request.newBuilder();
+                    Request.Builder requestBuilder = request.newBuilder();
 
                     if (request.body() != null && TextUtils.isEmpty(request.headers().get("Content-Type"))) {
-                        builder.header("Content-Type", "gzip").method(request.method(), request.body()).build();
+                        requestBuilder.header("Content-Type", "gzip").method(request.method(), request.body()).build();
                     }
-                    request = builder
+                    request = requestBuilder
                             .addHeader("User-Agent", System.getProperty("http.agent"))
                             .build();
                     Timber.i("Sending request %s on Connecttion: %s %n Headers: %s ",
-                            request.httpUrl(),
+                            request.url(),
                             chain.connection(),
                             request.headers());
 
@@ -95,7 +95,7 @@ public class OkHttpModule {
 
                     long t2 = System.nanoTime();
                     Timber.i("Received response for %s in %.1fms %n Response Status Code: %s %n Response Headers: %s %nResponse CacheControl:%s %n Response Body :%s %n Is From Cached Response: %s %n",
-                            request.httpUrl(),
+                            request.url(),
                             (t2 - t1) / 1e6d,
                             response.code(),
                             response.headers(),
@@ -105,7 +105,7 @@ public class OkHttpModule {
                     return response;
                 }
         );
-        return httpClient;
+        return builder.build();
 
     }
 }

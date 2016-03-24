@@ -26,9 +26,9 @@ import com.rayman.v2ex.model.model.topic.TopicEntity;
 
 import java.util.List;
 
-import retrofit.Response;
-import retrofit.http.GET;
-import retrofit.http.Query;
+import retrofit2.Response;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**

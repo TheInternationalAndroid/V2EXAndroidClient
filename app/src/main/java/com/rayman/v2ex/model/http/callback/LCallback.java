@@ -28,9 +28,9 @@ import com.rayman.v2ex.widget.eventbus.RxBus;
 
 import java.io.IOException;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Android Studio.
@@ -53,10 +53,10 @@ import retrofit.Retrofit;
 public abstract class LCallback<P> implements Callback<P> {
 
     @Override
-    public void onResponse(Response<P> response, Retrofit retrofit) {
-        if (response.isSuccess()) {
+    public void onResponse(Call<P> call, Response<P> response) {
+        if (response.isSuccessful()) {
             if (response.body() == null) {
-                onFailure(new Exception());
+                onFailure(call, new Exception());
             } else {
                 onSuccess(response.body());
             }
@@ -68,12 +68,8 @@ public abstract class LCallback<P> implements Callback<P> {
         }
     }
 
-    abstract public void onSuccess(P respEntity);
-
-    abstract public void onError(ErrorEvent errorEvent);
-
     @Override
-    public void onFailure(Throwable t) {
+    public void onFailure(Call<P> call, Throwable t) {
         ErrorEvent errorEvent;
         if (t instanceof IOException) {
             errorEvent = new ErrorEvent(ErrorType.ERROR_NETWORK, "网络异常");
@@ -83,4 +79,9 @@ public abstract class LCallback<P> implements Callback<P> {
         RxBus.instance().post(errorEvent);
         onError(errorEvent);
     }
+
+    abstract public void onSuccess(P respEntity);
+
+    abstract public void onError(ErrorEvent errorEvent);
+
 }

@@ -25,12 +25,12 @@ package com.rayman.v2ex.di.modules;
 import com.rayman.v2ex.di.scope.PerApplication;
 import com.rayman.v2ex.model.http.Host;
 import com.rayman.v2ex.model.http.okhttp.convertor.FastJsonConvertFactory;
-import com.squareup.okhttp.OkHttpClient;
 
 import dagger.Module;
 import dagger.Provides;
-import retrofit.Retrofit;
-import retrofit.RxJavaCallAdapterFactory;
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 /**
  * Created by Android Studio.
@@ -52,7 +52,8 @@ import retrofit.RxJavaCallAdapterFactory;
 @Module
 public class RetrofitModule {
 
-    @Provides @PerApplication Retrofit provideRetrofit(OkHttpClient okHttpClient) {
+    @Provides @PerApplication
+    Retrofit provideRetrofit(OkHttpClient okHttpClient) {
         return new Retrofit
                 .Builder()
                 .baseUrl(Host.BASE_URL)

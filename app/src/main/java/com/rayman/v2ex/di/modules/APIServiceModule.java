@@ -30,7 +30,7 @@ import com.rayman.v2ex.model.http.service.TopicService;
 
 import dagger.Module;
 import dagger.Provides;
-import retrofit.Retrofit;
+import retrofit2.Retrofit;
 
 /**
  * Created by Android Studio.

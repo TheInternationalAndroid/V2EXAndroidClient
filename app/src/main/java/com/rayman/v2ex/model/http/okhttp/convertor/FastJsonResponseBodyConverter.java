@@ -24,12 +24,12 @@ package com.rayman.v2ex.model.http.okhttp.convertor;
 
 import com.alibaba.fastjson.JSON;
 import com.rayman.v2ex.model.http.okhttp.RequestContentType;
-import com.squareup.okhttp.ResponseBody;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
 
-import retrofit.Converter;
+import okhttp3.ResponseBody;
+import retrofit2.Converter;
 import timber.log.Timber;
 
 /**

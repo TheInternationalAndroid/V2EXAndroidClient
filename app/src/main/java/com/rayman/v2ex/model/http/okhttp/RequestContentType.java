@@ -22,7 +22,8 @@
 
 package com.rayman.v2ex.model.http.okhttp;
 
-import com.squareup.okhttp.MediaType;
+
+import okhttp3.MediaType;
 
 /**
  * Created by Android Studio.

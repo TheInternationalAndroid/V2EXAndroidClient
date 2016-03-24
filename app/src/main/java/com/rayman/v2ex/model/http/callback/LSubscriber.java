@@ -28,7 +28,7 @@ import com.rayman.v2ex.widget.eventbus.RxBus;
 
 import java.io.IOException;
 
-import retrofit.Response;
+import retrofit2.Response;
 import rx.Subscriber;
 
 /**
@@ -68,7 +68,7 @@ public abstract class LSubscriber<T> extends Subscriber<Response<T>> {
 
     @Override
     public void onNext(Response<T> response) {
-        if (response.isSuccess()) {
+        if (response.isSuccessful()) {
             if (response.body() == null) {
                 onError(new Exception("Response body is empty."));
             } else {

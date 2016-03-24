@@ -23,13 +23,13 @@
 package com.rayman.v2ex.model.http.okhttp.convertor;
 
 import com.alibaba.fastjson.JSON;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.RequestBody;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
 
-import retrofit.Converter;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Converter;
 import timber.log.Timber;
 
 /**

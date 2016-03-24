@@ -66,9 +66,9 @@ dependencies {
     compile depMap.Design
     compile depMap.AppCompat
 
-    compile depMap.AutoValue
-    compile depMap.AutoParcel
-    apt depMap.AutoParcelProcessor
+//    compile depMap.AutoValue
+//    compile depMap.AutoParcel
+//    apt depMap.AutoParcelProcessor
 
     compile depMap.FastJson
 
@@ -81,6 +81,15 @@ dependencies {
     compile depMap.OkHttpWS
     compile depMap.Retrofit
     compile depMap.RxJavaAdapter
+//    compile depMap.Java8Adapter
+//    compile depMap.GuavaAdapter
+//    compile depMap.GsonConverter
+//    compile depMap.JacksonConverter
+//    compile depMap.MoshiConverter
+//    compile depMap.ProtobufConverter
+//    compile depMap.WireConverter
+//    compile depMap.SimpleXMLConverter
+//    compile depMap.ScalarsConverter
     compile depMap.Otto
     compile depMap.RxAndroid
     compile depMap.Dagger

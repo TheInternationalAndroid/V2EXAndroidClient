@@ -52,14 +52,25 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 @Module
 public class RetrofitModule {
 
-    @Provides @PerApplication
+    @Provides
+    @PerApplication
     Retrofit provideRetrofit(OkHttpClient okHttpClient) {
         return new Retrofit
                 .Builder()
                 .baseUrl(Host.BASE_URL)
                 .client(okHttpClient)
                 .addConverterFactory(FastJsonConvertFactory.create())
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .addConverterFactory(JacksonConverterFactory.create())
+//                .addConverterFactory(MoshiConverterFactory.create())
+//                .addConverterFactory(ProtoConverterFactory.create())
+//                .addConverterFactory(ScalarsConverterFactory.create())
+//                .addConverterFactory(ScalarsConverterFactory.create())
+//                .addConverterFactory(SimpleXmlConverterFactory.create())
+//                .addConverterFactory(WireConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                .addCallAdapterFactory(Java8CallAdapterFactory.create())
+//                .addCallAdapterFactory(GuavaCallAdapterFactory.create())
                 .build();
     }
 

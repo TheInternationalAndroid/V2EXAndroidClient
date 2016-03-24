@@ -69,6 +69,16 @@ ext.depMap = [
 
         Retrofit             : "${retrofitPkg}:retrofit:${retrofitVersion}",
         RxJavaAdapter        : "${retrofitPkg}:adapter-rxjava:${retrofitVersion}",
+        Java8Adapter         : "${retrofitPkg}:adapter-java8:${retrofitVersion}",
+        GuavaAdapter         : "${retrofitPkg}:adapter-guava:${retrofitVersion}",
+        GsonConverter        : "${retrofitPkg}:converter-gson:${retrofitVersion}",
+        JacksonConverter     : "${retrofitPkg}:converter-jackson:${retrofitVersion}",
+        MoshiConverter       : "${retrofitPkg}:converter-moshi:${retrofitVersion}",
+        ProtobufConverter    : "${retrofitPkg}:converter-protobuf:${retrofitVersion}",
+        WireConverter        : "${retrofitPkg}:converter-wire:${retrofitVersion}",
+        SimpleXMLConverter   : "${retrofitPkg}:converter-simplexml:${retrofitVersion}",
+        ScalarsConverter     : "${retrofitPkg}:converter-scalars:${retrofitVersion}",
+
         Otto                 : 'com.squareup:otto:1.3.8',
 
         RxAndroid            : 'io.reactivex:rxandroid:1.0.1',

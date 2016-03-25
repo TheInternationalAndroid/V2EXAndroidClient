@@ -23,7 +23,6 @@
 package com.rayman.v2ex.model.worker;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.rayman.v2ex.model.http.callback.ReqCallback;
 import com.rayman.v2ex.presenter.ILifeCycle;
@@ -79,12 +78,16 @@ public class BaseWorker implements ILifeCycle {
         return new WorkerCallback<>(this, callback);
     }
 
-    <T> void defaultCall(@NonNull Observable<Response<T>> observable, @Nullable ReqCallback<T> callback) {
-        subscription.add(observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .unsubscribeOn(Schedulers.io())
-                .subscribe(defaultCallback(callback)));
+    <T> void defaultCall(@NonNull Observable<Response<T>> observable, @NonNull ReqCallback<T> callback) {
+        subscription.add(
+                observable
+                        .subscribeOn(Schedulers.io())
+                        .doOnSubscribe(callback::onReqStart)
+                        .subscribeOn(AndroidSchedulers.mainThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .unsubscribeOn(Schedulers.io())
+                        .subscribe(defaultCallback(callback))
+        );
     }
 
     public void subscribe(Subscription subscription) {

@@ -1,6 +1,6 @@
 package com.rayman.v2ex.model.worker;
 
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.http.service.MemberService;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 
@@ -32,8 +32,8 @@ public class MemberWorker extends BaseWorker {
         this.memberService = memberService;
     }
 
-    public void member(String userName, ReqCallback<MemberEntity> callback) {
-        defaultCall(memberService.member(userName), callback);
+    public void member(String userName, LSubscriber<MemberEntity> subscriber) {
+        defaultCall(memberService.member(userName), subscriber);
     }
 
 }

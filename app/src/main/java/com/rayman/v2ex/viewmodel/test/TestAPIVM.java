@@ -3,7 +3,7 @@ package com.rayman.v2ex.viewmodel.test;
 import android.support.v7.widget.RecyclerView;
 
 import com.rayman.v2ex.model.http.Host;
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.TestApiEntity;
 import com.rayman.v2ex.model.model.member.MemberEntity;
@@ -64,15 +64,16 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                 presenter.requestTopicListByNodeName("python", getTopicListCallback(position, testApiEntity));
                 break;
             case 5:
-                presenter.requestTopicById(265124, new ReqCallback<List<TopicEntity>>() {
+                presenter.requestTopicById(265124, new LSubscriber<List<TopicEntity>>() {
                     @Override
-                    public void onReqStart() {
+                    public void onStart() {
+                        super.onStart();
                         testApiEntity.setState(TestApiEntity.LOADING);
                         adapter.notifyItemChanged(position);
                     }
 
                     @Override
-                    public void onNetResp(List<TopicEntity> response) {
+                    public void onSuccess(List<TopicEntity> respEntity) {
                         testApiEntity.setState(TestApiEntity.SUCCESS);
                         adapter.notifyItemChanged(position);
                     }
@@ -85,15 +86,17 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                 });
                 break;
             case 6:
-                presenter.requestReplies(265124, new ReqCallback<List<ReplyEntity>>() {
+                presenter.requestReplies(265124, new LSubscriber<List<ReplyEntity>>() {
+
                     @Override
-                    public void onReqStart() {
+                    public void onStart() {
+                        super.onStart();
                         testApiEntity.setState(TestApiEntity.LOADING);
                         adapter.notifyItemChanged(position);
                     }
 
                     @Override
-                    public void onNetResp(List<ReplyEntity> response) {
+                    public void onSuccess(List<ReplyEntity> respEntity) {
                         testApiEntity.setState(TestApiEntity.SUCCESS);
                         adapter.notifyItemChanged(position);
                     }
@@ -106,15 +109,16 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                 });
                 break;
             case 7:
-                presenter.requestNode("python", new ReqCallback<NodeEntity>() {
+                presenter.requestNode("python", new LSubscriber<NodeEntity>() {
                     @Override
-                    public void onReqStart() {
+                    public void onStart() {
+                        super.onStart();
                         testApiEntity.setState(TestApiEntity.LOADING);
                         adapter.notifyItemChanged(position);
                     }
 
                     @Override
-                    public void onNetResp(NodeEntity response) {
+                    public void onSuccess(NodeEntity respEntity) {
                         testApiEntity.setState(TestApiEntity.SUCCESS);
                         adapter.notifyItemChanged(position);
                     }
@@ -127,15 +131,16 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                 });
                 break;
             case 8:
-                presenter.requestNodelist(new ReqCallback<List<NodeEntity>>() {
+                presenter.requestNodelist(new LSubscriber<List<NodeEntity>>() {
                     @Override
-                    public void onReqStart() {
+                    public void onStart() {
+                        super.onStart();
                         testApiEntity.setState(TestApiEntity.LOADING);
                         adapter.notifyItemChanged(position);
                     }
 
                     @Override
-                    public void onNetResp(List<NodeEntity> response) {
+                    public void onSuccess(List<NodeEntity> response) {
                         testApiEntity.setState(TestApiEntity.SUCCESS);
                         adapter.notifyItemChanged(position);
                     }
@@ -149,15 +154,16 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                 break;
 
             case 9:
-                presenter.requestMember("linpf", new ReqCallback<MemberEntity>() {
+                presenter.requestMember("linpf", new LSubscriber<MemberEntity>() {
                     @Override
-                    public void onReqStart() {
+                    public void onStart() {
+                        super.onStart();
                         testApiEntity.setState(TestApiEntity.LOADING);
                         adapter.notifyItemChanged(position);
                     }
 
                     @Override
-                    public void onNetResp(MemberEntity response) {
+                    public void onSuccess(MemberEntity response) {
                         testApiEntity.setState(TestApiEntity.SUCCESS);
                         adapter.notifyItemChanged(position);
                     }
@@ -174,16 +180,17 @@ public class TestApiVM extends BasePVM<ITestApiP> {
         }
     }
 
-    private ReqCallback<List<TopicEntity>> getTopicListCallback(final int position, final TestApiEntity testApiEntity) {
-        return new ReqCallback<List<TopicEntity>>() {
+    private LSubscriber<List<TopicEntity>> getTopicListCallback(final int position, final TestApiEntity testApiEntity) {
+        return new LSubscriber<List<TopicEntity>>() {
             @Override
-            public void onReqStart() {
+            public void onStart() {
+                super.onStart();
                 testApiEntity.setState(TestApiEntity.LOADING);
                 adapter.notifyItemChanged(position);
             }
 
             @Override
-            public void onNetResp(List<TopicEntity> response) {
+            public void onSuccess(List<TopicEntity> respEntity) {
                 testApiEntity.setState(TestApiEntity.SUCCESS);
                 adapter.notifyItemChanged(position);
             }

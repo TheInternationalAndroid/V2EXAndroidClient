@@ -22,7 +22,7 @@
 
 package com.rayman.v2ex.model.worker;
 
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.http.service.TopicService;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 
@@ -56,28 +56,28 @@ public class TopicWorker extends BaseWorker {
         this.topicService = topicService;
     }
 
-    public void hot(ReqCallback<List<TopicEntity>> callback) {
-        defaultCall(topicService.hot(), callback);
+    public void hot(LSubscriber<List<TopicEntity>> subscriber) {
+        defaultCall(topicService.hot(), subscriber);
     }
 
-    public void latest(ReqCallback<List<TopicEntity>> callback) {
-        defaultCall(topicService.latest(), callback);
+    public void latest(LSubscriber<List<TopicEntity>> subscriber) {
+        defaultCall(topicService.latest(), subscriber);
     }
 
-    public void topics(String userName, ReqCallback<List<TopicEntity>> callback) {
-        defaultCall(topicService.topicsByUserName(userName), callback);
+    public void topics(String userName, LSubscriber<List<TopicEntity>> subscriber) {
+        defaultCall(topicService.topicsByUserName(userName), subscriber);
     }
 
-    public void topicsByNodeId(long nodeId, ReqCallback<List<TopicEntity>> callback) {
-        defaultCall(topicService.topicsByNodeId(nodeId), callback);
+    public void topicsByNodeId(long nodeId, LSubscriber<List<TopicEntity>> subscriber) {
+        defaultCall(topicService.topicsByNodeId(nodeId), subscriber);
     }
 
-    public void topicsByNodeName(String nodeName, ReqCallback<List<TopicEntity>> callback) {
-        defaultCall(topicService.topicsByNodeName(nodeName), callback);
+    public void topicsByNodeName(String nodeName, LSubscriber<List<TopicEntity>> subscriber) {
+        defaultCall(topicService.topicsByNodeName(nodeName), subscriber);
     }
 
-    public void topicById(long nodeId, ReqCallback<List<TopicEntity>> callback) {
-        defaultCall(topicService.topicById(nodeId), callback);
+    public void topicById(long nodeId, LSubscriber<List<TopicEntity>> subscriber) {
+        defaultCall(topicService.topicById(nodeId), subscriber);
     }
-    
+
 }

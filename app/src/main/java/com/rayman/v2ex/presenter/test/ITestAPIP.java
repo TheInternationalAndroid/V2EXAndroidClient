@@ -1,6 +1,6 @@
 package com.rayman.v2ex.presenter.test;
 
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
@@ -28,23 +28,23 @@ import java.util.List;
  */
 public interface ITestApiP extends IPresenter {
 
-    void requestLastestList(ReqCallback<List<TopicEntity>> callback);
+    void requestLastestList(LSubscriber<List<TopicEntity>> callback);
 
-    void requestHotList(ReqCallback<List<TopicEntity>> callback);
+    void requestHotList(LSubscriber<List<TopicEntity>> callback);
 
-    void requestTopicListByName(String name, ReqCallback<List<TopicEntity>> callback);
+    void requestTopicListByName(String name, LSubscriber<List<TopicEntity>> callback);
 
-    void requestTopicListByNodeId(long nodeId, ReqCallback<List<TopicEntity>> callback);
+    void requestTopicListByNodeId(long nodeId, LSubscriber<List<TopicEntity>> callback);
 
-    void requestTopicListByNodeName(String nodeName, ReqCallback<List<TopicEntity>> callback);
+    void requestTopicListByNodeName(String nodeName, LSubscriber<List<TopicEntity>> callback);
 
-    void requestTopicById(long topicId, ReqCallback<List<TopicEntity>> callback);
+    void requestTopicById(long topicId, LSubscriber<List<TopicEntity>> callback);
 
-    void requestNode(String name, ReqCallback<NodeEntity> callback);
+    void requestNode(String name, LSubscriber<NodeEntity> callback);
 
-    void requestNodelist(ReqCallback<List<NodeEntity>> callback);
+    void requestNodelist(LSubscriber<List<NodeEntity>> callback);
 
-    void requestReplies(long topicId, ReqCallback<List<ReplyEntity>> callback);
+    void requestReplies(long topicId, LSubscriber<List<ReplyEntity>> callback);
 
-    void requestMember(String userName, ReqCallback<MemberEntity> callback);
+    void requestMember(String userName, LSubscriber<MemberEntity> callback);
 }

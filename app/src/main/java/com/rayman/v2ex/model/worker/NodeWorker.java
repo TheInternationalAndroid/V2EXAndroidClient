@@ -1,6 +1,6 @@
 package com.rayman.v2ex.model.worker;
 
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.http.service.NodeService;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 
@@ -34,12 +34,12 @@ public class NodeWorker extends BaseWorker {
         this.nodeService = nodeService;
     }
 
-    public void node(String name, ReqCallback<NodeEntity> callback) {
-        defaultCall(nodeService.nodeByName(name), callback);
+    public void node(String name, LSubscriber<NodeEntity> subscriber) {
+        defaultCall(nodeService.nodeByName(name), subscriber);
     }
 
-    public void nodeList(ReqCallback<List<NodeEntity>> callback) {
-        defaultCall(nodeService.nodes(), callback);
+    public void nodeList(LSubscriber<List<NodeEntity>> subscriber) {
+        defaultCall(nodeService.nodes(), subscriber);
     }
 
 }

@@ -25,7 +25,7 @@ package com.rayman.v2ex.viewmodel.account;
 import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
 
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
@@ -65,21 +65,32 @@ public class AccountVM extends BasePVM<IAccountP> {
         this.layoutManager = layoutManager;
     }
 
-    public void requestTopics() {
-        presenter.requestTopicList(member.getUsername(), new ReqCallback<List<TopicEntity>>() {
-            @Override
-            public void onReqStart() {
-
-            }
+    private void requestTopics(String userName) {
+        presenter.requestTopicList(userName, new LSubscriber<List<TopicEntity>>() {
 
             @Override
-            public void onNetResp(List<TopicEntity> response) {
-                if (response.size() > 0)
-                    adapter.setTopicEntities(response);
+            public void onSuccess(List<TopicEntity> respEntity) {
+                if (respEntity.size() > 0)
+                    adapter.setTopicEntities(respEntity);
             }
 
             @Override
             public void onError(ErrorEvent errorEvent) {
+
+            }
+        });
+    }
+
+    private void requestMemberDetail(String userName) {
+        presenter.requestMemberDetail(userName, new LSubscriber<MemberEntity>() {
+            @Override
+            public void onSuccess(MemberEntity respEntity) {
+
+            }
+
+            @Override
+            public void onError(ErrorEvent errorEvent) {
+
             }
         });
     }
@@ -97,9 +108,13 @@ public class AccountVM extends BasePVM<IAccountP> {
         return member;
     }
 
-    public void setMember(MemberEntity member) {
+    public void init(MemberEntity member) {
+        if (member == null)
+            return;
         this.member = member;
         adapter.setMemberEntity(member);
+        requestMemberDetail(member.getUsername());
+        requestTopics(member.getUsername());
     }
 
 }

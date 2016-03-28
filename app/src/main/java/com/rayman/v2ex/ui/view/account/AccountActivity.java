@@ -48,8 +48,7 @@ public class AccountActivity extends BaseDIActivity {
         MemberBaseEntity memberBaseEntity = intent.getParcelableExtra(ParaKeys.MEMBER_BASE_KEY);
         ActivityAccountBinding binding = bindLayout(R.layout.activity_account);
         binding.setViewModel(viewModel);
-        viewModel.setMember(new MemberEntity(memberBaseEntity));
-        viewModel.requestTopics();
+        viewModel.init(new MemberEntity(memberBaseEntity));
     }
 
     @Override

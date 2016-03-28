@@ -35,7 +35,7 @@ ext {
     targetSdkVersion = 23
     buildToolsVersion = '23.0.2'
     gradleBuildToolsVersion = '2.1.0-alpha1'
-    supportLibraryVersion = '24.0.0-alpha1'
+    supportLibraryVersion = '23.2.1'
     junitVersion = '4.12'
     sourceCompatibilityVersion = JavaVersion.VERSION_1_8
     targetCompatibilityVersion = JavaVersion.VERSION_1_8

@@ -1,6 +1,6 @@
 package com.rayman.v2ex.model.worker;
 
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.http.service.ReplyService;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
 
@@ -31,13 +31,11 @@ public class ReplyWorker extends BaseWorker {
 
     @Inject
     public ReplyWorker(ReplyService replyService) {
-
         this.replyService = replyService;
     }
 
-
-    public void replies(long topicId, ReqCallback<List<ReplyEntity>> callback) {
-        defaultCall(replyService.replies(topicId), callback);
+    public void replies(long topicId, LSubscriber<List<ReplyEntity>> subscriber) {
+        defaultCall(replyService.replies(topicId), subscriber);
     }
 
 }

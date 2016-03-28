@@ -22,7 +22,7 @@
 
 package com.rayman.v2ex.presenter.main;
 
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.model.worker.TopicWorker;
 import com.rayman.v2ex.presenter.BasePresenter;
@@ -61,7 +61,7 @@ public class HotFragP extends BasePresenter implements IHotFragP {
     }
 
     @Override
-    public void requestHotList(ReqCallback<List<TopicEntity>> callback) {
-        topicWorker.hot(callback);
+    public void requestHotList(LSubscriber<List<TopicEntity>> subscriber) {
+        topicWorker.hot(subscriber);
     }
 }

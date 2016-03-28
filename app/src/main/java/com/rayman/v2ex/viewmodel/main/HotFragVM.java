@@ -25,7 +25,7 @@ package com.rayman.v2ex.viewmodel.main;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.main.HotFragP;
@@ -67,7 +67,8 @@ public class HotFragVM extends BaseStateVM<IHotFragP> {
         adapter = new TopicListAdapter(hotFragView);
     }
 
-    @Override public void onRetryClicked(View view) {
+    @Override
+    public void onRetryClicked(View view) {
         requestHotTopicList();
     }
 
@@ -80,21 +81,26 @@ public class HotFragVM extends BaseStateVM<IHotFragP> {
     }
 
     public void requestHotTopicList() {
-        presenter.requestHotList(new ReqCallback<List<TopicEntity>>() {
-            @Override public void onReqStart() {
+        presenter.requestHotList(new LSubscriber<List<TopicEntity>>() {
+
+            @Override
+            public void onStart() {
+                super.onStart();
                 setState(PageState.LOADING);
             }
 
-            @Override public void onNetResp(List<TopicEntity> response) {
-                if (response.size() > 0) {
+            @Override
+            public void onSuccess(List<TopicEntity> respEntity) {
+                if (respEntity.size() > 0) {
                     setState(PageState.CONTENT);
-                    adapter.setList(response);
+                    adapter.setList(respEntity);
                 } else {
                     setState(PageState.EMPTY);
                 }
             }
 
-            @Override public void onError(ErrorEvent errorEvent) {
+            @Override
+            public void onError(ErrorEvent errorEvent) {
                 showError(PageState.ERROR, errorEvent.getMessage());
             }
         });

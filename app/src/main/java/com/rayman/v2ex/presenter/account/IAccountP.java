@@ -22,7 +22,8 @@
 
 package com.rayman.v2ex.presenter.account;
 
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
+import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.IPresenter;
 
@@ -47,6 +48,8 @@ import java.util.List;
  */
 public interface IAccountP extends IPresenter {
 
-    void requestTopicList(String userName, ReqCallback<List<TopicEntity>> callback);
+    void requestTopicList(String userName, LSubscriber<List<TopicEntity>> callback);
+
+    void requestMemberDetail(String userName, LSubscriber<MemberEntity> callback);
 
 }

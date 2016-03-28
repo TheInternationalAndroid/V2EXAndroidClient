@@ -1,6 +1,6 @@
 package com.rayman.v2ex.presenter.test;
 
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
@@ -50,52 +50,52 @@ public class TestApiP extends BasePresenter implements ITestApiP {
     }
 
     @Override
-    public void requestHotList(ReqCallback<List<TopicEntity>> callback) {
-        topicWorker.hot(callback);
+    public void requestHotList(LSubscriber<List<TopicEntity>> subscriber) {
+        topicWorker.hot(subscriber);
     }
 
     @Override
-    public void requestLastestList(ReqCallback<List<TopicEntity>> callback) {
-        topicWorker.latest(callback);
+    public void requestLastestList(LSubscriber<List<TopicEntity>> subscriber) {
+        topicWorker.latest(subscriber);
     }
 
     @Override
-    public void requestTopicListByName(String userName, ReqCallback<List<TopicEntity>> callback) {
-        topicWorker.topics(userName, callback);
+    public void requestTopicListByName(String userName, LSubscriber<List<TopicEntity>> subscriber) {
+        topicWorker.topics(userName, subscriber);
     }
 
     @Override
-    public void requestNode(String nodeName, ReqCallback<NodeEntity> callback) {
-        nodeWorker.node(nodeName, callback);
+    public void requestNode(String nodeName, LSubscriber<NodeEntity> subscriber) {
+        nodeWorker.node(nodeName, subscriber);
     }
 
     @Override
-    public void requestTopicListByNodeId(long nodeId, ReqCallback<List<TopicEntity>> callback) {
-        topicWorker.topicsByNodeId(nodeId, callback);
+    public void requestTopicListByNodeId(long nodeId, LSubscriber<List<TopicEntity>> subscriber) {
+        topicWorker.topicsByNodeId(nodeId, subscriber);
     }
 
     @Override
-    public void requestTopicListByNodeName(String nodeName, ReqCallback<List<TopicEntity>> callback) {
-        topicWorker.topicsByNodeName(nodeName, callback);
+    public void requestTopicListByNodeName(String nodeName, LSubscriber<List<TopicEntity>> subscriber) {
+        topicWorker.topicsByNodeName(nodeName, subscriber);
     }
 
     @Override
-    public void requestTopicById(long topicId, ReqCallback<List<TopicEntity>> callback) {
-        topicWorker.topicById(topicId, callback);
+    public void requestTopicById(long topicId, LSubscriber<List<TopicEntity>> subscriber) {
+        topicWorker.topicById(topicId, subscriber);
     }
 
     @Override
-    public void requestNodelist(ReqCallback<List<NodeEntity>> callback) {
-        nodeWorker.nodeList(callback);
+    public void requestNodelist(LSubscriber<List<NodeEntity>> subscriber) {
+        nodeWorker.nodeList(subscriber);
     }
 
     @Override
-    public void requestReplies(long topicId, ReqCallback<List<ReplyEntity>> callback) {
-        replyWorker.replies(topicId, callback);
+    public void requestReplies(long topicId, LSubscriber<List<ReplyEntity>> subscriber) {
+        replyWorker.replies(topicId, subscriber);
     }
 
     @Override
-    public void requestMember(String userName, ReqCallback<MemberEntity> callback) {
-        memberWorker.member(userName, callback);
+    public void requestMember(String userName, LSubscriber<MemberEntity> subscriber) {
+        memberWorker.member(userName, subscriber);
     }
 }

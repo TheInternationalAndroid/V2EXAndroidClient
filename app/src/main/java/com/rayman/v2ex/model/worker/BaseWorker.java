@@ -24,7 +24,7 @@ package com.rayman.v2ex.model.worker;
 
 import android.support.annotation.NonNull;
 
-import com.rayman.v2ex.model.http.callback.ReqCallback;
+import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.presenter.ILifeCycle;
 import com.rayman.v2ex.widget.eventbus.RxBus;
 import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
@@ -70,23 +70,20 @@ public class BaseWorker implements ILifeCycle {
         subscription.unsubscribe();
     }
 
-    public boolean isAlive() {
+    public boolean filter(Response response) {
         return isAlive;
     }
 
-    private <T> WorkerCallback<T> defaultCallback(ReqCallback<T> callback) {
-        return new WorkerCallback<>(this, callback);
-    }
-
-    <T> void defaultCall(@NonNull Observable<Response<T>> observable, @NonNull ReqCallback<T> callback) {
+    <T> void defaultCall(@NonNull Observable<Response<T>> observable, @NonNull LSubscriber<T> subscriber) {
         subscription.add(
                 observable
                         .subscribeOn(Schedulers.io())
-                        .doOnSubscribe(callback::onReqStart)
+                        .doOnSubscribe(subscriber::onStart)
                         .subscribeOn(AndroidSchedulers.mainThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .unsubscribeOn(Schedulers.io())
-                        .subscribe(defaultCallback(callback))
+                        .filter(this::filter)
+                        .subscribe(subscriber)
         );
     }
 

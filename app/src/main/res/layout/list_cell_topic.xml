@@ -112,7 +112,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.topic.member.username}"
+                        android:text="@{viewModel.topic.member.username,default=UserName}"
                         android:textSize="@dimen/text_m" />
 
                     <View style="@style/PointStyle" />
@@ -130,7 +130,7 @@
                 style="@style/CountTagStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(viewModel.topic.replies)}"
+                android:text="@{String.valueOf(viewModel.topic.replies),default=0}"
                 android:textColor="@color/text_white"
                 android:textSize="@dimen/text_m" />
 

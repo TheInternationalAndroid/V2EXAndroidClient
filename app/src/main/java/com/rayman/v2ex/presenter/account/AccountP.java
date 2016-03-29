@@ -66,11 +66,11 @@ public class AccountP extends BasePresenter implements IAccountP {
 
     @Override
     public void requestTopicList(String userName, Subscriber<List<TopicEntity>> subscriber) {
-        asyncRun(topicService.topicsByUserName(userName), subscriber);
+        subscribeHttpReq(topicService.topicsByUserName(userName), subscriber);
     }
 
     @Override
     public void requestMemberDetail(String userName, Subscriber<MemberEntity> subscriber) {
-        asyncRun(memberService.member(userName), subscriber);
+        subscribeHttpReq(memberService.member(userName), subscriber);
     }
 }

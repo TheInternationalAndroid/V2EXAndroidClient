@@ -62,6 +62,6 @@ public class LatestFragP extends BasePresenter implements ILatestFragP {
 
     @Override
     public void requestLatestList(Subscriber<List<TopicEntity>> subscriber) {
-        asyncRun(topicService.latest(), subscriber);
+        subscribeHttpReq(topicService.latest(), subscriber);
     }
 }

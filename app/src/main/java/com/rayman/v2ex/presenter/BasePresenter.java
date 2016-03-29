@@ -69,7 +69,6 @@ public class BasePresenter implements IPresenter {
         this.subscription.add(subscription);
     }
 
-
     @Override
     public <T extends BaseEvent> void subscribeEvent(Class<T> aClass, Action1<T> eventAction) {
         subscribe(
@@ -80,14 +79,14 @@ public class BasePresenter implements IPresenter {
         );
     }
 
-    protected <T> void asyncRun(@NonNull Observable<Response<T>> observable, @NonNull Subscriber<T> subscriber) {
+    protected <T> void subscribeHttpReq(@NonNull Observable<Response<T>> observable, @NonNull Subscriber<T> subscriber) {
         Timber.i("defaultCall %d", Thread.currentThread().getId());
         subscription.add(
                 observable
                         .subscribeOn(Schedulers.io())
                         .doOnSubscribe(subscriber::onStart)
                         .doOnUnsubscribe(this::unSubscribe)
-                        .filter(this::filter)
+                        .filter(this::httpReqFilter)
                         .flatMap(this::responseFlatMap)
                         .flatMap(this::dataFlatMap)
                         .doOnError(this::postError)
@@ -96,8 +95,28 @@ public class BasePresenter implements IPresenter {
         );
     }
 
-    private boolean filter(Response response) {
-        Timber.i("filter %s  %d", isAlive, Thread.currentThread().getId());
+    protected <T> void subscribeAsyncRun(@NonNull Observable<T> observable, @NonNull Subscriber<T> subscriber) {
+        Timber.i("defaultCall %d", Thread.currentThread().getId());
+        subscription.add(
+                observable
+                        .subscribeOn(Schedulers.io())
+                        .doOnSubscribe(subscriber::onStart)
+                        .doOnUnsubscribe(this::unSubscribe)
+                        .filter(this::asyncRunFilter)
+                        .flatMap(this::dataFlatMap)
+                        .doOnError(this::postError)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(subscriber)
+        );
+    }
+
+    private <T> boolean httpReqFilter(Response<T> response) {
+        Timber.i("httpReqFilter %s  %d", isAlive, Thread.currentThread().getId());
+        return isAlive;
+    }
+
+    private <T> boolean asyncRunFilter(T t) {
+        Timber.i("asyncRunFilter %s  %d", isAlive, Thread.currentThread().getId());
         return isAlive;
     }
 

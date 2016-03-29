@@ -62,6 +62,6 @@ public class HotFragP extends BasePresenter implements IHotFragP {
 
     @Override
     public void requestHotList(Subscriber<List<TopicEntity>> subscriber) {
-        asyncRun(topicService.hot(), subscriber);
+        subscribeHttpReq(topicService.hot(), subscriber);
     }
 }

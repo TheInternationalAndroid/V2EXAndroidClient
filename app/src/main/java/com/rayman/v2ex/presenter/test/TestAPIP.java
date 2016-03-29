@@ -52,51 +52,51 @@ public class TestApiP extends BasePresenter implements ITestApiP {
 
     @Override
     public void requestHotList(Subscriber<List<TopicEntity>> subscriber) {
-        asyncRun(topicService.hot(), subscriber);
+        subscribeHttpReq(topicService.hot(), subscriber);
     }
 
     @Override
     public void requestLastestList(Subscriber<List<TopicEntity>> subscriber) {
-        asyncRun(topicService.latest(), subscriber);
+        subscribeHttpReq(topicService.latest(), subscriber);
     }
 
     @Override
     public void requestTopicListByName(String userName, Subscriber<List<TopicEntity>> subscriber) {
-        asyncRun(topicService.topicsByUserName(userName), subscriber);
+        subscribeHttpReq(topicService.topicsByUserName(userName), subscriber);
     }
 
     @Override
     public void requestNode(String nodeName, Subscriber<NodeEntity> subscriber) {
-        asyncRun(nodeService.nodeByName(nodeName), subscriber);
+        subscribeHttpReq(nodeService.nodeByName(nodeName), subscriber);
     }
 
     @Override
     public void requestTopicListByNodeId(long nodeId, Subscriber<List<TopicEntity>> subscriber) {
-        asyncRun(topicService.topicsByNodeId(nodeId), subscriber);
+        subscribeHttpReq(topicService.topicsByNodeId(nodeId), subscriber);
     }
 
     @Override
     public void requestTopicListByNodeName(String nodeName, Subscriber<List<TopicEntity>> subscriber) {
-        asyncRun(topicService.topicsByNodeName(nodeName), subscriber);
+        subscribeHttpReq(topicService.topicsByNodeName(nodeName), subscriber);
     }
 
     @Override
     public void requestTopicById(long topicId, Subscriber<List<TopicEntity>> subscriber) {
-        asyncRun(topicService.topicById(topicId), subscriber);
+        subscribeHttpReq(topicService.topicById(topicId), subscriber);
     }
 
     @Override
     public void requestNodelist(Subscriber<List<NodeEntity>> subscriber) {
-        asyncRun(nodeService.nodes(), subscriber);
+        subscribeHttpReq(nodeService.nodes(), subscriber);
     }
 
     @Override
     public void requestReplies(long topicId, Subscriber<List<ReplyEntity>> subscriber) {
-        asyncRun(replyService.replies(topicId), subscriber);
+        subscribeHttpReq(replyService.replies(topicId), subscriber);
     }
 
     @Override
     public void requestMember(String userName, Subscriber<MemberEntity> subscriber) {
-        asyncRun(memberService.member(userName), subscriber);
+        subscribeHttpReq(memberService.member(userName), subscriber);
     }
 }

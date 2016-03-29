@@ -24,18 +24,23 @@ package com.rayman.v2ex.model.worker;
 
 import android.support.annotation.NonNull;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
+import com.rayman.v2ex.model.http.ErrorType;
+import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.presenter.ILifeCycle;
 import com.rayman.v2ex.widget.eventbus.RxBus;
 import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
 
+import java.io.IOException;
+
 import retrofit2.Response;
 import rx.Observable;
+import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
+import timber.log.Timber;
 
 /**
  * Created by Android Studio.
@@ -70,21 +75,68 @@ public class BaseWorker implements ILifeCycle {
         subscription.unsubscribe();
     }
 
-    public boolean filter(Response response) {
-        return isAlive;
-    }
-
-    <T> void defaultCall(@NonNull Observable<Response<T>> observable, @NonNull LSubscriber<T> subscriber) {
+    <T> void defaultCall(@NonNull Observable<Response<T>> observable, @NonNull Subscriber<T> subscriber) {
+        Timber.i("defaultCall %d", Thread.currentThread().getId());
         subscription.add(
                 observable
                         .subscribeOn(Schedulers.io())
                         .doOnSubscribe(subscriber::onStart)
-                        .subscribeOn(AndroidSchedulers.mainThread())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .unsubscribeOn(Schedulers.io())
+                        .doOnUnsubscribe(this::unSubscribe)
                         .filter(this::filter)
+                        .flatMap(this::responseFlatMap)
+                        .flatMap(this::dataFlatMap)
+                        .doOnError(this::postError)
+                        .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(subscriber)
         );
+    }
+
+    private boolean filter(Response response) {
+        Timber.i("filter %s  %d", isAlive, Thread.currentThread().getId());
+        return isAlive;
+    }
+
+    private void unSubscribe() {
+        Timber.i("unSubscribe %s  %d", isAlive, Thread.currentThread().getId());
+    }
+
+    private <T> Observable<T> responseFlatMap(Response<T> response) {
+        return Observable.create(new Observable.OnSubscribe<T>() {
+            @Override
+            public void call(Subscriber<? super T> subscriber) {
+                Timber.i("responseFlatMap %d", Thread.currentThread().getId());
+                if (response.isSuccessful()) {
+                    subscriber.onNext(response.body());
+                } else {
+                    subscriber.onError(new Throwable(response.message()));
+                }
+            }
+        });
+    }
+
+    private <T> Observable<T> dataFlatMap(T t) {
+        return Observable.create(new Observable.OnSubscribe<T>() {
+            @Override
+            public void call(Subscriber<? super T> subscriber) {
+                Timber.i("dataFlatMap %d", Thread.currentThread().getId());
+                if (t == null) {
+                    subscriber.onError(new Exception("Response body is empty."));
+                } else {
+                    subscriber.onNext(t);
+                }
+            }
+        });
+    }
+
+    private void postError(Throwable throwable) {
+        Timber.i("postError %d %s", Thread.currentThread().getId(), throwable.getLocalizedMessage());
+        ErrorEvent errorEvent;
+        if (throwable instanceof IOException) {
+            errorEvent = new ErrorEvent(ErrorType.ERROR_NETWORK, "网络异常");
+        } else {
+            errorEvent = new ErrorEvent(ErrorType.ERROR_OTHER, "未知异常");
+        }
+        RxBus.instance().post(errorEvent);
     }
 
     public void subscribe(Subscription subscription) {

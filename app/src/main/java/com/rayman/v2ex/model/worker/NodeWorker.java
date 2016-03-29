@@ -1,12 +1,13 @@
 package com.rayman.v2ex.model.worker;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.http.service.NodeService;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 
 import java.util.List;
 
 import javax.inject.Inject;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -34,11 +35,11 @@ public class NodeWorker extends BaseWorker {
         this.nodeService = nodeService;
     }
 
-    public void node(String name, LSubscriber<NodeEntity> subscriber) {
+    public void node(String name, Subscriber<NodeEntity> subscriber) {
         defaultCall(nodeService.nodeByName(name), subscriber);
     }
 
-    public void nodeList(LSubscriber<List<NodeEntity>> subscriber) {
+    public void nodeList(Subscriber<List<NodeEntity>> subscriber) {
         defaultCall(nodeService.nodes(), subscriber);
     }
 

@@ -22,11 +22,12 @@
 
 package com.rayman.v2ex.presenter.main;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.IPresenter;
 
 import java.util.List;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -47,6 +48,6 @@ import java.util.List;
  */
 public interface IHotFragP extends IPresenter {
 
-    void requestHotList(LSubscriber<List<TopicEntity>> subscriber);
+    void requestHotList(Subscriber<List<TopicEntity>> subscriber);
 
 }

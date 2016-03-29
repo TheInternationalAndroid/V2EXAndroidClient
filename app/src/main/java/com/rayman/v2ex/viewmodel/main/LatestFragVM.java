@@ -25,8 +25,6 @@ package com.rayman.v2ex.viewmodel.main;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
-import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.main.ILatestFragP;
 import com.rayman.v2ex.presenter.main.LatestFragP;
@@ -36,6 +34,8 @@ import com.rayman.v2ex.viewmodel.BaseStateVM;
 import com.rayman.v2ex.widget.anotations.PageState;
 
 import java.util.List;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -81,7 +81,7 @@ public class LatestFragVM extends BaseStateVM<ILatestFragP> {
     }
 
     public void requestLatestTopic() {
-        presenter.requestLatestList(new LSubscriber<List<TopicEntity>>() {
+        presenter.requestLatestList(new Subscriber<List<TopicEntity>>() {
 
             @Override
             public void onStart() {
@@ -89,8 +89,9 @@ public class LatestFragVM extends BaseStateVM<ILatestFragP> {
                 setState(PageState.LOADING);
             }
 
+
             @Override
-            public void onSuccess(List<TopicEntity> respEntity) {
+            public void onNext(List<TopicEntity> respEntity) {
                 if (respEntity.size() > 0) {
                     setState(PageState.CONTENT);
                     adapter.setList(respEntity);
@@ -100,7 +101,12 @@ public class LatestFragVM extends BaseStateVM<ILatestFragP> {
             }
 
             @Override
-            public void onError(ErrorEvent errorEvent) {
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable errorEvent) {
                 showError(PageState.ERROR, errorEvent.getMessage());
             }
         });

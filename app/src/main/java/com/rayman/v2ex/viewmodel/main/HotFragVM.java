@@ -25,8 +25,6 @@ package com.rayman.v2ex.viewmodel.main;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
-import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.main.HotFragP;
 import com.rayman.v2ex.presenter.main.IHotFragP;
@@ -36,6 +34,9 @@ import com.rayman.v2ex.viewmodel.BaseStateVM;
 import com.rayman.v2ex.widget.anotations.PageState;
 
 import java.util.List;
+
+import rx.Subscriber;
+import timber.log.Timber;
 
 /**
  * Created by Android Studio.
@@ -81,16 +82,23 @@ public class HotFragVM extends BaseStateVM<IHotFragP> {
     }
 
     public void requestHotTopicList() {
-        presenter.requestHotList(new LSubscriber<List<TopicEntity>>() {
+        presenter.requestHotList(new Subscriber<List<TopicEntity>>() {
+
+            @Override
+            public void onCompleted() {
+                Timber.i("onCompleted %d", Thread.currentThread().getId());
+            }
 
             @Override
             public void onStart() {
+                Timber.i("onStart %d", Thread.currentThread().getId());
                 super.onStart();
                 setState(PageState.LOADING);
             }
 
             @Override
-            public void onSuccess(List<TopicEntity> respEntity) {
+            public void onNext(List<TopicEntity> respEntity) {
+                Timber.i("onNext %d", Thread.currentThread().getId());
                 if (respEntity.size() > 0) {
                     setState(PageState.CONTENT);
                     adapter.setList(respEntity);
@@ -100,7 +108,8 @@ public class HotFragVM extends BaseStateVM<IHotFragP> {
             }
 
             @Override
-            public void onError(ErrorEvent errorEvent) {
+            public void onError(Throwable errorEvent) {
+                Timber.i("onError %d", Thread.currentThread().getId());
                 showError(PageState.ERROR, errorEvent.getMessage());
             }
         });

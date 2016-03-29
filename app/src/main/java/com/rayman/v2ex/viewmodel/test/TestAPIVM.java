@@ -3,8 +3,6 @@ package com.rayman.v2ex.viewmodel.test;
 import android.support.v7.widget.RecyclerView;
 
 import com.rayman.v2ex.model.http.Host;
-import com.rayman.v2ex.model.http.callback.LSubscriber;
-import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.TestApiEntity;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
@@ -16,6 +14,8 @@ import com.rayman.v2ex.viewmodel.BasePVM;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -64,7 +64,7 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                 presenter.requestTopicListByNodeName("python", getTopicListCallback(position, testApiEntity));
                 break;
             case 5:
-                presenter.requestTopicById(265124, new LSubscriber<List<TopicEntity>>() {
+                presenter.requestTopicById(265124, new Subscriber<List<TopicEntity>>() {
                     @Override
                     public void onStart() {
                         super.onStart();
@@ -73,20 +73,25 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                     }
 
                     @Override
-                    public void onSuccess(List<TopicEntity> respEntity) {
+                    public void onNext(List<TopicEntity> respEntity) {
                         testApiEntity.setState(TestApiEntity.SUCCESS);
                         adapter.notifyItemChanged(position);
                     }
 
                     @Override
-                    public void onError(ErrorEvent errorEvent) {
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable errorEvent) {
                         testApiEntity.setState(TestApiEntity.ERROR);
                         adapter.notifyItemChanged(position);
                     }
                 });
                 break;
             case 6:
-                presenter.requestReplies(265124, new LSubscriber<List<ReplyEntity>>() {
+                presenter.requestReplies(265124, new Subscriber<List<ReplyEntity>>() {
 
                     @Override
                     public void onStart() {
@@ -96,20 +101,25 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                     }
 
                     @Override
-                    public void onSuccess(List<ReplyEntity> respEntity) {
+                    public void onNext(List<ReplyEntity> respEntity) {
                         testApiEntity.setState(TestApiEntity.SUCCESS);
                         adapter.notifyItemChanged(position);
                     }
 
                     @Override
-                    public void onError(ErrorEvent errorEvent) {
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable errorEvent) {
                         testApiEntity.setState(TestApiEntity.ERROR);
                         adapter.notifyItemChanged(position);
                     }
                 });
                 break;
             case 7:
-                presenter.requestNode("python", new LSubscriber<NodeEntity>() {
+                presenter.requestNode("python", new Subscriber<NodeEntity>() {
                     @Override
                     public void onStart() {
                         super.onStart();
@@ -118,20 +128,25 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                     }
 
                     @Override
-                    public void onSuccess(NodeEntity respEntity) {
+                    public void onNext(NodeEntity respEntity) {
                         testApiEntity.setState(TestApiEntity.SUCCESS);
                         adapter.notifyItemChanged(position);
                     }
 
                     @Override
-                    public void onError(ErrorEvent errorEvent) {
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable errorEvent) {
                         testApiEntity.setState(TestApiEntity.ERROR);
                         adapter.notifyItemChanged(position);
                     }
                 });
                 break;
             case 8:
-                presenter.requestNodelist(new LSubscriber<List<NodeEntity>>() {
+                presenter.requestNodelist(new Subscriber<List<NodeEntity>>() {
                     @Override
                     public void onStart() {
                         super.onStart();
@@ -140,13 +155,18 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                     }
 
                     @Override
-                    public void onSuccess(List<NodeEntity> response) {
+                    public void onNext(List<NodeEntity> response) {
                         testApiEntity.setState(TestApiEntity.SUCCESS);
                         adapter.notifyItemChanged(position);
                     }
 
                     @Override
-                    public void onError(ErrorEvent errorEvent) {
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable errorEvent) {
                         testApiEntity.setState(TestApiEntity.ERROR);
                         adapter.notifyItemChanged(position);
                     }
@@ -154,7 +174,7 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                 break;
 
             case 9:
-                presenter.requestMember("linpf", new LSubscriber<MemberEntity>() {
+                presenter.requestMember("linpf", new Subscriber<MemberEntity>() {
                     @Override
                     public void onStart() {
                         super.onStart();
@@ -163,13 +183,18 @@ public class TestApiVM extends BasePVM<ITestApiP> {
                     }
 
                     @Override
-                    public void onSuccess(MemberEntity response) {
+                    public void onNext(MemberEntity response) {
                         testApiEntity.setState(TestApiEntity.SUCCESS);
                         adapter.notifyItemChanged(position);
                     }
 
                     @Override
-                    public void onError(ErrorEvent errorEvent) {
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable errorEvent) {
                         testApiEntity.setState(TestApiEntity.ERROR);
                         adapter.notifyItemChanged(position);
                     }
@@ -180,8 +205,8 @@ public class TestApiVM extends BasePVM<ITestApiP> {
         }
     }
 
-    private LSubscriber<List<TopicEntity>> getTopicListCallback(final int position, final TestApiEntity testApiEntity) {
-        return new LSubscriber<List<TopicEntity>>() {
+    private Subscriber<List<TopicEntity>> getTopicListCallback(final int position, final TestApiEntity testApiEntity) {
+        return new Subscriber<List<TopicEntity>>() {
             @Override
             public void onStart() {
                 super.onStart();
@@ -190,13 +215,18 @@ public class TestApiVM extends BasePVM<ITestApiP> {
             }
 
             @Override
-            public void onSuccess(List<TopicEntity> respEntity) {
+            public void onNext(List<TopicEntity> respEntity) {
                 testApiEntity.setState(TestApiEntity.SUCCESS);
                 adapter.notifyItemChanged(position);
             }
 
             @Override
-            public void onError(ErrorEvent errorEvent) {
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable errorEvent) {
                 testApiEntity.setState(TestApiEntity.ERROR);
                 adapter.notifyItemChanged(position);
             }

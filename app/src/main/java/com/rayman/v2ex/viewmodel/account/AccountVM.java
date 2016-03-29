@@ -25,8 +25,6 @@ package com.rayman.v2ex.viewmodel.account;
 import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
-import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.account.AccountP;
@@ -35,6 +33,8 @@ import com.rayman.v2ex.ui.adapter.list.AccountPageAdapter;
 import com.rayman.v2ex.viewmodel.BasePVM;
 
 import java.util.List;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -66,30 +66,39 @@ public class AccountVM extends BasePVM<IAccountP> {
     }
 
     private void requestTopics(String userName) {
-        presenter.requestTopicList(userName, new LSubscriber<List<TopicEntity>>() {
+        presenter.requestTopicList(userName, new Subscriber<List<TopicEntity>>() {
+            @Override
+            public void onCompleted() {
+
+            }
 
             @Override
-            public void onSuccess(List<TopicEntity> respEntity) {
+            public void onNext(List<TopicEntity> respEntity) {
                 if (respEntity.size() > 0)
                     adapter.setTopicEntities(respEntity);
             }
 
             @Override
-            public void onError(ErrorEvent errorEvent) {
+            public void onError(Throwable throwable) {
 
             }
         });
     }
 
     private void requestMemberDetail(String userName) {
-        presenter.requestMemberDetail(userName, new LSubscriber<MemberEntity>() {
+        presenter.requestMemberDetail(userName, new Subscriber<MemberEntity>() {
             @Override
-            public void onSuccess(MemberEntity respEntity) {
+            public void onCompleted() {
 
             }
 
             @Override
-            public void onError(ErrorEvent errorEvent) {
+            public void onNext(MemberEntity respEntity) {
+
+            }
+
+            @Override
+            public void onError(Throwable errorEvent) {
 
             }
         });

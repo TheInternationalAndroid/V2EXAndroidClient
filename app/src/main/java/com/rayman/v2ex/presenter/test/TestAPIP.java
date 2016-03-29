@@ -1,6 +1,5 @@
 package com.rayman.v2ex.presenter.test;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
@@ -15,6 +14,8 @@ import com.squareup.leakcanary.RefWatcher;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -50,52 +51,52 @@ public class TestApiP extends BasePresenter implements ITestApiP {
     }
 
     @Override
-    public void requestHotList(LSubscriber<List<TopicEntity>> subscriber) {
+    public void requestHotList(Subscriber<List<TopicEntity>> subscriber) {
         topicWorker.hot(subscriber);
     }
 
     @Override
-    public void requestLastestList(LSubscriber<List<TopicEntity>> subscriber) {
+    public void requestLastestList(Subscriber<List<TopicEntity>> subscriber) {
         topicWorker.latest(subscriber);
     }
 
     @Override
-    public void requestTopicListByName(String userName, LSubscriber<List<TopicEntity>> subscriber) {
+    public void requestTopicListByName(String userName, Subscriber<List<TopicEntity>> subscriber) {
         topicWorker.topics(userName, subscriber);
     }
 
     @Override
-    public void requestNode(String nodeName, LSubscriber<NodeEntity> subscriber) {
+    public void requestNode(String nodeName, Subscriber<NodeEntity> subscriber) {
         nodeWorker.node(nodeName, subscriber);
     }
 
     @Override
-    public void requestTopicListByNodeId(long nodeId, LSubscriber<List<TopicEntity>> subscriber) {
+    public void requestTopicListByNodeId(long nodeId, Subscriber<List<TopicEntity>> subscriber) {
         topicWorker.topicsByNodeId(nodeId, subscriber);
     }
 
     @Override
-    public void requestTopicListByNodeName(String nodeName, LSubscriber<List<TopicEntity>> subscriber) {
+    public void requestTopicListByNodeName(String nodeName, Subscriber<List<TopicEntity>> subscriber) {
         topicWorker.topicsByNodeName(nodeName, subscriber);
     }
 
     @Override
-    public void requestTopicById(long topicId, LSubscriber<List<TopicEntity>> subscriber) {
+    public void requestTopicById(long topicId, Subscriber<List<TopicEntity>> subscriber) {
         topicWorker.topicById(topicId, subscriber);
     }
 
     @Override
-    public void requestNodelist(LSubscriber<List<NodeEntity>> subscriber) {
+    public void requestNodelist(Subscriber<List<NodeEntity>> subscriber) {
         nodeWorker.nodeList(subscriber);
     }
 
     @Override
-    public void requestReplies(long topicId, LSubscriber<List<ReplyEntity>> subscriber) {
+    public void requestReplies(long topicId, Subscriber<List<ReplyEntity>> subscriber) {
         replyWorker.replies(topicId, subscriber);
     }
 
     @Override
-    public void requestMember(String userName, LSubscriber<MemberEntity> subscriber) {
+    public void requestMember(String userName, Subscriber<MemberEntity> subscriber) {
         memberWorker.member(userName, subscriber);
     }
 }

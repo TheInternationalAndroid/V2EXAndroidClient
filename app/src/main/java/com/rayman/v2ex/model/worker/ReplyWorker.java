@@ -1,12 +1,13 @@
 package com.rayman.v2ex.model.worker;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.http.service.ReplyService;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
 
 import java.util.List;
 
 import javax.inject.Inject;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -34,7 +35,7 @@ public class ReplyWorker extends BaseWorker {
         this.replyService = replyService;
     }
 
-    public void replies(long topicId, LSubscriber<List<ReplyEntity>> subscriber) {
+    public void replies(long topicId, Subscriber<List<ReplyEntity>> subscriber) {
         defaultCall(replyService.replies(topicId), subscriber);
     }
 

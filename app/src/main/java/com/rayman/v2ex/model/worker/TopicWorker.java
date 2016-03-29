@@ -22,13 +22,14 @@
 
 package com.rayman.v2ex.model.worker;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.http.service.TopicService;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 
 import java.util.List;
 
 import javax.inject.Inject;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -56,27 +57,27 @@ public class TopicWorker extends BaseWorker {
         this.topicService = topicService;
     }
 
-    public void hot(LSubscriber<List<TopicEntity>> subscriber) {
+    public void hot(Subscriber<List<TopicEntity>> subscriber) {
         defaultCall(topicService.hot(), subscriber);
     }
 
-    public void latest(LSubscriber<List<TopicEntity>> subscriber) {
+    public void latest(Subscriber<List<TopicEntity>> subscriber) {
         defaultCall(topicService.latest(), subscriber);
     }
 
-    public void topics(String userName, LSubscriber<List<TopicEntity>> subscriber) {
+    public void topics(String userName, Subscriber<List<TopicEntity>> subscriber) {
         defaultCall(topicService.topicsByUserName(userName), subscriber);
     }
 
-    public void topicsByNodeId(long nodeId, LSubscriber<List<TopicEntity>> subscriber) {
+    public void topicsByNodeId(long nodeId, Subscriber<List<TopicEntity>> subscriber) {
         defaultCall(topicService.topicsByNodeId(nodeId), subscriber);
     }
 
-    public void topicsByNodeName(String nodeName, LSubscriber<List<TopicEntity>> subscriber) {
+    public void topicsByNodeName(String nodeName, Subscriber<List<TopicEntity>> subscriber) {
         defaultCall(topicService.topicsByNodeName(nodeName), subscriber);
     }
 
-    public void topicById(long nodeId, LSubscriber<List<TopicEntity>> subscriber) {
+    public void topicById(long nodeId, Subscriber<List<TopicEntity>> subscriber) {
         defaultCall(topicService.topicById(nodeId), subscriber);
     }
 

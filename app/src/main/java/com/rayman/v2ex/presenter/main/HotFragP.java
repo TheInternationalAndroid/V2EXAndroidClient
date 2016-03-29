@@ -22,7 +22,6 @@
 
 package com.rayman.v2ex.presenter.main;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.model.worker.TopicWorker;
 import com.rayman.v2ex.presenter.BasePresenter;
@@ -31,6 +30,8 @@ import com.squareup.leakcanary.RefWatcher;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -61,7 +62,7 @@ public class HotFragP extends BasePresenter implements IHotFragP {
     }
 
     @Override
-    public void requestHotList(LSubscriber<List<TopicEntity>> subscriber) {
+    public void requestHotList(Subscriber<List<TopicEntity>> subscriber) {
         topicWorker.hot(subscriber);
     }
 }

@@ -22,7 +22,6 @@
 
 package com.rayman.v2ex.presenter.account;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.model.worker.MemberWorker;
@@ -33,6 +32,8 @@ import com.squareup.leakcanary.RefWatcher;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -65,12 +66,12 @@ public class AccountP extends BasePresenter implements IAccountP {
     }
 
     @Override
-    public void requestTopicList(String userName, LSubscriber<List<TopicEntity>> subscriber) {
+    public void requestTopicList(String userName, Subscriber<List<TopicEntity>> subscriber) {
         topicWorker.topics(userName, subscriber);
     }
 
     @Override
-    public void requestMemberDetail(String userName, LSubscriber<MemberEntity> callback) {
+    public void requestMemberDetail(String userName, Subscriber<MemberEntity> callback) {
         memberWorker.member(userName, callback);
     }
 }

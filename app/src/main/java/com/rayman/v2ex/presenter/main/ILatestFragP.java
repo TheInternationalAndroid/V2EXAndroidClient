@@ -22,11 +22,12 @@
 
 package com.rayman.v2ex.presenter.main;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.presenter.IPresenter;
 
 import java.util.List;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -47,6 +48,6 @@ import java.util.List;
  */
 public interface ILatestFragP extends IPresenter {
 
-    void requestLatestList(LSubscriber<List<TopicEntity>> subscriber);
+    void requestLatestList(Subscriber<List<TopicEntity>> subscriber);
 
 }

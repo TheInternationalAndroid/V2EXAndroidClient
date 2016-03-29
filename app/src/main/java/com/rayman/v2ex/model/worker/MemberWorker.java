@@ -1,10 +1,11 @@
 package com.rayman.v2ex.model.worker;
 
-import com.rayman.v2ex.model.http.callback.LSubscriber;
 import com.rayman.v2ex.model.http.service.MemberService;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 
 import javax.inject.Inject;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -32,7 +33,7 @@ public class MemberWorker extends BaseWorker {
         this.memberService = memberService;
     }
 
-    public void member(String userName, LSubscriber<MemberEntity> subscriber) {
+    public void member(String userName, Subscriber<MemberEntity> subscriber) {
         defaultCall(memberService.member(userName), subscriber);
     }
 

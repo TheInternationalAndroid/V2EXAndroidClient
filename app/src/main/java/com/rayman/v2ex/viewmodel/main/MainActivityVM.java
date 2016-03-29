@@ -64,7 +64,7 @@ public class MainActivityVM extends BasePVM<IMainActivityP> implements DrawerLay
         super(presenter);
         this.adapter = adapter;
         this.menuIconToolbar = menuIconToolbar;
-        presenter.subcribeEvent(HttpEvent.class, this);
+        presenter.subscribeEvent(HttpEvent.class, this);
     }
 
     @Override

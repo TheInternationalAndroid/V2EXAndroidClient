@@ -1,13 +1,13 @@
 package com.rayman.v2ex.presenter.test;
 
+import com.rayman.v2ex.model.http.service.MemberService;
+import com.rayman.v2ex.model.http.service.NodeService;
+import com.rayman.v2ex.model.http.service.ReplyService;
+import com.rayman.v2ex.model.http.service.TopicService;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.model.worker.MemberWorker;
-import com.rayman.v2ex.model.worker.NodeWorker;
-import com.rayman.v2ex.model.worker.ReplyWorker;
-import com.rayman.v2ex.model.worker.TopicWorker;
 import com.rayman.v2ex.presenter.BasePresenter;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -36,67 +36,67 @@ import rx.Subscriber;
  */
 public class TestApiP extends BasePresenter implements ITestApiP {
 
-    private final TopicWorker topicWorker;
-    private final NodeWorker nodeWorker;
-    private final MemberWorker memberWorker;
-    private final ReplyWorker replyWorker;
+    private final TopicService topicService;
+    private final NodeService nodeService;
+    private final MemberService memberService;
+    private final ReplyService replyService;
 
     @Inject
-    public TestApiP(RefWatcher refWatcher, TopicWorker topicWorker, NodeWorker nodeWorker, MemberWorker memberWorker, ReplyWorker replyWorker) {
-        super(refWatcher, topicWorker, nodeWorker, memberWorker, replyWorker);
-        this.topicWorker = topicWorker;
-        this.nodeWorker = nodeWorker;
-        this.memberWorker = memberWorker;
-        this.replyWorker = replyWorker;
+    public TestApiP(RefWatcher refWatcher, TopicService topicService, NodeService nodeService, MemberService memberService, ReplyService replyService) {
+        super(refWatcher);
+        this.topicService = topicService;
+        this.nodeService = nodeService;
+        this.memberService = memberService;
+        this.replyService = replyService;
     }
 
     @Override
     public void requestHotList(Subscriber<List<TopicEntity>> subscriber) {
-        topicWorker.hot(subscriber);
+        asyncRun(topicService.hot(), subscriber);
     }
 
     @Override
     public void requestLastestList(Subscriber<List<TopicEntity>> subscriber) {
-        topicWorker.latest(subscriber);
+        asyncRun(topicService.latest(), subscriber);
     }
 
     @Override
     public void requestTopicListByName(String userName, Subscriber<List<TopicEntity>> subscriber) {
-        topicWorker.topics(userName, subscriber);
+        asyncRun(topicService.topicsByUserName(userName), subscriber);
     }
 
     @Override
     public void requestNode(String nodeName, Subscriber<NodeEntity> subscriber) {
-        nodeWorker.node(nodeName, subscriber);
+        asyncRun(nodeService.nodeByName(nodeName), subscriber);
     }
 
     @Override
     public void requestTopicListByNodeId(long nodeId, Subscriber<List<TopicEntity>> subscriber) {
-        topicWorker.topicsByNodeId(nodeId, subscriber);
+        asyncRun(topicService.topicsByNodeId(nodeId), subscriber);
     }
 
     @Override
     public void requestTopicListByNodeName(String nodeName, Subscriber<List<TopicEntity>> subscriber) {
-        topicWorker.topicsByNodeName(nodeName, subscriber);
+        asyncRun(topicService.topicsByNodeName(nodeName), subscriber);
     }
 
     @Override
     public void requestTopicById(long topicId, Subscriber<List<TopicEntity>> subscriber) {
-        topicWorker.topicById(topicId, subscriber);
+        asyncRun(topicService.topicById(topicId), subscriber);
     }
 
     @Override
     public void requestNodelist(Subscriber<List<NodeEntity>> subscriber) {
-        nodeWorker.nodeList(subscriber);
+        asyncRun(nodeService.nodes(), subscriber);
     }
 
     @Override
     public void requestReplies(long topicId, Subscriber<List<ReplyEntity>> subscriber) {
-        replyWorker.replies(topicId, subscriber);
+        asyncRun(replyService.replies(topicId), subscriber);
     }
 
     @Override
     public void requestMember(String userName, Subscriber<MemberEntity> subscriber) {
-        memberWorker.member(userName, subscriber);
+        asyncRun(memberService.member(userName), subscriber);
     }
 }

@@ -47,9 +47,8 @@ import rx.functions.Action1;
 
 public interface IPresenter extends ILifeCycle {
 
-    void subcribe(Subscription subscription);
+    void subscribe(Subscription subscription);
 
-    <T extends BaseEvent> void subcribeEvent(Class<T> aClass, Action1<T> action1);
+    <T extends BaseEvent> void subscribeEvent(Class<T> aClass, Action1<T> action1);
 
-    void bindLifecycleCallback(ILifeCycle... lifecycles);
 }

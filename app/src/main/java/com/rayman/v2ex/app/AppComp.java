@@ -27,10 +27,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.rayman.v2ex.di.scope.PerApplication;
-import com.rayman.v2ex.model.worker.MemberWorker;
-import com.rayman.v2ex.model.worker.NodeWorker;
-import com.rayman.v2ex.model.worker.ReplyWorker;
-import com.rayman.v2ex.model.worker.TopicWorker;
+import com.rayman.v2ex.model.http.service.MemberService;
+import com.rayman.v2ex.model.http.service.NodeService;
+import com.rayman.v2ex.model.http.service.ReplyService;
+import com.rayman.v2ex.model.http.service.TopicService;
 import com.rayman.v2ex.viewmodel.AppModule;
 import com.rayman.v2ex.widget.anotations.ContextType;
 import com.squareup.leakcanary.RefWatcher;
@@ -71,12 +71,12 @@ public interface AppComp {
 
     SharedPreferences preference();
 
-    TopicWorker topicWorker();
+    TopicService topicService();
 
-    NodeWorker nodeWorker();
+    NodeService nodeService();
 
-    MemberWorker memberWorker();
+    MemberService memberService();
 
-    ReplyWorker replyWorker();
+    ReplyService replyService();
 
 }

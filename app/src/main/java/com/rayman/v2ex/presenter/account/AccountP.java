@@ -22,10 +22,10 @@
 
 package com.rayman.v2ex.presenter.account;
 
+import com.rayman.v2ex.model.http.service.MemberService;
+import com.rayman.v2ex.model.http.service.TopicService;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.model.worker.MemberWorker;
-import com.rayman.v2ex.model.worker.TopicWorker;
 import com.rayman.v2ex.presenter.BasePresenter;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -54,24 +54,23 @@ import rx.Subscriber;
  */
 public class AccountP extends BasePresenter implements IAccountP {
 
-    private final TopicWorker topicWorker;
-    private final MemberWorker memberWorker;
+    private final TopicService topicService;
+    private final MemberService memberService;
 
     @Inject
-    public AccountP(RefWatcher refWatcher, TopicWorker topicWorker, MemberWorker memberWorker) {
+    public AccountP(RefWatcher refWatcher, TopicService topicService, MemberService memberService) {
         super(refWatcher);
-        this.topicWorker = topicWorker;
-        this.memberWorker = memberWorker;
-        bindLifecycleCallback(topicWorker);
+        this.topicService = topicService;
+        this.memberService = memberService;
     }
 
     @Override
     public void requestTopicList(String userName, Subscriber<List<TopicEntity>> subscriber) {
-        topicWorker.topics(userName, subscriber);
+        asyncRun(topicService.topicsByUserName(userName), subscriber);
     }
 
     @Override
-    public void requestMemberDetail(String userName, Subscriber<MemberEntity> callback) {
-        memberWorker.member(userName, callback);
+    public void requestMemberDetail(String userName, Subscriber<MemberEntity> subscriber) {
+        asyncRun(memberService.member(userName), subscriber);
     }
 }

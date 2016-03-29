@@ -22,8 +22,8 @@
 
 package com.rayman.v2ex.presenter.main;
 
+import com.rayman.v2ex.model.http.service.TopicService;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.model.worker.TopicWorker;
 import com.rayman.v2ex.presenter.BasePresenter;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -52,17 +52,16 @@ import rx.Subscriber;
  */
 public class HotFragP extends BasePresenter implements IHotFragP {
 
-    private TopicWorker topicWorker;
+    private TopicService topicService;
 
     @Inject
-    public HotFragP(TopicWorker topicWorker, RefWatcher refWatcher) {
+    public HotFragP(TopicService topicService, RefWatcher refWatcher) {
         super(refWatcher);
-        this.topicWorker = topicWorker;
-        bindLifecycleCallback(topicWorker);
+        this.topicService = topicService;
     }
 
     @Override
     public void requestHotList(Subscriber<List<TopicEntity>> subscriber) {
-        topicWorker.hot(subscriber);
+        asyncRun(topicService.hot(), subscriber);
     }
 }

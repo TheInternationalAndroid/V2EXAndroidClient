@@ -26,6 +26,8 @@ import com.alibaba.fastjson.annotation.JSONField;
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 
+import io.realm.RealmObject;
+
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
@@ -43,7 +45,7 @@ import com.rayman.v2ex.model.model.node.NodeEntity;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicEntity {
+public class TopicEntity extends RealmObject {
     private long id;
     private String title;
     private String url;

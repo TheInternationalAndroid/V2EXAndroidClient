@@ -32,6 +32,7 @@ import com.rayman.v2ex.presenter.ILifeCycle;
 import com.rayman.v2ex.ui.view.base.BaseDIActivity;
 import com.rayman.v2ex.ui.view.main.comp.DaggerMainComp;
 import com.rayman.v2ex.ui.view.test.TestApiActivity;
+import com.rayman.v2ex.ui.view.test.TestRxActivity;
 import com.rayman.v2ex.viewmodel.main.MainActivityVM;
 
 import javax.inject.Inject;
@@ -87,6 +88,9 @@ public class MainActivity extends BaseDIActivity {
                 break;
             case R.id.action_test_api:
                 intent(TestApiActivity.class);
+                break;
+            case R.id.action_test_rx:
+                intent(TestRxActivity.class);
                 break;
         }
         return true;

@@ -20,7 +20,7 @@
  *
  */
 
-package com.rayman.v2ex.ui.adapter.list;
+package com.rayman.v2ex.ui.adapter.list.base;
 
 import android.databinding.ViewDataBinding;
 import android.support.v4.util.LongSparseArray;
@@ -28,6 +28,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.rayman.v2ex.ui.adapter.OnItemClick;
 import com.rayman.v2ex.ui.adapter.list.viewholder.BaseViewHolder;
 
 import java.util.ArrayList;
@@ -50,10 +51,27 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public abstract class BaseListAdapter<T, P> extends RecyclerView.Adapter<BaseViewHolder> {
+public abstract class BaseListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
 
     protected List<T> list;
     protected LongSparseArray<T> wrapMap = new LongSparseArray<>();
+    protected OnItemClick<T> itemClick;
+
+    public BaseListAdapter() {
+    }
+
+    public BaseListAdapter(OnItemClick<T> itemClick) {
+        this.itemClick = itemClick;
+    }
+
+    public BaseListAdapter(List<T> list) {
+        this.list = list;
+    }
+
+    public BaseListAdapter(List<T> list, OnItemClick<T> itemClick) {
+        this.list = list;
+        this.itemClick = itemClick;
+    }
 
     public void setList(List<T> list) {
         this.list = list;
@@ -70,25 +88,34 @@ public abstract class BaseListAdapter<T, P> extends RecyclerView.Adapter<BaseVie
         return list;
     }
 
+    public void setItemClick(OnItemClick<T> itemClick) {
+        this.itemClick = itemClick;
+    }
+
     public final T getItem(int position) {
         return list == null ? null : list.get(position);
     }
 
-    @Override public final BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @Override
+    public final BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new BaseViewHolder(buildBinding(LayoutInflater.from(parent.getContext()), parent, viewType));
     }
 
-    @Override public int getItemCount() {
+    @Override
+    public int getItemCount() {
         return list == null ? 0 : list.size();
     }
 
-    @Override public final void onBindViewHolder(BaseViewHolder holder, int position) {
+    @Override
+    public final void onBindViewHolder(BaseViewHolder holder, int position) {
         holder.bindData(getViewModel(position));
     }
 
     protected abstract ViewDataBinding buildBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType);
 
-    protected abstract P getViewModel(int position);
+    protected CellVM<T> getViewModel(int position) {
+        return new CellVM<>(getItem(position), position, itemClick);
+    }
 
     public void addItem(int position, T t) {
         if (t == null)

@@ -61,7 +61,8 @@ public abstract class BaseDIActivity extends BaseActivity implements IBuildComp 
         ILifeCycle pager = getPageLifeCycle();
         if (pager != null)
             pager.onViewDetach();
-        activityComp.refWatchwer().watch(pager);
+        if (pager != null)
+            activityComp.refWatchwer().watch(pager);
         activityComp.refWatchwer().watch(this);
         super.onDestroy();
     }

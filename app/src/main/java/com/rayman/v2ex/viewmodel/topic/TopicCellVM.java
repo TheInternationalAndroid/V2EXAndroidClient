@@ -22,13 +22,11 @@
 
 package com.rayman.v2ex.viewmodel.topic;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 import android.view.View;
 
-import com.rayman.v2ex.BR;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.rayman.v2ex.ui.adapter.list.base.CellVM;
 import com.rayman.v2ex.ui.view.main.view.ITopicCellView;
 import com.rayman.v2ex.widget.anotations.ViewClick;
 
@@ -49,46 +47,35 @@ import com.rayman.v2ex.widget.anotations.ViewClick;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicCellVM extends BaseObservable {
+public class TopicCellVM extends CellVM<TopicEntity> {
 
-    private TopicEntity topic;
     private ITopicCellView onTopicCellClicked;
 
-    public TopicCellVM(TopicEntity topic) {
-        this.topic = topic;
+    public TopicCellVM(TopicEntity entity) {
+        super(entity);
     }
 
     public TopicCellVM(TopicEntity topic, ITopicCellView onTopicCellClicked) {
-        this.topic = topic;
+        super(topic);
         this.onTopicCellClicked = onTopicCellClicked;
-    }
-
-    @Bindable
-    public TopicEntity getTopic() {
-        return topic;
     }
 
     @ViewClick(R.id.content)
     public void onContentClicked(View view) {
         if (onTopicCellClicked != null)
-            onTopicCellClicked.onTopicCliced(topic);
+            onTopicCellClicked.onTopicCliced(entity);
     }
 
     @ViewClick(R.id.image)
     public void onAvatarClicked(View view) {
         if (onTopicCellClicked != null)
-            onTopicCellClicked.onUserClicked(topic.getMember());
+            onTopicCellClicked.onUserClicked(entity.getMember());
     }
 
     @ViewClick(R.id.node)
     public void onNodeClicked(View view) {
         if (onTopicCellClicked != null)
-            onTopicCellClicked.onNodeClicked(topic.getNode());
-    }
-
-    public void setTopic(TopicEntity topic) {
-        this.topic = topic;
-        notifyPropertyChanged(BR.topic);
+            onTopicCellClicked.onNodeClicked(entity.getNode());
     }
 
 }

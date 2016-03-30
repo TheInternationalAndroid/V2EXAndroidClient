@@ -3,7 +3,7 @@ package com.rayman.v2ex.viewmodel.test;
 import android.support.v7.widget.RecyclerView;
 
 import com.rayman.v2ex.model.http.Host;
-import com.rayman.v2ex.model.model.TestApiEntity;
+import com.rayman.v2ex.model.model.test.TestApiEntity;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;

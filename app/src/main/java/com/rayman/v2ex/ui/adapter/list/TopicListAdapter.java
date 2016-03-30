@@ -28,6 +28,8 @@ import android.view.ViewGroup;
 
 import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.rayman.v2ex.ui.adapter.list.base.BaseListAdapter;
+import com.rayman.v2ex.ui.adapter.list.base.CellVM;
 import com.rayman.v2ex.ui.view.main.view.ITopicCellView;
 import com.rayman.v2ex.viewmodel.topic.TopicCellVM;
 
@@ -48,7 +50,7 @@ import com.rayman.v2ex.viewmodel.topic.TopicCellVM;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicListAdapter extends BaseListAdapter<TopicEntity, TopicCellVM> {
+public class TopicListAdapter extends BaseListAdapter<TopicEntity> {
 
     private ITopicCellView onTopicCellClicked;
 
@@ -56,12 +58,15 @@ public class TopicListAdapter extends BaseListAdapter<TopicEntity, TopicCellVM> 
         this.onTopicCellClicked = onTopicCellClicked;
     }
 
-    @Override protected ViewDataBinding buildBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
+    @Override
+    protected ViewDataBinding buildBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
         return ListCellTopicBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
     }
 
-    @Override protected TopicCellVM getViewModel(int position) {
+    @Override
+    protected CellVM<TopicEntity> getViewModel(int position) {
         return new TopicCellVM(getItem(position), onTopicCellClicked);
     }
+
 
 }

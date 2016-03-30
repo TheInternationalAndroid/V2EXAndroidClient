@@ -3,23 +3,23 @@ package com.rayman.v2ex.ui.view.test;
 import android.os.Bundle;
 
 import com.rayman.v2ex.R;
-import com.rayman.v2ex.databinding.ActivityTestApiBinding;
+import com.rayman.v2ex.databinding.ActivityTestRxBinding;
 import com.rayman.v2ex.presenter.ILifeCycle;
 import com.rayman.v2ex.ui.view.base.BaseDIActivity;
-import com.rayman.v2ex.ui.view.test.comp.DaggerTestApiComp;
-import com.rayman.v2ex.viewmodel.test.TestApiVM;
+import com.rayman.v2ex.ui.view.test.comp.DaggerTestRxComp;
+import com.rayman.v2ex.viewmodel.test.TestRxVM;
 
 import javax.inject.Inject;
 
-public class TestApiActivity extends BaseDIActivity {
+public class TestRxActivity extends BaseDIActivity {
 
     @Inject
-    TestApiVM viewModel;
+    TestRxVM viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityTestApiBinding binding = bindLayout(R.layout.activity_test_api);
+        ActivityTestRxBinding binding = bindLayout(R.layout.activity_test_rx);
         binding.setViewModel(viewModel);
     }
 
@@ -30,10 +30,9 @@ public class TestApiActivity extends BaseDIActivity {
 
     @Override
     public void buildComp() {
-        DaggerTestApiComp.builder()
+        DaggerTestRxComp.builder()
                 .activityComp(getActivityComp())
                 .build()
                 .inject(this);
     }
-
 }

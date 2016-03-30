@@ -1,8 +1,9 @@
-package com.rayman.v2ex.ui.view.test;
+package com.rayman.v2ex.ui.view.test.comp;
 
 import com.rayman.v2ex.di.scope.PerActivity;
 import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
-import com.rayman.v2ex.viewmodel.test.TestApiModule;
+import com.rayman.v2ex.ui.view.test.TestApiActivity;
+import com.rayman.v2ex.viewmodel.test.TestApiVMModule;
 import com.rayman.v2ex.viewmodel.test.TestApiVM;
 
 import dagger.Component;
@@ -25,7 +26,7 @@ import dagger.Component;
  * \               ||     ||
  */
 @PerActivity
-@Component(modules = TestApiModule.class, dependencies = ActivityComp.class)
+@Component(modules = TestApiVMModule.class, dependencies = ActivityComp.class)
 public interface TestApiComp extends ActivityComp {
 
     void inject(TestApiActivity testApiActivity);

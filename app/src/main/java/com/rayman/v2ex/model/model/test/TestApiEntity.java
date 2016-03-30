@@ -1,4 +1,4 @@
-package com.rayman.v2ex.model.model;
+package com.rayman.v2ex.model.model.test;
 
 /**
  * Created by Android Studio.

@@ -30,7 +30,7 @@ import dagger.Provides;
  * \               ||     ||
  */
 @Module(includes = {LayoutManagerModule.class})
-public class TestApiModule {
+public class TestApiVMModule {
 
     @Provides
     @PerActivity

@@ -3,14 +3,13 @@
 
     <data>
 
-
         <import type="com.rayman.v2ex.ui.adapter.list.base.CellVM" />
 
-        <import type="com.rayman.v2ex.model.model.test.TestApiEntity" />
+        <import type="com.rayman.v2ex.model.model.test.TestRxEntity" />
 
         <variable
             name="viewModel"
-            type="CellVM&lt;TestApiEntity>" />
+            type="CellVM&lt;TestRxEntity>" />
     </data>
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -36,14 +35,12 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{@string/index_format(viewModel.position,viewModel.entity.url)}" />
+                android:text="@{viewModel.entity.title}"
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{viewModel.entity.state==TestApiEntity.SUCCESS?@string/success:(viewModel.entity.state==TestApiEntity.ERROR?@string/error:(viewModel.entity.state==TestApiEntity.LOADING?@string/sending:@string/click_test)),default=@string/click_test}"
-                android:textColor="@{viewModel.entity.state==TestApiEntity.SUCCESS?@color/text_green:(viewModel.entity.state==TestApiEntity.ERROR?@color/text_red:(viewModel.entity.state==TestApiEntity.LOADING?@color/text_blue:@color/text_gray_dark)),default=@color/text_gray_dark}" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </layout>

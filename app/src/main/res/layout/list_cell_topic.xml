@@ -67,7 +67,7 @@
                     android:layout_width="@dimen/icon_size_s"
                     android:layout_height="@dimen/icon_size_s"
                     android:scaleType="centerCrop"
-                    android:src="@{viewModel.topic.member.avatarLarge}"
+                    android:src="@{viewModel.entity.member.avatarLarge}"
                     app:riv_border_width="0dp"
                     app:riv_corner_radius="@dimen/btn_corner"
                     app:riv_mutate_background="true" />
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minLines="2"
-                    android:text="@{viewModel.topic.title}"
+                    android:text="@{viewModel.entity.title}"
                     android:textColor="@color/text_gray_dark"
                     android:textSize="@dimen/text_xl" />
 
@@ -104,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="@{viewModel.onNodeClicked}"
-                        android:text="@{viewModel.topic.node.name}"
+                        android:text="@{viewModel.entity.node.name}"
                         android:textSize="@dimen/text_m" />
 
                     <View style="@style/PointStyle" />
@@ -112,7 +112,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.topic.member.username,default=UserName}"
+                        android:text="@{viewModel.entity.member.username,default=UserName}"
                         android:textSize="@dimen/text_m" />
 
                     <View style="@style/PointStyle" />
@@ -120,7 +120,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{DateUtil.getFormatPassTime(viewModel.topic.lastModified)}"
+                        android:text="@{DateUtil.getFormatPassTime(viewModel.entity.lastModified)}"
                         android:textSize="@dimen/text_m" />
 
                 </LinearLayout>
@@ -130,7 +130,7 @@
                 style="@style/CountTagStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(viewModel.topic.replies),default=0}"
+                android:text="@{String.valueOf(viewModel.entity.replies),default=0}"
                 android:textColor="@color/text_white"
                 android:textSize="@dimen/text_m" />
 

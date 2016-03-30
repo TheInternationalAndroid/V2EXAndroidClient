@@ -27,11 +27,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.rayman.v2ex.ui.adapter.list.viewholder.BaseViewHolder;
 import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.databinding.ListHeaderUserDetailBinding;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.rayman.v2ex.ui.adapter.list.viewholder.BaseViewHolder;
 import com.rayman.v2ex.viewmodel.account.AccountHeaderCellVM;
 import com.rayman.v2ex.viewmodel.topic.TopicCellVM;
 
@@ -65,7 +65,8 @@ public class AccountPageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     public AccountPageAdapter() {
     }
 
-    @Override public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @Override
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ViewDataBinding binding;
         switch (viewType) {
             case VIEW_HEADER:
@@ -79,7 +80,8 @@ public class AccountPageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         return new BaseViewHolder(binding);
     }
 
-    @Override public void onBindViewHolder(BaseViewHolder holder, int position) {
+    @Override
+    public void onBindViewHolder(BaseViewHolder holder, int position) {
         switch (getItemViewType(position)) {
             case VIEW_HEADER:
                 holder.bindData(new AccountHeaderCellVM(memberEntity));
@@ -91,7 +93,8 @@ public class AccountPageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
     }
 
-    @Override public int getItemCount() {
+    @Override
+    public int getItemCount() {
         return topicEntities == null ? 1 : topicEntities.size() + 1;
     }
 
@@ -109,7 +112,8 @@ public class AccountPageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         return topicEntities == null ? null : topicEntities.get(position);
     }
 
-    @Override public int getItemViewType(int position) {
+    @Override
+    public int getItemViewType(int position) {
         if (position == 0) {
             return VIEW_HEADER;
         } else {

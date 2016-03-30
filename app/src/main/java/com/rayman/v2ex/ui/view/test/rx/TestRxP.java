@@ -331,27 +331,27 @@ public class TestRxP extends BasePresenter implements TestRxContract.Presenter {
         subscribe(
                 Observable
                         .create((Subscriber<? super String> subscriber) -> {
-                            Timber.i("testStartWith call");
-                            subscriber.onNext("call");
+                            Timber.i(" CreatedSubscriberCalled");
+                            subscriber.onNext("CreatedSubscriber");
                         })
                         .startWith(Observable.create((Subscriber<? super String> subscriber) -> {
-                            Timber.i("testStartWith startWithcall");
-                            subscriber.onNext("startWithcall");
+                            Timber.i(" StartWithSubscriberCalled");
+                            subscriber.onNext("StartWithSubscriber");
                         }))
                         .subscribe(new Subscriber<String>() {
                             @Override
                             public void onCompleted() {
-                                Timber.i("testStartWith onComplete");
+                                Timber.i(" onComplete");
                             }
 
                             @Override
                             public void onError(Throwable e) {
-                                Timber.i("testStartWith onError");
+                                Timber.i(" onError");
                             }
 
                             @Override
                             public void onNext(String s) {
-                                Timber.i("testStartWith onNext %s", s);
+                                Timber.i(" onNext %s", s);
                             }
                         })
         );

@@ -28,5 +28,4 @@ public interface MemberService {
 
     @GET("members/show.json")
     Observable<Response<MemberEntity>> member(@Query(value = "username") String userName);
-
 }

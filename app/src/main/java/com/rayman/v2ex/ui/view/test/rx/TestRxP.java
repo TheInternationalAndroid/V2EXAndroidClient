@@ -11,6 +11,7 @@ import java.util.concurrent.TimeoutException;
 import javax.inject.Inject;
 
 import rx.Observable;
+import rx.Observer;
 import rx.Subscriber;
 import rx.schedulers.Schedulers;
 import timber.log.Timber;
@@ -305,6 +306,7 @@ public class TestRxP extends BasePresenter implements TestRxContract.Presenter {
                         .create((Subscriber<? super String> subscriber) -> {
                             Timber.i("testRepeat Call");
                             subscriber.onNext("testRepeat Call");
+                            subscriber.onCompleted();
                         })
                         .repeat(3)
                         .subscribe(new Subscriber<String>() {
@@ -333,10 +335,12 @@ public class TestRxP extends BasePresenter implements TestRxContract.Presenter {
                         .create((Subscriber<? super String> subscriber) -> {
                             Timber.i(" CreatedSubscriberCalled");
                             subscriber.onNext("CreatedSubscriber");
+                            subscriber.onCompleted();
                         })
                         .startWith(Observable.create((Subscriber<? super String> subscriber) -> {
                             Timber.i(" StartWithSubscriberCalled");
                             subscriber.onNext("StartWithSubscriber");
+                            subscriber.onCompleted();
                         }))
                         .subscribe(new Subscriber<String>() {
                             @Override
@@ -354,6 +358,29 @@ public class TestRxP extends BasePresenter implements TestRxContract.Presenter {
                                 Timber.i(" onNext %s", s);
                             }
                         })
+        );
+    }
+
+    @Override
+    public void testTimer() {
+        subscribe(Observable
+                .timer(3, TimeUnit.SECONDS)
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onCompleted() {
+                        Timber.i("testTimer onComplete");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Timber.i("testTimer onError");
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        Timber.i("testTimer onNext");
+                    }
+                })
         );
     }
 }

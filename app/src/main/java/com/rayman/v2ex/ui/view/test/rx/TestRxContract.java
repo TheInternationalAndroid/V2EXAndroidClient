@@ -1,8 +1,8 @@
 package com.rayman.v2ex.ui.view.test.rx;
 
 import com.rayman.v2ex.di.scope.PerActivity;
-import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
 import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
+import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
 import com.rayman.v2ex.viewmodel.test.TestRxVMModule;
 
 import dagger.Component;
@@ -54,6 +54,9 @@ public interface TestRxContract {
         void testRepeat();
 
         void testStartWith();
+
+        void testTimer();
+
     }
 
 }

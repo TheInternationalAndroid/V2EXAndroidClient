@@ -50,6 +50,7 @@ public class TestRxVM extends BasePVM<TestRxContract.Presenter> {
         list.add(new TestRxEntity("TestRange", (position, entity) -> presenter.testRange()));
         list.add(new TestRxEntity("TestRepeat", (position, entity) -> presenter.testRepeat()));
         list.add(new TestRxEntity("TestStartWith", (position, entity) -> presenter.testStartWith()));
+        list.add(new TestRxEntity("TestTimer", (position, entity) -> presenter.testTimer()));
         return list;
     }
 

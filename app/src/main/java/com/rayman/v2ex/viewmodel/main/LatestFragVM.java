@@ -26,10 +26,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.presenter.main.ILatestFragP;
-import com.rayman.v2ex.presenter.main.LatestFragP;
 import com.rayman.v2ex.ui.adapter.list.TopicListAdapter;
-import com.rayman.v2ex.ui.view.main.view.ILatestFragView;
+import com.rayman.v2ex.ui.view.main.latest.LatestFragContract;
+import com.rayman.v2ex.ui.view.main.latest.LatestFragP;
 import com.rayman.v2ex.viewmodel.BaseStateVM;
 import com.rayman.v2ex.widget.anotations.PageState;
 
@@ -54,13 +53,13 @@ import rx.Subscriber;
  * \               ||----w |
  * \               ||     ||
  */
-public class LatestFragVM extends BaseStateVM<ILatestFragP> {
+public class LatestFragVM extends BaseStateVM<LatestFragContract.Presenter> {
 
     private TopicListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ILatestFragView latestFragView;
+    private LatestFragContract.View latestFragView;
 
-    public LatestFragVM(LatestFragP presenter, ILatestFragView latestFragView, RecyclerView.LayoutManager layoutManager) {
+    public LatestFragVM(LatestFragP presenter, LatestFragContract.View latestFragView, RecyclerView.LayoutManager layoutManager) {
         super(presenter);
         this.layoutManager = layoutManager;
         this.latestFragView = latestFragView;

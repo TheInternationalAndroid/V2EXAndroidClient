@@ -30,14 +30,14 @@ import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.ActivityAccountBinding;
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.member.MemberEntity;
-import com.rayman.v2ex.presenter.ILifeCycle;
-import com.rayman.v2ex.ui.view.base.BaseDIActivity;
+import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
+import com.rayman.v2ex.ui.view.base.page.BaseDIActivity;
 import com.rayman.v2ex.viewmodel.account.AccountVM;
 import com.rayman.v2ex.viewmodel.account.AccountVMModule;
 
 import javax.inject.Inject;
 
-public class AccountActivity extends BaseDIActivity {
+public class AccountActivity extends BaseDIActivity implements AccountContract.View {
 
     @Inject AccountVM viewModel;
 
@@ -59,7 +59,7 @@ public class AccountActivity extends BaseDIActivity {
 
     @Override
     public void buildComp() {
-        DaggerAccountComp.builder()
+        DaggerAccountContract_Comp.builder()
                 .activityComp(getActivityComp())
                 .accountVMModule(new AccountVMModule())
                 .build()

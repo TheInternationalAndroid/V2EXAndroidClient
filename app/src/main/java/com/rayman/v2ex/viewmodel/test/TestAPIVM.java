@@ -3,13 +3,13 @@ package com.rayman.v2ex.viewmodel.test;
 import android.support.v7.widget.RecyclerView;
 
 import com.rayman.v2ex.model.http.Host;
-import com.rayman.v2ex.model.model.test.TestApiEntity;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
+import com.rayman.v2ex.model.model.test.TestApiEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.presenter.test.ITestApiP;
 import com.rayman.v2ex.ui.adapter.list.TestApiListAdapter;
+import com.rayman.v2ex.ui.view.test.api.TestApiContract;
 import com.rayman.v2ex.viewmodel.BasePVM;
 
 import java.util.ArrayList;
@@ -34,12 +34,12 @@ import rx.Subscriber;
  * \               ||----w |
  * \               ||     ||
  */
-public class TestApiVM extends BasePVM<ITestApiP> {
+public class TestApiVM extends BasePVM<TestApiContract.Presenter> {
 
     private TestApiListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    public TestApiVM(ITestApiP presenter, RecyclerView.LayoutManager layoutManager) {
+    public TestApiVM(TestApiContract.Presenter presenter, RecyclerView.LayoutManager layoutManager) {
         super(presenter);
         this.layoutManager = layoutManager;
         adapter = new TestApiListAdapter(this::onItemClick);

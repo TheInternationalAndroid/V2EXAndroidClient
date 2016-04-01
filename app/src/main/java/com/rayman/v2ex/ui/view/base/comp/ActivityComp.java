@@ -29,7 +29,7 @@ import android.support.v4.app.FragmentManager;
 import com.rayman.v2ex.app.AppComp;
 import com.rayman.v2ex.viewmodel.ActivityModule;
 import com.rayman.v2ex.di.scope.PerBaseActivity;
-import com.rayman.v2ex.ui.view.base.BaseActivity;
+import com.rayman.v2ex.ui.view.base.page.BaseActivity;
 import com.rayman.v2ex.widget.anotations.ContextType;
 
 import javax.inject.Named;

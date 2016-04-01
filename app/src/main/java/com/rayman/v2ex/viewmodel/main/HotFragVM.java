@@ -26,10 +26,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.presenter.main.HotFragP;
-import com.rayman.v2ex.presenter.main.IHotFragP;
 import com.rayman.v2ex.ui.adapter.list.TopicListAdapter;
-import com.rayman.v2ex.ui.view.main.view.IHotFragView;
+import com.rayman.v2ex.ui.view.main.hot.HotFragContract;
+import com.rayman.v2ex.ui.view.main.hot.HotFragP;
 import com.rayman.v2ex.viewmodel.BaseStateVM;
 import com.rayman.v2ex.widget.anotations.PageState;
 
@@ -55,13 +54,13 @@ import timber.log.Timber;
  * \               ||----w |
  * \               ||     ||
  */
-public class HotFragVM extends BaseStateVM<IHotFragP> {
+public class HotFragVM extends BaseStateVM<HotFragContract.Presenter> {
 
     private TopicListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private IHotFragView hotFragView;
+    private HotFragContract.View hotFragView;
 
-    public HotFragVM(HotFragP presenter, IHotFragView hotFragView, RecyclerView.LayoutManager layoutManager) {
+    public HotFragVM(HotFragP presenter, HotFragContract.View hotFragView, RecyclerView.LayoutManager layoutManager) {
         super(presenter);
         this.layoutManager = layoutManager;
         this.hotFragView = hotFragView;

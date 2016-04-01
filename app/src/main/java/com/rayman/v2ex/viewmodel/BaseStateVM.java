@@ -25,7 +25,7 @@ package com.rayman.v2ex.viewmodel;
 import android.databinding.Bindable;
 import android.view.View;
 
-import com.android.databinding.library.baseAdapters.BR;
+import com.rayman.v2ex.BR;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.widget.anotations.PageState;
 import com.rayman.v2ex.widget.anotations.ViewClick;

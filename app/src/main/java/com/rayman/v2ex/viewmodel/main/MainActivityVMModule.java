@@ -30,7 +30,7 @@ import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.di.scope.PerActivity;
-import com.rayman.v2ex.presenter.main.MainActivityP;
+import com.rayman.v2ex.ui.view.main.MainActivityP;
 import com.rayman.v2ex.ui.adapter.pager.MainPagerAdapter;
 
 import dagger.Module;

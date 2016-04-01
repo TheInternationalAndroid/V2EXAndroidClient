@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/20/16 5:20 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AccountListViewHolder.
- * Author: Lena; Last Modified: 1/20/16 5:20 PM.
+ * Created on 1/18/16 9:55 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: MainP.
+ * Author: Lena; Last Modified: 1/18/16 9:55 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,19 +20,19 @@
  *
  */
 
-package com.rayman.v2ex.ui.adapter.list.viewholder;
+package com.rayman.v2ex.ui.view.main;
 
-import android.databinding.ViewDataBinding;
-import android.support.v7.widget.RecyclerView;
+import com.rayman.v2ex.ui.view.base.presenter.BasePresenter;
+import com.squareup.leakcanary.RefWatcher;
 
-import com.rayman.v2ex.BR;
+import javax.inject.Inject;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/20/16
- * Time: 17:20
+ * Date: 1/18/16
+ * Time: 21:42
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -44,23 +44,11 @@ import com.rayman.v2ex.BR;
  * \               ||----w |
  * \               ||     ||
  */
-public class BaseViewHolder extends RecyclerView.ViewHolder {
+public class MainActivityP extends BasePresenter implements MainContract.Presenter {
 
-    private ViewDataBinding binding;
-
-    public BaseViewHolder(ViewDataBinding binding) {
-        super(binding.getRoot());
-        this.binding = binding;
+    @Inject
+    public MainActivityP(RefWatcher refWatcher) {
+        super(refWatcher);
     }
 
-    //    TODO Warning : All viewModels in list cell layout must be named as "viewModel"!!!!!!!!!
-    public void bindData(Object t) {
-        binding.setVariable(BR.viewModel, t);
-        binding.executePendingBindings();
-    }
-
-    public void bindData(int viewModelId, Object t) {
-        binding.setVariable(viewModelId, t);
-        binding.executePendingBindings();
-    }
 }

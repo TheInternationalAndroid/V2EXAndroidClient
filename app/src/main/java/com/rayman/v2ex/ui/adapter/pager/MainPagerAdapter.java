@@ -27,8 +27,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.rayman.v2ex.ui.view.main.HotFragment;
-import com.rayman.v2ex.ui.view.main.LatestFragment;
+import com.rayman.v2ex.ui.view.main.hot.HotFragment;
+import com.rayman.v2ex.ui.view.main.latest.LatestFragment;
 
 /**
  * Created by Android Studio.

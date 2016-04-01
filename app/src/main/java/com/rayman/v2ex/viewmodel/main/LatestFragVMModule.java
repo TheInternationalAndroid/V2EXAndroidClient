@@ -26,8 +26,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.rayman.v2ex.di.modules.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerBindingFragment;
-import com.rayman.v2ex.presenter.main.LatestFragP;
-import com.rayman.v2ex.ui.view.main.view.ILatestFragView;
+import com.rayman.v2ex.ui.view.main.latest.LatestFragContract;
+import com.rayman.v2ex.ui.view.main.latest.LatestFragP;
 import com.rayman.v2ex.widget.anotations.ListType;
 
 import javax.inject.Named;
@@ -55,9 +55,9 @@ import dagger.Provides;
 @Module(includes = {LayoutManagerModule.class})
 public class LatestFragVMModule {
 
-    private ILatestFragView latestFragView;
+    private LatestFragContract.View latestFragView;
 
-    public LatestFragVMModule(ILatestFragView latestFragView) {
+    public LatestFragVMModule(LatestFragContract.View latestFragView) {
         this.latestFragView = latestFragView;
     }
 

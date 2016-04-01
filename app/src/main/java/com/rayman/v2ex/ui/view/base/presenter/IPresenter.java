@@ -1,9 +1,9 @@
 /*
  * Copyright (c) 2016 Lena.t.Yan
  * Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- * Created on 1/20/16 5:20 PM
- * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: AccountListViewHolder.
- * Author: Lena; Last Modified: 1/20/16 5:20 PM.
+ * Created on 1/18/16 9:53 PM
+ * ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: IPresenter.
+ * Author: Lena; Last Modified: 1/18/16 9:53 PM.
  * This file is originally created by Lena.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,19 +20,25 @@
  *
  */
 
-package com.rayman.v2ex.ui.adapter.list.viewholder;
+package com.rayman.v2ex.ui.view.base.presenter;
 
-import android.databinding.ViewDataBinding;
-import android.support.v7.widget.RecyclerView;
+import android.support.annotation.NonNull;
 
-import com.rayman.v2ex.BR;
+import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
+import com.rayman.v2ex.widget.eventbus.event.BaseEvent;
+
+import retrofit2.Response;
+import rx.Observable;
+import rx.Subscriber;
+import rx.Subscription;
+import rx.functions.Action1;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena.t.Yan
- * Date: 1/20/16
- * Time: 17:20
+ * Date: 1/18/16
+ * Time: 21:43
  * \ ___________________
  * \| Happy New Year!  |
  * \ -------------------
@@ -44,23 +50,15 @@ import com.rayman.v2ex.BR;
  * \               ||----w |
  * \               ||     ||
  */
-public class BaseViewHolder extends RecyclerView.ViewHolder {
 
-    private ViewDataBinding binding;
+public interface IPresenter extends ILifeCycle {
 
-    public BaseViewHolder(ViewDataBinding binding) {
-        super(binding.getRoot());
-        this.binding = binding;
-    }
+    void subscribe(Subscription subscription);
 
-    //    TODO Warning : All viewModels in list cell layout must be named as "viewModel"!!!!!!!!!
-    public void bindData(Object t) {
-        binding.setVariable(BR.viewModel, t);
-        binding.executePendingBindings();
-    }
+    <T extends BaseEvent> void subscribeEvent(Class<T> aClass, Action1<T> action1);
 
-    public void bindData(int viewModelId, Object t) {
-        binding.setVariable(viewModelId, t);
-        binding.executePendingBindings();
-    }
+    <T> void subscribeHttpReq(@NonNull Observable<Response<T>> observable, @NonNull Subscriber<T> subscriber);
+
+    <T> void subscribeAsyncRun(@NonNull Observable<T> observable, @NonNull Subscriber<T> subscriber);
+
 }

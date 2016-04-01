@@ -27,9 +27,9 @@ import android.support.v7.widget.RecyclerView;
 
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.presenter.account.AccountP;
-import com.rayman.v2ex.presenter.account.IAccountP;
 import com.rayman.v2ex.ui.adapter.list.AccountPageAdapter;
+import com.rayman.v2ex.ui.view.account.AccountContract;
+import com.rayman.v2ex.ui.view.account.AccountP;
 import com.rayman.v2ex.viewmodel.BasePVM;
 
 import java.util.List;
@@ -53,7 +53,7 @@ import rx.Subscriber;
  * \               ||----w |
  * \               ||     ||
  */
-public class AccountVM extends BasePVM<IAccountP> {
+public class AccountVM extends BasePVM<AccountContract.Presneter> {
 
     private MemberEntity member;
     private AccountPageAdapter adapter;

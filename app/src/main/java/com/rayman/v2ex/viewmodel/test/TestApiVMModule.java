@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.rayman.v2ex.di.modules.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerActivity;
-import com.rayman.v2ex.presenter.test.TestApiP;
+import com.rayman.v2ex.ui.view.test.api.TestApiP;
 import com.rayman.v2ex.widget.anotations.ListType;
 
 import javax.inject.Named;

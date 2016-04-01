@@ -26,8 +26,8 @@ import android.support.v7.widget.RecyclerView;
 
 import com.rayman.v2ex.di.modules.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerBindingFragment;
-import com.rayman.v2ex.presenter.main.HotFragP;
-import com.rayman.v2ex.ui.view.main.view.IHotFragView;
+import com.rayman.v2ex.ui.view.main.hot.HotFragContract;
+import com.rayman.v2ex.ui.view.main.hot.HotFragP;
 import com.rayman.v2ex.widget.anotations.ListType;
 
 import javax.inject.Named;
@@ -55,9 +55,9 @@ import dagger.Provides;
 @Module(includes = {LayoutManagerModule.class})
 public class HotFragVMModule {
 
-    private IHotFragView hotFragView;
+    private HotFragContract.View hotFragView;
 
-    public HotFragVMModule(IHotFragView hotFragView) {
+    public HotFragVMModule(HotFragContract.View hotFragView) {
         this.hotFragView = hotFragView;
     }
 

@@ -25,6 +25,8 @@ package com.rayman.v2ex.viewmodel.account;
 import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
 
+import com.android.databinding.library.baseAdapters.BR;
+import com.rayman.v2ex.model.http.LSubscriber;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.AccountPageAdapter;
@@ -33,8 +35,6 @@ import com.rayman.v2ex.ui.view.account.AccountP;
 import com.rayman.v2ex.viewmodel.BasePVM;
 
 import java.util.List;
-
-import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -58,20 +58,17 @@ public class AccountVM extends BasePVM<AccountContract.Presneter> {
     private MemberEntity member;
     private AccountPageAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private final AccountContract.View view;
 
-    public AccountVM(AccountPageAdapter adapter, RecyclerView.LayoutManager layoutManager, AccountP presenter) {
+    public AccountVM(AccountPageAdapter adapter, RecyclerView.LayoutManager layoutManager, AccountP presenter, AccountContract.View view) {
         super(presenter);
         this.adapter = adapter;
         this.layoutManager = layoutManager;
+        this.view = view;
     }
 
     private void requestTopics(String userName) {
-        presenter.requestTopicList(userName, new Subscriber<List<TopicEntity>>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
+        presenter.requestTopicList(userName, new LSubscriber<List<TopicEntity>>() {
             @Override
             public void onNext(List<TopicEntity> respEntity) {
                 if (respEntity.size() > 0)
@@ -80,26 +77,20 @@ public class AccountVM extends BasePVM<AccountContract.Presneter> {
 
             @Override
             public void onError(Throwable throwable) {
-
             }
         });
     }
 
     private void requestMemberDetail(String userName) {
-        presenter.requestMemberDetail(userName, new Subscriber<MemberEntity>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
+        presenter.requestMemberDetail(userName, new LSubscriber<MemberEntity>() {
             @Override
             public void onNext(MemberEntity respEntity) {
-
+                if (member != null)
+                    setMember(respEntity);
             }
 
             @Override
-            public void onError(Throwable errorEvent) {
-
+            public void onError(Throwable throwable) {
             }
         });
     }
@@ -115,6 +106,11 @@ public class AccountVM extends BasePVM<AccountContract.Presneter> {
     @Bindable
     public MemberEntity getMember() {
         return member;
+    }
+
+    public void setMember(MemberEntity member) {
+        this.member = member;
+        notifyPropertyChanged(BR.member);
     }
 
     public void init(MemberEntity member) {

@@ -73,6 +73,8 @@ ext.depMap = [
         Annotations          : "${androidSupportPkg}:support-annotations:${androidSupportVersion}",
         SupportV4            : "${androidSupportPkg}:support-v4:${androidSupportVersion}",
 
+        Guava                : 'com.google.guava:guava:19.0',
+
         AutoValue            : 'com.google.auto.value:auto-value:1.1',
         AutoParcel           : 'com.github.frankiesardo:auto-parcel:0.3.1',
         AutoParcelProcessor  : 'com.github.frankiesardo:auto-parcel-processor:0.3.1',
@@ -80,8 +82,6 @@ ext.depMap = [
         FastJson             : 'com.alibaba:fastjson:1.1.45.android',
         DSLJson              : 'com.dslplatform:dsl-json:0.9.5',
         DSLJsonProcessor     : 'com.dslplatform:dsl-json-processor:0.4',
-
-        Picasso              : 'com.squareup.picasso:picasso:2.5.2',
 
         OkHttp               : "${okHttpPkg}:okhttp:${okHttpVersion}",
         LoggingInterceptor   : "${okHttpPkg}:logging-interceptor:${okHttpVersion}",
@@ -107,7 +107,6 @@ ext.depMap = [
         RxBindingRecyclerView: "${rxBindingPkg}:rxbinding-recyclerview-v7:${rxBindingVersion}",
         RxLeanBack           : "${rxBindingPkg}:rxbinding-leanback-v17:${rxBindingVersion}",
 
-
         Dagger               : "${daggerPkg}:dagger:${daggerVersion}",
         DaggerCompile        : "${daggerPkg}:dagger-compiler:${daggerVersion}",
 
@@ -122,6 +121,7 @@ ext.depMap = [
         LeakCanary           : "${squareUpPkg}.leakcanary:leakcanary-android:1.3.1",
         LeakCanaryAndroidNoOp: "${squareUpPkg}.leakcanary:leakcanary-android-no-op:1.3.1",
         FestAndroid          : "${squareUpPkg}:fest-android:1.0.7",
+        Picasso              : "${squareUpPkg}.picasso:picasso:2.5.2",
 
         Hamcrest             : 'org.hamcrest:hamcrest-all:1.3',
         JUnit                : "junit:junit:${junitVersion}",

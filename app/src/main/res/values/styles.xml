@@ -175,15 +175,23 @@
         <item name="android:paddingTop">@dimen/padding_ss</item>
         <item name="android:paddingLeft">@dimen/padding_l</item>
         <item name="android:paddingRight">@dimen/padding_l</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_m</item>
+    </style>
+
+    <style name="CountTagStyle.Small">
+        <item name="android:paddingLeft">@dimen/padding_m</item>
+        <item name="android:paddingRight">@dimen/padding_m</item>
     </style>
 
     <style name="NodeTagStyle" parent="ClickableStyle">
-        <item name="android:background">@drawable/bg_tag_node</item>
         <item name="android:paddingBottom">@dimen/padding_ss</item>
         <item name="android:paddingTop">@dimen/padding_ss</item>
         <item name="android:paddingLeft">@dimen/padding_m</item>
         <item name="android:paddingRight">@dimen/padding_m</item>
         <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_m</item>
+        <item name="android:background">@drawable/bg_tag_node</item>
     </style>
 
     <style name="PointStyle">

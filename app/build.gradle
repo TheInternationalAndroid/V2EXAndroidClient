@@ -107,6 +107,7 @@ dependencies {
 //    compile depMap.RxLeanBack
     compile depMap.Timber
     compile depMap.EspressoIDLing
+    compile depMap.Guava
     retrolambdaConfig depMap.RetroLambdaConfig
 
     debugCompile depMap.LeakCanary

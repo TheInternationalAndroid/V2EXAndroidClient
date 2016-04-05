@@ -26,8 +26,9 @@ import android.support.v7.widget.RecyclerView;
 
 import com.rayman.v2ex.di.modules.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerActivity;
-import com.rayman.v2ex.ui.view.account.AccountP;
 import com.rayman.v2ex.ui.adapter.list.AccountPageAdapter;
+import com.rayman.v2ex.ui.view.account.AccountContract;
+import com.rayman.v2ex.ui.view.account.AccountP;
 import com.rayman.v2ex.widget.anotations.ListType;
 
 import javax.inject.Named;
@@ -55,11 +56,17 @@ import dagger.Provides;
 @Module(includes = {LayoutManagerModule.class})
 public class AccountVMModule {
 
+    private AccountContract.View view;
+
+    public AccountVMModule(AccountContract.View view) {
+        this.view = view;
+    }
+
     @Provides
     @PerActivity
     AccountVM provideAccountVM(AccountP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
         AccountPageAdapter adapter = new AccountPageAdapter();
-        return new AccountVM(adapter, layoutManager, presenter);
+        return new AccountVM(adapter, layoutManager, presenter, view);
     }
 
 }

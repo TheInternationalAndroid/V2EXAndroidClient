@@ -53,7 +53,7 @@
 
     <!--Drawable-->
     <drawable name="transparent">@android:color/transparent</drawable>
-    <drawable name="bg_gray_transparent">#6F363636</drawable>
+    <drawable name="bg_gray_transparent">#0F363636</drawable>
     <drawable name="bg_black_light">#1C1D20</drawable>
     <drawable name="bg_green">#6EAF20</drawable>
     <drawable name="bg_red">#BA3223</drawable>

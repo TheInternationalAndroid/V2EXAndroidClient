@@ -38,10 +38,8 @@
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg_white"
         app:cardCornerRadius="@dimen/padding_m"
         app:cardElevation="@dimen/padding_ss"
         app:cardPreventCornerOverlap="true"
@@ -49,7 +47,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="@dimen/padding_xl"
             android:paddingLeft="@dimen/padding_l"
@@ -85,7 +83,7 @@
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.member.username}"
+                        android:text="@{viewModel.member.username,default=UserName}"
                         android:textColor="@color/text_black"
                         android:textSize="@dimen/text_xxl" />
 
@@ -94,7 +92,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/padding_s"
-                        android:text="@{viewModel.member.tagline}"
+                        android:text="@{viewModel.member.tagline,default=TagLine}"
                         android:textColor="@color/text_gray_dark"
                         android:textSize="@dimen/text_l" />
 
@@ -103,7 +101,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/padding_m"
-                        android:text="@{@string/number_format(viewModel.member.id)}"
+                        android:text="@{@string/number_format(viewModel.member.id),default=Id9527}"
                         android:textColor="@color/text_gray"
                         android:textSize="@dimen/text_m" />
 
@@ -114,8 +112,7 @@
                         android:text="@{@string/created_at_format(DateUtil.formatRecordDate(viewModel.member.created))}"
                         android:textColor="@color/text_gray"
                         android:textSize="@dimen/text_m"
-                        android:visibility="@{viewModel.member.created>0?View.VISIBLE:View.GONE}"
-                        tools:text="" />
+                        android:visibility="@{viewModel.member.created>0?View.VISIBLE:View.GONE}" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -132,7 +129,7 @@
                     android:layout_marginTop="@dimen/padding_s"
                     android:drawableLeft="@drawable/ic_geo"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.member.location}"
+                    android:text="@{viewModel.member.location,default=Location}"
                     android:visibility="@{StringUtil.isEmpty(viewModel.member.location)?View.GONE:View.VISIBLE}" />
 
                 <TextView
@@ -142,7 +139,7 @@
                     android:layout_marginTop="@dimen/padding_s"
                     android:drawableLeft="@drawable/ic_home"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.member.website}"
+                    android:text="@{viewModel.member.website,default=Website}"
                     android:visibility="@{StringUtil.isEmpty(viewModel.member.website)?View.GONE:View.VISIBLE}" />
 
                 <TextView
@@ -152,7 +149,7 @@
                     android:layout_marginTop="@dimen/padding_s"
                     android:drawableLeft="@drawable/ic_github"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.member.github}"
+                    android:text="@{viewModel.member.github,default=Github}"
                     android:visibility="@{StringUtil.isEmpty(viewModel.member.github)?View.GONE:View.VISIBLE}" />
 
                 <TextView
@@ -162,7 +159,7 @@
                     android:layout_marginTop="@dimen/padding_s"
                     android:drawableLeft="@drawable/ic_twitter"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.member.twitter}"
+                    android:text="@{viewModel.member.twitter,default=Twitter}"
                     android:visibility="@{StringUtil.isEmpty(viewModel.member.twitter)?View.GONE:View.VISIBLE}" />
 
             </com.wefika.flowlayout.FlowLayout>

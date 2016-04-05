@@ -27,7 +27,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.rayman.v2ex.databinding.ListCellTopicBinding;
+import com.rayman.v2ex.databinding.ListCellTopicShortBinding;
 import com.rayman.v2ex.databinding.ListHeaderUserDetailBinding;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
@@ -74,7 +74,7 @@ public class AccountPageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 break;
             default:
             case VIEW_TOPIC:
-                binding = ListCellTopicBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+                binding = ListCellTopicShortBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
                 break;
         }
         return new BaseViewHolder(binding);

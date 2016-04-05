@@ -60,7 +60,6 @@ retrolambda {
 }
 
 dependencies {
-
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile depMap.RecyclerView
@@ -107,15 +106,34 @@ dependencies {
     compile depMap.RxBindingRecyclerView
 //    compile depMap.RxLeanBack
     compile depMap.Timber
-    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.1.0'
+    compile depMap.EspressoIDLing
+    retrolambdaConfig depMap.RetroLambdaConfig
 
     debugCompile depMap.LeakCanary
     releaseCompile depMap.LeakCanaryAndroidNoOp
     testCompile depMap.LeakCanaryAndroidNoOp
 
-    testCompile depMap.FestAssert
-    testCompile depMap.FestAndroid
-    testCompile depMap.MockitoCore
-    testCompile depMap.Robolectric
+    // Dependencies for local unit tests
     testCompile depMap.JUnit
+    testCompile depMap.MockitoAll
+    testCompile depMap.Hamcrest
+
+    // Android Testing Support Library's runner and rules
+    androidTestCompile depMap.RunnerSupport
+    androidTestCompile depMap.RulesSupport
+
+    // Dependencies for android unit tests
+    androidTestCompile depMap.JUnit
+    androidTestCompile depMap.FestAssert
+    androidTestCompile depMap.FestAndroid
+    androidTestCompile depMap.Robolectric
+    androidTestCompile depMap.MockitoCore
+    androidTestCompile depMap.DexMaker
+    androidTestCompile depMap.DexMakerMockito
+    androidTestCompile depMap.EspressoCore
+    androidTestCompile depMap.EspressoContrib
+    androidTestCompile depMap.EspressoIntents
+    androidTestCompile depMap.Annotations
+    androidTestCompile depMap.SupportV4
+    androidTestCompile depMap.RecyclerView
 }

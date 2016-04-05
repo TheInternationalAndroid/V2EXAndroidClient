@@ -36,23 +36,42 @@ ext {
     targetSdkVersion = 23
     buildToolsVersion = '23.0.2'
     gradleBuildToolsVersion = '2.1.0-alpha1'
-    supportLibraryVersion = '23.2.1'
     junitVersion = '4.12'
     sourceCompatibilityVersion = JavaVersion.VERSION_1_8
     targetCompatibilityVersion = JavaVersion.VERSION_1_8
     retrolambdaJavaVersion = JavaVersion.VERSION_1_7
+
+    androidSupportPkg = 'com.android.support'
+    androidSupportVersion = '23.2.1'
+    squareUpPkg = 'com.squareup'
     okHttpPkg = 'com.squareup.okhttp3'
     okHttpVersion = '3.2.0'
     retrofitPkg = 'com.squareup.retrofit2'
     retrofitVersion = '2.0.0'
+    testSupportPkg = "com.android.support.test"
+    testSupportVersion = '0.4.1'
+    dexMakerPkg = 'com.google.dexmaker'
+    dexMakerVersion = '1.2'
+    testEspressoPkg = 'com.android.support.test.espresso'
+    testEspressoVersion = '2.2.1'
+    lintPkg = 'com.android.tools.lint'
+    lintVersion = '24.3.1'
+    rxBindingPkg = 'com.jakewharton.rxbinding'
+    rxBindingVersion = '0.4.0'
+    mockitoPkg = 'org.mockito'
+    mockitoVersion = '1.10.19'
+    daggerPkg = 'com.google.dagger'
+    daggerVersion = '2.0.2'
 }
 
 ext.depMap = [
-        RecyclerView         : "com.android.support:recyclerview-v7:${supportLibraryVersion}",
-        CardView             : "com.android.support:cardview-v7:${supportLibraryVersion}",
-        Design               : "com.android.support:design:${supportLibraryVersion}",
-        AppCompat            : "com.android.support:appcompat-v7:${supportLibraryVersion}",
-        Multidex             : 'com.android.support:multidex:1.0.0',
+        RecyclerView         : "${androidSupportPkg}:recyclerview-v7:${androidSupportVersion}",
+        CardView             : "${androidSupportPkg}:cardview-v7:${androidSupportVersion}",
+        Design               : "${androidSupportPkg}:design:${androidSupportVersion}",
+        AppCompat            : "${androidSupportPkg}:appcompat-v7:${androidSupportVersion}",
+        Multidex             : "${androidSupportPkg}:multidex:1.0.0",
+        Annotations          : "${androidSupportPkg}:support-annotations:${androidSupportVersion}",
+        SupportV4            : "${androidSupportPkg}:support-v4:${androidSupportVersion}",
 
         AutoValue            : 'com.google.auto.value:auto-value:1.1',
         AutoParcel           : 'com.github.frankiesardo:auto-parcel:0.3.1',
@@ -80,36 +99,53 @@ ext.depMap = [
         SimpleXMLConverter   : "${retrofitPkg}:converter-simplexml:${retrofitVersion}",
         ScalarsConverter     : "${retrofitPkg}:converter-scalars:${retrofitVersion}",
 
-        Otto                 : 'com.squareup:otto:1.3.8',
-
         RxAndroid            : 'io.reactivex:rxandroid:1.0.1',
-        RxBinding            : 'com.jakewharton.rxbinding:rxbinding:0.4.0',
-        RxBindingSupportV4   : 'com.jakewharton.rxbinding:rxbinding-support-v4:0.4.0',
-        RxBindingAppcompat   : 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0',
-        RxBindingDesign      : 'com.jakewharton.rxbinding:rxbinding-design:0.4.0',
-        RxBindingRecyclerView: 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.4.0',
-        RxLeanBack           : 'com.jakewharton.rxbinding:rxbinding-leanback-v17:0.4.0',
-        Timber               : 'com.jakewharton.timber:timber:4.1.1',
+        RxBinding            : "${rxBindingPkg}:rxbinding:${rxBindingVersion}",
+        RxBindingSupportV4   : "${rxBindingPkg}:rxbinding-support-v4:${rxBindingVersion}",
+        RxBindingAppcompat   : "${rxBindingPkg}:rxbinding-appcompat-v7:${rxBindingVersion}",
+        RxBindingDesign      : "${rxBindingPkg}:rxbinding-design:${rxBindingVersion}",
+        RxBindingRecyclerView: "${rxBindingPkg}:rxbinding-recyclerview-v7:${rxBindingVersion}",
+        RxLeanBack           : "${rxBindingPkg}:rxbinding-leanback-v17:${rxBindingVersion}",
 
-        Dagger               : 'com.google.dagger:dagger:2.0.2',
+
+        Dagger               : "${daggerPkg}:dagger:${daggerVersion}",
+        DaggerCompile        : "${daggerPkg}:dagger-compiler:${daggerVersion}",
+
+        RetroLambdaConfig    : 'net.orfjackal.retrolambda:retrolambda:2.1.0',
+        Timber               : 'com.jakewharton.timber:timber:4.1.1',
         AnnotationJsr250     : 'javax.annotation:jsr250-api:1.0',
         MaterialMenuToolbar  : 'com.balysv.materialmenu:material-menu-toolbar:1.5.0',
         RoundedImageview     : 'com.makeramen:roundedimageview:2.2.1',
         FlowLayout           : 'com.wefika:flowlayout:0.4.1',
-        DaggerCompile        : 'com.google.dagger:dagger-compiler:2.0.2',
 
-        //Leakcanary
-        LeakCanary           : 'com.squareup.leakcanary:leakcanary-android:1.3.1',
-        LeakCanaryAndroidNoOp: 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1',
+        Otto                 : "${squareUpPkg}:otto:1.3.8",
+        LeakCanary           : "${squareUpPkg}.leakcanary:leakcanary-android:1.3.1",
+        LeakCanaryAndroidNoOp: "${squareUpPkg}.leakcanary:leakcanary-android-no-op:1.3.1",
+        FestAndroid          : "${squareUpPkg}:fest-android:1.0.7",
 
-        //Test dependencies
-        FestAssert           : 'org.easytesting:fest-assert-core:2.0M10',
-        FestAndroid          : 'com.squareup:fest-android:1.0.7',
-        MockitoCore          : 'org.mockito:mockito-core:1.9.5',
-        Robolectric          : 'org.robolectric:robolectric:3.0',
+        Hamcrest             : 'org.hamcrest:hamcrest-all:1.3',
         JUnit                : "junit:junit:${junitVersion}",
 
+        MockitoAll           : "${mockitoPkg}:mockito-all:${mockitoVersion}",
+        MockitoCore          : "${mockitoPkg}:mockito-core:${mockitoVersion}",
+        FestAssert           : 'org.easytesting:fest-assert-core:2.0M10',
+        Robolectric          : 'org.robolectric:robolectric:3.0',
+
+        //Espresso
+        EspressoCore         : "${testEspressoPkg}:espresso-core:${testEspressoVersion}",
+        EspressoContrib      : "${testEspressoPkg}:espresso-contrib:${testEspressoVersion}",
+        EspressoIntents      : "${testEspressoPkg}:espresso-intents:${testEspressoVersion}",
+        EspressoIDLing       : "${testEspressoPkg}:espresso-idling-resource:${testEspressoVersion}",
+
+        //Test support
+        RunnerSupport        : "${testSupportPkg}:runner:${testSupportVersion}",
+        RulesSupport         : "${testSupportPkg}:rules:${testSupportVersion}",
+
+        //Dex maker
+        DexMaker             : "${dexMakerPkg}:dexmaker:${dexMakerVersion}",
+        DexMakerMockito      : "${dexMakerPkg}:dexmaker-mockito:${dexMakerVersion}",
+
         //Lint dependencies
-        lintapi              : 'com.android.tools.lint:lint-api:24.3.1',
-        lintchecks           : 'com.android.tools.lint:lint-checks:24.3.1'
+        Lintapi              : "${lintPkg}:lint-api:${lintVersion}",
+        Lintchecks           : "${lintPkg}:lint-checks:${lintVersion}"
 ]

@@ -42,6 +42,7 @@ import com.rayman.v2ex.ui.view.node.NodeActivity;
 import com.rayman.v2ex.ui.view.topic.TopicActivity;
 import com.rayman.v2ex.viewmodel.main.LatestFragVM;
 import com.rayman.v2ex.viewmodel.main.LatestFragVMModule;
+import com.rayman.v2ex.widget.anotations.RequestType;
 
 import javax.inject.Inject;
 
@@ -80,7 +81,7 @@ public class LatestFragment extends BaseDIFragment implements LatestFragContract
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel.requestLatestTopic();
+        viewModel.requestLatestTopic(RequestType.CONTENT_LOADING);
     }
 
     @Override

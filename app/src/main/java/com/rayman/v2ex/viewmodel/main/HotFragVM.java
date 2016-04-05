@@ -25,17 +25,16 @@ package com.rayman.v2ex.viewmodel.main;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.rayman.v2ex.model.http.LSubscriber;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.ui.view.main.hot.HotFragContract;
 import com.rayman.v2ex.ui.view.main.hot.HotFragP;
-import com.rayman.v2ex.viewmodel.BaseStateVM;
+import com.rayman.v2ex.viewmodel.BaseSwipStateVM;
 import com.rayman.v2ex.widget.anotations.PageState;
+import com.rayman.v2ex.widget.anotations.RequestType;
 
 import java.util.List;
-
-import rx.Subscriber;
-import timber.log.Timber;
 
 /**
  * Created by Android Studio.
@@ -54,7 +53,7 @@ import timber.log.Timber;
  * \               ||----w |
  * \               ||     ||
  */
-public class HotFragVM extends BaseStateVM<HotFragContract.Presenter, HotFragContract.View> {
+public class HotFragVM extends BaseSwipStateVM<HotFragContract.Presenter, HotFragContract.View> {
 
     private TopicListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -67,7 +66,7 @@ public class HotFragVM extends BaseStateVM<HotFragContract.Presenter, HotFragCon
 
     @Override
     public void onRetryClicked(View view) {
-        requestHotTopicList();
+        requestHotTopicList(RequestType.CONTENT_LOADING);
     }
 
     public TopicListAdapter getAdapter() {
@@ -78,24 +77,23 @@ public class HotFragVM extends BaseStateVM<HotFragContract.Presenter, HotFragCon
         return layoutManager;
     }
 
-    public void requestHotTopicList() {
-        presenter.requestHotList(new Subscriber<List<TopicEntity>>() {
+    @Override
+    public void onRefresh() {
+        requestHotTopicList(RequestType.SWIP_REFRESH);
+    }
 
-            @Override
-            public void onCompleted() {
-                Timber.i("onCompleted %d", Thread.currentThread().getId());
-            }
+    public void requestHotTopicList(@RequestType int requestType) {
+        presenter.requestHotList(new LSubscriber<List<TopicEntity>>() {
 
             @Override
             public void onStart() {
-                Timber.i("onStart %d", Thread.currentThread().getId());
                 super.onStart();
-                setState(PageState.LOADING);
+                controlStartState(requestType);
             }
 
             @Override
             public void onNext(List<TopicEntity> respEntity) {
-                Timber.i("onNext %d", Thread.currentThread().getId());
+                controlSuccessState(requestType);
                 if (respEntity.size() > 0) {
                     setState(PageState.CONTENT);
                     adapter.setList(respEntity);
@@ -105,9 +103,8 @@ public class HotFragVM extends BaseStateVM<HotFragContract.Presenter, HotFragCon
             }
 
             @Override
-            public void onError(Throwable errorEvent) {
-                Timber.i("onError %d", Thread.currentThread().getId());
-                showError(PageState.ERROR, errorEvent.getMessage());
+            public void onError(Throwable throwable) {
+                controlErrorState(requestType, throwable.getMessage());
             }
         });
     }

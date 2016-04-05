@@ -42,6 +42,7 @@ import com.rayman.v2ex.ui.view.node.NodeActivity;
 import com.rayman.v2ex.ui.view.topic.TopicActivity;
 import com.rayman.v2ex.viewmodel.main.HotFragVM;
 import com.rayman.v2ex.viewmodel.main.HotFragVMModule;
+import com.rayman.v2ex.widget.anotations.RequestType;
 
 import javax.inject.Inject;
 
@@ -59,7 +60,7 @@ public class HotFragment extends BaseDIFragment implements HotFragContract.View 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel.requestHotTopicList();
+        viewModel.requestHotTopicList(RequestType.CONTENT_LOADING);
     }
 
     @Override

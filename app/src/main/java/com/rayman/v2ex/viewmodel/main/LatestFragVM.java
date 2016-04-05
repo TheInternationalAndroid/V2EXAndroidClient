@@ -25,16 +25,16 @@ package com.rayman.v2ex.viewmodel.main;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.rayman.v2ex.model.http.LSubscriber;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.ui.view.main.latest.LatestFragContract;
 import com.rayman.v2ex.ui.view.main.latest.LatestFragP;
-import com.rayman.v2ex.viewmodel.BaseStateVM;
+import com.rayman.v2ex.viewmodel.BaseSwipStateVM;
 import com.rayman.v2ex.widget.anotations.PageState;
+import com.rayman.v2ex.widget.anotations.RequestType;
 
 import java.util.List;
-
-import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -53,7 +53,7 @@ import rx.Subscriber;
  * \               ||----w |
  * \               ||     ||
  */
-public class LatestFragVM extends BaseStateVM<LatestFragContract.Presenter, LatestFragContract.View> {
+public class LatestFragVM extends BaseSwipStateVM<LatestFragContract.Presenter, LatestFragContract.View> {
 
     private TopicListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -66,7 +66,12 @@ public class LatestFragVM extends BaseStateVM<LatestFragContract.Presenter, Late
 
     @Override
     public void onRetryClicked(View view) {
-        requestLatestTopic();
+        requestLatestTopic(RequestType.CONTENT_LOADING);
+    }
+
+    @Override
+    public void onRefresh() {
+        requestLatestTopic(RequestType.SWIP_REFRESH);
     }
 
     public TopicListAdapter getAdapter() {
@@ -77,18 +82,18 @@ public class LatestFragVM extends BaseStateVM<LatestFragContract.Presenter, Late
         return layoutManager;
     }
 
-    public void requestLatestTopic() {
-        presenter.requestLatestList(new Subscriber<List<TopicEntity>>() {
+    public void requestLatestTopic(@RequestType int requestType) {
+        presenter.requestLatestList(new LSubscriber<List<TopicEntity>>() {
 
             @Override
             public void onStart() {
                 super.onStart();
-                setState(PageState.LOADING);
+                controlStartState(requestType);
             }
-
 
             @Override
             public void onNext(List<TopicEntity> respEntity) {
+                controlSuccessState(requestType);
                 if (respEntity.size() > 0) {
                     setState(PageState.CONTENT);
                     adapter.setList(respEntity);
@@ -98,15 +103,9 @@ public class LatestFragVM extends BaseStateVM<LatestFragContract.Presenter, Late
             }
 
             @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable errorEvent) {
-                showError(PageState.ERROR, errorEvent.getMessage());
+            public void onError(Throwable throwable) {
+                controlErrorState(requestType, throwable.getMessage());
             }
         });
     }
-
 }

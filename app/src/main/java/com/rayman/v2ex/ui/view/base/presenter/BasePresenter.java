@@ -24,6 +24,7 @@ package com.rayman.v2ex.ui.view.base.presenter;
 
 import android.support.annotation.NonNull;
 
+import com.google.common.base.Preconditions;
 import com.rayman.v2ex.model.http.ErrorType;
 import com.rayman.v2ex.model.http.event.ErrorEvent;
 import com.rayman.v2ex.widget.eventbus.RxBus;
@@ -81,6 +82,8 @@ public class BasePresenter implements IPresenter {
 
     @Override
     public <T> void subscribeHttpReq(@NonNull Observable<Response<T>> observable, @NonNull Subscriber<T> subscriber) {
+        Preconditions.checkNotNull(observable, "Observable must not be null");
+        Preconditions.checkNotNull(subscriber, "Subscriber must not be null");
         Timber.i("defaultCall %d", Thread.currentThread().getId());
         subscription.add(
                 observable
@@ -98,6 +101,8 @@ public class BasePresenter implements IPresenter {
 
     @Override
     public <T> void subscribeAsyncRun(@NonNull Observable<T> observable, @NonNull Subscriber<T> subscriber) {
+        Preconditions.checkNotNull(observable, "Observable must not be null");
+        Preconditions.checkNotNull(subscriber, "Subscriber must not be null");
         Timber.i("defaultCall %d", Thread.currentThread().getId());
         subscription.add(
                 observable

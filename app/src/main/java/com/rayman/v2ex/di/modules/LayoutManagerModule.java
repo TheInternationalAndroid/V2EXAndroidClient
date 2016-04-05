@@ -27,6 +27,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.google.common.base.Preconditions;
 import com.rayman.v2ex.widget.anotations.ContextType;
 import com.rayman.v2ex.widget.anotations.ListType;
 
@@ -55,11 +56,17 @@ import dagger.Provides;
 @Module
 public class LayoutManagerModule {
 
-    @Provides @Named(ListType.VERTICAL) RecyclerView.LayoutManager provideVerticalLayout(@Named(ContextType.ACTIVITY) @NonNull Context context) {
+    @Provides
+    @Named(ListType.VERTICAL)
+    RecyclerView.LayoutManager provideVerticalLayout(@Named(ContextType.ACTIVITY) @NonNull Context context) {
+        Preconditions.checkNotNull(context, "Context must not be null");
         return new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
     }
 
-    @Provides @Named(ListType.HORIZONTAL) RecyclerView.LayoutManager provideHorizontalLayout(@Named(ContextType.ACTIVITY) @NonNull Context context) {
+    @Provides
+    @Named(ListType.HORIZONTAL)
+    RecyclerView.LayoutManager provideHorizontalLayout(@Named(ContextType.ACTIVITY) @NonNull Context context) {
+        Preconditions.checkNotNull(context, "Context must not be null");
         return new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
     }
 }

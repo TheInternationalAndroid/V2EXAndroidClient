@@ -27,6 +27,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.google.common.base.Preconditions;
 import com.rayman.v2ex.ui.view.main.hot.HotFragment;
 import com.rayman.v2ex.ui.view.main.latest.LatestFragment;
 
@@ -57,12 +58,14 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
 
     public MainPagerAdapter(@NonNull FragmentManager fm, @NonNull String[] titles) {
         super(fm);
+        Preconditions.checkNotNull(titles, "Fragment title array must not be null");
         if (titles.length != TAB_COUNT)
             throw new IllegalArgumentException("Titles size not match.");
         this.titles = titles;
     }
 
-    @Override public Fragment getItem(int position) {
+    @Override
+    public Fragment getItem(int position) {
         switch (position) {
             default:
             case TAB_LATEST:
@@ -72,11 +75,13 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
         }
     }
 
-    @Override public CharSequence getPageTitle(int position) {
+    @Override
+    public CharSequence getPageTitle(int position) {
         return titles[position];
     }
 
-    @Override public int getCount() {
+    @Override
+    public int getCount() {
         return TAB_COUNT;
     }
 }

@@ -35,9 +35,10 @@ import com.rayman.v2ex.databinding.FragmentLatestBinding;
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
 import com.rayman.v2ex.ui.view.account.AccountActivity;
 import com.rayman.v2ex.ui.view.base.page.BaseDIFragment;
+import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
+import com.rayman.v2ex.ui.view.topic.TopicActivity;
 import com.rayman.v2ex.viewmodel.main.LatestFragVM;
 import com.rayman.v2ex.viewmodel.main.LatestFragVMModule;
 
@@ -90,7 +91,9 @@ public class LatestFragment extends BaseDIFragment implements LatestFragContract
 
     @Override
     public void onTopicCliced(TopicEntity topicEntity) {
-
+        Intent intent = new Intent(getActivity(), TopicActivity.class);
+        intent.putExtra(ParaKeys.TOPIC_KEY, topicEntity);
+        intent(intent);
     }
 
     @Override

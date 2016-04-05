@@ -38,6 +38,7 @@ import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.account.AccountActivity;
 import com.rayman.v2ex.ui.view.base.page.BaseDIFragment;
 import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
+import com.rayman.v2ex.ui.view.topic.TopicActivity;
 import com.rayman.v2ex.viewmodel.main.HotFragVM;
 import com.rayman.v2ex.viewmodel.main.HotFragVMModule;
 
@@ -89,10 +90,12 @@ public class HotFragment extends BaseDIFragment implements HotFragContract.View 
 
     @Override
     public void onTopicCliced(TopicEntity topicEntity) {
+        Intent intent = new Intent(getActivity(), TopicActivity.class);
+        intent.putExtra(ParaKeys.TOPIC_KEY, topicEntity);
+        intent(intent);
     }
 
     @Override
     public void onNodeClicked(NodeEntity nodeEntity) {
-
     }
 }

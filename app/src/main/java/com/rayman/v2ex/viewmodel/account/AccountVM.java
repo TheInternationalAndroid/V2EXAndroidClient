@@ -70,7 +70,7 @@ public class AccountVM extends BaseVM<AccountContract.Presneter,AccountContract.
             @Override
             public void onNext(List<TopicEntity> respEntity) {
                 if (respEntity.size() > 0)
-                    adapter.setTopicEntities(respEntity);
+                    adapter.setList(respEntity);
             }
 
             @Override

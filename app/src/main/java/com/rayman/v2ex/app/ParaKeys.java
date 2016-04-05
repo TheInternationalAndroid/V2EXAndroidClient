@@ -42,5 +42,6 @@ package com.rayman.v2ex.app;
 public interface ParaKeys {
 
     String MEMBER_BASE_KEY = "MEMBER_BASE_KEY";
+    String TOPIC_KEY = "TOPIC_ENTITY";
 
 }

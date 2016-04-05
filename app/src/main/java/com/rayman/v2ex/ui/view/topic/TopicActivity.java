@@ -25,21 +25,36 @@ package com.rayman.v2ex.ui.view.topic;
 import android.os.Bundle;
 
 import com.rayman.v2ex.R;
+import com.rayman.v2ex.app.ParaKeys;
+import com.rayman.v2ex.databinding.ActivityTopicBinding;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.base.page.BaseDIActivity;
 import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
+import com.rayman.v2ex.viewmodel.topic.TopicVM;
 import com.rayman.v2ex.viewmodel.topic.TopicVMModule;
 
+import javax.inject.Inject;
+
 public class TopicActivity extends BaseDIActivity implements TopicContract.View {
+
+    @Inject
+    TopicVM viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_topic);
+        ActivityTopicBinding binding = bindLayout(R.layout.activity_topic);
+        TopicEntity topicEntity = getIntent().getParcelableExtra(ParaKeys.TOPIC_KEY);
+        if (topicEntity != null) {
+            setTitle(topicEntity.getTitle());
+            binding.setViewModel(viewModel);
+            viewModel.init(topicEntity);
+        }
     }
 
     @Override
     protected ILifeCycle getPageLifeCycle() {
-        return null;
+        return viewModel.presenter();
     }
 
     @Override
@@ -47,7 +62,7 @@ public class TopicActivity extends BaseDIActivity implements TopicContract.View 
         DaggerTopicContract_TopicComp.builder()
                 .activityComp(getActivityComp())
                 .topicVMModule(new TopicVMModule(this))
-                .build();
-
+                .build()
+                .inject(this);
     }
 }

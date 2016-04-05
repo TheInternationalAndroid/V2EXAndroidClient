@@ -37,7 +37,7 @@ import com.rayman.v2ex.widget.anotations.ViewClick;
  * Date: 1/20/16
  * Time: 12:18
  * \ ___________________
- * \| Happy New Year!  |
+ * \| Happy New Year!   |
  * \ -------------------
  * \  \
  * \   \   \_\_    _/_/

@@ -23,7 +23,6 @@
 package com.rayman.v2ex.ui.adapter.list;
 
 import android.databinding.ViewDataBinding;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -31,11 +30,9 @@ import com.rayman.v2ex.databinding.ListCellTopicShortBinding;
 import com.rayman.v2ex.databinding.ListHeaderUserDetailBinding;
 import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.adapter.list.viewholder.BaseViewHolder;
-import com.rayman.v2ex.viewmodel.account.AccountHeaderCellVM;
+import com.rayman.v2ex.ui.adapter.list.base.BaseHeaderAdapter;
+import com.rayman.v2ex.ui.adapter.list.base.CellVM;
 import com.rayman.v2ex.viewmodel.topic.TopicCellVM;
-
-import java.util.List;
 
 /**
  * Created by Android Studio.
@@ -54,62 +51,15 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class AccountPageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+public class AccountPageAdapter extends BaseHeaderAdapter<TopicEntity> {
 
     private static final int VIEW_HEADER = 0;
     private static final int VIEW_TOPIC = 1;
+    private static final int HEADER_COUNT = 1;
 
-    private List<TopicEntity> topicEntities;
     private MemberEntity memberEntity;
 
     public AccountPageAdapter() {
-    }
-
-    @Override
-    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewDataBinding binding;
-        switch (viewType) {
-            case VIEW_HEADER:
-                binding = ListHeaderUserDetailBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-                break;
-            default:
-            case VIEW_TOPIC:
-                binding = ListCellTopicShortBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-                break;
-        }
-        return new BaseViewHolder(binding);
-    }
-
-    @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
-        switch (getItemViewType(position)) {
-            case VIEW_HEADER:
-                holder.bindData(new AccountHeaderCellVM(memberEntity));
-                break;
-            default:
-            case VIEW_TOPIC:
-                holder.bindData(new TopicCellVM(getItem(position - 1)));
-                break;
-        }
-    }
-
-    @Override
-    public int getItemCount() {
-        return topicEntities == null ? 1 : topicEntities.size() + 1;
-    }
-
-    public void setTopicEntities(List<TopicEntity> topicEntities) {
-        this.topicEntities = topicEntities;
-        notifyDataSetChanged();
-    }
-
-    public void setMemberEntity(MemberEntity memberEntity) {
-        this.memberEntity = memberEntity;
-        notifyItemChanged(0);
-    }
-
-    public TopicEntity getItem(int position) {
-        return topicEntities == null ? null : topicEntities.get(position);
     }
 
     @Override
@@ -120,4 +70,37 @@ public class AccountPageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             return VIEW_TOPIC;
         }
     }
+
+    @Override
+    protected Object createViewModel(int position) {
+        switch (getItemViewType(position)) {
+            case VIEW_HEADER:
+                return new CellVM<>(memberEntity);
+            default:
+            case VIEW_TOPIC:
+                return new TopicCellVM(getItem(position));
+        }
+    }
+
+    @Override
+    protected ViewDataBinding createBinding(ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_HEADER:
+                return ListHeaderUserDetailBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+            default:
+            case VIEW_TOPIC:
+                return ListCellTopicShortBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        }
+    }
+
+    @Override
+    protected int getHeaderCount() {
+        return HEADER_COUNT;
+    }
+
+    public void setMemberEntity(MemberEntity memberEntity) {
+        this.memberEntity = memberEntity;
+        notifyItemChanged(0);
+    }
+
 }

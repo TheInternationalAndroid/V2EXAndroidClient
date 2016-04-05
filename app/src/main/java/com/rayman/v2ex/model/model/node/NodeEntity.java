@@ -22,6 +22,9 @@
 
 package com.rayman.v2ex.model.model.node;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.alibaba.fastjson.annotation.JSONField;
 
 /**
@@ -41,7 +44,7 @@ import com.alibaba.fastjson.annotation.JSONField;
  * \               ||----w |
  * \               ||     ||
  */
-public class NodeEntity {
+public class NodeEntity implements Parcelable {
 
     private long id;
     private String name;
@@ -128,4 +131,49 @@ public class NodeEntity {
     public void setAvatarLargeF(String avatarLargeF) {
         this.avatarLargeF = avatarLargeF;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(this.id);
+        dest.writeString(this.name);
+        dest.writeString(this.title);
+        dest.writeString(this.titleAlternative);
+        dest.writeString(this.url);
+        dest.writeInt(this.topics);
+        dest.writeString(this.avatarMini);
+        dest.writeString(this.avatarNormal);
+        dest.writeString(this.avatarLargeF);
+    }
+
+    public NodeEntity() {
+    }
+
+    protected NodeEntity(Parcel in) {
+        this.id = in.readLong();
+        this.name = in.readString();
+        this.title = in.readString();
+        this.titleAlternative = in.readString();
+        this.url = in.readString();
+        this.topics = in.readInt();
+        this.avatarMini = in.readString();
+        this.avatarNormal = in.readString();
+        this.avatarLargeF = in.readString();
+    }
+
+    public static final Parcelable.Creator<NodeEntity> CREATOR = new Parcelable.Creator<NodeEntity>() {
+        @Override
+        public NodeEntity createFromParcel(Parcel source) {
+            return new NodeEntity(source);
+        }
+
+        @Override
+        public NodeEntity[] newArray(int size) {
+            return new NodeEntity[size];
+        }
+    };
 }

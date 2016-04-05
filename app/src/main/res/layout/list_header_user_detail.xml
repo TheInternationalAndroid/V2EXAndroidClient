@@ -23,7 +23,9 @@
 
     <data>
 
-        <import type="com.rayman.v2ex.viewmodel.account.AccountHeaderCellVM" />
+        <import type="com.rayman.v2ex.ui.adapter.list.base.CellVM" />
+
+        <import type="com.rayman.v2ex.model.model.member.MemberEntity" />
 
         <import type="com.rayman.v2ex.widget.utils.StringUtil" />
 
@@ -33,7 +35,7 @@
 
         <variable
             name="viewModel"
-            type="AccountHeaderCellVM" />
+            type="CellVM&lt;MemberEntity>" />
     </data>
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -65,7 +67,7 @@
                     android:layout_height="@dimen/icon_size_s"
                     android:layout_centerVertical="true"
                     android:scaleType="centerCrop"
-                    android:src="@{viewModel.member.avatarLarge}"
+                    android:src="@{viewModel.entity.avatarLarge}"
                     app:riv_border_width="0dp"
                     app:riv_corner_radius="@dimen/btn_corner"
                     app:riv_mutate_background="true" />
@@ -83,7 +85,7 @@
                         android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.member.username,default=UserName}"
+                        android:text="@{viewModel.entity.username,default=UserName}"
                         android:textColor="@color/text_black"
                         android:textSize="@dimen/text_xxl" />
 
@@ -92,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/padding_s"
-                        android:text="@{viewModel.member.tagline,default=TagLine}"
+                        android:text="@{viewModel.entity.tagline,default=TagLine}"
                         android:textColor="@color/text_gray_dark"
                         android:textSize="@dimen/text_l" />
 
@@ -101,7 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/padding_m"
-                        android:text="@{@string/number_format(viewModel.member.id),default=Id9527}"
+                        android:text="@{@string/number_format(viewModel.entity.id),default=Id9527}"
                         android:textColor="@color/text_gray"
                         android:textSize="@dimen/text_m" />
 
@@ -109,10 +111,10 @@
                         android:id="@+id/created_at"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{@string/created_at_format(DateUtil.formatRecordDate(viewModel.member.created))}"
+                        android:text="@{@string/created_at_format(DateUtil.formatRecordDate(viewModel.entity.created))}"
                         android:textColor="@color/text_gray"
                         android:textSize="@dimen/text_m"
-                        android:visibility="@{viewModel.member.created>0?View.VISIBLE:View.GONE}" />
+                        android:visibility="@{viewModel.entity.created>0?View.VISIBLE:View.GONE}" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -129,8 +131,8 @@
                     android:layout_marginTop="@dimen/padding_s"
                     android:drawableLeft="@drawable/ic_geo"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.member.location,default=Location}"
-                    android:visibility="@{StringUtil.isEmpty(viewModel.member.location)?View.GONE:View.VISIBLE}" />
+                    android:text="@{viewModel.entity.location,default=Location}"
+                    android:visibility="@{StringUtil.isEmpty(viewModel.entity.location)?View.GONE:View.VISIBLE}" />
 
                 <TextView
                     style="@style/IconTagStyle"
@@ -139,8 +141,8 @@
                     android:layout_marginTop="@dimen/padding_s"
                     android:drawableLeft="@drawable/ic_home"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.member.website,default=Website}"
-                    android:visibility="@{StringUtil.isEmpty(viewModel.member.website)?View.GONE:View.VISIBLE}" />
+                    android:text="@{viewModel.entity.website,default=Website}"
+                    android:visibility="@{StringUtil.isEmpty(viewModel.entity.website)?View.GONE:View.VISIBLE}" />
 
                 <TextView
                     style="@style/IconTagStyle"
@@ -149,8 +151,8 @@
                     android:layout_marginTop="@dimen/padding_s"
                     android:drawableLeft="@drawable/ic_github"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.member.github,default=Github}"
-                    android:visibility="@{StringUtil.isEmpty(viewModel.member.github)?View.GONE:View.VISIBLE}" />
+                    android:text="@{viewModel.entity.github,default=Github}"
+                    android:visibility="@{StringUtil.isEmpty(viewModel.entity.github)?View.GONE:View.VISIBLE}" />
 
                 <TextView
                     style="@style/IconTagStyle"
@@ -159,8 +161,8 @@
                     android:layout_marginTop="@dimen/padding_s"
                     android:drawableLeft="@drawable/ic_twitter"
                     android:gravity="center_vertical"
-                    android:text="@{viewModel.member.twitter,default=Twitter}"
-                    android:visibility="@{StringUtil.isEmpty(viewModel.member.twitter)?View.GONE:View.VISIBLE}" />
+                    android:text="@{viewModel.entity.twitter,default=Twitter}"
+                    android:visibility="@{StringUtil.isEmpty(viewModel.entity.twitter)?View.GONE:View.VISIBLE}" />
 
             </com.wefika.flowlayout.FlowLayout>
 

@@ -22,6 +22,9 @@
 
 package com.rayman.v2ex.model.model.topic;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.alibaba.fastjson.annotation.JSONField;
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
@@ -43,7 +46,8 @@ import com.rayman.v2ex.model.model.node.NodeEntity;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicEntity {
+public class TopicEntity implements Parcelable {
+
     private long id;
     private String title;
     private String url;
@@ -146,4 +150,53 @@ public class TopicEntity {
     public void setLastTouched(long lastTouched) {
         this.lastTouched = lastTouched;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(this.id);
+        dest.writeString(this.title);
+        dest.writeString(this.url);
+        dest.writeString(this.content);
+        dest.writeString(this.contentRendered);
+        dest.writeInt(this.replies);
+        dest.writeParcelable(this.member, flags);
+        dest.writeParcelable(this.node, flags);
+        dest.writeLong(this.created);
+        dest.writeLong(this.lastModified);
+        dest.writeLong(this.lastTouched);
+    }
+
+    public TopicEntity() {
+    }
+
+    protected TopicEntity(Parcel in) {
+        this.id = in.readLong();
+        this.title = in.readString();
+        this.url = in.readString();
+        this.content = in.readString();
+        this.contentRendered = in.readString();
+        this.replies = in.readInt();
+        this.member = in.readParcelable(MemberBaseEntity.class.getClassLoader());
+        this.node = in.readParcelable(NodeEntity.class.getClassLoader());
+        this.created = in.readLong();
+        this.lastModified = in.readLong();
+        this.lastTouched = in.readLong();
+    }
+
+    public static final Parcelable.Creator<TopicEntity> CREATOR = new Parcelable.Creator<TopicEntity>() {
+        @Override
+        public TopicEntity createFromParcel(Parcel source) {
+            return new TopicEntity(source);
+        }
+
+        @Override
+        public TopicEntity[] newArray(int size) {
+            return new TopicEntity[size];
+        }
+    };
 }

@@ -1,9 +1,11 @@
 package com.rayman.v2ex.ui.view.topic;
 
+import com.rayman.v2ex.di.modules.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerActivity;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
+import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
 import com.rayman.v2ex.viewmodel.topic.TopicVMModule;
 
 import java.util.List;
@@ -31,7 +33,7 @@ import rx.Subscriber;
 public interface TopicContract {
 
     @PerActivity
-    @Component(modules = {TopicVMModule.class}, dependencies = ActivityComp.class)
+    @Component(modules = {TopicVMModule.class, LayoutManagerModule.class}, dependencies = ActivityComp.class)
     interface TopicComp extends ActivityComp {
 
         void inject(TopicActivity topicActivity);
@@ -41,7 +43,7 @@ public interface TopicContract {
     interface View {
     }
 
-    interface Preenter {
+    interface Preenter extends IPresenter {
         void requestDetail(long id, Subscriber<List<TopicEntity>> subscriber);
 
         void requestReplies(long id, Subscriber<List<ReplyEntity>> subscriber);

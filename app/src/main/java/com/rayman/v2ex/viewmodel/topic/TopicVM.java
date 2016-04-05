@@ -10,6 +10,7 @@ import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.TopicPageAdapter;
 import com.rayman.v2ex.ui.view.topic.TopicContract;
 import com.rayman.v2ex.viewmodel.BaseVM;
+import com.rayman.v2ex.widget.utils.Util;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class TopicVM extends BaseVM<TopicContract.Preenter, TopicContract.View> 
     public TopicVM(TopicContract.Preenter presenter, TopicContract.View view, RecyclerView.LayoutManager layoutManager) {
         super(presenter, view);
         this.layoutManager = layoutManager;
-        adapter = new TopicPageAdapter();
+        adapter = new TopicPageAdapter(view);
     }
 
     public void init(TopicEntity entity) {
@@ -84,6 +85,9 @@ public class TopicVM extends BaseVM<TopicContract.Preenter, TopicContract.View> 
 
             @Override
             public void onNext(List<ReplyEntity> replyEntities) {
+                if (Util.listNotNull(replyEntities)) {
+                    adapter.setList(replyEntities);
+                }
             }
         });
     }
@@ -95,4 +99,5 @@ public class TopicVM extends BaseVM<TopicContract.Preenter, TopicContract.View> 
     public RecyclerView.LayoutManager getLayoutManager() {
         return layoutManager;
     }
+
 }

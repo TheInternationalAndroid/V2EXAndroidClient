@@ -13,8 +13,9 @@
     <!--Text Colors-->
     <color name="text_white">#FFFFFF</color>
     <color name="text_black">#0A0A0A</color>
-    <color name="text_gray">#A1A1A1</color>
-    <color name="text_gray_dark">#778087</color>
+    <color name="text_black_light">#778087</color>
+    <color name="text_gray">#cccccc</color>
+    <color name="text_gray_dark">#818181</color>
     <color name="text_yellow_dark">#AA9024</color>
     <color name="text_blue">#00B0FF</color>
     <color name="text_blue_dark">#0091EA</color>

@@ -104,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="@{viewModel.onNodeClicked}"
-                        android:text="@{viewModel.entity.node.name}"
+                        android:text="@{viewModel.entity.node.name,default=Node}"
                         android:textSize="@dimen/text_m" />
 
                     <View style="@style/PointStyle" />
@@ -113,6 +113,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.entity.member.username,default=UserName}"
+                        android:textColor="@color/text_black_light"
                         android:textSize="@dimen/text_m" />
 
                     <View style="@style/PointStyle" />
@@ -120,7 +121,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{DateUtil.getFormatPassTime(viewModel.entity.lastModified)}"
+                        android:text="@{DateUtil.getFormatPassTime(viewModel.entity.created),default=Date}"
+                        android:textColor="@color/text_gray"
                         android:textSize="@dimen/text_m" />
 
                 </LinearLayout>

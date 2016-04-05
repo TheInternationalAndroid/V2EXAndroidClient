@@ -69,7 +69,7 @@ public class TopicCellVM extends CellVM<TopicEntity> {
     @ViewClick(R.id.image)
     public void onAvatarClicked(View view) {
         if (onTopicCellClicked != null)
-            onTopicCellClicked.onUserClicked(entity.getMember());
+            onTopicCellClicked.onMemberClicked(entity.getMember());
     }
 
     @ViewClick(R.id.node)

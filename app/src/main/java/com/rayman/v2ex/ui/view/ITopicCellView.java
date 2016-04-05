@@ -22,7 +22,6 @@
 
 package com.rayman.v2ex.ui.view;
 
-import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 
@@ -43,9 +42,7 @@ import com.rayman.v2ex.model.model.topic.TopicEntity;
  * \               ||----w |
  * \               ||     ||
  */
-public interface ITopicCellView {
-
-    void onUserClicked(MemberBaseEntity memberBaseEntity);
+public interface ITopicCellView extends IMemberCellView{
 
     void onTopicCliced(TopicEntity topicEntity);
 

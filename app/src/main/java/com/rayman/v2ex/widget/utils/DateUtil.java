@@ -71,28 +71,17 @@ public class DateUtil {
         return formatter.format(date);
     }
 
-    public static long getDiffDay(long start, long end) {
-        long diff = end - start;
-        return diff / (1000 * 60 * 60 * 24);
-    }
-
-
-    public static long getFinalLeftTime(long lastModified, long leftTime) {
-        long period = System.currentTimeMillis() - lastModified;
-        return leftTime - period / 1000;
-    }
-
     public static String getFormatPassTime(long lastTime) {
-        long leftSecondsMM = System.currentTimeMillis() - lastTime;
+        long leftSecondsMM = System.currentTimeMillis() / 1000 - lastTime;
         if (leftSecondsMM > 0) {
-            long leftSeconds = leftSecondsMM / 1000;
-            long minutes = leftSeconds / 60;
+            long minutes = leftSecondsMM / 60;
             long hours = minutes / 60;
+            long remainder = minutes % 60;
             long day = hours / 24;
             if (day >= 1)
                 return formatDateMMddHHmm(lastTime);
             if (hours >= 1)
-                return DateUtil.formatDateHHmm(lastTime);
+                return hours + remainder >= 1 ? hours + "小时 " + remainder + "分钟前" : "小时前";
             if (minutes >= 1)
                 return minutes + "分钟前";
             return "刚刚";

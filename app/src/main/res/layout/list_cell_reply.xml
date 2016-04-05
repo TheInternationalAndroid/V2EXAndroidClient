@@ -3,19 +3,95 @@
 
     <data>
 
-        <import type="com.rayman.v2ex.ui.adapter.list.base.CellVM" />
+        <import type="com.rayman.v2ex.viewmodel.topic.ReplyCellVM" />
 
-        <import type="com.rayman.v2ex.model.model.reply.ReplyEntity" />
+        <import type="com.rayman.v2ex.widget.utils.DateUtil" />
+
+        <import type="com.rayman.v2ex.ui.adapter.list.TopicPageAdapter" />
 
         <variable
             name="viewModel"
-            type="CellVM&lt;ReplyEntity>" />
+            type="ReplyCellVM" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-    </LinearLayout>
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/padding_ss"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="@dimen/padding_m">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/clickable_view"
+                style="@style/ClickableStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:foreground="@drawable/list_selector_corner"
+                android:onClick="@{viewModel.onAvatarClicked}">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/image"
+                    android:layout_width="@dimen/icon_size_s"
+                    android:layout_height="@dimen/icon_size_s"
+                    android:scaleType="centerCrop"
+                    android:src="@{viewModel.entity.member.avatarLarge}"
+                    app:riv_border_width="0dp"
+                    app:riv_corner_radius="@dimen/btn_corner"
+                    app:riv_mutate_background="true" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_m"
+                android:layout_toRightOf="@id/clickable_view"
+                android:text="@{viewModel.entity.member.username,default=UserName}"
+                android:textSize="@dimen/text_m" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_l"
+                android:layout_toRightOf="@id/name"
+                android:text="@{DateUtil.getFormatPassTime(viewModel.entity.created),default=Date}"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/text_m" />
+
+            <TextView
+                android:id="@+id/position"
+                style="@style/CountTagStyle.Light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@{String.valueOf(viewModel.position+1-TopicPageAdapter.HEADER_COUNT),default=1}"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_m" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_marginLeft="@dimen/padding_m"
+                android:layout_marginRight="@dimen/padding_l"
+                android:layout_marginTop="@dimen/padding_m"
+                android:layout_toLeftOf="@id/position"
+                android:layout_toRightOf="@id/clickable_view"
+                android:text="@{viewModel.entity.content,default=Content}"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/text_l" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </layout>

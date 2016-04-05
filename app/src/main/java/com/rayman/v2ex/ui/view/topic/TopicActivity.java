@@ -22,12 +22,15 @@
 
 package com.rayman.v2ex.ui.view.topic;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.ActivityTopicBinding;
+import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.rayman.v2ex.ui.view.account.AccountActivity;
 import com.rayman.v2ex.ui.view.base.page.BaseDIActivity;
 import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
 import com.rayman.v2ex.viewmodel.topic.TopicVM;
@@ -65,4 +68,12 @@ public class TopicActivity extends BaseDIActivity implements TopicContract.View 
                 .build()
                 .inject(this);
     }
+
+    @Override
+    public void onMemberClicked(MemberBaseEntity memberBaseEntity) {
+        Intent intent = new Intent(this, AccountActivity.class);
+        intent.putExtra(ParaKeys.MEMBER_BASE_KEY, memberBaseEntity);
+        intent(intent);
+    }
+
 }

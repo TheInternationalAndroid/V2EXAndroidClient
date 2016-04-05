@@ -5,6 +5,7 @@
         <item name="android:editTextStyle">@style/EditTextStyle</item>
         <item name="editTextStyle">@style/EditTextStyle</item>
         <item name="android:scrollViewStyle">@style/ScrollViewStyle</item>
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
 
         <item name="actionMenuTextColor">@color/text_white</item>
         <item name="actionMenuTextAppearance">@style/ActionMenuAppearance</item>
@@ -184,6 +185,14 @@
         <item name="android:paddingRight">@dimen/padding_m</item>
     </style>
 
+    <style name="CountTagStyle.Light">
+        <item name="android:background">@drawable/bg_tag_count_light</item>
+    </style>
+
+    <style name="CountTagStyle.Small.Light">
+        <item name="android:background">@drawable/bg_tag_count_light</item>
+    </style>
+
     <style name="NodeTagStyle" parent="ClickableStyle">
         <item name="android:paddingBottom">@dimen/padding_ss</item>
         <item name="android:paddingTop">@dimen/padding_ss</item>
@@ -195,8 +204,8 @@
     </style>
 
     <style name="PointStyle">
-        <item name="android:layout_marginRight">@dimen/padding_xl</item>
-        <item name="android:layout_marginLeft">@dimen/padding_xl</item>
+        <item name="android:layout_marginRight">@dimen/padding_m</item>
+        <item name="android:layout_marginLeft">@dimen/padding_m</item>
         <item name="android:background">@drawable/bg_point</item>
         <item name="android:layout_width">@dimen/point_dia</item>
         <item name="android:layout_height">@dimen/point_dia</item>
@@ -210,6 +219,11 @@
         <item name="android:paddingRight">@dimen/padding_l</item>
         <item name="android:background">@drawable/bg_tag_icon</item>
         <item name="android:drawablePadding">@dimen/padding_m</item>
+    </style>
+
+    <style name="TextViewStyle">
+        <item name="android:textColor">@color/text_gray_dark</item>
+        <item name="android:textSize">@dimen/text_l</item>
     </style>
 
 </resources>

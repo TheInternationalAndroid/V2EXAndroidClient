@@ -4,6 +4,7 @@
     <string name="action_test_api">TestApi</string>
     <string name="action_test_rx">TestRxJava</string>
 
+    <string name="reply_count_format">%1$s次点击</string>
     <string name="index_format">%1$s, %2$s</string>
     <string name="success">Success</string>
     <string name="error">Error</string>

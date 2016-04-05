@@ -4,8 +4,10 @@ import com.rayman.v2ex.di.modules.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerActivity;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.rayman.v2ex.ui.view.IMemberCellView;
 import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
 import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
+import com.rayman.v2ex.ui.view.base.view.IBaseView;
 import com.rayman.v2ex.viewmodel.topic.TopicVMModule;
 
 import java.util.List;
@@ -40,7 +42,7 @@ public interface TopicContract {
 
     }
 
-    interface View {
+    interface View extends IBaseView ,IMemberCellView{
     }
 
     interface Preenter extends IPresenter {

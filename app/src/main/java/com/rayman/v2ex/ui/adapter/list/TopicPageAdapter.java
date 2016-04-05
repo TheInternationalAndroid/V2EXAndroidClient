@@ -6,9 +6,12 @@ import android.view.ViewGroup;
 
 import com.rayman.v2ex.databinding.ListCellReplyBinding;
 import com.rayman.v2ex.databinding.ListHeaderTopicBinding;
+import com.rayman.v2ex.model.model.reply.ReplyEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.base.BaseHeaderAdapter;
-import com.rayman.v2ex.ui.adapter.list.base.CellVM;
+import com.rayman.v2ex.ui.view.IMemberCellView;
+import com.rayman.v2ex.viewmodel.topic.ReplyCellVM;
+import com.rayman.v2ex.viewmodel.topic.TopicHeaderVM;
 
 /**
  * Created by Android Studio.
@@ -27,12 +30,17 @@ import com.rayman.v2ex.ui.adapter.list.base.CellVM;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicPageAdapter extends BaseHeaderAdapter<TopicEntity> {
+public class TopicPageAdapter extends BaseHeaderAdapter<ReplyEntity> {
 
     private static final int VIEW_HEADER = 0;
     private static final int VIEW_CELL = 1;
-    private static final int HEADER_COUNT = 1;
+    public static final int HEADER_COUNT = 1;
     private TopicEntity topicEntity;
+    private IMemberCellView memberCellView;
+
+    public TopicPageAdapter(IMemberCellView memberCellView) {
+        this.memberCellView = memberCellView;
+    }
 
     @Override
     protected int getHeaderCount() {
@@ -63,10 +71,10 @@ public class TopicPageAdapter extends BaseHeaderAdapter<TopicEntity> {
     protected Object createViewModel(int position) {
         switch (getItemViewType(position)) {
             case VIEW_HEADER:
-                return new CellVM<>(topicEntity);
+                return new TopicHeaderVM(topicEntity, memberCellView);
             default:
             case VIEW_CELL:
-                return new CellVM<>(getItem(position));
+                return new ReplyCellVM(getItem(position), position, memberCellView);
         }
     }
 

@@ -83,7 +83,7 @@ public class LatestFragment extends BaseDIFragment implements LatestFragContract
     }
 
     @Override
-    public void onUserClicked(MemberBaseEntity memberBaseEntity) {
+    public void onMemberClicked(MemberBaseEntity memberBaseEntity) {
         Intent intent = new Intent(getActivity(), AccountActivity.class);
         intent.putExtra(ParaKeys.MEMBER_BASE_KEY, memberBaseEntity);
         intent(intent);

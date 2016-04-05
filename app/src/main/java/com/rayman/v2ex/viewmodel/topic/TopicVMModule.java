@@ -32,7 +32,7 @@ import dagger.Provides;
 @Module
 public class TopicVMModule {
 
-    TopicContract.View view;
+    private TopicContract.View view;
 
     public TopicVMModule(TopicContract.View view) {
         this.view = view;

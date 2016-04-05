@@ -30,8 +30,9 @@ import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.di.scope.PerActivity;
-import com.rayman.v2ex.ui.view.main.MainActivityP;
 import com.rayman.v2ex.ui.adapter.pager.MainPagerAdapter;
+import com.rayman.v2ex.ui.view.main.MainActivityP;
+import com.rayman.v2ex.ui.view.main.MainContract;
 
 import dagger.Module;
 import dagger.Provides;
@@ -56,6 +57,12 @@ import dagger.Provides;
 @Module
 public class MainActivityVMModule {
 
+    private MainContract.View view;
+
+    public MainActivityVMModule(MainContract.View view) {
+        this.view = view;
+    }
+
     @Provides
     @PerActivity
     MainActivityVM provideMainActivityVM(MainActivityP presenter, FragmentManager fragmentManager, Activity activity) {
@@ -67,7 +74,7 @@ public class MainActivityVMModule {
             }
         };
         menuIconToolbar.setNeverDrawTouch(false);
-        return new MainActivityVM(presenter, mainPagerAdapter, menuIconToolbar);
+        return new MainActivityVM(presenter, view, mainPagerAdapter, menuIconToolbar);
     }
 
 }

@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.rayman.v2ex.di.modules.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerActivity;
+import com.rayman.v2ex.ui.view.test.rx.TestRxContract;
 import com.rayman.v2ex.ui.view.test.rx.TestRxP;
 import com.rayman.v2ex.widget.anotations.ListType;
 
@@ -32,10 +33,16 @@ import dagger.Provides;
 @Module(includes = LayoutManagerModule.class)
 public class TestRxVMModule {
 
+    private TestRxContract.View view;
+
+    public TestRxVMModule(TestRxContract.View view) {
+        this.view = view;
+    }
+
     @Provides
     @PerActivity
     TestRxVM provideTestRxVM(@Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager, TestRxP presenter) {
-        return new TestRxVM(presenter,layoutManager);
+        return new TestRxVM(presenter, view, layoutManager);
     }
 
 }

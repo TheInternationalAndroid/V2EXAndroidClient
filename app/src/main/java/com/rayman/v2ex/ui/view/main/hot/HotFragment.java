@@ -35,9 +35,9 @@ import com.rayman.v2ex.databinding.FragmentHotBinding;
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
 import com.rayman.v2ex.ui.view.account.AccountActivity;
 import com.rayman.v2ex.ui.view.base.page.BaseDIFragment;
+import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
 import com.rayman.v2ex.viewmodel.main.HotFragVM;
 import com.rayman.v2ex.viewmodel.main.HotFragVMModule;
 

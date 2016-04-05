@@ -34,6 +34,10 @@ public interface TestRxContract {
 
     }
 
+    interface View {
+
+    }
+
     interface Presenter extends IPresenter {
         void testThread();
 

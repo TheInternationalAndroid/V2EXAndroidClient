@@ -28,15 +28,16 @@ import android.view.MenuItem;
 
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.databinding.ActivityMainBinding;
-import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
 import com.rayman.v2ex.ui.view.base.page.BaseDIActivity;
+import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
 import com.rayman.v2ex.ui.view.test.api.TestApiActivity;
 import com.rayman.v2ex.ui.view.test.rx.TestRxActivity;
 import com.rayman.v2ex.viewmodel.main.MainActivityVM;
+import com.rayman.v2ex.viewmodel.main.MainActivityVMModule;
 
 import javax.inject.Inject;
 
-public class MainActivity extends BaseDIActivity {
+public class MainActivity extends BaseDIActivity implements MainContract.View {
 
     @Inject
     MainActivityVM viewModel;
@@ -58,6 +59,7 @@ public class MainActivity extends BaseDIActivity {
     public void buildComp() {
         DaggerMainContract_Comp.builder()
                 .activityComp(getActivityComp())
+                .mainActivityVMModule(new MainActivityVMModule(this))
                 .build()
                 .inject(this);
     }

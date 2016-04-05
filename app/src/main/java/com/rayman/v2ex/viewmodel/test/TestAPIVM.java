@@ -10,7 +10,7 @@ import com.rayman.v2ex.model.model.test.TestApiEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.TestApiListAdapter;
 import com.rayman.v2ex.ui.view.test.api.TestApiContract;
-import com.rayman.v2ex.viewmodel.BasePVM;
+import com.rayman.v2ex.viewmodel.BaseVM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +34,13 @@ import rx.Subscriber;
  * \               ||----w |
  * \               ||     ||
  */
-public class TestApiVM extends BasePVM<TestApiContract.Presenter> {
+public class TestApiVM extends BaseVM<TestApiContract.Presenter, TestApiContract.View> {
 
     private TestApiListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    public TestApiVM(TestApiContract.Presenter presenter, RecyclerView.LayoutManager layoutManager) {
-        super(presenter);
+    public TestApiVM(TestApiContract.Presenter presenter, TestApiContract.View view, RecyclerView.LayoutManager layoutManager) {
+        super(presenter, view);
         this.layoutManager = layoutManager;
         adapter = new TestApiListAdapter(this::onItemClick);
         initData();
@@ -64,7 +64,7 @@ public class TestApiVM extends BasePVM<TestApiContract.Presenter> {
                 presenter.requestTopicListByNodeName("python", getTopicListCallback(position, testApiEntity));
                 break;
             case 5:
-                presenter.requestTopicById(265124, new Subscriber<List<TopicEntity>>() {
+                presenter.requestTopicById(268570, new Subscriber<List<TopicEntity>>() {
                     @Override
                     public void onStart() {
                         super.onStart();

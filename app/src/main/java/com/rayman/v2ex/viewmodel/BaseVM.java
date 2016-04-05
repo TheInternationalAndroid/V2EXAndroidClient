@@ -24,16 +24,21 @@ package com.rayman.v2ex.viewmodel;
 
 import android.databinding.BaseObservable;
 
-public class BasePVM<T> extends BaseObservable {
+public class BaseVM<T, R> extends BaseObservable {
 
-    protected T presenter;
+    protected final T presenter;
+    protected final R view;
+
+    public BaseVM(T presenter, R view) {
+        this.presenter = presenter;
+        this.view = view;
+    }
 
     public T presenter() {
         return presenter;
     }
 
-    public BasePVM(T presenter) {
-        this.presenter = presenter;
+    public R view() {
+        return view;
     }
-
 }

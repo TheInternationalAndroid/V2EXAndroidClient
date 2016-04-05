@@ -32,7 +32,7 @@ import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
 import com.rayman.v2ex.BR;
 import com.rayman.v2ex.ui.adapter.pager.MainPagerAdapter;
 import com.rayman.v2ex.ui.view.main.MainContract;
-import com.rayman.v2ex.viewmodel.BasePVM;
+import com.rayman.v2ex.viewmodel.BaseVM;
 import com.rayman.v2ex.widget.eventbus.event.HttpEvent;
 
 import rx.functions.Action1;
@@ -54,14 +54,14 @@ import rx.functions.Action1;
  * \               ||----w |
  * \               ||     ||
  */
-public class MainActivityVM extends BasePVM<MainContract.Presenter> implements DrawerLayout.DrawerListener, Action1<HttpEvent> {
+public class MainActivityVM extends BaseVM<MainContract.Presenter, MainContract.View> implements DrawerLayout.DrawerListener, Action1<HttpEvent> {
 
     private MainPagerAdapter adapter;
     private MaterialMenuIconToolbar menuIconToolbar;
     private boolean isDrawerOpen = false;
 
-    public MainActivityVM(MainContract.Presenter presenter, MainPagerAdapter adapter, MaterialMenuIconToolbar menuIconToolbar) {
-        super(presenter);
+    public MainActivityVM(MainContract.Presenter presenter, MainContract.View view, MainPagerAdapter adapter, MaterialMenuIconToolbar menuIconToolbar) {
+        super(presenter, view);
         this.adapter = adapter;
         this.menuIconToolbar = menuIconToolbar;
         presenter.subscribeEvent(HttpEvent.class, this);

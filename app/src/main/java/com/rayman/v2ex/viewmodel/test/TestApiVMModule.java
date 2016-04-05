@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.rayman.v2ex.di.modules.LayoutManagerModule;
 import com.rayman.v2ex.di.scope.PerActivity;
+import com.rayman.v2ex.ui.view.test.api.TestApiContract;
 import com.rayman.v2ex.ui.view.test.api.TestApiP;
 import com.rayman.v2ex.widget.anotations.ListType;
 
@@ -32,10 +33,16 @@ import dagger.Provides;
 @Module(includes = {LayoutManagerModule.class})
 public class TestApiVMModule {
 
+    private TestApiContract.View view;
+
+    public TestApiVMModule(TestApiContract.View view) {
+        this.view = view;
+    }
+
     @Provides
     @PerActivity
     TestApiVM provideApiModel(TestApiP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
-        return new TestApiVM(presenter, layoutManager);
+        return new TestApiVM(presenter, view, layoutManager);
     }
 
 }

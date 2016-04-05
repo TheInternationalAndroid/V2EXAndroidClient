@@ -54,17 +54,15 @@ import timber.log.Timber;
  * \               ||----w |
  * \               ||     ||
  */
-public class HotFragVM extends BaseStateVM<HotFragContract.Presenter> {
+public class HotFragVM extends BaseStateVM<HotFragContract.Presenter, HotFragContract.View> {
 
     private TopicListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private HotFragContract.View hotFragView;
 
-    public HotFragVM(HotFragP presenter, HotFragContract.View hotFragView, RecyclerView.LayoutManager layoutManager) {
-        super(presenter);
+    public HotFragVM(HotFragP presenter, HotFragContract.View view, RecyclerView.LayoutManager layoutManager) {
+        super(presenter, view);
         this.layoutManager = layoutManager;
-        this.hotFragView = hotFragView;
-        adapter = new TopicListAdapter(hotFragView);
+        adapter = new TopicListAdapter(view);
     }
 
     @Override

@@ -32,7 +32,7 @@ import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.AccountPageAdapter;
 import com.rayman.v2ex.ui.view.account.AccountContract;
 import com.rayman.v2ex.ui.view.account.AccountP;
-import com.rayman.v2ex.viewmodel.BasePVM;
+import com.rayman.v2ex.viewmodel.BaseVM;
 
 import java.util.List;
 
@@ -53,18 +53,16 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class AccountVM extends BasePVM<AccountContract.Presneter> {
+public class AccountVM extends BaseVM<AccountContract.Presneter,AccountContract.View> {
 
     private MemberEntity member;
     private AccountPageAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private final AccountContract.View view;
 
     public AccountVM(AccountPageAdapter adapter, RecyclerView.LayoutManager layoutManager, AccountP presenter, AccountContract.View view) {
-        super(presenter);
+        super(presenter,view);
         this.adapter = adapter;
         this.layoutManager = layoutManager;
-        this.view = view;
     }
 
     private void requestTopics(String userName) {

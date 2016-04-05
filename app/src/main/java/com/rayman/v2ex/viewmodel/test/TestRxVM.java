@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import com.rayman.v2ex.model.model.test.TestRxEntity;
 import com.rayman.v2ex.ui.adapter.list.TestRxListAdapter;
 import com.rayman.v2ex.ui.view.test.rx.TestRxContract;
-import com.rayman.v2ex.viewmodel.BasePVM;
+import com.rayman.v2ex.viewmodel.BaseVM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +27,13 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class TestRxVM extends BasePVM<TestRxContract.Presenter> {
+public class TestRxVM extends BaseVM<TestRxContract.Presenter, TestRxContract.View> {
 
     private final RecyclerView.LayoutManager layoutManager;
     private final TestRxListAdapter adapter;
 
-    public TestRxVM(TestRxContract.Presenter presenter, RecyclerView.LayoutManager layoutManager) {
-        super(presenter);
+    public TestRxVM(TestRxContract.Presenter presenter, TestRxContract.View view, RecyclerView.LayoutManager layoutManager) {
+        super(presenter, view);
         this.layoutManager = layoutManager;
         adapter = new TestRxListAdapter(getTestList());
     }

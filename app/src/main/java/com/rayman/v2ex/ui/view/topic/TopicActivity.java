@@ -23,11 +23,13 @@
 package com.rayman.v2ex.ui.view.topic;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.rayman.v2ex.R;
+import com.rayman.v2ex.ui.view.base.page.BaseDIActivity;
+import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
+import com.rayman.v2ex.viewmodel.topic.TopicVMModule;
 
-public class TopicActivity extends AppCompatActivity {
+public class TopicActivity extends BaseDIActivity implements TopicContract.View {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,4 +37,17 @@ public class TopicActivity extends AppCompatActivity {
         setContentView(R.layout.activity_topic);
     }
 
+    @Override
+    protected ILifeCycle getPageLifeCycle() {
+        return null;
+    }
+
+    @Override
+    public void buildComp() {
+        DaggerTopicContract_TopicComp.builder()
+                .activityComp(getActivityComp())
+                .topicVMModule(new TopicVMModule(this))
+                .build();
+
+    }
 }

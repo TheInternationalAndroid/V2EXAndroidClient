@@ -53,17 +53,15 @@ import rx.Subscriber;
  * \               ||----w |
  * \               ||     ||
  */
-public class LatestFragVM extends BaseStateVM<LatestFragContract.Presenter> {
+public class LatestFragVM extends BaseStateVM<LatestFragContract.Presenter, LatestFragContract.View> {
 
     private TopicListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    private LatestFragContract.View latestFragView;
 
-    public LatestFragVM(LatestFragP presenter, LatestFragContract.View latestFragView, RecyclerView.LayoutManager layoutManager) {
-        super(presenter);
+    public LatestFragVM(LatestFragP presenter, LatestFragContract.View view, RecyclerView.LayoutManager layoutManager) {
+        super(presenter, view);
         this.layoutManager = layoutManager;
-        this.latestFragView = latestFragView;
-        adapter = new TopicListAdapter(latestFragView);
+        adapter = new TopicListAdapter(view);
     }
 
     @Override

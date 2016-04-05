@@ -4,13 +4,14 @@ import android.os.Bundle;
 
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.databinding.ActivityTestApiBinding;
-import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
 import com.rayman.v2ex.ui.view.base.page.BaseDIActivity;
+import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
 import com.rayman.v2ex.viewmodel.test.TestApiVM;
+import com.rayman.v2ex.viewmodel.test.TestApiVMModule;
 
 import javax.inject.Inject;
 
-public class TestApiActivity extends BaseDIActivity {
+public class TestApiActivity extends BaseDIActivity implements TestApiContract.View {
 
     @Inject
     TestApiVM viewModel;
@@ -31,6 +32,7 @@ public class TestApiActivity extends BaseDIActivity {
     public void buildComp() {
         DaggerTestApiContract_Comp.builder()
                 .activityComp(getActivityComp())
+                .testApiVMModule(new TestApiVMModule(this))
                 .build()
                 .inject(this);
     }

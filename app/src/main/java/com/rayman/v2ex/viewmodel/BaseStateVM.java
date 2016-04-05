@@ -26,9 +26,7 @@ import android.databinding.Bindable;
 import android.view.View;
 
 import com.rayman.v2ex.BR;
-import com.rayman.v2ex.R;
 import com.rayman.v2ex.widget.anotations.PageState;
-import com.rayman.v2ex.widget.anotations.ViewClick;
 import com.rayman.v2ex.widget.utils.StringUtil;
 
 /**
@@ -48,14 +46,14 @@ import com.rayman.v2ex.widget.utils.StringUtil;
  * \               ||----w |
  * \               ||     ||
  */
-public abstract class BaseStateVM<T> extends BasePVM<T> {
+public abstract class BaseStateVM<T, R> extends BaseVM<T, R> {
 
     private int state;
     private String emptyString;
     private String errorString;
 
-    public BaseStateVM(T presenter) {
-        super(presenter);
+    public BaseStateVM(T presenter, R view) {
+        super(presenter, view);
     }
 
     @Bindable
@@ -94,7 +92,7 @@ public abstract class BaseStateVM<T> extends BasePVM<T> {
         notifyPropertyChanged(BR.errorString);
     }
 
-    @ViewClick(R.id.btn_retry)
+    //    @ViewClick(R.id.btn_retry)
     public abstract void onRetryClicked(View view);
 
 }

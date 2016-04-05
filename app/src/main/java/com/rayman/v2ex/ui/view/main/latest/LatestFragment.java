@@ -38,6 +38,7 @@ import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.account.AccountActivity;
 import com.rayman.v2ex.ui.view.base.page.BaseDIFragment;
 import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
+import com.rayman.v2ex.ui.view.node.NodeActivity;
 import com.rayman.v2ex.ui.view.topic.TopicActivity;
 import com.rayman.v2ex.viewmodel.main.LatestFragVM;
 import com.rayman.v2ex.viewmodel.main.LatestFragVMModule;
@@ -98,6 +99,9 @@ public class LatestFragment extends BaseDIFragment implements LatestFragContract
 
     @Override
     public void onNodeClicked(NodeEntity nodeEntity) {
-
+        Intent intent = new Intent(getActivity(), NodeActivity.class);
+        intent.putExtra(ParaKeys.NODE_KEY, nodeEntity);
+        intent(intent);
     }
+
 }

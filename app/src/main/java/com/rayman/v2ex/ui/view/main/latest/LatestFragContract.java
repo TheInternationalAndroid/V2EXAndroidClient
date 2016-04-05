@@ -2,9 +2,10 @@ package com.rayman.v2ex.ui.view.main.latest;
 
 import com.rayman.v2ex.di.scope.PerBindingFragment;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
+import com.rayman.v2ex.ui.view.common.IMemberCellView;
+import com.rayman.v2ex.ui.view.common.ITopicCellView;
 import com.rayman.v2ex.ui.view.base.comp.FragmentComp;
-import com.rayman.v2ex.ui.view.ITopicCellView;
+import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
 import com.rayman.v2ex.viewmodel.main.LatestFragVM;
 import com.rayman.v2ex.viewmodel.main.LatestFragVMModule;
 
@@ -47,7 +48,7 @@ public interface LatestFragContract {
         void requestLatestList(Subscriber<List<TopicEntity>> subscriber);
     }
 
-    interface View extends ITopicCellView {
+    interface View extends ITopicCellView, IMemberCellView {
     }
 
 }

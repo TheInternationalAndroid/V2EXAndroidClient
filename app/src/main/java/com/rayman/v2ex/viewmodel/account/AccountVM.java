@@ -53,16 +53,16 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class AccountVM extends BaseVM<AccountContract.Presneter,AccountContract.View> {
+public class AccountVM extends BaseVM<AccountContract.Presneter, AccountContract.View> {
 
     private MemberEntity member;
     private AccountPageAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    public AccountVM(AccountPageAdapter adapter, RecyclerView.LayoutManager layoutManager, AccountP presenter, AccountContract.View view) {
-        super(presenter,view);
-        this.adapter = adapter;
+    public AccountVM(RecyclerView.LayoutManager layoutManager, AccountP presenter, AccountContract.View view) {
+        super(presenter, view);
         this.layoutManager = layoutManager;
+        adapter = new AccountPageAdapter(view);
     }
 
     private void requestTopics(String userName) {

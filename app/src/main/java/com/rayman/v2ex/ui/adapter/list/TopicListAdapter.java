@@ -30,7 +30,7 @@ import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.base.BaseListAdapter;
 import com.rayman.v2ex.ui.adapter.list.base.CellVM;
-import com.rayman.v2ex.ui.view.ITopicCellView;
+import com.rayman.v2ex.ui.view.common.ITopicCellView;
 import com.rayman.v2ex.viewmodel.topic.TopicCellVM;
 
 /**

@@ -21,19 +21,25 @@
  *
  */
 
-package com.rayman.v2ex.ui.view;
+package com.rayman.v2ex.viewmodel.topic;
 
-import com.rayman.v2ex.model.model.member.MemberBaseEntity;
+import android.view.View;
+
+import com.rayman.v2ex.R;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.rayman.v2ex.ui.adapter.list.base.CellVM;
+import com.rayman.v2ex.ui.view.common.ITopicShortCellView;
+import com.rayman.v2ex.widget.anotations.ViewClick;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
- * Author:  Lena
- * Date: 4/5/16
- * Time: 9:21 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
+ * Author:  Lena.t.Yan
+ * Date: 1/20/16
+ * Time: 12:18
+ * \ ___________________
+ * \| Happy New Year!   |
+ * \ -------------------
  * \  \
  * \   \   \_\_    _/_/
  * \    \      \__/
@@ -42,8 +48,25 @@ import com.rayman.v2ex.model.model.member.MemberBaseEntity;
  * \               ||----w |
  * \               ||     ||
  */
-public interface IMemberCellView {
+public class TopicShortCellVM extends CellVM<TopicEntity> {
 
-    void onMemberClicked(MemberBaseEntity memberBaseEntity);
+    private ITopicShortCellView topicShortCellView;
+
+    public TopicShortCellVM(TopicEntity topic, ITopicShortCellView topicShortCellView) {
+        super(topic);
+        this.topicShortCellView = topicShortCellView;
+    }
+
+    @ViewClick(R.id.content)
+    public void onContentClicked(View view) {
+        if (topicShortCellView != null)
+            topicShortCellView.onTopicCliced(entity);
+    }
+
+    @ViewClick(R.id.node)
+    public void onNodeClicked(View view) {
+        if (topicShortCellView != null)
+            topicShortCellView.onNodeClicked(entity.getNode());
+    }
 
 }

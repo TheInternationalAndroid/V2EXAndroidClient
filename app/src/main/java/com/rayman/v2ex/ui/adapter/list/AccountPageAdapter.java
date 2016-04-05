@@ -32,7 +32,8 @@ import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.base.BaseHeaderAdapter;
 import com.rayman.v2ex.ui.adapter.list.base.CellVM;
-import com.rayman.v2ex.viewmodel.topic.TopicCellVM;
+import com.rayman.v2ex.ui.view.common.ITopicShortCellView;
+import com.rayman.v2ex.viewmodel.topic.TopicShortCellVM;
 
 /**
  * Created by Android Studio.
@@ -58,8 +59,10 @@ public class AccountPageAdapter extends BaseHeaderAdapter<TopicEntity> {
     private static final int HEADER_COUNT = 1;
 
     private MemberEntity memberEntity;
+    private ITopicShortCellView topicShortCellView;
 
-    public AccountPageAdapter() {
+    public AccountPageAdapter(ITopicShortCellView topicShortCellView) {
+        this.topicShortCellView = topicShortCellView;
     }
 
     @Override
@@ -78,7 +81,7 @@ public class AccountPageAdapter extends BaseHeaderAdapter<TopicEntity> {
                 return new CellVM<>(memberEntity);
             default:
             case VIEW_TOPIC:
-                return new TopicCellVM(getItem(position));
+                return new TopicShortCellVM(getItem(position), topicShortCellView);
         }
     }
 

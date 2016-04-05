@@ -27,7 +27,7 @@ import android.view.View;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.base.CellVM;
-import com.rayman.v2ex.ui.view.ITopicCellView;
+import com.rayman.v2ex.ui.view.common.ITopicCellView;
 import com.rayman.v2ex.widget.anotations.ViewClick;
 
 /**
@@ -50,10 +50,6 @@ import com.rayman.v2ex.widget.anotations.ViewClick;
 public class TopicCellVM extends CellVM<TopicEntity> {
 
     private ITopicCellView onTopicCellClicked;
-
-    public TopicCellVM(TopicEntity entity) {
-        super(entity);
-    }
 
     public TopicCellVM(TopicEntity topic, ITopicCellView onTopicCellClicked) {
         super(topic);

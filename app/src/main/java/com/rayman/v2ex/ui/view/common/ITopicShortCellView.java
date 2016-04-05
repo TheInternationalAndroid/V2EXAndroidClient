@@ -21,25 +21,20 @@
  *
  */
 
-package com.rayman.v2ex.viewmodel.topic;
+package com.rayman.v2ex.ui.view.common;
 
-import android.view.View;
-
-import com.rayman.v2ex.R;
+import com.rayman.v2ex.model.model.node.NodeEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.adapter.list.base.CellVM;
-import com.rayman.v2ex.ui.view.common.IMemberCellView;
-import com.rayman.v2ex.widget.anotations.ViewClick;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
- * Author:  Lena
- * Date: 4/5/16
- * Time: 9:16 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
+ * Author:  Lena.t.Yan
+ * Date: 1/20/16
+ * Time: 18:18
+ * \ ___________________
+ * \| Happy New Year!  |
+ * \ -------------------
  * \  \
  * \   \   \_\_    _/_/
  * \    \      \__/
@@ -48,21 +43,10 @@ import com.rayman.v2ex.widget.anotations.ViewClick;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicHeaderVM extends CellVM<TopicEntity> {
+public interface ITopicShortCellView {
 
-    private IMemberCellView onMemberClicked;
+    void onTopicCliced(TopicEntity topicEntity);
 
-    public TopicHeaderVM(TopicEntity entity, IMemberCellView onMemberClicked) {
-        super(entity);
-        this.onMemberClicked = onMemberClicked;
-    }
-
-    @ViewClick(R.id.clickable_view)
-    public void onAvatarClicked(View view) {
-        if (entity == null)
-            return;
-        if (onMemberClicked != null)
-            onMemberClicked.onMemberClicked(entity.getMember());
-    }
+    void onNodeClicked(NodeEntity nodeEntity);
 
 }

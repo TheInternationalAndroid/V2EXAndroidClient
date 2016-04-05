@@ -28,7 +28,7 @@ import android.view.View;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
 import com.rayman.v2ex.ui.adapter.list.base.CellVM;
-import com.rayman.v2ex.ui.view.IMemberCellView;
+import com.rayman.v2ex.ui.view.common.IMemberCellView;
 import com.rayman.v2ex.widget.anotations.ViewClick;
 
 /**

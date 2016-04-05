@@ -9,7 +9,7 @@ import com.rayman.v2ex.databinding.ListHeaderTopicBinding;
 import com.rayman.v2ex.model.model.reply.ReplyEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.base.BaseHeaderAdapter;
-import com.rayman.v2ex.ui.view.IMemberCellView;
+import com.rayman.v2ex.ui.view.common.IMemberCellView;
 import com.rayman.v2ex.viewmodel.topic.ReplyCellVM;
 import com.rayman.v2ex.viewmodel.topic.TopicHeaderVM;
 

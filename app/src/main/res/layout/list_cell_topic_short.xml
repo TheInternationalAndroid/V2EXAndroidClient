@@ -23,13 +23,13 @@
 
     <data>
 
-        <import type="com.rayman.v2ex.viewmodel.topic.TopicCellVM" />
+        <import type="com.rayman.v2ex.viewmodel.topic.TopicShortCellVM" />
 
         <import type="com.rayman.v2ex.widget.utils.DateUtil" />
 
         <variable
             name="viewModel"
-            type="TopicCellVM" />
+            type="TopicShortCellVM" />
     </data>
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

@@ -30,8 +30,12 @@ import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.ActivityAccountBinding;
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 import com.rayman.v2ex.model.model.member.MemberEntity;
+import com.rayman.v2ex.model.model.node.NodeEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.base.page.BaseDIActivity;
 import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
+import com.rayman.v2ex.ui.view.node.NodeActivity;
+import com.rayman.v2ex.ui.view.topic.TopicActivity;
 import com.rayman.v2ex.viewmodel.account.AccountVM;
 import com.rayman.v2ex.viewmodel.account.AccountVMModule;
 
@@ -70,4 +74,19 @@ public class AccountActivity extends BaseDIActivity implements AccountContract.V
     protected ILifeCycle getPageLifeCycle() {
         return viewModel.presenter();
     }
+
+    @Override
+    public void onTopicCliced(TopicEntity topicEntity) {
+        Intent intent = new Intent(this, TopicActivity.class);
+        intent.putExtra(ParaKeys.TOPIC_KEY, topicEntity);
+        intent(intent);
+    }
+
+    @Override
+    public void onNodeClicked(NodeEntity nodeEntity) {
+        Intent intent = new Intent(this, NodeActivity.class);
+        intent.putExtra(ParaKeys.NODE_KEY, nodeEntity);
+        intent(intent);
+    }
+
 }

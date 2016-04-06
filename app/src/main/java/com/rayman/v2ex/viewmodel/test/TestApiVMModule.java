@@ -41,8 +41,8 @@ public class TestApiVMModule {
 
     @Provides
     @PerActivity
-    TestApiVM provideApiModel(TestApiP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
-        return new TestApiVM(presenter, view, layoutManager);
+    TestApiServiceVM provideApiModel(TestApiP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
+        return new TestApiServiceVM(presenter, view, layoutManager);
     }
 
 }

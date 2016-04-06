@@ -6,7 +6,7 @@ import com.rayman.v2ex.R;
 import com.rayman.v2ex.databinding.ActivityTestApiBinding;
 import com.rayman.v2ex.ui.view.base.page.BaseDIActivity;
 import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
-import com.rayman.v2ex.viewmodel.test.TestApiVM;
+import com.rayman.v2ex.viewmodel.test.TestApiServiceVM;
 import com.rayman.v2ex.viewmodel.test.TestApiVMModule;
 
 import javax.inject.Inject;
@@ -14,7 +14,7 @@ import javax.inject.Inject;
 public class TestApiActivity extends BaseDIActivity implements TestApiContract.View {
 
     @Inject
-    TestApiVM viewModel;
+    TestApiServiceVM viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

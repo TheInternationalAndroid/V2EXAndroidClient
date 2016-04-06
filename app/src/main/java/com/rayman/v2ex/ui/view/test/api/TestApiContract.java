@@ -7,7 +7,7 @@ import com.rayman.v2ex.model.model.reply.ReplyEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
 import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
-import com.rayman.v2ex.viewmodel.test.TestApiVM;
+import com.rayman.v2ex.viewmodel.test.TestApiServiceVM;
 import com.rayman.v2ex.viewmodel.test.TestApiVMModule;
 
 import java.util.List;
@@ -40,7 +40,7 @@ public interface TestApiContract {
 
         void inject(TestApiActivity testApiActivity);
 
-        TestApiVM viewModel();
+        TestApiServiceVM viewModel();
 
     }
 

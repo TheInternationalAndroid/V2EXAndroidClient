@@ -3,11 +3,11 @@
 
     <data>
 
-        <import type="com.rayman.v2ex.viewmodel.test.TestApiVM" />
+        <import type="com.rayman.v2ex.viewmodel.test.TestApiServiceVM" />
 
         <variable
             name="viewModel"
-            type="TestApiVM" />
+            type="TestApiServiceVM" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"

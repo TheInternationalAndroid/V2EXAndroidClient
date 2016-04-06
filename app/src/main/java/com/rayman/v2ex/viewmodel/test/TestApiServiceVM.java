@@ -34,12 +34,12 @@ import rx.Subscriber;
  * \               ||----w |
  * \               ||     ||
  */
-public class TestApiVM extends BaseVM<TestApiContract.Presenter, TestApiContract.View> {
+public class TestApiServiceVM extends BaseVM<TestApiContract.Presenter, TestApiContract.View> {
 
     private TestApiListAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    public TestApiVM(TestApiContract.Presenter presenter, TestApiContract.View view, RecyclerView.LayoutManager layoutManager) {
+    public TestApiServiceVM(TestApiContract.Presenter presenter, TestApiContract.View view, RecyclerView.LayoutManager layoutManager) {
         super(presenter, view);
         this.layoutManager = layoutManager;
         adapter = new TestApiListAdapter(this::onItemClick);

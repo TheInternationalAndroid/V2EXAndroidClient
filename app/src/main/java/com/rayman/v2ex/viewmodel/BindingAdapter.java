@@ -29,6 +29,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
+import com.jakewharton.rxbinding.support.v7.widget.RecyclerViewChildAttachStateChangeEvent;
+import com.jakewharton.rxbinding.support.v7.widget.RecyclerViewScrollEvent;
 import com.jakewharton.rxbinding.support.v7.widget.RxRecyclerView;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.rayman.v2ex.R;
@@ -97,9 +99,19 @@ public class BindingAdapter {
         return imageUrl;
     }
 
-    @android.databinding.BindingAdapter(value = {"presenter", "subscriber"})
-    public static void recyclerScrollBind(RecyclerView recyclerView, IPresenter presenter, Subscriber<Integer> subscriber) {
+    @android.databinding.BindingAdapter(value = {"presenter", "scrollStateSub"})
+    public static void scrollStateChanges(RecyclerView recyclerView, IPresenter presenter, Subscriber<Integer> subscriber) {
         presenter.subscribe(RxRecyclerView.scrollStateChanges(recyclerView).subscribe(subscriber));
+    }
+
+    @android.databinding.BindingAdapter(value = {"presenter", "childAttachSub"})
+    public static void childAttachStateChangeEvents(RecyclerView recyclerView, IPresenter presenter, Subscriber<RecyclerViewChildAttachStateChangeEvent> subscriber) {
+        presenter.subscribe(RxRecyclerView.childAttachStateChangeEvents(recyclerView).subscribe(subscriber));
+    }
+
+    @android.databinding.BindingAdapter(value = {"presenter", "scrollEventsSub"})
+    public static void scrollEvents(RecyclerView recyclerView, IPresenter presenter, Subscriber<RecyclerViewScrollEvent> subscriber) {
+        presenter.subscribe(RxRecyclerView.scrollEvents(recyclerView).subscribe(subscriber));
     }
 
 }

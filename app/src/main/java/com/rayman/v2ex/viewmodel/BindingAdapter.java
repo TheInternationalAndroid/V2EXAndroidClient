@@ -26,12 +26,17 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
+import com.jakewharton.rxbinding.support.v7.widget.RxRecyclerView;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.rayman.v2ex.R;
+import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
 import com.rayman.v2ex.widget.utils.StringUtil;
 import com.squareup.picasso.Picasso;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -90,6 +95,11 @@ public class BindingAdapter {
         if (imageUrl.startsWith("//"))
             imageUrl = "http:" + imageUrl;
         return imageUrl;
+    }
+
+    @android.databinding.BindingAdapter(value = {"presenter", "subscriber"})
+    public static void recyclerScrollBind(RecyclerView recyclerView, IPresenter presenter, Subscriber<Integer> subscriber) {
+        presenter.subscribe(RxRecyclerView.scrollStateChanges(recyclerView).subscribe(subscriber));
     }
 
 }

@@ -67,7 +67,7 @@ public interface AppComp {
 
     Application app();
 
-    RefWatcher refWatchwer();
+    RefWatcher refWatcher();
 
     SharedPreferences preference();
 

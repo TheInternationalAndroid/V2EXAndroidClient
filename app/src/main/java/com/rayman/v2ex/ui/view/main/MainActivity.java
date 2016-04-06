@@ -52,7 +52,7 @@ public class MainActivity extends BaseDIActivity implements MainContract.View {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        getActivityComp().refWatchwer().watch(viewModel);
+        getActivityComp().refWatcher().watch(viewModel);
     }
 
     @Override

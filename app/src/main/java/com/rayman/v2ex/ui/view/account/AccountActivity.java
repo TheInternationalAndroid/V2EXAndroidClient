@@ -58,7 +58,7 @@ public class AccountActivity extends BaseDIActivity implements AccountContract.V
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        getActivityComp().refWatchwer().watch(viewModel);
+        getActivityComp().refWatcher().watch(viewModel);
     }
 
     @Override

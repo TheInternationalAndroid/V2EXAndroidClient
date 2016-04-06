@@ -61,7 +61,7 @@ public class LatestFragment extends BaseDIFragment implements LatestFragContract
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getFragmentComp().refWatchwer().watch(viewModel);
+        getFragmentComp().refWatcher().watch(viewModel);
     }
 
     @Override

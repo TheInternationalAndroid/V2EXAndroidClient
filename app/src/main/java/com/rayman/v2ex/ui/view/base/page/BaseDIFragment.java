@@ -73,7 +73,7 @@ public abstract class BaseDIFragment extends BaseFragment implements IBuildComp 
 
     @Override public void onDestroy() {
         super.onDestroy();
-        fragmentComp.refWatchwer().watch(this);
+        fragmentComp.refWatcher().watch(this);
     }
 
     protected FragmentComp getFragmentComp() {

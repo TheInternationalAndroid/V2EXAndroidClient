@@ -66,7 +66,7 @@ public class HotFragment extends BaseDIFragment implements HotFragContract.View 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        getFragmentComp().refWatchwer().watch(viewModel);
+        getFragmentComp().refWatcher().watch(viewModel);
     }
 
     @Override

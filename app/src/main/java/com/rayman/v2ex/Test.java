@@ -40,5 +40,5 @@ package com.rayman.v2ex;
  * \               ||----w |
  * \               ||     ||
  */
-public class Test {
+public class TEst {
 }

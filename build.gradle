@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.0-alpha5'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'com.frogermcs.androiddevmetrics:androiddevmetrics-plugin:0.3.1'
+//        classpath 'com.frogermcs.androiddevmetrics:androiddevmetrics-plugin:0.3.1'
         classpath 'me.tatarka:gradle-retrolambda:3.3.0-beta4'
         classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
         classpath 'io.realm:realm-gradle-plugin:0.88.2'
@@ -31,7 +31,7 @@ ext {
     versionName = '1.0.0'
     versionCode = 1
     applicationId = 'com.rayman.v2ex'
-    minSdkVersion = 21
+    minSdkVersion = 15
     compileSdkVersion = 23
     targetSdkVersion = 23
     buildToolsVersion = '23.0.2'

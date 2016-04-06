@@ -24,7 +24,6 @@ package com.rayman.v2ex.app;
 
 import android.app.Application;
 
-import com.frogermcs.androiddevmetrics.AndroidDevMetrics;
 import com.rayman.v2ex.BuildConfig;
 import com.rayman.v2ex.di.IBuildComp;
 import com.rayman.v2ex.model.http.event.ErrorEvent;
@@ -64,7 +63,7 @@ public class V2EXApplication extends Application implements IBuildComp {
         super.onCreate();
 
         if (BuildConfig.DEBUG) {
-            AndroidDevMetrics.initWith(this);
+//            AndroidDevMetrics.initWith(this);
             Timber.plant(new Timber.DebugTree());
         }
 

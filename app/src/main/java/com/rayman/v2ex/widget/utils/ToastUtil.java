@@ -58,7 +58,7 @@ public class ToastUtil {
         if (context == null) {
             return;
         }
-        View viewContainer = LayoutInflater.from(context).inflate(R.layout.toast_layout, null);
+        View viewContainer = LayoutInflater.from(context).inflate(R.layout.layout_toast, null);
         TextView textView = (TextView) viewContainer;
         textView.setText(message);
         if (mToast == null) {
@@ -84,7 +84,7 @@ public class ToastUtil {
     }
 
     private static View getToastView(String message, Context context) {
-        View viewContainer = LayoutInflater.from(context).inflate(R.layout.toast_layout, null);
+        View viewContainer = LayoutInflater.from(context).inflate(R.layout.layout_toast, null);
         TextView textView = (TextView) viewContainer;
         textView.setText(message);
         return viewContainer;

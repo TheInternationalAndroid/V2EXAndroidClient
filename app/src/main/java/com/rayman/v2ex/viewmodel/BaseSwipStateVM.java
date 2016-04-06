@@ -27,8 +27,11 @@ import android.databinding.Bindable;
 import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.rayman.v2ex.BR;
+import com.rayman.v2ex.model.http.LSubscriber;
 import com.rayman.v2ex.widget.anotations.PageState;
 import com.rayman.v2ex.widget.anotations.RequestType;
+
+import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -52,8 +55,24 @@ public abstract class BaseSwipStateVM<T, R> extends BaseStateVM<T, R> implements
     private int[] colors = {com.rayman.v2ex.R.color.colorPrimaryDark};
     private boolean isRefreshing;
 
+    private Subscriber<Void> refreshSubscriber = new LSubscriber<Void>() {
+        @Override
+        public void onError(Throwable e) {
+            setRefreshing(false);
+        }
+
+        @Override
+        public void onNext(Void aVoid) {
+            onRefresh();
+        }
+    };
+
     public BaseSwipStateVM(T presenter, R view) {
         super(presenter, view);
+    }
+
+    public Subscriber<Void> getRefreshSubscriber() {
+        return refreshSubscriber;
     }
 
     @Bindable

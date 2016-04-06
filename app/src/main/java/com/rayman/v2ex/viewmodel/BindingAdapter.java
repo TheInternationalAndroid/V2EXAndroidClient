@@ -26,9 +26,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
+import com.jakewharton.rxbinding.support.v4.widget.RxSwipeRefreshLayout;
 import com.jakewharton.rxbinding.support.v7.widget.RecyclerViewChildAttachStateChangeEvent;
 import com.jakewharton.rxbinding.support.v7.widget.RecyclerViewScrollEvent;
 import com.jakewharton.rxbinding.support.v7.widget.RxRecyclerView;
@@ -112,6 +114,13 @@ public class BindingAdapter {
     @android.databinding.BindingAdapter(value = {"presenter", "scrollEventsSub"})
     public static void scrollEvents(RecyclerView recyclerView, IPresenter presenter, Subscriber<RecyclerViewScrollEvent> subscriber) {
         presenter.subscribe(RxRecyclerView.scrollEvents(recyclerView).subscribe(subscriber));
+    }
+
+    @android.databinding.BindingAdapter(value = {"presenter", "refreshesSub"})
+    public static void switchRefreshes(SwipeRefreshLayout swipeRefreshLayout, IPresenter presenter, Subscriber<Void> subscriber) {
+        presenter.subscribe(RxSwipeRefreshLayout
+                .refreshes(swipeRefreshLayout)
+                .subscribe(subscriber));
     }
 
 }

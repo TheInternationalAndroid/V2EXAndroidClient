@@ -47,7 +47,8 @@
             android:layout_height="match_parent"
             android:visibility="@{viewModel.state==PageState.CONTENT?View.VISIBLE:View.GONE,default=gone}"
             app:colorSchemeResources="@{viewModel.colors}"
-            app:onRefreshListener="@{viewModel}"
+            app:presenter="@{viewModel.presenter}"
+            app:refreshesSub="@{viewModel.refreshSubscriber}"
             app:refreshing="@{viewModel.isRefreshing}">
 
             <android.support.v7.widget.RecyclerView

@@ -28,7 +28,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.rayman.v2ex.R;
-import com.rayman.v2ex.ui.view.base.view.IBaseView;
+import com.rayman.v2ex.ui.view.base.view.IView;
 import com.rayman.v2ex.widget.anotations.ActivityAction;
 import com.rayman.v2ex.widget.utils.ToastUtil;
 
@@ -49,7 +49,7 @@ import com.rayman.v2ex.widget.utils.ToastUtil;
  * \               ||----w |
  * \               ||     ||
  */
-public class BaseFragment extends Fragment implements IBaseView {
+public class BaseFragment extends Fragment implements IView {
 
     private ProgressDialog progressDialog;
 

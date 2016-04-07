@@ -122,5 +122,4 @@ public class BindingAdapter {
                 .refreshes(swipeRefreshLayout)
                 .subscribe(subscriber));
     }
-
 }

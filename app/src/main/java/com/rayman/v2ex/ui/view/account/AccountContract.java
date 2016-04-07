@@ -5,7 +5,7 @@ import com.rayman.v2ex.model.model.member.MemberEntity;
 import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
 import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
-import com.rayman.v2ex.ui.view.base.view.IBaseView;
+import com.rayman.v2ex.ui.view.base.view.IView;
 import com.rayman.v2ex.ui.view.common.ITopicShortCellView;
 import com.rayman.v2ex.viewmodel.account.AccountVM;
 import com.rayman.v2ex.viewmodel.account.AccountVMModule;
@@ -34,7 +34,7 @@ import rx.Subscriber;
  */
 public interface AccountContract {
 
-    interface View extends IBaseView, ITopicShortCellView {
+    interface View extends IView, ITopicShortCellView {
     }
 
     interface Presneter extends IPresenter {

@@ -224,6 +224,9 @@
     <style name="TextViewStyle">
         <item name="android:textColor">@color/text_gray_dark</item>
         <item name="android:textSize">@dimen/text_l</item>
+        <item name="android:autoLink">all</item>
+        <item name="android:textColorLink">@color/text_black_light</item>
+        <item name="android:textColorLinkInverse">@color/colorPrimary</item>
     </style>
 
 </resources>

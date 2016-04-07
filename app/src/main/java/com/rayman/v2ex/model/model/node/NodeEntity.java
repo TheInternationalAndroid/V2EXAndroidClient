@@ -55,10 +55,14 @@ public class NodeEntity implements Parcelable {
     private int topics;
     @JSONField(name = "avatar_mini")
     private String avatarMini;
-    @JSONField(name = "avatar_mini")
+    @JSONField(name = "avatar_normal")
     private String avatarNormal;
-    @JSONField(name = "avatar_mini")
-    private String avatarLargeF;
+    @JSONField(name = "avatar_large")
+    private String avatarLarge;
+    private String header;
+    private String footer;
+    private long created;
+    private long stars;
 
     public long getId() {
         return id;
@@ -124,13 +128,46 @@ public class NodeEntity implements Parcelable {
         this.avatarNormal = avatarNormal;
     }
 
-    public String getAvatarLargeF() {
-        return avatarLargeF;
+    public String getAvatarLarge() {
+        return avatarLarge;
     }
 
-    public void setAvatarLargeF(String avatarLargeF) {
-        this.avatarLargeF = avatarLargeF;
+    public void setAvatarLarge(String avatarLarge) {
+        this.avatarLarge = avatarLarge;
     }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    public String getFooter() {
+        return footer;
+    }
+
+    public void setFooter(String footer) {
+        this.footer = footer;
+    }
+
+    public long getCreated() {
+        return created;
+    }
+
+    public void setCreated(long created) {
+        this.created = created;
+    }
+
+    public long getStars() {
+        return stars;
+    }
+
+    public void setStars(long stars) {
+        this.stars = stars;
+    }
+
 
     @Override
     public int describeContents() {
@@ -147,7 +184,11 @@ public class NodeEntity implements Parcelable {
         dest.writeInt(this.topics);
         dest.writeString(this.avatarMini);
         dest.writeString(this.avatarNormal);
-        dest.writeString(this.avatarLargeF);
+        dest.writeString(this.avatarLarge);
+        dest.writeString(this.header);
+        dest.writeString(this.footer);
+        dest.writeLong(this.created);
+        dest.writeLong(this.stars);
     }
 
     public NodeEntity() {
@@ -162,10 +203,14 @@ public class NodeEntity implements Parcelable {
         this.topics = in.readInt();
         this.avatarMini = in.readString();
         this.avatarNormal = in.readString();
-        this.avatarLargeF = in.readString();
+        this.avatarLarge = in.readString();
+        this.header = in.readString();
+        this.footer = in.readString();
+        this.created = in.readLong();
+        this.stars = in.readLong();
     }
 
-    public static final Parcelable.Creator<NodeEntity> CREATOR = new Parcelable.Creator<NodeEntity>() {
+    public static final Creator<NodeEntity> CREATOR = new Creator<NodeEntity>() {
         @Override
         public NodeEntity createFromParcel(Parcel source) {
             return new NodeEntity(source);

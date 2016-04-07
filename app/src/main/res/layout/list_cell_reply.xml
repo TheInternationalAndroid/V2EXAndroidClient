@@ -90,6 +90,7 @@
                 android:layout_toRightOf="@id/clickable_view"
                 android:text="@{viewModel.entity.content,default=Content}"
                 android:textColor="@color/text_black"
+                android:textIsSelectable="true"
                 android:textSize="@dimen/text_l" />
 
         </RelativeLayout>

@@ -17,5 +17,5 @@ package com.rayman.v2ex.ui.view.base.view;
  * \               ||----w |
  * \               ||     ||
  */
-public interface IBaseView extends IRedirect, IPageControl {
+public interface IView extends IRedirect, IPageControl {
 }

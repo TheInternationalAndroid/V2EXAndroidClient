@@ -22,7 +22,7 @@
 
 package com.rayman.v2ex.app;
 
-import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 import com.rayman.v2ex.BuildConfig;
 import com.rayman.v2ex.di.IBuildComp;
@@ -53,7 +53,7 @@ import timber.log.Timber;
  * \               ||----w |
  * \               ||     ||
  */
-public class V2EXApplication extends Application implements IBuildComp {
+public class V2EXApplication extends MultiDexApplication implements IBuildComp {
 
     private AppComp appComp;
     private Subscription subscription;

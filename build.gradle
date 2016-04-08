@@ -31,7 +31,7 @@ ext {
     versionName = '1.0.0'
     versionCode = 1
     applicationId = 'com.rayman.v2ex'
-    minSdkVersion = 15
+    minSdkVersion = 18
     compileSdkVersion = 23
     targetSdkVersion = 23
     buildToolsVersion = '23.0.2'
@@ -130,6 +130,8 @@ ext.depMap = [
         MockitoCore          : "${mockitoPkg}:mockito-core:${mockitoVersion}",
         FestAssert           : 'org.easytesting:fest-assert-core:2.0M10',
         Robolectric          : 'org.robolectric:robolectric:3.0',
+
+        UIAutomator          : 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2',
 
         //Espresso
         EspressoCore         : "${testEspressoPkg}:espresso-core:${testEspressoVersion}",

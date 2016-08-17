@@ -111,10 +111,22 @@ public abstract class BaseListAdapter<T> extends RecyclerView.Adapter<BaseViewHo
         holder.bindData(getViewModel(position));
     }
 
+    @Override
+    public void onBindViewHolder(BaseViewHolder holder, int position, List<Object> payloads) {
+        super.onBindViewHolder(holder, position, payloads);
+        holder.bindData(getViewModel(position));
+    }
+
     protected abstract ViewDataBinding buildBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType);
 
     protected CellVM<T> getViewModel(int position) {
-        return new CellVM<>(getItem(position), position, itemClick);
+        return new CellVM<>(getItem(position), position, new OnItemClick<T>() {
+            @Override
+            public void onItemClick(int position, T t) {
+                notifyItemChanged(position, "Payload1 :" + position);
+                notifyItemChanged(position, "Payload2 :" + position);
+            }
+        });
     }
 
     public void addItem(int position, T t) {

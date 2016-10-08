@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+  ~  Copyright (c) 2016. Istuary Innovation Group, Ltd.
+  ~  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and
+  ~  confidential.
+  ~  Created on Tue, 27 Sep 2016 14:56:34 +0800.
+  ~  ProjectName: IronHide; ModuleName: IronHide; ClassName: template.xml.
+  ~  Author: Lena; Last Modified: Tue, 27 Sep 2016 14:56:34 +0800.
+  ~  This file is originally created by Lena.
+  ~
+  -->
+
+<template name="IronHideFragment"
+    description="IronHideFragment"
+    format="5"
+    minApi="7"
+    minBuildApi="14"
+    requireAppTheme="true"
+    revision="3">
+
+    <category value="Fragment" />
+
+    <dependency name="android-support-v4"
+        revision="8" />
+
+    <parameter name="Page Name"
+        constraints="class|nonempty|unique"
+        default="Main"
+        help="The name of the created page"
+        id="pageName"
+        type="string" />
+
+    <parameter name="Fragment Name"
+        constraints="class|nonempty|unique"
+        default="MainFragment"
+        help="The name of the fragment class to create"
+        id="fragmentName"
+        suggest="${pageName}Fragment"
+        type="string" />
+
+    <parameter name="Fragment Layout Name"
+        constraints="layout|nonempty|unique"
+        default="fragment_main"
+        help="The name of the layout to create"
+        id="layoutName"
+        suggest="fragment_${classToResource(fragmentName)}"
+        type="string" />
+
+    <thumbs>
+        <thumb>template_blank_fragment.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>

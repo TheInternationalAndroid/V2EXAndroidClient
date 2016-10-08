@@ -31,7 +31,7 @@ import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.RxJavaCallAdapterFactory;
 
 /**
  * Created by Android Studio.

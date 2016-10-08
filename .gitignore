@@ -34,4 +34,5 @@ local.properties
 /build/
 .DS_Store
 .navigation
+/Bash/
 

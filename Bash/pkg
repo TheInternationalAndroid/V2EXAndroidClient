@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+#gradle assemble$1$2
+
+function pkg(){
+    local flavor=$1;
+    local type=$2;
+
+    if [[ ! -n "$flavor" ]] ; then
+        flavor=""
+    elif [[ "$flavor" = "common" ]]; then
+        flavor="Common"
+    elif [[ "$flavor" = "inner" ]]; then
+        flavor="Inner"
+    elif [[ "$flavor" = "myapp" ]]; then
+        flavor="Myapp"
+    elif [[ "$flavor" = "qihuapp" ]]; then
+        flavor="Qihuapp"
+    elif [[ "$flavor" = "wandoujia" ]]; then
+        flavor="Wandoujia"
+    elif [[ "$flavor" = "meizu" ]]; then
+        flavor="Meizu"
+    elif [[ "$flavor" = "huawei" ]]; then
+        flavor="Huawei"
+    elif [[ "$flavor" = "xiaomi" ]]; then
+        flavor="Xiaomi"
+    elif [[ "$flavor" = "vivo" ]]; then
+        flavor="Vivo"
+    elif [[ "$flavor" = "oppo" ]]; then
+        flavor="Oppo"
+    else
+        echo "Flavor not exit!"
+        exit
+    fi
+
+    if [[ ! -n "$type" ]] ; then
+        type=""
+    elif [[ "$type" = "release" ]]; then
+        type="Release"
+    elif [[ "$type" = "debug" ]]; then
+        type="Debug"
+    else
+        echo "Type not exit!"
+        exit
+    fi
+
+    echo "Excu gradle assemble${flavor}${type}"
+    gradle clean
+    gradle assemble${flavor}${type}
+    gradle clean
+}
+
+inputFlavor=""
+inputType=""
+echo "Enter flavor {common,inner,myapp,qihuapp,wandoujia,meizu,huawei,xiaomi,vivo,oppo} > "
+if [ -n "$1" ]; then
+  inputFlavor="$1"
+else
+  read inputFlavor
+fi
+echo "Enter type {debug,release} > "
+if [ -n "$2" ]; then
+  inputType="$2"
+else
+  read inputType
+fi
+echo "Package flavor-> $inputFlavor; type-> $inputType; ------------------Let us go-----------------"
+pkg $(echo "$inputFlavor" | tr '[:upper:]' '[:lower:]') $(echo "$inputType" | tr '[:upper:]' '[:lower:]')

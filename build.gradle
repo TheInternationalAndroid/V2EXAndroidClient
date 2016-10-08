@@ -4,6 +4,9 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
+        maven {
+            url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.0'
@@ -22,6 +25,9 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
+        maven {
+            url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+        }
     }
 }
 
@@ -34,6 +40,7 @@ ext {
     versionCode = 1
     applicationId = 'com.rayman.v2ex'
     minSdkVersion = 21
+    libDefaultPublish = 'debug'//debug or release
     compileSdkVersion = 24
     targetSdkVersion = 24
     buildToolsVersion = '24.0.3'
@@ -67,100 +74,112 @@ ext {
 }
 
 ext.depMap = [
-        RecyclerView         : "${androidSupportPkg}:recyclerview-v7:${androidSupportVersion}",
-        CardView             : "${androidSupportPkg}:cardview-v7:${androidSupportVersion}",
-        Design               : "${androidSupportPkg}:design:${androidSupportVersion}",
-        AppCompat            : "${androidSupportPkg}:appcompat-v7:${androidSupportVersion}",
-        Multidex             : "${androidSupportPkg}:multidex:1.0.0",
-        Annotations          : "${androidSupportPkg}:support-annotations:${androidSupportVersion}",
-        SupportV4            : "${androidSupportPkg}:support-v4:${androidSupportVersion}",
-        SupportCompat        : "${androidSupportPkg}:support-compat:${androidSupportVersion}",
-        SupportCoreUtils     : "${androidSupportPkg}:support-core-utils:${androidSupportVersion}",
-        SupportCoreUI        : "${androidSupportPkg}:support-core-ui:${androidSupportVersion}",
-        SupportMediaCompat   : "${androidSupportPkg}:support-media-compat:${androidSupportVersion}",
-        SupportFragment      : "${androidSupportPkg}:support-fragment:${androidSupportVersion}",
-        ConstraintLayout     : "${androidSupportPkg}:constraint-layout:1.0.0-alpha1",
-        FlexBox              : 'com.google.android:flexbox:0.2.3',
+        RecyclerView          : "${androidSupportPkg}:recyclerview-v7:${androidSupportVersion}",
+        Palette               : "${androidSupportPkg}:palette-v7:${androidSupportVersion}",
+        CardView              : "${androidSupportPkg}:cardview-v7:${androidSupportVersion}",
+        Design                : "${androidSupportPkg}:design:${androidSupportVersion}",
+        Percent               : "${androidSupportPkg}:percent:${androidSupportVersion}",
+        Annotations           : "${androidSupportPkg}:support-annotations:${androidSupportVersion}",
+        AppCompat             : "${androidSupportPkg}:appcompat-v7:${androidSupportVersion}",
+        SupportV4             : "${androidSupportPkg}:support-v4:${androidSupportVersion}",
+        SupportCompat         : "${androidSupportPkg}:support-compat:${androidSupportVersion}",
+        SupportCoreUtils      : "${androidSupportPkg}:support-core-utils:${androidSupportVersion}",
+        SupportCoreUI         : "${androidSupportPkg}:support-core-ui:${androidSupportVersion}",
+        SupportMediaCompat    : "${androidSupportPkg}:support-media-compat:${androidSupportVersion}",
+        SupportFragment       : "${androidSupportPkg}:support-fragment:${androidSupportVersion}",
+        Multidex              : "${androidSupportPkg}:multidex:1.0.0",
+        ConstraintLayout      : "${androidSupportPkg}:constraint-layout:1.0.0-alpha1",
+        FlexBox               : 'com.google.android:flexbox:0.2.3',
 
-        Stetho                : 'com.facebook.stetho:stetho:1.3.1',
-        StethoOkhttp3         : 'com.facebook.stetho:stetho-okhttp3:1.3.1',
-        StethoRealm           : 'com.uphyca:stetho_realm:0.9.0',
+        Stetho                : 'com.facebook.stetho:stetho:1.4.1',
+        StethoOkhttp3         : 'com.facebook.stetho:stetho-okhttp3:1.4.1',
+        StethoRealm           : 'com.uphyca:stetho_realm:2.0.0',
 
-        Guava                : 'com.google.guava:guava:19.0',
+        Guava                 : 'com.google.guava:guava:19.0',
 
-        AutoValue            : 'com.google.auto.value:auto-value:1.1',
-        AutoParcel           : 'com.github.frankiesardo:auto-parcel:0.3.1',
-        AutoParcelProcessor  : 'com.github.frankiesardo:auto-parcel-processor:0.3.1',
+        AutoValue             : 'com.google.auto.value:auto-value:1.1',
+        AutoParcel            : 'com.github.frankiesardo:auto-parcel:0.3.1',
+        AutoParcelProcessor   : 'com.github.frankiesardo:auto-parcel-processor:0.3.1',
 
-        FastJson             : 'com.alibaba:fastjson:1.1.45.android',
-        DSLJson              : 'com.dslplatform:dsl-json:0.9.5',
-        DSLJsonProcessor     : 'com.dslplatform:dsl-json-processor:0.4',
+        FastJson              : 'com.alibaba:fastjson:1.1.45.android',
+        DSLJson               : 'com.dslplatform:dsl-json:0.9.5',
+        DSLJsonProcessor      : 'com.dslplatform:dsl-json-processor:0.4',
 
-        OkHttp               : "${okHttpPkg}:okhttp:${okHttpVersion}",
-        LoggingInterceptor   : "${okHttpPkg}:logging-interceptor:${okHttpVersion}",
-        OkHttpWS             : "${okHttpPkg}:okhttp-ws:${okHttpVersion}",
+        OkHttp                : "${okHttpPkg}:okhttp:${okHttpVersion}",
+        LoggingInterceptor    : "${okHttpPkg}:logging-interceptor:${okHttpVersion}",
+        OkHttpWS              : "${okHttpPkg}:okhttp-ws:${okHttpVersion}",
 
-        Retrofit             : "${retrofitPkg}:retrofit:${retrofitVersion}",
-        RxJavaAdapter        : "${retrofitPkg}:adapter-rxjava:${retrofitVersion}",
-        Java8Adapter         : "${retrofitPkg}:adapter-java8:${retrofitVersion}",
-        GuavaAdapter         : "${retrofitPkg}:adapter-guava:${retrofitVersion}",
-        GsonConverter        : "${retrofitPkg}:converter-gson:${retrofitVersion}",
-        JacksonConverter     : "${retrofitPkg}:converter-jackson:${retrofitVersion}",
-        MoshiConverter       : "${retrofitPkg}:converter-moshi:${retrofitVersion}",
-        ProtobufConverter    : "${retrofitPkg}:converter-protobuf:${retrofitVersion}",
-        WireConverter        : "${retrofitPkg}:converter-wire:${retrofitVersion}",
-        SimpleXMLConverter   : "${retrofitPkg}:converter-simplexml:${retrofitVersion}",
-        ScalarsConverter     : "${retrofitPkg}:converter-scalars:${retrofitVersion}",
+        Retrofit              : "${retrofitPkg}:retrofit:${retrofitVersion}",
+        RxJavaAdapter         : "${retrofitPkg}:adapter-rxjava:${retrofitVersion}",
+        Java8Adapter          : "${retrofitPkg}:adapter-java8:${retrofitVersion}",
+        GuavaAdapter          : "${retrofitPkg}:adapter-guava:${retrofitVersion}",
+        GsonConverter         : "${retrofitPkg}:converter-gson:${retrofitVersion}",
+        JacksonConverter      : "${retrofitPkg}:converter-jackson:${retrofitVersion}",
+        MoshiConverter        : "${retrofitPkg}:converter-moshi:${retrofitVersion}",
+        ProtobufConverter     : "${retrofitPkg}:converter-protobuf:${retrofitVersion}",
+        WireConverter         : "${retrofitPkg}:converter-wire:${retrofitVersion}",
+        SimpleXMLConverter    : "${retrofitPkg}:converter-simplexml:${retrofitVersion}",
+        ScalarsConverter      : "${retrofitPkg}:converter-scalars:${retrofitVersion}",
 
-        RxAndroid            : 'io.reactivex:rxandroid:1.0.1',
-        RxBinding            : "${rxBindingPkg}:rxbinding:${rxBindingVersion}",
-        RxBindingSupportV4   : "${rxBindingPkg}:rxbinding-support-v4:${rxBindingVersion}",
-        RxBindingAppcompat   : "${rxBindingPkg}:rxbinding-appcompat-v7:${rxBindingVersion}",
-        RxBindingDesign      : "${rxBindingPkg}:rxbinding-design:${rxBindingVersion}",
-        RxBindingRecyclerView: "${rxBindingPkg}:rxbinding-recyclerview-v7:${rxBindingVersion}",
-        RxLeanBack           : "${rxBindingPkg}:rxbinding-leanback-v17:${rxBindingVersion}",
+        RxAndroid             : 'io.reactivex:rxandroid:1.0.1',
+        RxBinding             : "${rxBindingPkg}:rxbinding:${rxBindingVersion}",
+        RxBindingSupportV4    : "${rxBindingPkg}:rxbinding-support-v4:${rxBindingVersion}",
+        RxBindingAppcompat    : "${rxBindingPkg}:rxbinding-appcompat-v7:${rxBindingVersion}",
+        RxBindingDesign       : "${rxBindingPkg}:rxbinding-design:${rxBindingVersion}",
+        RxBindingRecyclerView : "${rxBindingPkg}:rxbinding-recyclerview-v7:${rxBindingVersion}",
+        RxLeanBack            : "${rxBindingPkg}:rxbinding-leanback-v17:${rxBindingVersion}",
 
-        Dagger               : "${daggerPkg}:dagger:${daggerVersion}",
-        DaggerCompile        : "${daggerPkg}:dagger-compiler:${daggerVersion}",
+        Moshi                 : 'com.squareup.moshi:moshi:1.2.0',
 
-        RetroLambdaConfig    : 'net.orfjackal.retrolambda:retrolambda:2.1.0',
-        Timber               : 'com.jakewharton.timber:timber:4.1.1',
-        AnnotationJsr250     : 'javax.annotation:jsr250-api:1.0',
-        MaterialMenuToolbar  : 'com.balysv.materialmenu:material-menu-toolbar:1.5.0',
-        RoundedImageview     : 'com.makeramen:roundedimageview:2.2.1',
-        FlowLayout           : 'com.wefika:flowlayout:0.4.1',
+        Dagger                : "${daggerPkg}:dagger:${daggerVersion}",
+        DaggerCompile         : "${daggerPkg}:dagger-compiler:${daggerVersion}",
 
-        Otto                 : "${squareUpPkg}:otto:1.3.8",
-        LeakCanary           : "${squareUpPkg}.leakcanary:leakcanary-android:1.3.1",
-        LeakCanaryAndroidNoOp: "${squareUpPkg}.leakcanary:leakcanary-android-no-op:1.3.1",
-        FestAndroid          : "${squareUpPkg}:fest-android:1.0.7",
-        Picasso              : "${squareUpPkg}.picasso:picasso:2.5.2",
+        RetroLambdaConfig     : 'net.orfjackal.retrolambda:retrolambda:2.1.0',
+        Timber                : 'com.jakewharton.timber:timber:4.1.1',
+        AnnotationJsr250      : 'javax.annotation:jsr250-api:1.0',
+        MaterialMenuToolbar   : 'com.balysv.materialmenu:material-menu-toolbar:1.5.0',
+        FlowLayout            : 'com.wefika:flowlayout:0.4.1',
+        androidCrop           : 'com.soundcloud.android:android-crop:1.0.1@aar',
 
-        Hamcrest             : 'org.hamcrest:hamcrest-all:1.3',
-        JUnit                : "junit:junit:${junitVersion}",
+        RoundedImageview      : 'com.makeramen:roundedimageview:2.2.1',
+        ScaleImageView        : "com.davemorrissey.labs:subsampling-scale-image-view:3.5.0",
 
-        MockitoAll           : "${mockitoPkg}:mockito-all:${mockitoVersion}",
-        MockitoCore          : "${mockitoPkg}:mockito-core:${mockitoVersion}",
-        FestAssert           : 'org.easytesting:fest-assert-core:2.0M10',
-        Robolectric          : 'org.robolectric:robolectric:3.0',
+        Otto                  : "${squareUpPkg}:otto:1.3.8",
+        LeakCanary            : "${squareUpPkg}.leakcanary:leakcanary-android:1.3.1",
+        LeakCanaryAndroidNoOp : "${squareUpPkg}.leakcanary:leakcanary-android-no-op:1.3.1",
+        FestAndroid           : "${squareUpPkg}:fest-android:1.0.7",
 
-        UIAutomator          : 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2',
+        Picasso               : "${squareUpPkg}.picasso:picasso:2.5.2",
+        Glide                 : "com.github.bumptech.glide:glide:3.7.0",
+        GlideOkhttpIntegration: 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar',
+
+        RxPermissions         : 'com.tbruyelle.rxpermissions:rxpermissions:0.7.0@aar',
+
+        Hamcrest              : 'org.hamcrest:hamcrest-all:1.3',
+        JUnit                 : "junit:junit:${junitVersion}",
+
+        MockitoAll            : "${mockitoPkg}:mockito-all:${mockitoVersion}",
+        MockitoCore           : "${mockitoPkg}:mockito-core:${mockitoVersion}",
+        FestAssert            : 'org.easytesting:fest-assert-core:2.0M10',
+        Robolectric           : 'org.robolectric:robolectric:3.0',
+
+        UIAutomator           : 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2',
 
         //Espresso
-        EspressoCore         : "${testEspressoPkg}:espresso-core:${testEspressoVersion}",
-        EspressoContrib      : "${testEspressoPkg}:espresso-contrib:${testEspressoVersion}",
-        EspressoIntents      : "${testEspressoPkg}:espresso-intents:${testEspressoVersion}",
-        EspressoIDLing       : "${testEspressoPkg}:espresso-idling-resource:${testEspressoVersion}",
+        EspressoCore          : "${testEspressoPkg}:espresso-core:${testEspressoVersion}",
+        EspressoContrib       : "${testEspressoPkg}:espresso-contrib:${testEspressoVersion}",
+        EspressoIntents       : "${testEspressoPkg}:espresso-intents:${testEspressoVersion}",
+        EspressoIDLing        : "${testEspressoPkg}:espresso-idling-resource:${testEspressoVersion}",
 
         //Test support
-        RunnerSupport        : "${testSupportPkg}:runner:${testSupportVersion}",
-        RulesSupport         : "${testSupportPkg}:rules:${testSupportVersion}",
+        RunnerSupport         : "${testSupportPkg}:runner:${testSupportVersion}",
+        RulesSupport          : "${testSupportPkg}:rules:${testSupportVersion}",
 
         //Dex maker
-        DexMaker             : "${dexMakerPkg}:dexmaker:${dexMakerVersion}",
-        DexMakerMockito      : "${dexMakerPkg}:dexmaker-mockito:${dexMakerVersion}",
+        DexMaker              : "${dexMakerPkg}:dexmaker:${dexMakerVersion}",
+        DexMakerMockito       : "${dexMakerPkg}:dexmaker-mockito:${dexMakerVersion}",
 
         //Lint dependencies
-        Lintapi              : "${lintPkg}:lint-api:${lintVersion}",
-        Lintchecks           : "${lintPkg}:lint-checks:${lintVersion}"
+        Lintapi               : "${lintPkg}:lint-api:${lintVersion}",
+        Lintchecks            : "${lintPkg}:lint-checks:${lintVersion}"
 ]

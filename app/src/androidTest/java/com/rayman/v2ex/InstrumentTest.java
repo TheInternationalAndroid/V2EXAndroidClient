@@ -26,7 +26,6 @@ package com.rayman.v2ex;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.suitebuilder.annotation.SmallTest;
 
 import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 
@@ -54,7 +53,6 @@ import org.junit.runner.RunWith;
  * \               ||     ||
  */
 @RunWith(AndroidJUnit4.class)
-@SmallTest
 public class InstrumentTest {
 
     private static final long TEST_LONG = 12345678L;

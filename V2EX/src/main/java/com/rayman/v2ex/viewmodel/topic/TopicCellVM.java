@@ -25,11 +25,9 @@ package com.rayman.v2ex.viewmodel.topic;
 
 import android.view.View;
 
-import com.rayman.v2ex.R;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.adapter.list.base.CellVM;
+import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.common.ITopicCellView;
-import com.rayman.v2ex.widget.anotations.ViewClick;
 
 /**
  * Created by Android Studio.
@@ -57,19 +55,16 @@ public class TopicCellVM extends CellVM<TopicEntity> {
         this.onTopicCellClicked = onTopicCellClicked;
     }
 
-    @ViewClick(R.id.content)
     public void onContentClicked(View view) {
         if (onTopicCellClicked != null)
             onTopicCellClicked.onTopicCliced(entity);
     }
 
-    @ViewClick(R.id.image)
     public void onAvatarClicked(View view) {
         if (onTopicCellClicked != null)
             onTopicCellClicked.onMemberClicked(entity.getMember());
     }
 
-    @ViewClick(R.id.node)
     public void onNodeClicked(View view) {
         if (onTopicCellClicked != null)
             onTopicCellClicked.onNodeClicked(entity.getNode());

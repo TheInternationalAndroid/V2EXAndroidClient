@@ -31,19 +31,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ray.mvvm.lib.view.base.page.BaseDIFragment;
+import com.ray.mvvm.lib.view.base.view.ILifeCycle;
+import com.ray.mvvm.lib.widget.anotations.RequestType;
 import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.FragmentHotBinding;
-import com.rayman.v2ex.model.model.member.MemberBaseEntity;
-import com.rayman.v2ex.model.model.node.NodeEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
+import com.ray.mvvm.lib.model.model.node.NodeEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.account.AccountActivity;
-import com.rayman.v2ex.ui.view.base.page.BaseDIFragment;
-import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
 import com.rayman.v2ex.ui.view.node.NodeActivity;
 import com.rayman.v2ex.ui.view.topic.TopicActivity;
 import com.rayman.v2ex.viewmodel.main.HotFragVM;
 import com.rayman.v2ex.viewmodel.main.HotFragVMModule;
-import com.rayman.v2ex.widget.anotations.RequestType;
 
 import javax.inject.Inject;
 
@@ -61,19 +61,13 @@ public class HotFragment extends BaseDIFragment implements HotFragContract.View 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel.requestHotTopicList(RequestType.CONTENT_LOADING);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        getFragmentComp().refWatcher().watch(viewModel);
+        viewModel.initiallyReq(RequestType.CONTENT_LOADING);
     }
 
     @Override
     public void buildComp() {
         DaggerHotFragContract_Comp.builder()
-                .fragmentComp(getFragmentComp())
+                .fragmentComp(fragmentComp())
                 .hotFragVMModule(new HotFragVMModule(this))
                 .build()
                 .inject(this);

@@ -23,8 +23,8 @@
 
 package com.rayman.v2ex.ui.view.common;
 
-import com.rayman.v2ex.model.model.node.NodeEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.model.model.node.NodeEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 
 /**
  * Created by Android Studio.

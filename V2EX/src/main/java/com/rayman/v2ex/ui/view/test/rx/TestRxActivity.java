@@ -25,10 +25,10 @@ package com.rayman.v2ex.ui.view.test.rx;
 
 import android.os.Bundle;
 
+import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
+import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.rayman.v2ex.R;
 import com.rayman.v2ex.databinding.ActivityTestRxBinding;
-import com.rayman.v2ex.ui.view.base.page.BaseDIActivity;
-import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
 import com.rayman.v2ex.viewmodel.test.TestRxVM;
 import com.rayman.v2ex.viewmodel.test.TestRxVMModule;
 

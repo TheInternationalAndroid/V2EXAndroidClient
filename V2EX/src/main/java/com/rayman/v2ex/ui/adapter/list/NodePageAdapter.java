@@ -27,12 +27,12 @@ import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
+import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
 import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.databinding.ListHeaderNodeBinding;
-import com.rayman.v2ex.model.model.node.NodeEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.adapter.list.base.BaseHeaderAdapter;
-import com.rayman.v2ex.ui.adapter.list.base.CellVM;
+import com.ray.mvvm.lib.model.model.node.NodeEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.common.ITopicCellView;
 import com.rayman.v2ex.viewmodel.topic.TopicCellVM;
 
@@ -53,7 +53,7 @@ import com.rayman.v2ex.viewmodel.topic.TopicCellVM;
  * \               ||----w |
  * \               ||     ||
  */
-public class NodePageAdapter extends BaseHeaderAdapter<TopicEntity> {
+public class NodePageAdapter extends BaseListAdapter<TopicEntity> {
 
     private static final int VIEW_HEADER = 0;
     private static final int VIEW_CELL = 1;
@@ -80,12 +80,12 @@ public class NodePageAdapter extends BaseHeaderAdapter<TopicEntity> {
     }
 
     @Override
-    protected int getHeaderCount() {
+    public int getHeaderCount() {
         return HEADER_COUNINT;
     }
 
     @Override
-    protected ViewDataBinding createBinding(ViewGroup parent, int viewType) {
+    protected ViewDataBinding createBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
         switch (viewType) {
             case VIEW_HEADER:
                 return ListHeaderNodeBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
@@ -96,8 +96,8 @@ public class NodePageAdapter extends BaseHeaderAdapter<TopicEntity> {
     }
 
     @Override
-    protected Object createViewModel(int position) {
-        switch (getItemViewType(position)) {
+    protected Object createViewModel(int viewType, int position) {
+        switch (viewType) {
             case VIEW_HEADER:
                 return new CellVM<>(nodeEntity);
             default:
@@ -105,5 +105,4 @@ public class NodePageAdapter extends BaseHeaderAdapter<TopicEntity> {
                 return new TopicCellVM(getItem(position), topicCellView);
         }
     }
-
 }

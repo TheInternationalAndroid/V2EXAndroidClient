@@ -27,7 +27,7 @@
 
         <import type="android.view.View" />
 
-        <import type="com.rayman.v2ex.widget.anotations.PageState" />
+        <import type="com.ray.mvvm.lib.widget.anotations.PageState" />
 
         <variable
             name="viewModel"
@@ -45,11 +45,10 @@
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="@{viewModel.state==PageState.CONTENT?View.VISIBLE:View.GONE,default=gone}"
+            android:visibility="@{viewModel.swipRefreshVisibility, default = visible}"
             app:colorSchemeResources="@{viewModel.colors}"
-            app:presenter="@{viewModel.presenter}"
-            app:refreshesSub="@{viewModel.refreshSubscriber}"
-            app:refreshing="@{viewModel.isRefreshing}">
+            app:onRefreshListener="@{viewModel}"
+            app:refresh="@{viewModel.state==PageState.REFRESH}">
 
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"

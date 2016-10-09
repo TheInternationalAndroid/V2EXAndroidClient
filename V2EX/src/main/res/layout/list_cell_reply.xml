@@ -5,7 +5,7 @@
 
         <import type="com.rayman.v2ex.viewmodel.topic.ReplyCellVM" />
 
-        <import type="com.rayman.v2ex.widget.utils.DateUtil" />
+        <import type="com.ray.mvvm.lib.widget.utils.DateUtil" />
 
         <import type="com.rayman.v2ex.ui.adapter.list.TopicPageAdapter" />
 
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_l"
                 android:layout_toRightOf="@id/name"
-                android:text="@{DateUtil.getFormatPassTime(viewModel.entity.created),default=Date}"
+                android:text="@{DateUtil.getFormatPassTime(viewModel.entity.created), default = Date}"
                 android:textColor="@color/text_gray"
                 android:textSize="@dimen/text_m" />
 
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:text="@{String.valueOf(viewModel.position+1-TopicPageAdapter.HEADER_COUNT),default=1}"
+                android:text="@{String.valueOf(viewModel.position + 1 - TopicPageAdapter.HEADER_COUNT), default = 1}"
                 android:textColor="@color/text_white"
                 android:textSize="@dimen/text_m" />
 

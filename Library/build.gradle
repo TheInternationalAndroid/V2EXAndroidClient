@@ -71,6 +71,7 @@ retrolambda {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
+
     compile depMap.RecyclerView
     compile depMap.CardView
     compile depMap.Multidex
@@ -81,23 +82,39 @@ dependencies {
     compile depMap.Glide
     compile depMap.GlideOkhttpIntegration
     compile depMap.OkHttp
+    compile depMap.OkHttpWS
     compile depMap.LoggingInterceptor
     compile depMap.Retrofit
     compile depMap.RxJavaAdapter
+    //    compile depMap.Java8Adapter
+//    compile depMap.GuavaAdapter
+//    compile depMap.GsonConverter
+//    compile depMap.JacksonConverter
+    compile depMap.MoshiConverter
+//    compile depMap.ProtobufConverter
+//    compile depMap.WireConverter
+//    compile depMap.SimpleXMLConverter
+//    compile depMap.ScalarsConverter
     compile depMap.RxAndroid
+
     compile depMap.RxBinding
+    compile depMap.RxBindingSupportV4
     compile depMap.RxBindingAppcompat
+    compile depMap.RxBindingDesign
+    compile depMap.RxBindingRecyclerView
+//  compile depMap.RxLeanBack
+
     compile depMap.Dagger
-//    compile depMap.MaterialMenuToolbar
+    compile depMap.MaterialMenuToolbar
     compile depMap.RoundedImageview
     compile depMap.Timber
     compile depMap.RxPermissions
-    compile depMap.MoshiConverter
 //    compile depMap.JobQueue
     compile depMap.androidCrop
     compile depMap.FlexBox
     compile depMap.ScaleImageView
     compile depMap.Moshi
+    compile depMap.FastJson
 
     debugCompile depMap.Stetho
     debugCompile depMap.StethoOkhttp3
@@ -109,12 +126,43 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+//    compile depMap.AutoValue
+//    compile depMap.AutoParcel
+//    apt depMap.AutoParcelProcessor
+
     provided depMap.Guava
     apt depMap.DaggerCompile
     retrolambdaConfig depMap.RetroLambdaConfig
 
     provided depMap.LeakCanary
 
+    compile depMap.EspressoIDLing
+
+    // Dependencies for local unit tests
     testCompile depMap.JUnit
+    testCompile depMap.MockitoAll
+    testCompile depMap.Hamcrest
+
+    // Android Testing Support Library's runner and rules
+    androidTestCompile depMap.RunnerSupport
+    androidTestCompile depMap.RulesSupport
+
+    // Dependencies for android unit tests
+    androidTestCompile depMap.JUnit
+    androidTestCompile depMap.FestAssert
+    androidTestCompile depMap.FestAndroid
+    androidTestCompile depMap.Robolectric
+    androidTestCompile depMap.MockitoCore
+    androidTestCompile depMap.DexMaker
+    androidTestCompile depMap.DexMakerMockito
+    androidTestCompile depMap.EspressoCore
+    androidTestCompile depMap.EspressoContrib
+    androidTestCompile depMap.EspressoIntents
+    androidTestCompile depMap.Annotations
+    androidTestCompile depMap.SupportV4
+    androidTestCompile depMap.AppCompat
+    androidTestCompile depMap.Design
+    androidTestCompile depMap.RecyclerView
+    androidTestCompile depMap.UIAutomator
 
 }

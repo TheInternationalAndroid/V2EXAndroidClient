@@ -23,14 +23,14 @@
 
 package com.rayman.v2ex.ui.view.topic;
 
-import com.rayman.v2ex.di.modules.LayoutManagerModule;
-import com.rayman.v2ex.di.scope.PerActivity;
-import com.rayman.v2ex.model.model.reply.ReplyEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.di.modules.LayoutManagerModule;
+import com.ray.mvvm.lib.di.scope.PerActivity;
+import com.ray.mvvm.lib.view.base.comp.ActivityComp;
+import com.ray.mvvm.lib.view.base.presenter.IPresenter;
+import com.ray.mvvm.lib.view.base.view.IView;
+import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.common.IMemberCellView;
-import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
-import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
-import com.rayman.v2ex.ui.view.base.view.IView;
 import com.rayman.v2ex.viewmodel.topic.TopicVMModule;
 
 import java.util.List;
@@ -68,7 +68,7 @@ public interface TopicContract {
     interface View extends IView,IMemberCellView{
     }
 
-    interface Preenter extends IPresenter {
+    interface Presenter extends IPresenter {
         void requestDetail(long id, Subscriber<List<TopicEntity>> subscriber);
 
         void requestReplies(long id, Subscriber<List<ReplyEntity>> subscriber);

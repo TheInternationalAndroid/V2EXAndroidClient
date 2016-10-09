@@ -27,12 +27,12 @@ import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
+import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
 import com.rayman.v2ex.databinding.ListCellTopicShortBinding;
 import com.rayman.v2ex.databinding.ListHeaderUserDetailBinding;
-import com.rayman.v2ex.model.model.member.MemberEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.adapter.list.base.BaseHeaderAdapter;
-import com.rayman.v2ex.ui.adapter.list.base.CellVM;
+import com.ray.mvvm.lib.model.model.member.MemberEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.common.ITopicShortCellView;
 import com.rayman.v2ex.viewmodel.topic.TopicShortCellVM;
 
@@ -53,7 +53,7 @@ import com.rayman.v2ex.viewmodel.topic.TopicShortCellVM;
  * \               ||----w |
  * \               ||     ||
  */
-public class AccountPageAdapter extends BaseHeaderAdapter<TopicEntity> {
+public class AccountPageAdapter extends BaseListAdapter<TopicEntity> {
 
     private static final int VIEW_HEADER = 0;
     private static final int VIEW_TOPIC = 1;
@@ -76,18 +76,7 @@ public class AccountPageAdapter extends BaseHeaderAdapter<TopicEntity> {
     }
 
     @Override
-    protected Object createViewModel(int position) {
-        switch (getItemViewType(position)) {
-            case VIEW_HEADER:
-                return new CellVM<>(memberEntity);
-            default:
-            case VIEW_TOPIC:
-                return new TopicShortCellVM(getItem(position), topicShortCellView);
-        }
-    }
-
-    @Override
-    protected ViewDataBinding createBinding(ViewGroup parent, int viewType) {
+    protected ViewDataBinding createBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
         switch (viewType) {
             case VIEW_HEADER:
                 return ListHeaderUserDetailBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
@@ -98,7 +87,18 @@ public class AccountPageAdapter extends BaseHeaderAdapter<TopicEntity> {
     }
 
     @Override
-    protected int getHeaderCount() {
+    protected Object createViewModel(int viewType, int position) {
+        switch (viewType) {
+            case VIEW_HEADER:
+                return new CellVM<>(memberEntity);
+            default:
+            case VIEW_TOPIC:
+                return new TopicShortCellVM(getItem(position), topicShortCellView);
+        }
+    }
+
+    @Override
+    public int getHeaderCount() {
         return HEADER_COUNT;
     }
 

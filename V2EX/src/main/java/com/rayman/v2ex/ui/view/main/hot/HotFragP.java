@@ -23,16 +23,15 @@
 
 package com.rayman.v2ex.ui.view.main.hot;
 
-import com.rayman.v2ex.model.http.service.TopicService;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.view.base.presenter.BasePresenter;
+import com.ray.mvvm.lib.model.http.ExObserver;
+import com.ray.mvvm.lib.model.http.service.TopicService;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.view.base.presenter.BasePresenter;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
 
 import javax.inject.Inject;
-
-import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -62,7 +61,7 @@ public class HotFragP extends BasePresenter implements HotFragContract.Presenter
     }
 
     @Override
-    public void requestHotList(Subscriber<List<TopicEntity>> subscriber) {
-        subscribeHttpReq(topicService.hot(), subscriber);
+    public void requestHotList(ExObserver<List<TopicEntity>> observer) {
+        subscribeCommonReq(topicService.hot(), observer);
     }
 }

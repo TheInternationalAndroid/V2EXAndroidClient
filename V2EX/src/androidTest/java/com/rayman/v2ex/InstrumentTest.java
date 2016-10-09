@@ -27,7 +27,7 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.support.test.runner.AndroidJUnit4;
 
-import com.rayman.v2ex.model.model.member.MemberBaseEntity;
+import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
 
 import org.hamcrest.core.Is;
 import org.junit.Assert;

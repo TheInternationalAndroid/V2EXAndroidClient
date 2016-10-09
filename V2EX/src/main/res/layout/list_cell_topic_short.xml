@@ -25,7 +25,7 @@
 
         <import type="com.rayman.v2ex.viewmodel.topic.TopicShortCellVM" />
 
-        <import type="com.rayman.v2ex.widget.utils.DateUtil" />
+        <import type="com.ray.mvvm.lib.widget.utils.DateUtil" />
 
         <variable
             name="viewModel"

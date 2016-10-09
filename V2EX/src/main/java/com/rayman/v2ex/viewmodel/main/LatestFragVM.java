@@ -24,16 +24,12 @@
 package com.rayman.v2ex.viewmodel.main;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import com.rayman.v2ex.model.http.LSubscriber;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.viewmodel.BaseListVM;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.ui.view.main.latest.LatestFragContract;
 import com.rayman.v2ex.ui.view.main.latest.LatestFragP;
-import com.rayman.v2ex.viewmodel.BaseSwipStateVM;
-import com.rayman.v2ex.widget.anotations.PageState;
-import com.rayman.v2ex.widget.anotations.RequestType;
 
 import java.util.List;
 
@@ -54,59 +50,19 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class LatestFragVM extends BaseSwipStateVM<LatestFragContract.Presenter, LatestFragContract.View> {
+public class LatestFragVM extends BaseListVM<LatestFragContract.Presenter, LatestFragContract.View, TopicEntity> {
 
-    private TopicListAdapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
-
-    public LatestFragVM(LatestFragP presenter, LatestFragContract.View view, RecyclerView.LayoutManager layoutManager) {
-        super(presenter, view);
-        this.layoutManager = layoutManager;
-        adapter = new TopicListAdapter(view);
+    public LatestFragVM(LatestFragP presenter, LatestFragContract.View view, RecyclerView.LayoutManager layoutManager, TopicListAdapter topicListAdapter) {
+        super(presenter, view, layoutManager, topicListAdapter);
     }
 
     @Override
-    public void onRetryClicked(View view) {
-        requestLatestTopic(RequestType.CONTENT_LOADING);
+    protected void exeRequest() {
+        presenter.requestLatestList(this);
     }
 
     @Override
-    public void onRefresh() {
-        requestLatestTopic(RequestType.SWIP_REFRESH);
-    }
-
-    public TopicListAdapter getAdapter() {
-        return adapter;
-    }
-
-    public RecyclerView.LayoutManager getLayoutManager() {
-        return layoutManager;
-    }
-
-    public void requestLatestTopic(@RequestType int requestType) {
-        presenter.requestLatestList(new LSubscriber<List<TopicEntity>>() {
-
-            @Override
-            public void onStart() {
-                super.onStart();
-                controlStartState(requestType);
-            }
-
-            @Override
-            public void onNext(List<TopicEntity> respEntity) {
-                controlSuccessState(requestType);
-                if (respEntity.size() > 0) {
-                    setState(PageState.CONTENT);
-                    adapter.setList(respEntity);
-                } else {
-                    setState(PageState.EMPTY);
-                }
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-                controlErrorState(requestType, throwable.getMessage());
-            }
-        });
+    protected void bindResp(List<TopicEntity> data) {
+        getAdapter().setList(data);
     }
 }

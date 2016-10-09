@@ -26,13 +26,13 @@ package com.rayman.v2ex.viewmodel.node;
 import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
 
-import com.android.databinding.library.baseAdapters.BR;
-import com.rayman.v2ex.model.http.LSubscriber;
-import com.rayman.v2ex.model.model.node.NodeEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.model.http.ExSubscriber;
+import com.ray.mvvm.lib.model.model.node.NodeEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.viewmodel.BaseVM;
+import com.rayman.v2ex.BR;
 import com.rayman.v2ex.ui.adapter.list.NodePageAdapter;
 import com.rayman.v2ex.ui.view.node.NodeContract;
-import com.rayman.v2ex.viewmodel.BaseVM;
 
 import java.util.List;
 
@@ -92,7 +92,7 @@ public class NodeVM extends BaseVM<NodeContract.Presenter, NodeContract.View> {
     }
 
     private void requestNodeDetail() {
-        presenter.requestNodeByName(nodeEntity.getName(), new LSubscriber<NodeEntity>() {
+        presenter.requestNodeByName(nodeEntity.getName(), new ExSubscriber<NodeEntity>() {
 
             @Override
             public void onError(Throwable e) {
@@ -107,7 +107,7 @@ public class NodeVM extends BaseVM<NodeContract.Presenter, NodeContract.View> {
     }
 
     private void requestTopicList() {
-        presenter.requestTopicsByNodeId(nodeEntity.getId(), new LSubscriber<List<TopicEntity>>() {
+        presenter.requestTopicsByNodeId(nodeEntity.getId(), new ExSubscriber<List<TopicEntity>>() {
             @Override
             public void onError(Throwable e) {
             }

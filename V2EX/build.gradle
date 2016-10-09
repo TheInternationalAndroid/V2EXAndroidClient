@@ -68,55 +68,9 @@ retrolambda {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':Library')
 
-    compile depMap.RecyclerView
-    compile depMap.CardView
-    compile depMap.Design
-    compile depMap.AppCompat
-
-//    compile depMap.AutoValue
-//    compile depMap.AutoParcel
-//    apt depMap.AutoParcelProcessor
-
-    compile depMap.FastJson
-
-//    compile depMap.DSLJson
-//    apt depMap.DSLJsonProcessor
-
-    compile depMap.Picasso
-    compile depMap.OkHttp
-    compile depMap.LoggingInterceptor
-    compile depMap.OkHttpWS
-    compile depMap.Retrofit
-    compile depMap.RxJavaAdapter
-//    compile depMap.Java8Adapter
-//    compile depMap.GuavaAdapter
-//    compile depMap.GsonConverter
-//    compile depMap.JacksonConverter
-//    compile depMap.MoshiConverter
-//    compile depMap.ProtobufConverter
-//    compile depMap.WireConverter
-//    compile depMap.SimpleXMLConverter
-//    compile depMap.ScalarsConverter
-    compile depMap.Otto
-    compile depMap.RxAndroid
-    compile depMap.Dagger
     apt depMap.DaggerCompile
-    compile depMap.AnnotationJsr250
-    compile depMap.MaterialMenuToolbar
-    compile depMap.RoundedImageview
-    compile depMap.FlowLayout
-    compile depMap.RxBinding
-    compile depMap.RxBindingSupportV4
-    compile depMap.RxBindingAppcompat
-    compile depMap.RxBindingDesign
-    compile depMap.RxBindingRecyclerView
-//    compile depMap.RxLeanBack
-    compile depMap.Timber
-    compile depMap.EspressoIDLing
-    compile depMap.Guava
-    compile depMap.Multidex
-    retrolambdaConfig depMap.RetroLambdaConfig
 
     debugCompile depMap.LeakCanary
     releaseCompile depMap.LeakCanaryAndroidNoOp

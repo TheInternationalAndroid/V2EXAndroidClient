@@ -27,10 +27,10 @@ import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.ray.mvvm.lib.view.adapter.OnItemClick;
+import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
 import com.rayman.v2ex.databinding.ListCellTestApiBinding;
-import com.rayman.v2ex.model.model.test.TestApiEntity;
-import com.rayman.v2ex.ui.adapter.OnItemClick;
-import com.rayman.v2ex.ui.adapter.list.base.BaseListAdapter;
+import com.ray.mvvm.lib.model.model.test.TestApiEntity;
 
 /**
  * Created by Android Studio.
@@ -56,7 +56,7 @@ public class TestApiListAdapter extends BaseListAdapter<TestApiEntity> {
     }
 
     @Override
-    protected ViewDataBinding buildBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
+    protected ViewDataBinding createBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
         return ListCellTestApiBinding.inflate(layoutInflater, parent, false);
     }
 

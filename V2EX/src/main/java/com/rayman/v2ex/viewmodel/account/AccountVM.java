@@ -26,16 +26,16 @@ package com.rayman.v2ex.viewmodel.account;
 import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
 
-import com.android.databinding.library.baseAdapters.BR;
-import com.rayman.v2ex.model.http.LSubscriber;
-import com.rayman.v2ex.model.model.member.MemberEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.model.http.ExSubscriber;
+import com.ray.mvvm.lib.viewmodel.BaseListVM;
+import com.ray.mvvm.lib.widget.anotations.RequestType;
+import com.rayman.v2ex.BR;
+import com.ray.mvvm.lib.model.model.member.MemberEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.AccountPageAdapter;
 import com.rayman.v2ex.ui.view.account.AccountContract;
 import com.rayman.v2ex.ui.view.account.AccountP;
-import com.rayman.v2ex.viewmodel.BaseVM;
 
-import java.util.List;
 
 /**
  * Created by Android Studio.
@@ -54,34 +54,25 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class AccountVM extends BaseVM<AccountContract.Presneter, AccountContract.View> {
+public class AccountVM extends BaseListVM<AccountContract.Presneter, AccountContract.View, TopicEntity> {
 
     private MemberEntity member;
     private AccountPageAdapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
 
-    public AccountVM(RecyclerView.LayoutManager layoutManager, AccountP presenter, AccountContract.View view) {
-        super(presenter, view);
-        this.layoutManager = layoutManager;
+    public AccountVM(AccountP presenter, AccountContract.View view, RecyclerView.LayoutManager layoutManager, AccountPageAdapter accountPageAdapter) {
+        super(presenter, view, layoutManager, accountPageAdapter);
         adapter = new AccountPageAdapter(view);
     }
 
-    private void requestTopics(String userName) {
-        presenter.requestTopicList(userName, new LSubscriber<List<TopicEntity>>() {
-            @Override
-            public void onNext(List<TopicEntity> respEntity) {
-                if (respEntity.size() > 0)
-                    adapter.setList(respEntity);
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-            }
-        });
+    @Override
+    protected void exeRequest() {
+        String userName = member.getUsername();
+        presenter.requestTopicList(userName, this);
+        requestMemberDetail(userName);
     }
 
     private void requestMemberDetail(String userName) {
-        presenter.requestMemberDetail(userName, new LSubscriber<MemberEntity>() {
+        presenter.requestMemberDetail(userName, new ExSubscriber<MemberEntity>() {
             @Override
             public void onNext(MemberEntity respEntity) {
                 if (member != null)
@@ -92,14 +83,6 @@ public class AccountVM extends BaseVM<AccountContract.Presneter, AccountContract
             public void onError(Throwable throwable) {
             }
         });
-    }
-
-    public AccountPageAdapter getAdapter() {
-        return adapter;
-    }
-
-    public RecyclerView.LayoutManager getLayoutManager() {
-        return layoutManager;
     }
 
     @Bindable
@@ -117,8 +100,7 @@ public class AccountVM extends BaseVM<AccountContract.Presneter, AccountContract
             return;
         this.member = member;
         adapter.setMemberEntity(member);
-        requestMemberDetail(member.getUsername());
-        requestTopics(member.getUsername());
+        initiallyReq(RequestType.SILENT);
     }
 
 }

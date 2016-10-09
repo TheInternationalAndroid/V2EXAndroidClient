@@ -31,19 +31,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ray.mvvm.lib.view.base.page.BaseDIFragment;
+import com.ray.mvvm.lib.view.base.view.ILifeCycle;
+import com.ray.mvvm.lib.widget.anotations.RequestType;
 import com.rayman.v2ex.app.ParaKeys;
 import com.rayman.v2ex.databinding.FragmentLatestBinding;
-import com.rayman.v2ex.model.model.member.MemberBaseEntity;
-import com.rayman.v2ex.model.model.node.NodeEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
+import com.ray.mvvm.lib.model.model.node.NodeEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.account.AccountActivity;
-import com.rayman.v2ex.ui.view.base.page.BaseDIFragment;
-import com.rayman.v2ex.ui.view.base.view.ILifeCycle;
 import com.rayman.v2ex.ui.view.node.NodeActivity;
 import com.rayman.v2ex.ui.view.topic.TopicActivity;
 import com.rayman.v2ex.viewmodel.main.LatestFragVM;
 import com.rayman.v2ex.viewmodel.main.LatestFragVMModule;
-import com.rayman.v2ex.widget.anotations.RequestType;
 
 import javax.inject.Inject;
 
@@ -60,15 +60,9 @@ public class LatestFragment extends BaseDIFragment implements LatestFragContract
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        getFragmentComp().refWatcher().watch(viewModel);
-    }
-
-    @Override
     public void buildComp() {
         DaggerLatestFragContract_Comp.builder()
-                .fragmentComp(getFragmentComp())
+                .fragmentComp(fragmentComp())
                 .latestFragVMModule(new LatestFragVMModule(this))
                 .build()
                 .inject(this);
@@ -82,7 +76,7 @@ public class LatestFragment extends BaseDIFragment implements LatestFragContract
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel.requestLatestTopic(RequestType.CONTENT_LOADING);
+        viewModel.initiallyReq(RequestType.CONTENT_LOADING);
     }
 
     @Override

@@ -23,19 +23,19 @@
 
 package com.rayman.v2ex.ui.view.main.hot;
 
-import com.rayman.v2ex.di.scope.PerBindingFragment;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.di.scope.PerFragment;
+import com.ray.mvvm.lib.model.http.ExObserver;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.view.base.comp.FragmentComp;
+import com.ray.mvvm.lib.view.base.presenter.IPresenter;
+import com.ray.mvvm.lib.view.base.view.IView;
 import com.rayman.v2ex.ui.view.common.IMemberCellView;
 import com.rayman.v2ex.ui.view.common.ITopicCellView;
-import com.rayman.v2ex.ui.view.base.comp.FragmentComp;
-import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
-import com.rayman.v2ex.viewmodel.main.HotFragVM;
 import com.rayman.v2ex.viewmodel.main.HotFragVMModule;
 
 import java.util.List;
 
 import dagger.Component;
-import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -56,22 +56,19 @@ import rx.Subscriber;
  */
 public interface HotFragContract {
 
-    @PerBindingFragment
+    @PerFragment
     @Component(modules = {HotFragVMModule.class}, dependencies = FragmentComp.class)
     interface Comp extends FragmentComp {
 
         void inject(HotFragment hotFragment);
 
-        HotFragVM viewModel();
-
-        HotFragP presenter();
     }
 
     interface Presenter extends IPresenter {
-        void requestHotList(Subscriber<List<TopicEntity>> subscriber);
+        void requestHotList(ExObserver<List<TopicEntity>> observer);
     }
 
-    interface View extends ITopicCellView, IMemberCellView {
+    interface View extends IView, ITopicCellView, IMemberCellView {
     }
 
 }

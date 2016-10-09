@@ -23,7 +23,7 @@
 
 package com.rayman.v2ex.ui.view.common;
 
-import com.rayman.v2ex.model.model.member.MemberBaseEntity;
+import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
 
 /**
  * Created by Android Studio.

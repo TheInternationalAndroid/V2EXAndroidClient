@@ -29,8 +29,8 @@ import android.support.v4.app.FragmentManager;
 
 import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
+import com.ray.mvvm.lib.di.scope.PerActivity;
 import com.rayman.v2ex.R;
-import com.rayman.v2ex.di.scope.PerActivity;
 import com.rayman.v2ex.ui.adapter.pager.MainPagerAdapter;
 import com.rayman.v2ex.ui.view.main.MainActivityP;
 import com.rayman.v2ex.ui.view.main.MainContract;
@@ -58,15 +58,17 @@ import dagger.Provides;
 @Module
 public class MainActivityVMModule {
 
-    private MainContract.View view;
+    private final MainContract.View view;
+    private final Activity activity;
 
-    public MainActivityVMModule(MainContract.View view) {
+    public MainActivityVMModule(MainContract.View view, Activity activity) {
         this.view = view;
+        this.activity = activity;
     }
 
     @Provides
     @PerActivity
-    MainActivityVM provideMainActivityVM(MainActivityP presenter, FragmentManager fragmentManager, Activity activity) {
+    MainActivityVM provideMainActivityVM(MainActivityP presenter, FragmentManager fragmentManager) {
         MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(fragmentManager, activity.getResources().getStringArray(R.array.main_tab_title));
         MaterialMenuIconToolbar menuIconToolbar = new MaterialMenuIconToolbar(activity, Color.WHITE, MaterialMenuDrawable.Stroke.THIN) {
             @Override

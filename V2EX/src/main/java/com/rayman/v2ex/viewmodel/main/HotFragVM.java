@@ -24,16 +24,12 @@
 package com.rayman.v2ex.viewmodel.main;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import com.rayman.v2ex.model.http.LSubscriber;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.viewmodel.BaseListVM;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.ui.view.main.hot.HotFragContract;
 import com.rayman.v2ex.ui.view.main.hot.HotFragP;
-import com.rayman.v2ex.viewmodel.BaseSwipStateVM;
-import com.rayman.v2ex.widget.anotations.PageState;
-import com.rayman.v2ex.widget.anotations.RequestType;
 
 import java.util.List;
 
@@ -54,60 +50,23 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class HotFragVM extends BaseSwipStateVM<HotFragContract.Presenter, HotFragContract.View> {
+public class HotFragVM extends BaseListVM<HotFragContract.Presenter, HotFragContract.View, TopicEntity> {
 
     private TopicListAdapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
 
-    public HotFragVM(HotFragP presenter, HotFragContract.View view, RecyclerView.LayoutManager layoutManager) {
-        super(presenter, view);
-        this.layoutManager = layoutManager;
+    public HotFragVM(HotFragP presenter, HotFragContract.View view, RecyclerView.LayoutManager layoutManager, TopicListAdapter topicListAdapter) {
+        super(presenter, view, layoutManager, topicListAdapter);
         adapter = new TopicListAdapter(view);
     }
 
     @Override
-    public void onRetryClicked(View view) {
-        requestHotTopicList(RequestType.CONTENT_LOADING);
-    }
-
-    public TopicListAdapter getAdapter() {
-        return adapter;
-    }
-
-    public RecyclerView.LayoutManager getLayoutManager() {
-        return layoutManager;
+    protected void exeRequest() {
+        presenter.requestHotList(this);
     }
 
     @Override
-    public void onRefresh() {
-        requestHotTopicList(RequestType.SWIP_REFRESH);
-    }
-
-    public void requestHotTopicList(@RequestType int requestType) {
-        presenter.requestHotList(new LSubscriber<List<TopicEntity>>() {
-
-            @Override
-            public void onStart() {
-                super.onStart();
-                controlStartState(requestType);
-            }
-
-            @Override
-            public void onNext(List<TopicEntity> respEntity) {
-                controlSuccessState(requestType);
-                if (respEntity.size() > 0) {
-                    setState(PageState.CONTENT);
-                    adapter.setList(respEntity);
-                } else {
-                    setState(PageState.EMPTY);
-                }
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-                controlErrorState(requestType, throwable.getMessage());
-            }
-        });
+    protected void bindResp(List<TopicEntity> data) {
+        adapter.setList(data);
     }
 
 }

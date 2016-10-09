@@ -30,11 +30,11 @@ import android.view.View;
 
 import com.balysv.materialmenu.MaterialMenuDrawable;
 import com.balysv.materialmenu.extras.toolbar.MaterialMenuIconToolbar;
+import com.ray.mvvm.lib.viewmodel.BaseVM;
+import com.ray.mvvm.lib.widget.eventbus.event.HttpEvent;
 import com.rayman.v2ex.BR;
 import com.rayman.v2ex.ui.adapter.pager.MainPagerAdapter;
 import com.rayman.v2ex.ui.view.main.MainContract;
-import com.rayman.v2ex.viewmodel.BaseVM;
-import com.rayman.v2ex.widget.eventbus.event.HttpEvent;
 
 import rx.functions.Action1;
 

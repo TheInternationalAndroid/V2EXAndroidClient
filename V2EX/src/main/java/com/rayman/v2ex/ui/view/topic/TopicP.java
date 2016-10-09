@@ -23,11 +23,11 @@
 
 package com.rayman.v2ex.ui.view.topic;
 
-import com.rayman.v2ex.model.http.service.ReplyService;
-import com.rayman.v2ex.model.http.service.TopicService;
-import com.rayman.v2ex.model.model.reply.ReplyEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.view.base.presenter.BasePresenter;
+import com.ray.mvvm.lib.model.http.service.ReplyService;
+import com.ray.mvvm.lib.model.http.service.TopicService;
+import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.view.base.presenter.BasePresenter;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
@@ -53,7 +53,7 @@ import rx.Subscriber;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicP extends BasePresenter implements TopicContract.Preenter {
+public class TopicP extends BasePresenter implements TopicContract.Presenter {
 
     private TopicService topicService;
     private ReplyService replyService;
@@ -67,11 +67,11 @@ public class TopicP extends BasePresenter implements TopicContract.Preenter {
 
     @Override
     public void requestDetail(long id, Subscriber<List<TopicEntity>> subscriber) {
-        subscribeHttpReq(topicService.topicById(id), subscriber);
+        subscribeCommonReq(topicService.topicById(id), subscriber);
     }
 
     @Override
     public void requestReplies(long id, Subscriber<List<ReplyEntity>> subscriber) {
-        subscribeHttpReq(replyService.replies(id), subscriber);
+        subscribeCommonReq(replyService.replies(id), subscriber);
     }
 }

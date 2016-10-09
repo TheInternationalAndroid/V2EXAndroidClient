@@ -23,13 +23,13 @@
 
     <data>
 
-        <import type="com.rayman.v2ex.ui.adapter.list.base.CellVM" />
+        <import type="com.ray.mvvm.lib.view.adapter.list.base.CellVM" />
 
-        <import type="com.rayman.v2ex.model.model.member.MemberEntity" />
+        <import type="com.ray.mvvm.lib.model.model.member.MemberEntity" />
 
-        <import type="com.rayman.v2ex.widget.utils.StringUtil" />
+        <import type="com.ray.mvvm.lib.widget.utils.StringUtil" />
 
-        <import type="com.rayman.v2ex.widget.utils.DateUtil" />
+        <import type="com.ray.mvvm.lib.widget.utils.DateUtil" />
 
         <import type="android.view.View" />
 

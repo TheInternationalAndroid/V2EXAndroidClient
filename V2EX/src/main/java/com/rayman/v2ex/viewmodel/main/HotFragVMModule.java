@@ -23,13 +23,14 @@
 
 package com.rayman.v2ex.viewmodel.main;
 
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.LinearLayoutManager;
 
-import com.rayman.v2ex.di.modules.LayoutManagerModule;
-import com.rayman.v2ex.di.scope.PerBindingFragment;
+import com.ray.mvvm.lib.di.modules.LayoutManagerModule;
+import com.ray.mvvm.lib.di.scope.PerFragment;
+import com.ray.mvvm.lib.widget.anotations.ListType;
+import com.rayman.v2ex.ui.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.ui.view.main.hot.HotFragContract;
 import com.rayman.v2ex.ui.view.main.hot.HotFragP;
-import com.rayman.v2ex.widget.anotations.ListType;
 
 import javax.inject.Named;
 
@@ -63,9 +64,9 @@ public class HotFragVMModule {
     }
 
     @Provides
-    @PerBindingFragment
-    HotFragVM provideHotFragVM(HotFragP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
-        return new HotFragVM(presenter, hotFragView, layoutManager);
+    @PerFragment
+    HotFragVM provideHotFragVM(HotFragP presenter, @Named(ListType.VERTICAL) LinearLayoutManager layoutManager) {
+        return new HotFragVM(presenter, hotFragView, layoutManager, new TopicListAdapter(hotFragView));
     }
 
 }

@@ -23,11 +23,12 @@
 
 package com.rayman.v2ex.ui.view.account;
 
-import com.rayman.v2ex.model.http.service.MemberService;
-import com.rayman.v2ex.model.http.service.TopicService;
-import com.rayman.v2ex.model.model.member.MemberEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.view.base.presenter.BasePresenter;
+import com.ray.mvvm.lib.model.http.ExObserver;
+import com.ray.mvvm.lib.model.http.service.MemberService;
+import com.ray.mvvm.lib.model.http.service.TopicService;
+import com.ray.mvvm.lib.model.model.member.MemberEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.view.base.presenter.BasePresenter;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
@@ -66,12 +67,12 @@ public class AccountP extends BasePresenter implements AccountContract.Presneter
     }
 
     @Override
-    public void requestTopicList(String userName, Subscriber<List<TopicEntity>> subscriber) {
-        subscribeHttpReq(topicService.topicsByUserName(userName), subscriber);
+    public void requestTopicList(String userName, ExObserver<List<TopicEntity>> observer) {
+        subscribeCommonReq(topicService.topicsByUserName(userName), observer);
     }
 
     @Override
     public void requestMemberDetail(String userName, Subscriber<MemberEntity> subscriber) {
-        subscribeHttpReq(memberService.member(userName), subscriber);
+        subscribeCommonReq(memberService.member(userName), subscriber);
     }
 }

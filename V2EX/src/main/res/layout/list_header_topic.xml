@@ -7,7 +7,7 @@
 
         <import type="android.text.Html" />
 
-        <import type="com.rayman.v2ex.widget.utils.DateUtil" />
+        <import type="com.ray.mvvm.lib.widget.utils.DateUtil" />
 
         <variable
             name="viewModel"

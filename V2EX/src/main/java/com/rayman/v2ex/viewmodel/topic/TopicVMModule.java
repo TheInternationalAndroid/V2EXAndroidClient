@@ -23,12 +23,12 @@
 
 package com.rayman.v2ex.viewmodel.topic;
 
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.LinearLayoutManager;
 
-import com.rayman.v2ex.di.scope.PerActivity;
+import com.ray.mvvm.lib.di.scope.PerActivity;
+import com.ray.mvvm.lib.widget.anotations.ListType;
 import com.rayman.v2ex.ui.view.topic.TopicContract;
 import com.rayman.v2ex.ui.view.topic.TopicP;
-import com.rayman.v2ex.widget.anotations.ListType;
 
 import javax.inject.Named;
 
@@ -63,7 +63,7 @@ public class TopicVMModule {
 
     @Provides
     @PerActivity
-    TopicVM provideTopicVM(TopicP topicP, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
+    TopicVM provideTopicVM(TopicP topicP, @Named(ListType.VERTICAL) LinearLayoutManager layoutManager) {
         return new TopicVM(topicP, view, layoutManager);
     }
 

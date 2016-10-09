@@ -13,26 +13,19 @@
     <string name="click_test">Click to Test</string>
     <string name="sending">SendingRequest</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <!--Main-->
     <string-array name="main_tab_title">
         <item>最新</item>
         <item>热门</item>
     </string-array>
 
-    <!--State-->
-    <string name="state_empty_msg">啥子都木得木得木得~~~</string>
-    <string name="state_error_msg">不晓得啥子瓜了~~~</string>
-    <string name="state_retry_msg">重试</string>
-    <string name="title_activity_account">AccountActivity</string>
-    <string name="title_activity_node">NodeActivity</string>
-    <string name="title_activity_topic">TopicActivity</string>
-
     <!--Account-->
     <string name="number_format">V2EX 第%1$s号会员</string>
     <string name="created_at_format">加入于%1$s</string>
+
+    <string name="title_activity_account">AccountActivity</string>
+    <string name="title_activity_node">NodeActivity</string>
+    <string name="title_activity_topic">TopicActivity</string>
     <string name="title_activity_test_api">TestAPIActivity</string>
     <string name="title_activity_test_rx">TestRxActivity</string>
 

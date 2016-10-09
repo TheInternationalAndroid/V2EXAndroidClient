@@ -23,19 +23,20 @@
 
 package com.rayman.v2ex.ui.view.main.latest;
 
-import com.rayman.v2ex.di.scope.PerBindingFragment;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.di.scope.PerFragment;
+import com.ray.mvvm.lib.model.http.ExObserver;
+import com.ray.mvvm.lib.view.base.comp.FragmentComp;
+import com.ray.mvvm.lib.view.base.presenter.IPresenter;
+import com.ray.mvvm.lib.view.base.view.IView;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.common.IMemberCellView;
 import com.rayman.v2ex.ui.view.common.ITopicCellView;
-import com.rayman.v2ex.ui.view.base.comp.FragmentComp;
-import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
 import com.rayman.v2ex.viewmodel.main.LatestFragVM;
 import com.rayman.v2ex.viewmodel.main.LatestFragVMModule;
 
 import java.util.List;
 
 import dagger.Component;
-import rx.Subscriber;
 
 /**
  * Created by Android Studio.
@@ -56,7 +57,7 @@ import rx.Subscriber;
  */
 public interface LatestFragContract {
 
-    @PerBindingFragment
+    @PerFragment
     @Component(modules = {LatestFragVMModule.class}, dependencies = FragmentComp.class)
     interface Comp extends FragmentComp {
 
@@ -68,10 +69,10 @@ public interface LatestFragContract {
     }
 
     interface Presenter extends IPresenter {
-        void requestLatestList(Subscriber<List<TopicEntity>> subscriber);
+        void requestLatestList(ExObserver<List<TopicEntity>> subscriber);
     }
 
-    interface View extends ITopicCellView, IMemberCellView {
+    interface View extends IView, ITopicCellView, IMemberCellView {
     }
 
 }

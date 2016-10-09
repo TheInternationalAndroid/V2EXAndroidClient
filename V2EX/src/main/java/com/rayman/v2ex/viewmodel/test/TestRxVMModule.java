@@ -23,13 +23,13 @@
 
 package com.rayman.v2ex.viewmodel.test;
 
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.LinearLayoutManager;
 
-import com.rayman.v2ex.di.modules.LayoutManagerModule;
-import com.rayman.v2ex.di.scope.PerActivity;
+import com.ray.mvvm.lib.di.modules.LayoutManagerModule;
+import com.ray.mvvm.lib.di.scope.PerActivity;
+import com.ray.mvvm.lib.widget.anotations.ListType;
 import com.rayman.v2ex.ui.view.test.rx.TestRxContract;
 import com.rayman.v2ex.ui.view.test.rx.TestRxP;
-import com.rayman.v2ex.widget.anotations.ListType;
 
 import javax.inject.Named;
 
@@ -64,7 +64,7 @@ public class TestRxVMModule {
 
     @Provides
     @PerActivity
-    TestRxVM provideTestRxVM(@Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager, TestRxP presenter) {
+    TestRxVM provideTestRxVM(@Named(ListType.VERTICAL) LinearLayoutManager layoutManager, TestRxP presenter) {
         return new TestRxVM(presenter, view, layoutManager);
     }
 

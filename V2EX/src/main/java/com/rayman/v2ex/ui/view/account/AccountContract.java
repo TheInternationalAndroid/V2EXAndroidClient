@@ -23,12 +23,13 @@
 
 package com.rayman.v2ex.ui.view.account;
 
-import com.rayman.v2ex.di.scope.PerActivity;
-import com.rayman.v2ex.model.model.member.MemberEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
-import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
-import com.rayman.v2ex.ui.view.base.view.IView;
+import com.ray.mvvm.lib.di.scope.PerActivity;
+import com.ray.mvvm.lib.model.http.ExObserver;
+import com.ray.mvvm.lib.view.base.comp.ActivityComp;
+import com.ray.mvvm.lib.view.base.presenter.IPresenter;
+import com.ray.mvvm.lib.view.base.view.IView;
+import com.ray.mvvm.lib.model.model.member.MemberEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.common.ITopicShortCellView;
 import com.rayman.v2ex.viewmodel.account.AccountVM;
 import com.rayman.v2ex.viewmodel.account.AccountVMModule;
@@ -62,7 +63,7 @@ public interface AccountContract {
 
     interface Presneter extends IPresenter {
 
-        void requestTopicList(String userName, Subscriber<List<TopicEntity>> callback);
+        void requestTopicList(String userName, ExObserver<List<TopicEntity>> callback);
 
         void requestMemberDetail(String userName, Subscriber<MemberEntity> callback);
 

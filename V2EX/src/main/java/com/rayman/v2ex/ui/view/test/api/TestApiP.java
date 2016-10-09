@@ -23,15 +23,15 @@
 
 package com.rayman.v2ex.ui.view.test.api;
 
-import com.rayman.v2ex.model.http.service.MemberService;
-import com.rayman.v2ex.model.http.service.NodeService;
-import com.rayman.v2ex.model.http.service.ReplyService;
-import com.rayman.v2ex.model.http.service.TopicService;
-import com.rayman.v2ex.model.model.member.MemberEntity;
-import com.rayman.v2ex.model.model.node.NodeEntity;
-import com.rayman.v2ex.model.model.reply.ReplyEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.view.base.presenter.BasePresenter;
+import com.ray.mvvm.lib.model.http.service.MemberService;
+import com.ray.mvvm.lib.model.http.service.NodeService;
+import com.ray.mvvm.lib.model.http.service.ReplyService;
+import com.ray.mvvm.lib.model.http.service.TopicService;
+import com.ray.mvvm.lib.model.model.member.MemberEntity;
+import com.ray.mvvm.lib.model.model.node.NodeEntity;
+import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.view.base.presenter.BasePresenter;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
@@ -75,51 +75,51 @@ public class TestApiP extends BasePresenter implements TestApiContract.Presenter
 
     @Override
     public void requestHotList(Subscriber<List<TopicEntity>> subscriber) {
-        subscribeHttpReq(topicService.hot(), subscriber);
+        subscribeCommonReq(topicService.hot(), subscriber);
     }
 
     @Override
     public void requestLastestList(Subscriber<List<TopicEntity>> subscriber) {
-        subscribeHttpReq(topicService.latest(), subscriber);
+        subscribeCommonReq(topicService.latest(), subscriber);
     }
 
     @Override
     public void requestTopicListByName(String userName, Subscriber<List<TopicEntity>> subscriber) {
-        subscribeHttpReq(topicService.topicsByUserName(userName), subscriber);
+        subscribeCommonReq(topicService.topicsByUserName(userName), subscriber);
     }
 
     @Override
     public void requestNode(String nodeName, Subscriber<NodeEntity> subscriber) {
-        subscribeHttpReq(nodeService.nodeByName(nodeName), subscriber);
+        subscribeCommonReq(nodeService.nodeByName(nodeName), subscriber);
     }
 
     @Override
     public void requestTopicListByNodeId(long nodeId, Subscriber<List<TopicEntity>> subscriber) {
-        subscribeHttpReq(topicService.topicsByNodeId(nodeId), subscriber);
+        subscribeCommonReq(topicService.topicsByNodeId(nodeId), subscriber);
     }
 
     @Override
     public void requestTopicListByNodeName(String nodeName, Subscriber<List<TopicEntity>> subscriber) {
-        subscribeHttpReq(topicService.topicsByNodeName(nodeName), subscriber);
+        subscribeCommonReq(topicService.topicsByNodeName(nodeName), subscriber);
     }
 
     @Override
     public void requestTopicById(long topicId, Subscriber<List<TopicEntity>> subscriber) {
-        subscribeHttpReq(topicService.topicById(topicId), subscriber);
+        subscribeCommonReq(topicService.topicById(topicId), subscriber);
     }
 
     @Override
     public void requestNodelist(Subscriber<List<NodeEntity>> subscriber) {
-        subscribeHttpReq(nodeService.nodes(), subscriber);
+        subscribeCommonReq(nodeService.nodes(), subscriber);
     }
 
     @Override
     public void requestReplies(long topicId, Subscriber<List<ReplyEntity>> subscriber) {
-        subscribeHttpReq(replyService.replies(topicId), subscriber);
+        subscribeCommonReq(replyService.replies(topicId), subscriber);
     }
 
     @Override
     public void requestMember(String userName, Subscriber<MemberEntity> subscriber) {
-        subscribeHttpReq(memberService.member(userName), subscriber);
+        subscribeCommonReq(memberService.member(userName), subscriber);
     }
 }

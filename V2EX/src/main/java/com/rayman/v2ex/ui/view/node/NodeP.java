@@ -23,11 +23,11 @@
 
 package com.rayman.v2ex.ui.view.node;
 
-import com.rayman.v2ex.model.http.service.NodeService;
-import com.rayman.v2ex.model.http.service.TopicService;
-import com.rayman.v2ex.model.model.node.NodeEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.view.base.presenter.BasePresenter;
+import com.ray.mvvm.lib.model.http.service.NodeService;
+import com.ray.mvvm.lib.model.http.service.TopicService;
+import com.ray.mvvm.lib.model.model.node.NodeEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.view.base.presenter.BasePresenter;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
@@ -67,16 +67,16 @@ public class NodeP extends BasePresenter implements NodeContract.Presenter {
 
     @Override
     public void requestNodeByName(String name, Subscriber<NodeEntity> subscriber) {
-        subscribeHttpReq(nodeService.nodeByName(name), subscriber);
+        subscribeCommonReq(nodeService.nodeByName(name), subscriber);
     }
 
     @Override
     public void requestTopicsByNodeId(long id, Subscriber<List<TopicEntity>> subscriber) {
-        subscribeHttpReq(topicService.topicsByNodeId(id), subscriber);
+        subscribeCommonReq(topicService.topicsByNodeId(id), subscriber);
     }
 
     @Override
     public void requestTopicsByNodeName(String name, Subscriber<List<TopicEntity>> subscriber) {
-        subscribeHttpReq(topicService.topicsByNodeName(name), subscriber);
+        subscribeCommonReq(topicService.topicsByNodeName(name), subscriber);
     }
 }

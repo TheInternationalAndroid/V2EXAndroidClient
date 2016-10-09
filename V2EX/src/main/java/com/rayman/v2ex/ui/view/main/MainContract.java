@@ -23,9 +23,10 @@
 
 package com.rayman.v2ex.ui.view.main;
 
-import com.rayman.v2ex.di.scope.PerActivity;
-import com.rayman.v2ex.ui.view.base.comp.ActivityComp;
-import com.rayman.v2ex.ui.view.base.presenter.IPresenter;
+import com.ray.mvvm.lib.di.scope.PerActivity;
+import com.ray.mvvm.lib.view.base.comp.ActivityComp;
+import com.ray.mvvm.lib.view.base.presenter.IPresenter;
+import com.ray.mvvm.lib.view.base.view.IView;
 import com.rayman.v2ex.viewmodel.main.MainActivityVM;
 import com.rayman.v2ex.viewmodel.main.MainActivityVMModule;
 
@@ -59,7 +60,7 @@ public interface MainContract {
         MainActivityVM viewModel();
     }
 
-    interface View {
+    interface View extends IView {
     }
 
     interface Presenter extends IPresenter {

@@ -23,7 +23,7 @@
 
 package com.rayman.v2ex.ui.view.main;
 
-import com.rayman.v2ex.ui.view.base.presenter.BasePresenter;
+import com.ray.mvvm.lib.view.base.presenter.BasePresenter;
 import com.squareup.leakcanary.RefWatcher;
 
 import javax.inject.Inject;

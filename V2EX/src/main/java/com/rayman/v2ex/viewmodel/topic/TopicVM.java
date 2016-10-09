@@ -26,14 +26,14 @@ package com.rayman.v2ex.viewmodel.topic;
 import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
 
+import com.ray.mvvm.lib.model.http.ExSubscriber;
+import com.ray.mvvm.lib.viewmodel.BaseVM;
+import com.ray.mvvm.lib.widget.utils.Util;
 import com.rayman.v2ex.BR;
-import com.rayman.v2ex.model.http.LSubscriber;
-import com.rayman.v2ex.model.model.reply.ReplyEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.TopicPageAdapter;
 import com.rayman.v2ex.ui.view.topic.TopicContract;
-import com.rayman.v2ex.viewmodel.BaseVM;
-import com.rayman.v2ex.widget.utils.Util;
 
 import java.util.List;
 
@@ -54,13 +54,13 @@ import java.util.List;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicVM extends BaseVM<TopicContract.Preenter, TopicContract.View> {
+public class TopicVM extends BaseVM<TopicContract.Presenter, TopicContract.View> {
 
     private TopicEntity entity;
     private final RecyclerView.LayoutManager layoutManager;
     private final TopicPageAdapter adapter;
 
-    public TopicVM(TopicContract.Preenter presenter, TopicContract.View view, RecyclerView.LayoutManager layoutManager) {
+    public TopicVM(TopicContract.Presenter presenter, TopicContract.View view, RecyclerView.LayoutManager layoutManager) {
         super(presenter, view);
         this.layoutManager = layoutManager;
         adapter = new TopicPageAdapter(view);
@@ -84,7 +84,7 @@ public class TopicVM extends BaseVM<TopicContract.Preenter, TopicContract.View> 
     }
 
     private void requestTopicDetail() {
-        presenter.requestDetail(entity.getId(), new LSubscriber<List<TopicEntity>>() {
+        presenter.requestDetail(entity.getId(), new ExSubscriber<List<TopicEntity>>() {
             @Override
             public void onError(Throwable e) {
 
@@ -100,7 +100,7 @@ public class TopicVM extends BaseVM<TopicContract.Preenter, TopicContract.View> 
     }
 
     private void requestReplies() {
-        presenter.requestReplies(entity.getId(), new LSubscriber<List<ReplyEntity>>() {
+        presenter.requestReplies(entity.getId(), new ExSubscriber<List<ReplyEntity>>() {
             @Override
             public void onError(Throwable e) {
 

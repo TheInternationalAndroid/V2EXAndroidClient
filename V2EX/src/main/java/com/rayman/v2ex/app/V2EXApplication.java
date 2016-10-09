@@ -23,18 +23,10 @@
 
 package com.rayman.v2ex.app;
 
-import android.support.multidex.MultiDexApplication;
-
+import com.ray.mvvm.lib.app.BaseApplication;
+import com.ray.mvvm.lib.di.IBuildComp;
 import com.rayman.v2ex.BuildConfig;
-import com.rayman.v2ex.di.IBuildComp;
-import com.rayman.v2ex.model.http.event.ErrorEvent;
-import com.rayman.v2ex.viewmodel.AppModule;
-import com.rayman.v2ex.widget.eventbus.RxBus;
-import com.rayman.v2ex.widget.utils.StringUtil;
-import com.rayman.v2ex.widget.utils.ToastUtil;
 
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
 import timber.log.Timber;
 
 /**
@@ -54,10 +46,7 @@ import timber.log.Timber;
  * \               ||----w |
  * \               ||     ||
  */
-public class V2EXApplication extends MultiDexApplication implements IBuildComp {
-
-    private AppComp appComp;
-    private Subscription subscription;
+public class V2EXApplication extends BaseApplication implements IBuildComp {
 
     @Override
     public void onCreate() {
@@ -68,34 +57,6 @@ public class V2EXApplication extends MultiDexApplication implements IBuildComp {
             Timber.plant(new Timber.DebugTree());
         }
 
-        buildComp();
-
-        if (subscription != null && !subscription.isUnsubscribed()) {
-            subscription.unsubscribe();
-        }
-        subscription = RxBus.instance()
-                .asObservable(ErrorEvent.class)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::handleEvent);
-    }
-
-    public void handleEvent(ErrorEvent errorEvent) {
-        if (errorEvent != null && !StringUtil.isEmpty(errorEvent.getMessage())) {
-            ToastUtil.show(V2EXApplication.this, errorEvent.getMessage());
-        }
-    }
-
-    @Override
-    public void buildComp() {
-        appComp = DaggerAppComp
-                .builder()
-                .appModule(new AppModule(this))
-                .build();
-        appComp.inject(this);
-    }
-
-    public AppComp appComp() {
-        return appComp;
     }
 
 }

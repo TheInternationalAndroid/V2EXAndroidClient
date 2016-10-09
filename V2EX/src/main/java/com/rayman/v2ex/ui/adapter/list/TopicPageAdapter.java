@@ -27,11 +27,11 @@ import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
 import com.rayman.v2ex.databinding.ListCellReplyBinding;
 import com.rayman.v2ex.databinding.ListHeaderTopicBinding;
-import com.rayman.v2ex.model.model.reply.ReplyEntity;
-import com.rayman.v2ex.model.model.topic.TopicEntity;
-import com.rayman.v2ex.ui.adapter.list.base.BaseHeaderAdapter;
+import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.common.IMemberCellView;
 import com.rayman.v2ex.viewmodel.topic.ReplyCellVM;
 import com.rayman.v2ex.viewmodel.topic.TopicHeaderVM;
@@ -53,7 +53,7 @@ import com.rayman.v2ex.viewmodel.topic.TopicHeaderVM;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicPageAdapter extends BaseHeaderAdapter<ReplyEntity> {
+public class TopicPageAdapter extends BaseListAdapter<ReplyEntity> {
 
     private static final int VIEW_HEADER = 0;
     private static final int VIEW_CELL = 1;
@@ -66,12 +66,12 @@ public class TopicPageAdapter extends BaseHeaderAdapter<ReplyEntity> {
     }
 
     @Override
-    protected int getHeaderCount() {
+    public int getHeaderCount() {
         return HEADER_COUNT;
     }
 
     @Override
-    protected ViewDataBinding createBinding(ViewGroup parent, int viewType) {
+    protected ViewDataBinding createBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
         switch (viewType) {
             case VIEW_HEADER:
                 return ListHeaderTopicBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
@@ -91,7 +91,7 @@ public class TopicPageAdapter extends BaseHeaderAdapter<ReplyEntity> {
     }
 
     @Override
-    protected Object createViewModel(int position) {
+    protected Object createViewModel(int viewType, int position) {
         switch (getItemViewType(position)) {
             case VIEW_HEADER:
                 return new TopicHeaderVM(topicEntity, memberCellView);
@@ -99,10 +99,6 @@ public class TopicPageAdapter extends BaseHeaderAdapter<ReplyEntity> {
             case VIEW_CELL:
                 return new ReplyCellVM(getItem(position), position, memberCellView);
         }
-    }
-
-    public TopicEntity getTopicEntity() {
-        return topicEntity;
     }
 
     public void setTopicEntity(TopicEntity topicEntity) {

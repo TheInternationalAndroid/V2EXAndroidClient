@@ -23,13 +23,13 @@
 
 package com.rayman.v2ex.viewmodel.test;
 
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.LinearLayoutManager;
 
-import com.rayman.v2ex.di.modules.LayoutManagerModule;
-import com.rayman.v2ex.di.scope.PerActivity;
+import com.ray.mvvm.lib.di.modules.LayoutManagerModule;
+import com.ray.mvvm.lib.di.scope.PerActivity;
+import com.ray.mvvm.lib.widget.anotations.ListType;
 import com.rayman.v2ex.ui.view.test.api.TestApiContract;
 import com.rayman.v2ex.ui.view.test.api.TestApiP;
-import com.rayman.v2ex.widget.anotations.ListType;
 
 import javax.inject.Named;
 
@@ -64,7 +64,7 @@ public class TestApiVMModule {
 
     @Provides
     @PerActivity
-    TestApiServiceVM provideApiModel(TestApiP presenter, @Named(ListType.VERTICAL) RecyclerView.LayoutManager layoutManager) {
+    TestApiServiceVM provideApiModel(TestApiP presenter, @Named(ListType.VERTICAL) LinearLayoutManager layoutManager) {
         return new TestApiServiceVM(presenter, view, layoutManager);
     }
 

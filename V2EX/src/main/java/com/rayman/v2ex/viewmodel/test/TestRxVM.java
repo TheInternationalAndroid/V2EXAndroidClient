@@ -25,10 +25,10 @@ package com.rayman.v2ex.viewmodel.test;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.rayman.v2ex.model.model.test.TestRxEntity;
+import com.ray.mvvm.lib.viewmodel.BaseVM;
+import com.ray.mvvm.lib.model.model.test.TestRxEntity;
 import com.rayman.v2ex.ui.adapter.list.TestRxListAdapter;
 import com.rayman.v2ex.ui.view.test.rx.TestRxContract;
-import com.rayman.v2ex.viewmodel.BaseVM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,17 +63,17 @@ public class TestRxVM extends BaseVM<TestRxContract.Presenter, TestRxContract.Vi
 
     private List<TestRxEntity> getTestList() {
         List<TestRxEntity> list = new ArrayList<>();
-        list.add(new TestRxEntity("TestThread", (position, entity) -> presenter.testThread()));
-        list.add(new TestRxEntity("TestEmpty", (position, entity) -> presenter.testEmpty()));
-        list.add(new TestRxEntity("TestNever", (position, entity) -> presenter.testNever()));
-        list.add(new TestRxEntity("TestFrom", (position, entity) -> presenter.testFrom()));
-        list.add(new TestRxEntity("TestFromFuture", (position, entity) -> presenter.testFromFuture()));
-        list.add(new TestRxEntity("TestInterval", (position, entity) -> presenter.testInterval()));
-        list.add(new TestRxEntity("TestJust", (position, entity) -> presenter.testJust()));
-        list.add(new TestRxEntity("TestRange", (position, entity) -> presenter.testRange()));
-        list.add(new TestRxEntity("TestRepeat", (position, entity) -> presenter.testRepeat()));
-        list.add(new TestRxEntity("TestStartWith", (position, entity) -> presenter.testStartWith()));
-        list.add(new TestRxEntity("TestTimer", (position, entity) -> presenter.testTimer()));
+        list.add(new TestRxEntity("TestThread", (position, view, entity) -> presenter.testThread()));
+        list.add(new TestRxEntity("TestEmpty", (position, view, entity) -> presenter.testEmpty()));
+        list.add(new TestRxEntity("TestNever", (position, view, entity) -> presenter.testNever()));
+        list.add(new TestRxEntity("TestFrom", (position, view, entity) -> presenter.testFrom()));
+        list.add(new TestRxEntity("TestFromFuture", (position, view, entity) -> presenter.testFromFuture()));
+        list.add(new TestRxEntity("TestInterval", (position, view, entity) -> presenter.testInterval()));
+        list.add(new TestRxEntity("TestJust", (position, view, entity) -> presenter.testJust()));
+        list.add(new TestRxEntity("TestRange", (position, view, entity) -> presenter.testRange()));
+        list.add(new TestRxEntity("TestRepeat", (position, view, entity) -> presenter.testRepeat()));
+        list.add(new TestRxEntity("TestStartWith", (position, view, entity) -> presenter.testStartWith()));
+        list.add(new TestRxEntity("TestTimer", (position, view, entity) -> presenter.testTimer()));
         return list;
     }
 

@@ -1,17 +1,6 @@
 <?xml version="1.0"?>
-<!--
-  ~  Copyright (c) 2016. Istuary Innovation Group, Ltd.
-  ~  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and
-  ~  confidential.
-  ~  Created on Tue, 27 Sep 2016 14:56:34 +0800.
-  ~  ProjectName: IronHide; ModuleName: IronHide; ClassName: template.xml.
-  ~  Author: Lena; Last Modified: Tue, 27 Sep 2016 14:56:34 +0800.
-  ~  This file is originally created by Lena.
-  ~
-  -->
-
-<template name="IronHideFragment"
-    description="IronHideFragment"
+<template name="V2EXFragment"
+    description="V2EXFragment"
     format="5"
     minApi="7"
     minBuildApi="14"

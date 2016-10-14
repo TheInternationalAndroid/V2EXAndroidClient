@@ -38,6 +38,10 @@
             android:name=".ui.view.test.rx.TestRxActivity"
             android:label="@string/title_activity_test_rx"
             android:theme="@style/V2EXTheme" />
+        <activity
+            android:name=".ui.TestActivity"
+            android:label="@string/title_activity_test"
+            android:theme="@style/V2EXTheme"></activity>
     </application>
 
 </manifest>

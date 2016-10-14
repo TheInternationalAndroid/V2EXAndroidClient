@@ -28,5 +28,6 @@
     <string name="title_activity_topic">TopicActivity</string>
     <string name="title_activity_test_api">TestAPIActivity</string>
     <string name="title_activity_test_rx">TestRxActivity</string>
+    <string name="title_activity_test">TestActivity</string>
 
 </resources>

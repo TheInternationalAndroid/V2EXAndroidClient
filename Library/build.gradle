@@ -130,7 +130,7 @@ dependencies {
 //    compile depMap.AutoParcel
 //    apt depMap.AutoParcelProcessor
 
-    provided depMap.Guava
+    compile depMap.Guava
     apt depMap.DaggerCompile
     retrolambdaConfig depMap.RetroLambdaConfig
 
@@ -164,5 +164,6 @@ dependencies {
     androidTestCompile depMap.Design
     androidTestCompile depMap.RecyclerView
     androidTestCompile depMap.UIAutomator
+    androidTestCompile depMap.Annotations
 
 }

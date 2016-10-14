@@ -1,1 +1,1 @@
-include ':V2EX', ':Library'
+include ':V2EX', ':Library', ':V2EXSample'

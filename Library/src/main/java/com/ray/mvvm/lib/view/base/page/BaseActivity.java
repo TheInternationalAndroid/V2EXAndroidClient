@@ -27,7 +27,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Looper;
 import android.support.v4.content.ContextCompat;
@@ -40,10 +39,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.ray.mvvm.lib.R;
-import com.ray.mvvm.lib.app.Constants;
 import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.ActivityAction;
-import com.ray.mvvm.lib.widget.utils.StringUtil;
 import com.ray.mvvm.lib.widget.utils.ToastUtil;
 
 /**
@@ -270,23 +267,6 @@ public class BaseActivity extends AppCompatActivity implements IView {
     @Override
     public void postRunnable(Runnable runnable) {
         this.getWindow().getDecorView().post(runnable);
-    }
-
-    public long getSourceId(Intent intent) {
-        long defultRsult = -1;
-        Uri data = intent.getData();
-        if (data == null) {
-            return defultRsult;
-        }
-        String idStr = data.getQueryParameter(Constants.PARA_SOURCE_ID);
-        if (StringUtil.isEmpty(idStr)) {
-            return defultRsult;
-        }
-        try {
-            return Long.parseLong(idStr);
-        } catch (Exception e) {
-            return defultRsult;
-        }
     }
 
     public void setupTouchOutSideUI(View view) {

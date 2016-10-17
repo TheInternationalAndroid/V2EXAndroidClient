@@ -69,7 +69,7 @@ public abstract class BaseLoadMoreVM<T extends IPresenter, R extends IView, Q> e
 
     @Override
     protected void handleResponse(ListRespEntity<Q> data) {
-        hasMore = data != null && data.getHasMore() == Constants.TRUE;
+        hasMore = data != null && data.isHasMore();
         adapter.setFooterState(!hasMore ? FooterState.NO_MORE : FooterState.LOAD_MORE);
         switch (getRequestType()) {
             case RequestType.CONTENT_LOADING:

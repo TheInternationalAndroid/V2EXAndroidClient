@@ -40,7 +40,7 @@ public class ListRespEntity<T> {
     private int totalCount;
 
     @Json(name = "has_more")
-    private int hasMore;
+    private boolean hasMore;
 
     public List<T> getList() {
         return list;
@@ -66,11 +66,11 @@ public class ListRespEntity<T> {
         isLocal = local;
     }
 
-    public int getHasMore() {
+    public boolean isHasMore() {
         return hasMore;
     }
 
-    public void setHasMore(int hasMore) {
+    public void setHasMore(boolean hasMore) {
         this.hasMore = hasMore;
     }
 }

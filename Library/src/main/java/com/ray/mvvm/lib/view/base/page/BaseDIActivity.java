@@ -25,13 +25,11 @@ package com.ray.mvvm.lib.view.base.page;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.ray.mvvm.lib.R;
 import com.ray.mvvm.lib.app.AppComp;
 import com.ray.mvvm.lib.app.BaseApplication;
-import com.ray.mvvm.lib.app.Constants;
 import com.ray.mvvm.lib.di.IBuildComp;
 import com.ray.mvvm.lib.view.base.comp.ActivityComp;
 import com.ray.mvvm.lib.view.base.comp.DaggerActivityComp;
@@ -58,12 +56,6 @@ import com.ray.mvvm.lib.viewmodel.ActivityModule;
 public abstract class BaseDIActivity extends BaseActivity implements IBuildComp {
 
     private ActivityComp activityComp;
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putBoolean(Constants.PARA_SAVED_INSTANCE_KEY, false);
-    }
 
     @Override
     protected void onDestroy() {

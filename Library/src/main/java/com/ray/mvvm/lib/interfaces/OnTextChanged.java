@@ -25,23 +25,6 @@ package com.ray.mvvm.lib.interfaces;
 
 import android.view.View;
 
-/**
- * Created by Android Studio.
- * ProjectName: shenbian_android_cloud_speaker
- * Author:  Lena.t.Yan
- * Date: 1/29/16
- * Time: 12:17
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public interface OnTextChanged {
     void onChanged(View view, String text);
 }

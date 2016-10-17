@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 8 Oct 2016 23:38:42 +0800.
+ *  Created on Sat, 8 Oct 2016 22:22:35 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 8 Oct 2016 23:38:42 +0800.
+ *  Author: Lena; Last Modified: Sat, 8 Oct 2016 22:22:35 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,23 +21,17 @@
  *
  */
 
-package com.ray.mvvm.lib.model.http.service;
-
-import com.ray.mvvm.lib.di.scope.PerApplication;
-
-import dagger.Module;
-import dagger.Provides;
-import retrofit2.Retrofit;
+package com.rayman.v2ex.model.model.test;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 15:32
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
+ * Author:  Lena
+ * Date: 3/21/16
+ * Time: 5:11 PM
+ * \ ----------------------------------------
+ * \| A small leak will sink a great ship.!  |
+ * \ ----------------------------------------
  * \  \
  * \   \   \_\_    _/_/
  * \    \      \__/
@@ -46,31 +40,36 @@ import retrofit2.Retrofit;
  * \               ||----w |
  * \               ||     ||
  */
-@Module
-public class APIServiceModule {
+public class TestApiEntity {
 
-    @Provides
-    @PerApplication
-    public TopicService provideTopicService(Retrofit retrofit) {
-        return retrofit.create(TopicService.class);
+    public static final int DEFAULT = 0;
+    public static final int SUCCESS = 1;
+    public static final int LOADING = 2;
+    public static final int ERROR = 3;
+
+    private String url;
+    private int state = DEFAULT;
+
+    public TestApiEntity() {
     }
 
-    @Provides
-    @PerApplication
-    public MemberService provideMemberService(Retrofit retrofit) {
-        return retrofit.create(MemberService.class);
+    public TestApiEntity(String url) {
+        this.url = url;
     }
 
-    @Provides
-    @PerApplication
-    public NodeService provideNodeService(Retrofit retrofit) {
-        return retrofit.create(NodeService.class);
+    public String getUrl() {
+        return url;
     }
 
-    @Provides
-    @PerApplication
-    public ReplyService provideReplyService(Retrofit retrofit) {
-        return retrofit.create(ReplyService.class);
+    public void setUrl(String url) {
+        this.url = url;
     }
 
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 }

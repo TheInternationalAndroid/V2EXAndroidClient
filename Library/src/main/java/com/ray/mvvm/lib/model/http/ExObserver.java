@@ -25,23 +25,6 @@ package com.ray.mvvm.lib.model.http;
 
 import rx.Observer;
 
-/**
- * Created by Android Studio.
- * ProjectName: IronHide
- * Author:  Lena
- * Date: 5/24/16
- * Time: 1:26 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public interface ExObserver<T> extends Observer<T> {
 
     void onStart();

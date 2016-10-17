@@ -26,7 +26,7 @@ package com.rayman.v2ex.viewmodel.test;
 import android.support.v7.widget.RecyclerView;
 
 import com.ray.mvvm.lib.viewmodel.BaseVM;
-import com.ray.mvvm.lib.model.model.test.TestRxEntity;
+import com.rayman.v2ex.model.model.test.TestRxEntity;
 import com.rayman.v2ex.ui.adapter.list.TestRxListAdapter;
 import com.rayman.v2ex.ui.view.test.rx.TestRxContract;
 

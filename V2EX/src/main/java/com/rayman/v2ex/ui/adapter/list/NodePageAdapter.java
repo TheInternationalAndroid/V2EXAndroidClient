@@ -31,8 +31,8 @@ import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
 import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
 import com.rayman.v2ex.databinding.ListCellTopicBinding;
 import com.rayman.v2ex.databinding.ListHeaderNodeBinding;
-import com.ray.mvvm.lib.model.model.node.NodeEntity;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.node.NodeEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.common.ITopicCellView;
 import com.rayman.v2ex.viewmodel.topic.TopicCellVM;
 

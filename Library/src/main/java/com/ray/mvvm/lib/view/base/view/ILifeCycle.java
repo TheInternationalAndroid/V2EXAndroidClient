@@ -22,24 +22,6 @@
  */
 package com.ray.mvvm.lib.view.base.view;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 21:43
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
-
 public interface ILifeCycle {
 
     void onViewAttach();

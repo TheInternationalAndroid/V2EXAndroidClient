@@ -30,23 +30,6 @@ import rx.subjects.PublishSubject;
 import rx.subjects.SerializedSubject;
 import rx.subjects.Subject;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena
- * Date: 3/11/16
- * Time: 3:01 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class RxBus {
 
     private static volatile RxBus instance = new RxBus();

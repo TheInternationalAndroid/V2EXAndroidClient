@@ -25,23 +25,6 @@ package com.ray.mvvm.lib.widget.utils;
 
 import com.balysv.materialmenu.MaterialMenuDrawable;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 13:49
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class DrawerHelper {
     public static MaterialMenuDrawable.IconState generateState(MaterialMenuDrawable.IconState previous) {
         return previous == MaterialMenuDrawable.IconState.ARROW ? MaterialMenuDrawable.IconState.BURGER : MaterialMenuDrawable.IconState.ARROW;

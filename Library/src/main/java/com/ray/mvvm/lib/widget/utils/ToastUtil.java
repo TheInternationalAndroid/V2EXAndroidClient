@@ -26,23 +26,6 @@ package com.ray.mvvm.lib.widget.utils;
 import android.content.Context;
 import android.widget.Toast;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 22:55
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class ToastUtil {
 
     public static void show(Context context, String message) {

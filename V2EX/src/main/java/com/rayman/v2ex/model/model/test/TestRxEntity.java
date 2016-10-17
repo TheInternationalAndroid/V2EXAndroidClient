@@ -21,7 +21,7 @@
  *
  */
 
-package com.ray.mvvm.lib.model.model.test;
+package com.rayman.v2ex.model.model.test;
 
 import com.ray.mvvm.lib.view.adapter.OnItemClick;
 

@@ -25,23 +25,6 @@ package com.ray.mvvm.lib.interfaces;
 
 import android.support.v7.widget.RecyclerView;
 
-/**
- * Created by Android Studio.
- * ProjectName: IronHide
- * Author:  Lena
- * Date: 7/12/16
- * Time: 12:47 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public interface OnScrollListener {
 
     void onScrollStateChanged(RecyclerView recyclerView, int newState);

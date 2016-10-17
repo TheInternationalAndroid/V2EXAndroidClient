@@ -28,7 +28,7 @@ import java.io.File;
 
 import timber.log.Timber;
 
-public class FileUtil {
+class FileUtil {
 
     public static boolean delete(String fileName) {
         return delete(new File(fileName));

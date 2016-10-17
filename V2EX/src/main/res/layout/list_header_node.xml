@@ -25,7 +25,7 @@
 
     <data>
 
-        <import type="com.ray.mvvm.lib.model.model.node.NodeEntity" />
+        <import type="com.rayman.v2ex.model.model.node.NodeEntity" />
 
         <import type="com.ray.mvvm.lib.view.adapter.list.base.CellVM" />
 

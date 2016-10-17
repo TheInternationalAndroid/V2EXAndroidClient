@@ -25,23 +25,6 @@ package com.ray.mvvm.lib.model.http.event;
 
 import com.ray.mvvm.lib.widget.eventbus.event.BaseEvent;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/4/16
- * Time: 16:59
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class ErrorEvent extends BaseEvent {
 
     public ErrorEvent(int code) {

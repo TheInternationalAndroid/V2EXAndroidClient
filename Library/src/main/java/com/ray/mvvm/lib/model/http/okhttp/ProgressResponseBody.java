@@ -33,10 +33,6 @@ import okio.ForwardingSource;
 import okio.Okio;
 import okio.Source;
 
-/**
- * Created by winson on 16/7/21.
- */
-
 public class ProgressResponseBody extends ResponseBody {
     private final ResponseBody responseBody;
     private final ProgressListener progressListener;

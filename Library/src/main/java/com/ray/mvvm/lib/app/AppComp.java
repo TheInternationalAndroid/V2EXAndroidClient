@@ -29,10 +29,6 @@ import android.content.SharedPreferences;
 
 import com.ray.mvvm.lib.di.scope.PerApplication;
 import com.ray.mvvm.lib.model.cache.IFileControl;
-import com.ray.mvvm.lib.model.http.service.MemberService;
-import com.ray.mvvm.lib.model.http.service.NodeService;
-import com.ray.mvvm.lib.model.http.service.ReplyService;
-import com.ray.mvvm.lib.model.http.service.TopicService;
 import com.ray.mvvm.lib.viewmodel.AppModule;
 import com.ray.mvvm.lib.widget.anotations.ContextType;
 import com.squareup.leakcanary.RefWatcher;
@@ -45,24 +41,6 @@ import dagger.Component;
 import io.realm.Realm;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-
-/**
- * Created by Android Studio.
- * ProjectName: IndustrialControlCircle
- * Author:  Lena.t.Yan
- * Date: 4/18/16
- * Time: 10:42
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 
 @PerApplication
 @Component(modules = {AppModule.class})
@@ -79,14 +57,6 @@ public interface AppComp {
 
     SharedPreferences preference();
 
-    TopicService topicService();
-
-    MemberService memberService();
-
-    NodeService nodeService();
-
-    ReplyService replyService();
-
     Retrofit retrofit();
 
     IFileControl fileControl();
@@ -98,5 +68,4 @@ public interface AppComp {
     Realm realm();
 
     RxPermissions rxPermission();
-
 }

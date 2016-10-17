@@ -27,23 +27,6 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import okhttp3.OkHttpClient;
 
-/**
- * Created by Android Studio.
- * ProjectName: IronHide
- * Author:  Lena
- * Date: 8/29/16
- * Time: 2:10 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class OkHttpInterceptorUtil {
 
     public static OkHttpClient.Builder okhttpInterceptor(OkHttpClient.Builder builder) {

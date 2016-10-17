@@ -36,23 +36,6 @@ import com.ray.mvvm.lib.widget.anotations.RequestType;
 
 import java.util.List;
 
-/**
- * Created by Android Studio.
- * ProjectName: IndustrialControlCircle
- * Author:  Lena
- * Date: 4/28/16
- * Time: 10:31 AM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public abstract class BaseListVM<T extends IPresenter, R extends IView, Q> extends BaseSwipStateVM<T, R, List<Q>> {
 
     private final RecyclerView.LayoutManager layoutManager;

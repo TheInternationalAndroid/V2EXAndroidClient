@@ -23,23 +23,6 @@
 
 package com.ray.mvvm.lib.interfaces;
 
-/**
- * Created by Android Studio.
- * ProjectName: shenbian_android_cloud_speaker
- * Author:  Lena.t.Yan
- * Date: 1/29/16
- * Time: 12:17
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public interface OnTextChangedIncludeBefore extends OnTextChanged {
     void beforeTextChanged(CharSequence s, int start, int count, int after);
 }

@@ -28,23 +28,6 @@ import com.ray.mvvm.lib.view.base.page.BaseFragment;
 
 import dagger.Component;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 11:55
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 @PerBaseFragment
 @Component(dependencies = ActivityComp.class)
 public interface FragmentComp extends ActivityComp {

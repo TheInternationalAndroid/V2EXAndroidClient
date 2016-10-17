@@ -25,23 +25,6 @@ package com.ray.mvvm.lib.widget.utils;
 
 import java.util.List;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena
- * Date: 4/5/16
- * Time: 9:11 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class Util {
 
     public static <T> boolean listNotNull(List<T> list) {

@@ -33,23 +33,6 @@ import retrofit2.MoshiConverterFactory;
 import retrofit2.Retrofit;
 import retrofit2.RxJavaCallAdapterFactory;
 
-/**
- * Created by Android Studio.
- * ProjectName: IndustrialControlCircle
- * Author:  Rayman.t.Yan
- * Date: 12/21/15
- * Time: 16:14
- * \ ___________________
- * \| Merry Christmas!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 @Module
 public class RetrofitModule {
 

@@ -21,7 +21,7 @@
  *
  */
 
-package com.ray.mvvm.lib.model.model.node;
+package com.rayman.v2ex.model.model.node;
 
 import android.os.Parcel;
 import android.os.Parcelable;

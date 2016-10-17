@@ -32,23 +32,6 @@ import com.ray.mvvm.lib.view.adapter.list.viewholder.BaseViewHolder;
 
 import java.util.List;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena
- * Date: 4/5/16
- * Time: 5:05 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public abstract class BasePageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public BasePageAdapter() {

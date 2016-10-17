@@ -28,8 +28,8 @@ import com.ray.mvvm.lib.di.scope.PerActivity;
 import com.ray.mvvm.lib.view.base.comp.ActivityComp;
 import com.ray.mvvm.lib.view.base.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
-import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.reply.ReplyEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.common.IMemberCellView;
 import com.rayman.v2ex.viewmodel.topic.TopicVMModule;
 

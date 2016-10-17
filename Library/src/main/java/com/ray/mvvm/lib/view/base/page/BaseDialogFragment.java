@@ -42,11 +42,6 @@ import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.ActivityAction;
 import com.ray.mvvm.lib.widget.utils.ToastUtil;
 
-/**
- * Created by winson on 16/7/29.
- */
-
-
 public class BaseDialogFragment extends DialogFragment implements IView {
     private ProgressDialog progressDialog;
 

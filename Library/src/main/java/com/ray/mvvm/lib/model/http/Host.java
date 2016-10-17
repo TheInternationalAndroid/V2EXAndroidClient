@@ -23,23 +23,6 @@
 
 package com.ray.mvvm.lib.model.http;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 14:50
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public interface Host {
 
     String BASE_URL = "https://www.v2ex.com/api/";

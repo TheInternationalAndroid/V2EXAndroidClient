@@ -21,10 +21,10 @@
  *
  */
 
-package com.ray.mvvm.lib.model.model.reply;
+package com.rayman.v2ex.model.model.reply;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
+import com.rayman.v2ex.model.model.member.MemberBaseEntity;
 
 /**
  * Created by Android Studio.

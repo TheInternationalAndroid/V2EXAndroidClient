@@ -37,23 +37,6 @@ import javax.inject.Named;
 
 import dagger.Component;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 22:08
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 @PerBaseActivity
 @Component(modules = {ActivityModule.class}, dependencies = AppComp.class)
 public interface ActivityComp extends AppComp {

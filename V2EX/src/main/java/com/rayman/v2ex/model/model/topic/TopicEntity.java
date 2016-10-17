@@ -21,14 +21,14 @@
  *
  */
 
-package com.ray.mvvm.lib.model.model.topic;
+package com.rayman.v2ex.model.model.topic;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
-import com.ray.mvvm.lib.model.model.node.NodeEntity;
+import com.rayman.v2ex.model.model.member.MemberBaseEntity;
+import com.rayman.v2ex.model.model.node.NodeEntity;
 
 /**
  * Created by Android Studio.

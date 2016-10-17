@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sun, 9 Oct 2016 22:18:48 +0800.
+ *  Created on Tue, 18 Oct 2016 00:49:21 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sun, 9 Oct 2016 22:18:48 +0800.
+ *  Author: Lena; Last Modified: Tue, 18 Oct 2016 00:49:21 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,26 +21,23 @@
  *
  */
 
-package com.ray.mvvm.lib.model.http.service;
+package com.rayman.v2ex.model.service;
 
-import com.ray.mvvm.lib.model.model.node.NodeEntity;
+import com.ray.mvvm.lib.di.scope.PerApplication;
 
-import java.util.List;
-
-import retrofit2.Response;
-import retrofit2.http.GET;
-import retrofit2.http.Query;
-import rx.Observable;
+import dagger.Module;
+import dagger.Provides;
+import retrofit2.Retrofit;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
- * Author:  Lena
- * Date: 3/21/16
- * Time: 3:50 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
+ * Author:  Lena.t.Yan
+ * Date: 1/19/16
+ * Time: 15:32
+ * \ ___________________
+ * \| Happy New Year!  |
+ * \ -------------------
  * \  \
  * \   \   \_\_    _/_/
  * \    \      \__/
@@ -49,12 +46,31 @@ import rx.Observable;
  * \               ||----w |
  * \               ||     ||
  */
-public interface NodeService {
+@Module
+public class APIServiceModule {
 
-    @GET("nodes/show.json")
-    Observable<Response<NodeEntity>> nodeByName(@Query(value = "name") String name);
+    @Provides
+    @PerApplication
+    TopicService provideTopicService(Retrofit retrofit) {
+        return retrofit.create(TopicService.class);
+    }
 
-    @GET("nodes/all.json")
-    Observable<Response<List<NodeEntity>>> nodes();
+    @Provides
+    @PerApplication
+    MemberService provideMemberService(Retrofit retrofit) {
+        return retrofit.create(MemberService.class);
+    }
+
+    @Provides
+    @PerApplication
+    NodeService provideNodeService(Retrofit retrofit) {
+        return retrofit.create(NodeService.class);
+    }
+
+    @Provides
+    @PerApplication
+    ReplyService provideReplyService(Retrofit retrofit) {
+        return retrofit.create(ReplyService.class);
+    }
 
 }

@@ -23,22 +23,5 @@
 
 package com.ray.mvvm.lib.model.model;
 
-/**
- * Created by Android Studio.
- * ProjectName: IronHide
- * Author:  Lena
- * Date: 6/27/16
- * Time: 5:19 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class NullEntity {
 }

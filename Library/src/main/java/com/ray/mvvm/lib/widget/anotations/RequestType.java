@@ -34,23 +34,6 @@ import static com.ray.mvvm.lib.widget.anotations.RequestType.LOAD_MORE;
 import static com.ray.mvvm.lib.widget.anotations.RequestType.SILENT;
 import static com.ray.mvvm.lib.widget.anotations.RequestType.SWIP_REFRESH;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 22:23
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 @Documented
 @Retention(RetentionPolicy.SOURCE)
 @IntDef({CONTENT_LOADING, SWIP_REFRESH, SILENT,LOAD_MORE})

@@ -23,21 +23,22 @@
 
 package com.rayman.v2ex.ui.view.test.api;
 
-import com.ray.mvvm.lib.model.http.service.MemberService;
-import com.ray.mvvm.lib.model.http.service.NodeService;
-import com.ray.mvvm.lib.model.http.service.ReplyService;
-import com.ray.mvvm.lib.model.http.service.TopicService;
-import com.ray.mvvm.lib.model.model.member.MemberEntity;
-import com.ray.mvvm.lib.model.model.node.NodeEntity;
-import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.member.MemberEntity;
+import com.rayman.v2ex.model.model.node.NodeEntity;
+import com.rayman.v2ex.model.model.reply.ReplyEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.base.presenter.BasePresenter;
+import com.rayman.v2ex.model.service.MemberService;
+import com.rayman.v2ex.model.service.NodeService;
+import com.rayman.v2ex.model.service.ReplyService;
+import com.rayman.v2ex.model.service.TopicService;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import retrofit2.Retrofit;
 import rx.Subscriber;
 
 /**
@@ -65,12 +66,12 @@ public class TestApiP extends BasePresenter implements TestApiContract.Presenter
     private final ReplyService replyService;
 
     @Inject
-    public TestApiP(RefWatcher refWatcher, TopicService topicService, NodeService nodeService, MemberService memberService, ReplyService replyService) {
+    TestApiP(RefWatcher refWatcher, Retrofit retrofit) {
         super(refWatcher);
-        this.topicService = topicService;
-        this.nodeService = nodeService;
-        this.memberService = memberService;
-        this.replyService = replyService;
+        this.topicService = retrofit.create(TopicService.class);
+        this.nodeService = retrofit.create(NodeService.class);
+        this.memberService = retrofit.create(MemberService.class);
+        this.replyService = retrofit.create(ReplyService.class);
     }
 
     @Override

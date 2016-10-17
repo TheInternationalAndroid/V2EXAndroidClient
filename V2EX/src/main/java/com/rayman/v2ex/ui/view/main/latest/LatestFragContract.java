@@ -28,7 +28,7 @@ import com.ray.mvvm.lib.model.http.ExObserver;
 import com.ray.mvvm.lib.view.base.comp.FragmentComp;
 import com.ray.mvvm.lib.view.base.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.common.IMemberCellView;
 import com.rayman.v2ex.ui.view.common.ITopicCellView;
 import com.rayman.v2ex.viewmodel.main.LatestFragVM;

@@ -24,14 +24,16 @@
 package com.rayman.v2ex.ui.view.main.hot;
 
 import com.ray.mvvm.lib.model.http.ExObserver;
-import com.ray.mvvm.lib.model.http.service.TopicService;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.base.presenter.BasePresenter;
+import com.rayman.v2ex.model.service.TopicService;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
 
 import javax.inject.Inject;
+
+import retrofit2.Retrofit;
 
 /**
  * Created by Android Studio.
@@ -55,9 +57,9 @@ public class HotFragP extends BasePresenter implements HotFragContract.Presenter
     private TopicService topicService;
 
     @Inject
-    public HotFragP(TopicService topicService, RefWatcher refWatcher) {
+    HotFragP(RefWatcher refWatcher, Retrofit retrofit) {
         super(refWatcher);
-        this.topicService = topicService;
+        this.topicService = retrofit.create(TopicService.class);
     }
 
     @Override

@@ -27,10 +27,6 @@ import com.squareup.moshi.Json;
 
 import java.util.List;
 
-/**
- * Created by winson on 16/7/11.
- */
-
 public class ListRespEntity<T> {
 
     private List<T> list;

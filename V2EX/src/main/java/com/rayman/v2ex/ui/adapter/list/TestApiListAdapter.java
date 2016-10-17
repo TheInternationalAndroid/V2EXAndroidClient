@@ -30,7 +30,7 @@ import android.view.ViewGroup;
 import com.ray.mvvm.lib.view.adapter.OnItemClick;
 import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
 import com.rayman.v2ex.databinding.ListCellTestApiBinding;
-import com.ray.mvvm.lib.model.model.test.TestApiEntity;
+import com.rayman.v2ex.model.model.test.TestApiEntity;
 
 /**
  * Created by Android Studio.

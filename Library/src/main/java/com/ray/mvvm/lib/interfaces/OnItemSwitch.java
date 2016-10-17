@@ -25,23 +25,6 @@ package com.ray.mvvm.lib.interfaces;
 
 import com.ray.mvvm.lib.widget.view.OnLoadMoreListener;
 
-/**
- * Created by Android Studio.
- * ProjectName: IronHide
- * Author:  Lena
- * Date: 7/5/16
- * Time: 1:52 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public interface OnItemSwitch {
 
     void onItemSwitch(int oldPosition, int newPosition, @OnLoadMoreListener.ScrollType int scrollType);

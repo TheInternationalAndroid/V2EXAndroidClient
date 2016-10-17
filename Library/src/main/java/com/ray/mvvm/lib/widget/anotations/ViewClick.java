@@ -32,23 +32,6 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.CLASS;
 
-/**
- * Created by Android Studio.
- * ProjectName: IndustrialControlCircle
- * Author:  Lena.t.Yan
- * Date: 4/18/16
- * Time: 10:20
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 @Documented
 @Target(METHOD)
 @Retention(CLASS)

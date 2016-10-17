@@ -35,23 +35,6 @@ import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
 
-/**
- * Created by Android Studio.
- * ProjectName: IndustrialControlCircle
- * Author:  Lena
- * Date: 4/28/16
- * Time: 10:31 AM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public abstract class BaseListRespVM<T extends IPresenter, R extends IView, Q> extends BaseSwipStateVM<T, R, ListRespEntity<Q>> {
 
     private final RecyclerView.LayoutManager layoutManager;

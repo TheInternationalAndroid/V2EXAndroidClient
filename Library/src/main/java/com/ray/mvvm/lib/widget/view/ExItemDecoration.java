@@ -30,23 +30,6 @@ import android.support.annotation.ColorInt;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-/**
- * Created by Android Studio.
- * ProjectName: IronHide
- * Author:  Lena
- * Date: 6/9/16
- * Time: 10:43 AM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class ExItemDecoration extends RecyclerView.ItemDecoration {
 
     private int dividerheight;

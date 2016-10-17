@@ -26,23 +26,6 @@ package com.ray.mvvm.lib.model.http.okhttp;
 
 import okhttp3.MediaType;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 14:52
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public interface RequestContentType {
     String CHARSET = "utf-8";
     String CONTENT_TYPE_JSON = "application/json; charset=" + CHARSET;

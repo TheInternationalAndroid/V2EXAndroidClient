@@ -48,7 +48,7 @@ import javax.inject.Inject;
 public class MainActivityP extends BasePresenter implements MainContract.Presenter {
 
     @Inject
-    public MainActivityP(RefWatcher refWatcher) {
+    MainActivityP(RefWatcher refWatcher) {
         super(refWatcher);
     }
 

@@ -23,10 +23,6 @@
 
 package com.ray.mvvm.lib.model.http.okhttp;
 
-/**
- * Created by winson on 16/7/21.
- */
-
 public interface ProgressListener {
     void update(long bytesRead, long contentLength, boolean done);
 }

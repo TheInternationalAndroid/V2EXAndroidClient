@@ -26,7 +26,7 @@ package com.rayman.v2ex.viewmodel.main;
 import android.support.v7.widget.RecyclerView;
 
 import com.ray.mvvm.lib.viewmodel.BaseListVM;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.TopicListAdapter;
 import com.rayman.v2ex.ui.view.main.latest.LatestFragContract;
 import com.rayman.v2ex.ui.view.main.latest.LatestFragP;

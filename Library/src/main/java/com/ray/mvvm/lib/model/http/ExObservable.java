@@ -26,23 +26,6 @@ package com.ray.mvvm.lib.model.http;
 import retrofit2.Response;
 import rx.Observable;
 
-/**
- * Created by Android Studio.
- * ProjectName: IndustrialControlCircle
- * Author:  Lena.t.Yan
- * Date: 4/22/16
- * Time: 15:57
- * \ ---------------------------------------
- * \| A small leak will sink a great ship.! |
- * \ ---------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class ExObservable<T> extends Observable<Response<T>> {
 
     public ExObservable(OnSubscribe<Response<T>> onSubscribe) {

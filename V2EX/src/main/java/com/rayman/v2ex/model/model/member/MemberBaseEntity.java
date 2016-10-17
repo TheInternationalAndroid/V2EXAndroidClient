@@ -21,7 +21,7 @@
  *
  */
 
-package com.ray.mvvm.lib.model.model.member;
+package com.rayman.v2ex.model.model.member;
 
 import android.os.Parcel;
 import android.os.Parcelable;

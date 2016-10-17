@@ -25,23 +25,6 @@ package com.ray.mvvm.lib.interfaces;
 
 import android.graphics.Bitmap;
 
-/**
- * Created by Android Studio.
- * ProjectName: IronHide
- * Author:  Lena
- * Date: 9/9/16
- * Time: 3:01 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public interface OnBitmapLoadedListener {
 
     void onLoaded(Bitmap bitmap);

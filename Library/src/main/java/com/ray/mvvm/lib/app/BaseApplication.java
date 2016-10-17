@@ -39,24 +39,6 @@ import com.ray.mvvm.lib.widget.utils.ToastUtil;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 
-/**
- * Created by Android Studio.
- * ProjectName: IndustrialControlCircle
- * Author:  Rayman.t.Yan
- * Date: 4/18/16
- * Time: 10:42
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
-
 public class BaseApplication extends Application implements IBuildComp {
 
     private AppComp appComp;

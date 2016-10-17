@@ -32,23 +32,6 @@ import com.ray.mvvm.lib.view.base.comp.DaggerFragmentComp;
 import com.ray.mvvm.lib.view.base.comp.FragmentComp;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 3/2/16
- * Time: 12:52
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public abstract class BaseDIDialogFragment extends BaseDialogFragment implements IBuildComp {
 
     private FragmentComp fragmentComp;

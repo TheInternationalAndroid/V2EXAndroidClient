@@ -42,23 +42,6 @@ import java.util.List;
 
 import static android.R.attr.id;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 3/4/16
- * Time: 11:28
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public abstract class BaseListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
 
     private static final int NO_INDEX = -99;

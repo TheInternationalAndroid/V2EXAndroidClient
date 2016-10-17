@@ -23,23 +23,6 @@
 
 package com.ray.mvvm.lib.model.model;
 
-/**
- * Created by Android Studio.
- * ProjectName: IndustrialControlCircle
- * Author:  Lena.t.Yan
- * Date: 4/22/16
- * Time: 14:40
- * \ ---------------------------------------
- * \| A small leak will sink a great ship.! |
- * \ ---------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class RespEntity<T> {
 
     public static final int FAILURE = 0;

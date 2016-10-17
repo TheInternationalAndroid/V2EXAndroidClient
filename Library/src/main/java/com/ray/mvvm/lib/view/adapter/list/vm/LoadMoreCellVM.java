@@ -25,10 +25,6 @@ package com.ray.mvvm.lib.view.adapter.list.vm;
 
 import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
 
-/**
- * Created by winson on 16/9/7.
- */
-
 public class LoadMoreCellVM extends CellVM {
 
 }

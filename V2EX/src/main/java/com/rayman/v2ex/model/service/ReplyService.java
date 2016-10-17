@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sun, 9 Oct 2016 22:18:48 +0800.
+ *  Created on Tue, 18 Oct 2016 00:49:21 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sun, 9 Oct 2016 22:18:48 +0800.
+ *  Author: Lena; Last Modified: Tue, 18 Oct 2016 00:49:21 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,9 +21,9 @@
  *
  */
 
-package com.ray.mvvm.lib.model.http.service;
+package com.rayman.v2ex.model.service;
 
-import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
+import com.rayman.v2ex.model.model.reply.ReplyEntity;
 
 import java.util.List;
 

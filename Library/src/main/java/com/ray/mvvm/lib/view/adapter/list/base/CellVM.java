@@ -28,23 +28,6 @@ import android.view.View;
 
 import com.ray.mvvm.lib.view.adapter.OnItemClick;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena
- * Date: 3/30/16
- * Time: 10:43 AM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class CellVM<T> extends BaseObservable {
 
     protected T entity;

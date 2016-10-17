@@ -59,7 +59,7 @@ import timber.log.Timber;
 public class TestRxP extends BasePresenter implements TestRxContract.Presenter {
 
     @Inject
-    public TestRxP(RefWatcher refWatcher) {
+    TestRxP(RefWatcher refWatcher) {
         super(refWatcher);
     }
 

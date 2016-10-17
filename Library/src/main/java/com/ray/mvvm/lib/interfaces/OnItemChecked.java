@@ -23,23 +23,6 @@
 
 package com.ray.mvvm.lib.interfaces;
 
-/**
- * Created by Android Studio.
- * ProjectName: IndustrialControlCircle
- * Author:  Lena
- * Date: 5/12/16
- * Time: 2:37 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public interface OnItemChecked {
 
     void onItemChecked(int position, boolean checked);

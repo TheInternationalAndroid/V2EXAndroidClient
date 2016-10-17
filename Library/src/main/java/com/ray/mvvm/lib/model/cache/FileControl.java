@@ -50,7 +50,7 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-public class FileControl implements IFileControl {
+ class FileControl implements IFileControl {
 
     public interface OnFileChangedListener<T> {
         void onChanged(T o);
@@ -97,8 +97,7 @@ public class FileControl implements IFileControl {
 
     private void install(Context context) {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-            sRoot = Environment.getExternalStorageDirectory().getAbsolutePath()
-                    + "/Library";
+            sRoot = Environment.getExternalStorageDirectory().getAbsolutePath();
             sCacheRoot = sRoot + "/cache";
             File file = new File(sCacheRoot);
             if (!file.exists()) {
@@ -404,7 +403,7 @@ public class FileControl implements IFileControl {
     }
 
     private String getImageName() {
-        return "IronHide" + System.currentTimeMillis();
+        return "image" + System.currentTimeMillis();
     }
 
     @Override

@@ -25,9 +25,6 @@ package com.ray.mvvm.lib.interfaces;
 
 import android.support.annotation.DrawableRes;
 
-/**
- * Created by winson on 16/5/20.
- */
 public interface PagerTabIcon {
     @DrawableRes
     int getPagerIcon(int position);

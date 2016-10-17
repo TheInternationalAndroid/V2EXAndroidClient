@@ -24,17 +24,18 @@
 package com.rayman.v2ex.ui.view.account;
 
 import com.ray.mvvm.lib.model.http.ExObserver;
-import com.ray.mvvm.lib.model.http.service.MemberService;
-import com.ray.mvvm.lib.model.http.service.TopicService;
-import com.ray.mvvm.lib.model.model.member.MemberEntity;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.member.MemberEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.base.presenter.BasePresenter;
+import com.rayman.v2ex.model.service.MemberService;
+import com.rayman.v2ex.model.service.TopicService;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import retrofit2.Retrofit;
 import rx.Subscriber;
 
 /**
@@ -60,10 +61,10 @@ public class AccountP extends BasePresenter implements AccountContract.Presneter
     private final MemberService memberService;
 
     @Inject
-    public AccountP(RefWatcher refWatcher, TopicService topicService, MemberService memberService) {
+    public AccountP(RefWatcher refWatcher, Retrofit retrofit) {
         super(refWatcher);
-        this.topicService = topicService;
-        this.memberService = memberService;
+        this.topicService = retrofit.create(TopicService.class);
+        this.memberService = retrofit.create(MemberService.class);
     }
 
     @Override

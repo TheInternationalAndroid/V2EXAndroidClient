@@ -31,7 +31,6 @@ import com.ray.mvvm.lib.di.scope.PerApplication;
 import com.ray.mvvm.lib.model.cache.FileModule;
 import com.ray.mvvm.lib.model.http.RetrofitModule;
 import com.ray.mvvm.lib.model.http.okhttp.OkHttpModule;
-import com.ray.mvvm.lib.model.http.service.APIServiceModule;
 import com.ray.mvvm.lib.widget.anotations.ContextType;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -41,30 +40,12 @@ import javax.inject.Named;
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 22:37
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 @Module(includes = {
         SPModule.class,
         OkHttpModule.class,
         RetrofitModule.class,
         ComponentModule.class,
-        FileModule.class,
-        APIServiceModule.class
+        FileModule.class
 })
 public class AppModule {
 

@@ -36,23 +36,6 @@ import com.ray.mvvm.lib.view.base.comp.DaggerActivityComp;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.mvvm.lib.viewmodel.ActivityModule;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 3/2/16
- * Time: 12:06
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public abstract class BaseDIActivity extends BaseActivity implements IBuildComp {
 
     private ActivityComp activityComp;

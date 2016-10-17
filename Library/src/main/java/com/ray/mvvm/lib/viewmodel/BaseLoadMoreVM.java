@@ -35,23 +35,6 @@ import com.ray.mvvm.lib.widget.anotations.FooterState;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
 
-/**
- * Created by Android Studio.
- * ProjectName: IndustrialControlCircle
- * Author:  Lena
- * Date: 4/28/16
- * Time: 10:31 AM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public abstract class BaseLoadMoreVM<T extends IPresenter, R extends IView, Q> extends BaseListRespVM<T, R, Q> implements ILoadMore {
 
     private int pageNum = Constants.PAGE_NUM_START;

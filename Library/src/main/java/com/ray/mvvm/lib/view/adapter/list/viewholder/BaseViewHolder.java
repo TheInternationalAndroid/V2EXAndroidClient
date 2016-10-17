@@ -26,23 +26,6 @@ package com.ray.mvvm.lib.view.adapter.list.viewholder;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/20/16
- * Time: 17:20
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     private ViewDataBinding binding;

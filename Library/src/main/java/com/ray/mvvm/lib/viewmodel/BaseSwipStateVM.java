@@ -33,23 +33,6 @@ import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena
- * Date: 4/5/16
- * Time: 11:58 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public abstract class BaseSwipStateVM<T extends IPresenter, R extends IView, Q> extends BaseStateVM<T, R, Q> implements SwipeRefreshLayout.OnRefreshListener {
 
     private int[] colors = {com.ray.mvvm.lib.R.color.SwipRefreshColor};

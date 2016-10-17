@@ -29,24 +29,6 @@ import com.ray.mvvm.lib.widget.eventbus.event.BaseEvent;
 import rx.Subscription;
 import rx.functions.Action1;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 21:43
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
-
 public interface IPresenter extends ILifeCycle {
 
     void subscribe(Subscription subscription);

@@ -30,8 +30,8 @@ import com.ray.mvvm.lib.model.http.ExSubscriber;
 import com.ray.mvvm.lib.viewmodel.BaseVM;
 import com.ray.mvvm.lib.widget.utils.Util;
 import com.rayman.v2ex.BR;
-import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.reply.ReplyEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.adapter.list.TopicPageAdapter;
 import com.rayman.v2ex.ui.view.topic.TopicContract;
 

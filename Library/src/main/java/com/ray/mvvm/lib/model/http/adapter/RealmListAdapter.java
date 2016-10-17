@@ -32,23 +32,6 @@ import java.util.List;
 import io.realm.RealmList;
 import io.realm.RealmModel;
 
-/**
- * Created by Android Studio.
- * ProjectName: IronHide
- * Author:  Lena
- * Date: 8/17/16
- * Time: 10:54 AM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class RealmListAdapter<T extends RealmModel> {
 
     @ToJson

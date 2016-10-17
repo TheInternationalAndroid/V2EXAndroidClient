@@ -28,24 +28,6 @@ import android.os.Bundle;
 
 import com.ray.mvvm.lib.widget.anotations.ActivityAction;
 
-
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 23:03
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 interface IRedirect {
     void intent(Class aClass);
 

@@ -6,7 +6,7 @@
 
         <import type="com.ray.mvvm.lib.view.adapter.list.base.CellVM" />
 
-        <import type="com.ray.mvvm.lib.model.model.test.TestApiEntity" />
+        <import type="com.rayman.v2ex.model.model.test.TestApiEntity" />
 
         <variable
             name="viewModel"

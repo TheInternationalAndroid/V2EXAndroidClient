@@ -27,11 +27,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.ray.mvvm.lib.model.http.Host;
-import com.ray.mvvm.lib.model.model.member.MemberEntity;
-import com.ray.mvvm.lib.model.model.node.NodeEntity;
-import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
-import com.ray.mvvm.lib.model.model.test.TestApiEntity;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.member.MemberEntity;
+import com.rayman.v2ex.model.model.node.NodeEntity;
+import com.rayman.v2ex.model.model.reply.ReplyEntity;
+import com.rayman.v2ex.model.model.test.TestApiEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.viewmodel.BaseVM;
 import com.rayman.v2ex.ui.adapter.list.TestApiListAdapter;
 import com.rayman.v2ex.ui.view.test.api.TestApiContract;

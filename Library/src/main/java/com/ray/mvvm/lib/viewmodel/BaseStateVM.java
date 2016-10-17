@@ -37,23 +37,6 @@ import com.ray.mvvm.lib.widget.utils.StringUtil;
 
 import java.io.IOException;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/19/16
- * Time: 18:10
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public abstract class BaseStateVM<T extends IPresenter, R extends IView, Q> extends BaseVM<T, R> implements ExObserver<Q> {
 
     private int requestType = RequestType.CONTENT_LOADING;

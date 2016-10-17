@@ -26,7 +26,7 @@ package com.rayman.v2ex.viewmodel.topic;
 import android.view.View;
 
 import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.rayman.v2ex.ui.view.common.ITopicCellView;
 
 /**

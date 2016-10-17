@@ -23,17 +23,18 @@
 
 package com.rayman.v2ex.ui.view.node;
 
-import com.ray.mvvm.lib.model.http.service.NodeService;
-import com.ray.mvvm.lib.model.http.service.TopicService;
-import com.ray.mvvm.lib.model.model.node.NodeEntity;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.rayman.v2ex.model.model.node.NodeEntity;
+import com.rayman.v2ex.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.base.presenter.BasePresenter;
+import com.rayman.v2ex.model.service.NodeService;
+import com.rayman.v2ex.model.service.TopicService;
 import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import retrofit2.Retrofit;
 import rx.Subscriber;
 
 /**
@@ -59,10 +60,10 @@ public class NodeP extends BasePresenter implements NodeContract.Presenter {
     private final TopicService topicService;
 
     @Inject
-    public NodeP(RefWatcher refWatcher, NodeService nodeService, TopicService topicService) {
+    NodeP(RefWatcher refWatcher, Retrofit retrofit) {
         super(refWatcher);
-        this.nodeService = nodeService;
-        this.topicService = topicService;
+        this.nodeService = retrofit.create(NodeService.class);
+        this.topicService = retrofit.create(TopicService.class);
     }
 
     @Override

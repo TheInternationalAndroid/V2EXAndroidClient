@@ -29,23 +29,6 @@ import java.lang.annotation.RetentionPolicy;
 
 import javax.inject.Scope;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/18/16
- * Time: 22:09
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 @Scope
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

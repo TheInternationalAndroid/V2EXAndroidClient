@@ -40,23 +40,6 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import timber.log.Timber;
 
-/**
- * Created by Android Studio.
- * ProjectName: IndustrialControlCircle
- * Author:  Lena.t.Yan
- * Date: 4/20/16
- * Time: 14:20
- * \ ---------------------------------------
- * \| A small leak will sink a great ship.! |
- * \ ---------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 @Module
 public class ComponentModule {
 

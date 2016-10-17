@@ -33,12 +33,6 @@ import javax.inject.Named;
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by Android Studio.
- * User:  Lena.t.Yan
- * Date: 12/10/15
- * Time: 12:57
- */
 @Module
 public class FileModule {
 

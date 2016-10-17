@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 8 Oct 2016 22:22:35 +0800.
+ *  Created on Tue, 18 Oct 2016 00:49:21 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 8 Oct 2016 22:22:35 +0800.
+ *  Author: Lena; Last Modified: Tue, 18 Oct 2016 00:49:21 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,14 +21,23 @@
  *
  */
 
-package com.ray.mvvm.lib.model.model.test;
+package com.rayman.v2ex.model.service;
+
+import com.rayman.v2ex.model.model.node.NodeEntity;
+
+import java.util.List;
+
+import retrofit2.Response;
+import retrofit2.http.GET;
+import retrofit2.http.Query;
+import rx.Observable;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena
  * Date: 3/21/16
- * Time: 5:11 PM
+ * Time: 3:50 PM
  * \ ----------------------------------------
  * \| A small leak will sink a great ship.!  |
  * \ ----------------------------------------
@@ -40,36 +49,12 @@ package com.ray.mvvm.lib.model.model.test;
  * \               ||----w |
  * \               ||     ||
  */
-public class TestApiEntity {
+public interface NodeService {
 
-    public static final int DEFAULT = 0;
-    public static final int SUCCESS = 1;
-    public static final int LOADING = 2;
-    public static final int ERROR = 3;
+    @GET("nodes/show.json")
+    Observable<Response<NodeEntity>> nodeByName(@Query(value = "name") String name);
 
-    private String url;
-    private int state = DEFAULT;
+    @GET("nodes/all.json")
+    Observable<Response<List<NodeEntity>>> nodes();
 
-    public TestApiEntity() {
-    }
-
-    public TestApiEntity(String url) {
-        this.url = url;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
 }

@@ -25,23 +25,6 @@ package com.ray.mvvm.lib.widget.utils;
 
 import android.text.TextUtils;
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena.t.Yan
- * Date: 1/20/16
- * Time: 14:10
- * \ ___________________
- * \| Happy New Year!  |
- * \ -------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
 public class StringUtil {
 
     public static boolean isEmpty(CharSequence charSequence) {

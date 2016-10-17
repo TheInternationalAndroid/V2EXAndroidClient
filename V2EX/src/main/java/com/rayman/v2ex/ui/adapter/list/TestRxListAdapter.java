@@ -29,7 +29,7 @@ import android.view.ViewGroup;
 
 import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
 import com.rayman.v2ex.databinding.ListCellTestRxBinding;
-import com.ray.mvvm.lib.model.model.test.TestRxEntity;
+import com.rayman.v2ex.model.model.test.TestRxEntity;
 
 import java.util.List;
 

@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sun, 9 Oct 2016 00:14:45 +0800.
+ *  Created on Tue, 18 Oct 2016 13:44:17 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sun, 9 Oct 2016 00:14:45 +0800.
+ *  Author: Lena; Last Modified: Tue, 18 Oct 2016 13:44:17 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,17 +21,7 @@
  *
  */
 
-package com.ray.mvvm.lib.model.http.okhttp;
+package com.ray.mvvm.lib.app;
 
-import com.facebook.stetho.okhttp3.StethoInterceptor;
-
-import okhttp3.OkHttpClient;
-
-public class OkHttpInterceptorUtil {
-
-    public static OkHttpClient.Builder okhttpInterceptor(OkHttpClient.Builder builder) {
-        builder.interceptors().add(new StethoInterceptor());
-        return builder;
-    }
-
+public class MVVMApp extends BaseApplication {
 }

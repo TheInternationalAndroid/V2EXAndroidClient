@@ -1,11 +1,30 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+apply plugin: "com.jfrog.artifactory"
+
 buildscript {
     repositories {
         jcenter()
         mavenCentral()
         maven {
             url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+        }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            url "${artifactory_context_url}libs-release-local"
+            credentials {
+                username = artifactory_username
+                password = artifactory_password
+            }
+        }
+        maven {
+            url "${artifactory_context_url}libs-snapshot-local"
+            credentials {
+                username = artifactory_username
+                password = artifactory_password
+            }
         }
     }
     dependencies {
@@ -17,6 +36,7 @@ buildscript {
         classpath 'io.realm:realm-gradle-plugin:2.0.2'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
         classpath 'com.genymotion:plugin:1.1'
+        classpath 'org.jfrog.buildinfo:build-info-extractor-gradle:4.4.7'
     }
     configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 }
@@ -27,6 +47,23 @@ allprojects {
         mavenCentral()
         maven {
             url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+        }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        maven {
+            url "${artifactory_context_url}libs-release-local"
+            credentials {
+                username = artifactory_username
+                password = artifactory_password
+            }
+        }
+        maven {
+            url "${artifactory_context_url}libs-snapshot-local"
+            credentials {
+                username = artifactory_username
+                password = artifactory_password
+            }
         }
     }
 }
@@ -87,7 +124,7 @@ ext.depMap = [
         SupportCoreUI         : "${androidSupportPkg}:support-core-ui:${androidSupportVersion}",
         SupportMediaCompat    : "${androidSupportPkg}:support-media-compat:${androidSupportVersion}",
         SupportFragment       : "${androidSupportPkg}:support-fragment:${androidSupportVersion}",
-        Multidex              : "${androidSupportPkg}:multidex:1.0.0",
+        Multidex              : "${androidSupportPkg}:multidex:1.0.1",
         ConstraintLayout      : "${androidSupportPkg}:constraint-layout:1.0.0-alpha1",
         FlexBox               : 'com.google.android:flexbox:0.2.3',
 

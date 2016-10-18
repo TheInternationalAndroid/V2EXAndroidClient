@@ -167,3 +167,49 @@ dependencies {
     androidTestCompile depMap.Annotations
 
 }
+
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+
+def libraryGroupId = 'com.ray.mvvm.lib'
+def libraryArtifactId = 'library'
+def isRelease = false
+def libraryVersion = '1.0.0'
+
+if (file('../artifactory.gradle').exists())
+    apply from: '../artifactory.gradle'
+
+publishing {
+    publications {
+        aar(MavenPublication) {
+            groupId libraryGroupId
+            version libraryVersion + (isRelease ? '' : artifactory_snapshot_suffix)
+            artifactId libraryArtifactId
+            artifact("$buildDir/outputs/aar/Library-release.aar")
+        }
+    }
+}
+
+apply plugin: 'com.jfrog.artifactory'
+apply plugin: 'maven-publish'
+
+artifactory {
+    contextUrl = artifactory_context_url
+    publish {
+        repository {
+            repoKey = isRelease ? artifactory_repo_key_release : artifactory_repo_key_snapshot
+            username = artifactory_username
+            password = artifactory_password
+        }
+        defaults {
+            publications('aar')
+            publishArtifacts = true
+
+            properties = ['qa.level': 'basic', 'q.os': 'android', 'dev.team': 'core']
+            publishPom = true
+            publishBuildInfo = true
+            publishArtifacts = true
+            publishIvy = true
+        }
+    }
+}

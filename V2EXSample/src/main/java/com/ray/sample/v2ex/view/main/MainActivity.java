@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Fri, 14 Oct 2016 16:39:17 +0800.
+ *  Created on Fri, 11 Nov 2016 23:28:02 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Fri, 14 Oct 2016 16:39:17 +0800.
+ *  Author: Lena; Last Modified: Fri, 11 Nov 2016 23:28:02 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@
  *
  */
 
-package com.ray.sample.v2ex.view;
+package com.ray.sample.v2ex.view.main;
 
 import android.os.Bundle;
 
@@ -29,10 +29,10 @@ import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.sample.v2ex.R;
 import com.ray.sample.v2ex.databinding.ActivityMainBinding;
-import com.ray.sample.v2ex.view.contract.DaggerMainContract_Comp;
-import com.ray.sample.v2ex.view.contract.MainContract;
-import com.ray.sample.v2ex.view.vm.MainVM;
-import com.ray.sample.v2ex.view.vm.module.MainVMModule;
+import com.ray.sample.v2ex.view.main.contract.DaggerMainContract_Comp;
+import com.ray.sample.v2ex.view.main.contract.MainContract;
+import com.ray.sample.v2ex.view.main.vm.MainVM;
+import com.ray.sample.v2ex.view.main.vm.module.MainVMModule;
 
 import javax.inject.Inject;
 

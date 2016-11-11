@@ -21,12 +21,12 @@
  *
  */
 
-package com.ray.sample.v2ex.view.vm.module;
+package com.ray.sample.v2ex.view.main.vm.module;
 
 import com.ray.mvvm.lib.di.scope.PerActivity;
-import com.ray.sample.v2ex.view.contract.MainContract;
-import com.ray.sample.v2ex.view.presenter.MainP;
-import com.ray.sample.v2ex.view.vm.MainVM;
+import com.ray.sample.v2ex.view.main.contract.MainContract;
+import com.ray.sample.v2ex.view.main.presenter.MainP;
+import com.ray.sample.v2ex.view.main.vm.MainVM;
 
 import dagger.Module;
 import dagger.Provides;

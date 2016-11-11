@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Fri, 14 Oct 2016 16:39:17 +0800.
+ *  Created on Fri, 11 Nov 2016 23:27:33 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Fri, 14 Oct 2016 16:39:17 +0800.
+ *  Author: Lena; Last Modified: Fri, 11 Nov 2016 23:27:33 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,30 +21,24 @@
  *
  */
 
-package com.ray.sample.v2ex.view.contract;
+package com.ray.sample.v2ex.view;
 
-import com.ray.mvvm.lib.di.scope.PerActivity;
-import com.ray.mvvm.lib.presenter.IPresenter;
-import com.ray.mvvm.lib.view.base.comp.ActivityComp;
-import com.ray.mvvm.lib.view.base.view.IView;
-import com.ray.sample.v2ex.view.MainActivity;
-import com.ray.sample.v2ex.view.vm.module.MainVMModule;
-
-import dagger.Component;
-
-public interface MainContract {
-
-    @PerActivity
-    @Component(modules = {MainVMModule.class}, dependencies = ActivityComp.class)
-    interface Comp extends ActivityComp {
-        void inject(MainActivity activity);
-    }
-
-    interface View extends IView {
-    }
-
-    interface Presenter extends IPresenter {
-
-    }
-
+/**
+ * Created by Android Studio.
+ * ProjectName: V2EXAndroidClient
+ * Author:  Lena
+ * Date: 11/11/2016
+ * Time: 11:27 PM
+ * \ ----------------------------------------
+ * \| A small leak will sink a great ship.!  |
+ * \ ----------------------------------------
+ * \  \
+ * \   \   \_\_    _/_/
+ * \    \      \__/
+ * \           (oo)\_______
+ * \           (__)\       )\/\
+ * \               ||----w |
+ * \               ||     ||
+ */
+public class Temp {
 }

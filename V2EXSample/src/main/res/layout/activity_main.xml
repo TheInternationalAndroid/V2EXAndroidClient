@@ -26,7 +26,7 @@
 
     <data>
 
-        <import type="com.ray.sample.v2ex.view.vm.MainVM" />
+        <import type="com.ray.sample.v2ex.view.main.vm.MainVM" />
 
         <variable
             name="viewModel"
@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="com.ray.sample.v2ex.view.MainActivity">
+        tools:context="com.ray.sample.v2ex.view.main.MainActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"

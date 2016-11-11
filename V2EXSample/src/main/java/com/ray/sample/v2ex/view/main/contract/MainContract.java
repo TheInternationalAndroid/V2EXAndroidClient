@@ -21,19 +21,30 @@
  *
  */
 
-package com.ray.sample.v2ex.view.presenter;
+package com.ray.sample.v2ex.view.main.contract;
 
-import com.ray.mvvm.lib.presenter.BasePresenter;
-import com.ray.sample.v2ex.view.contract.MainContract;
-import com.squareup.leakcanary.RefWatcher;
+import com.ray.mvvm.lib.di.scope.PerActivity;
+import com.ray.mvvm.lib.presenter.IPresenter;
+import com.ray.mvvm.lib.view.base.comp.ActivityComp;
+import com.ray.mvvm.lib.view.base.view.IView;
+import com.ray.sample.v2ex.view.main.MainActivity;
+import com.ray.sample.v2ex.view.main.vm.module.MainVMModule;
 
-import javax.inject.Inject;
+import dagger.Component;
 
-public class MainP extends BasePresenter implements MainContract.Presenter {
+public interface MainContract {
 
-    @Inject
-    MainP(RefWatcher refWatcher) {
-        super(refWatcher);
+    @PerActivity
+    @Component(modules = {MainVMModule.class}, dependencies = ActivityComp.class)
+    interface Comp extends ActivityComp {
+        void inject(MainActivity activity);
+    }
+
+    interface View extends IView {
+    }
+
+    interface Presenter extends IPresenter {
+
     }
 
 }

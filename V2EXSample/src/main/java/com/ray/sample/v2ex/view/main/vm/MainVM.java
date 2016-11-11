@@ -21,15 +21,25 @@
  *
  */
 
-package com.ray.sample.v2ex.view.vm;
+package com.ray.sample.v2ex.view.main.vm;
+
+import android.view.View;
 
 import com.ray.mvvm.lib.viewmodel.BaseVM;
-import com.ray.sample.v2ex.view.contract.MainContract;
+import com.ray.sample.v2ex.view.main.contract.MainContract;
 
 public class MainVM extends BaseVM<MainContract.Presenter, MainContract.View> {
 
     public MainVM(MainContract.Presenter presenter, MainContract.View view) {
         super(presenter, view);
+    }
+
+    public void onV2exClicked(View view) {
+
+    }
+
+    public void onMockDataClicked(View view) {
+
     }
 
 }

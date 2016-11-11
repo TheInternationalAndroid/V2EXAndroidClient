@@ -28,7 +28,7 @@
 
         <import type="com.ray.mvvm.lib.widget.anotations.PageState" />
 
-        <import type="com.ray.mvvm.lib.viewmodel.BaseStateVM" />
+        <import type="com.ray.mvvm.lib.viewmodel.PageVM" />
 
         <import type="android.view.View" />
 
@@ -36,7 +36,7 @@
 
         <variable
             name="viewModel"
-            type="BaseStateVM" />
+            type="PageVM" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"

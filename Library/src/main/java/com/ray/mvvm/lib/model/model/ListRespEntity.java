@@ -23,19 +23,12 @@
 
 package com.ray.mvvm.lib.model.model;
 
-import com.squareup.moshi.Json;
-
 import java.util.List;
 
 public class ListRespEntity<T> {
 
     private List<T> list;
-    private boolean isLocal;
-
-    @Json(name = "total_count")
     private int totalCount;
-
-    @Json(name = "has_more")
     private boolean hasMore;
 
     public List<T> getList() {
@@ -52,14 +45,6 @@ public class ListRespEntity<T> {
 
     public void setTotalCount(int totalCount) {
         this.totalCount = totalCount;
-    }
-
-    public boolean isLocal() {
-        return isLocal;
-    }
-
-    public void setLocal(boolean local) {
-        isLocal = local;
     }
 
     public boolean isHasMore() {

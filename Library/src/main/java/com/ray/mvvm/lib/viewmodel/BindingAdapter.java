@@ -23,10 +23,8 @@
 
 package com.ray.mvvm.lib.viewmodel;
 
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
@@ -34,7 +32,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -50,13 +47,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.davemorrissey.labs.subscaleview.ImageSource;
-import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView;
 import com.ray.mvvm.lib.interfaces.ILoadMore;
-import com.ray.mvvm.lib.interfaces.OnBitmapLoadedListener;
 import com.ray.mvvm.lib.interfaces.OnItemSwitch;
 import com.ray.mvvm.lib.interfaces.OnScrollListener;
 import com.ray.mvvm.lib.interfaces.OnTextChanged;
@@ -170,81 +161,6 @@ public class BindingAdapter {
         } else {
             with(imageView.getContext()).load(imgurl).centerCrop().placeholder(placeHolder).dontAnimate().into(imageView);
         }
-    }
-
-    @android.databinding.BindingAdapter(value = {"imgurl", "placeHolder", "callback"}, requireAll = false)
-    public static void loadScaleImageByPath(SubsamplingScaleImageView imageView, String imgurl, Drawable placeHolder, OnBitmapLoadedListener callback) {
-        Glide
-                .with(imageView.getContext())
-                .load(imgurl)
-                .asBitmap()
-                .placeholder(placeHolder)
-                .into(new SimpleTarget<Bitmap>() {
-                    @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        callback.onLoaded(resource);
-                        imageView.setImage(ImageSource.cachedBitmap(resource));
-                        final float srcW = resource.getWidth();
-                        final float srcH = resource.getHeight();
-                        final int deviceW = DeviceUtil.sScreenWidth;
-                        final int deviceH = DeviceUtil.sScreenHeight;
-                        float limit = 4.0f;
-                        float scaleMaxRatio = 3.0f;
-                        float widthScale = deviceW / srcW;
-                        if (widthScale > limit && deviceH / srcH > limit) {
-                            imageView.setMinScale(limit);
-                            imageView.setMaxScale(limit * scaleMaxRatio);
-                            imageView.setDoubleTapZoomScale(widthScale * scaleMaxRatio);
-
-                        } else {
-                            imageView.setMinScale(widthScale);
-                            imageView.setMaxScale(widthScale * scaleMaxRatio);
-                            imageView.setDoubleTapZoomScale(widthScale * scaleMaxRatio);
-                        }
-
-                        callback.onLoaded(resource);
-                    }
-
-                    @Override
-                    public void onLoadStarted(Drawable placeholder) {
-                        super.onLoadStarted(placeholder);
-                        callback.onStart();
-                    }
-
-                    @Override
-                    public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                        super.onLoadFailed(e, errorDrawable);
-                        callback.onFail();
-                    }
-                });
-    }
-
-    @android.databinding.BindingAdapter(value = {"imgurl", "placeHolder", "imageViewId"})
-    public static void loadCollapsingImage(CollapsingToolbarLayout toolbarLayout, String url, Drawable placeHolder, int imageViewId) {
-        View view = toolbarLayout.findViewById(imageViewId);
-        if (view == null || !(view instanceof ImageView)) {
-            return;
-        }
-        ImageView imageView = (ImageView) view;
-        imageView.setImageDrawable(placeHolder);
-        if (StringUtil.isEmpty(url)) {
-            return;
-
-        }
-        with(imageView.getContext())
-                .load(url)
-                .asBitmap()
-                .into(new BitmapImageViewTarget(imageView) {
-                    @Override
-                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                        Palette.from(resource).generate((palette) -> {
-                            Palette.Swatch vibrantSwatch = palette.getLightVibrantSwatch();
-                            if (vibrantSwatch != null) {
-                                toolbarLayout.setExpandedTitleColor(vibrantSwatch.getBodyTextColor());
-                            }
-                        });
-                    }
-                });
     }
 
     @android.databinding.BindingAdapter(value = {"android:src"})

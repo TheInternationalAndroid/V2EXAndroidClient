@@ -34,7 +34,7 @@ import com.ray.mvvm.lib.di.IBuildComp;
 import com.ray.mvvm.lib.view.base.comp.ActivityComp;
 import com.ray.mvvm.lib.view.base.comp.DaggerActivityComp;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
-import com.ray.mvvm.lib.viewmodel.ActivityModule;
+import com.ray.mvvm.lib.di.modules.ActivityModule;
 
 public abstract class BaseDIActivity extends BaseActivity implements IBuildComp {
 

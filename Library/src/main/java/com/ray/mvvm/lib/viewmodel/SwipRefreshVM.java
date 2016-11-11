@@ -28,16 +28,16 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 
 import com.ray.mvvm.lib.BR;
-import com.ray.mvvm.lib.view.base.presenter.IPresenter;
+import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
 
-public abstract class BaseSwipStateVM<T extends IPresenter, R extends IView, Q> extends BaseStateVM<T, R, Q> implements SwipeRefreshLayout.OnRefreshListener {
+public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> extends PageVM<T, R, Q> implements SwipeRefreshLayout.OnRefreshListener {
 
     private int[] colors = {com.ray.mvvm.lib.R.color.SwipRefreshColor};
 
-    public BaseSwipStateVM(T presenter, R view) {
+    public SwipRefreshVM(T presenter, R view) {
         super(presenter, view);
     }
 

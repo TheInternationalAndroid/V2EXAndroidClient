@@ -1,6 +1,6 @@
 package ${packageName}.presenter;
 
-import ${libPackage}.view.base.presenter.BasePresenter;
+import ${libPackage}.presenter.BasePresenter;
 import ${packageName}.contract.${pageName}Contract;
 import com.squareup.leakcanary.RefWatcher;
 

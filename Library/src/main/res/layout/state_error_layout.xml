@@ -27,13 +27,13 @@
 
         <import type="com.ray.mvvm.lib.widget.anotations.PageState" />
 
-        <import type="com.ray.mvvm.lib.viewmodel.BaseStateVM" />
+        <import type="com.ray.mvvm.lib.viewmodel.PageVM" />
 
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="BaseStateVM" />
+            type="PageVM" />
     </data>
 
     <LinearLayout android:id="@+id/error_layout"

@@ -25,11 +25,8 @@ package com.ray.mvvm.lib.model.http;
 
 public interface ErrorType {
 
-    int ERROR_BUSINESS = 1001;
-    int ERROR_SERVER = 1003;
-    int ERROR_NETWORK = 1004;
-    int ERROR_CLEAR_CACHE = 1005;
-    int ERROR_STORAGE_PERMISSION_GRANT = 2000;
+    int NETWORK = 1001;
+    int RESP_BODY_EMPTY = 1002;
 
-    int ERROR_OTHER = 9999;
+    int OTHER = 9999;
 }

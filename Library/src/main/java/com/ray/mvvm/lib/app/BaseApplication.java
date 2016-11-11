@@ -30,7 +30,7 @@ import android.support.multidex.MultiDex;
 import com.ray.mvvm.lib.di.IBuildComp;
 import com.ray.mvvm.lib.model.http.event.ErrorEvent;
 import com.ray.mvvm.lib.model.model.RespEntity;
-import com.ray.mvvm.lib.viewmodel.AppModule;
+import com.ray.mvvm.lib.di.modules.AppModule;
 import com.ray.mvvm.lib.widget.eventbus.RxBus;
 import com.ray.mvvm.lib.widget.utils.DeviceUtil;
 import com.ray.mvvm.lib.widget.utils.StringUtil;

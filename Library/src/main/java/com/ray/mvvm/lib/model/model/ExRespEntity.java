@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Fri, 14 Oct 2016 16:39:51 +0800.
+ *  Created on Fri, 11 Nov 2016 22:24:02 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Fri, 14 Oct 2016 16:39:51 +0800.
+ *  Author: Lena; Last Modified: Fri, 11 Nov 2016 22:24:02 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,26 +21,42 @@
  *
  */
 
-package com.ray.sample.v2ex.app;
+package com.ray.mvvm.lib.model.model;
 
-import com.ray.mvvm.lib.app.BaseApplication;
+public class ExRespEntity {
 
-/**
- * Created by Android Studio.
- * ProjectName: V2EXAndroidClient
- * Author:  Lena
- * Date: 14/10/2016
- * Time: 4:39 PM
- * \ ----------------------------------------
- * \| A small leak will sink a great ship.!  |
- * \ ----------------------------------------
- * \  \
- * \   \   \_\_    _/_/
- * \    \      \__/
- * \           (oo)\_______
- * \           (__)\       )\/\
- * \               ||----w |
- * \               ||     ||
- */
-public class V2EXApplication extends BaseApplication {
+    private boolean isSuscess;
+    private String message;
+    private int code;
+
+    public ExRespEntity(boolean isSuscess) {
+        this.isSuscess = isSuscess;
+    }
+
+    public ExRespEntity() {
+    }
+
+    public boolean isSuscess() {
+        return isSuscess;
+    }
+
+    public void setSuscess(boolean suscess) {
+        isSuscess = suscess;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
 }

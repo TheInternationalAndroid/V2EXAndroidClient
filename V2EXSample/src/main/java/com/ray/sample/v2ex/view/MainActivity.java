@@ -25,17 +25,16 @@ package com.ray.sample.v2ex.view;
 
 import android.os.Bundle;
 
-import com.ray.sample.v2ex.databinding.ActivityMainBinding;
-import com.ray.sample.v2ex.view.contract.DaggerMainContract_Comp;
-import com.ray.sample.v2ex.view.vm.MainVM;
-import com.ray.sample.v2ex.view.vm.module.MainVMModule;
-import com.ray.sample.v2ex.view.contract.MainContract;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
+import com.ray.sample.v2ex.R;
+import com.ray.sample.v2ex.databinding.ActivityMainBinding;
+import com.ray.sample.v2ex.view.contract.DaggerMainContract_Comp;
+import com.ray.sample.v2ex.view.contract.MainContract;
+import com.ray.sample.v2ex.view.vm.MainVM;
+import com.ray.sample.v2ex.view.vm.module.MainVMModule;
 
 import javax.inject.Inject;
-
-import com.ray.sample.v2ex.R;
 
 public class MainActivity extends BaseDIActivity implements MainContract.View {
 
@@ -44,10 +43,9 @@ public class MainActivity extends BaseDIActivity implements MainContract.View {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityMainBinding binding = bindLayout(R.layout.activity_main);
+        ActivityMainBinding binding = bindLayout(R.layout.activity_main, false);
         binding.setViewModel(viewModel);
     }
-
 
     @Override
     protected ILifeCycle getPageLifeCycle() {

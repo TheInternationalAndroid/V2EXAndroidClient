@@ -30,12 +30,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.ray.mvvm.lib.app.Constants;
-import com.ray.mvvm.lib.databinding.ListFooterEmptyBinding;
-import com.ray.mvvm.lib.databinding.ListFooterLoadMoreBinding;
-import com.ray.mvvm.lib.databinding.ListFooterNoMoreBinding;
 import com.ray.mvvm.lib.view.adapter.OnItemClick;
 import com.ray.mvvm.lib.view.adapter.list.viewholder.BaseViewHolder;
-import com.ray.mvvm.lib.widget.anotations.FooterState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,11 +44,6 @@ public abstract class BaseListAdapter<T> extends RecyclerView.Adapter<BaseViewHo
     private List<T> list;
     private LongSparseArray<T> wrapMap = new LongSparseArray<>();
     protected OnItemClick<T> itemClick;
-    private static final int VIEW_TYPE_NO_MORE = 52123;
-    private static final int VIEW_TYPE_LOAD_MORE = 52124;
-    private static final int VIEW_TYPE_EMPTY = 52125;
-    private int footerState = FooterState.NONE;
-
 
     public BaseListAdapter() {
     }
@@ -72,22 +63,12 @@ public abstract class BaseListAdapter<T> extends RecyclerView.Adapter<BaseViewHo
 
     @Override
     public final BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        switch (viewType) {
-            case VIEW_TYPE_NO_MORE:
-                return new BaseViewHolder(ListFooterNoMoreBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
-            case VIEW_TYPE_LOAD_MORE:
-                return new BaseViewHolder(ListFooterLoadMoreBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
-            case VIEW_TYPE_EMPTY:
-                return new BaseViewHolder(ListFooterEmptyBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
-            default:
-                return new BaseViewHolder(createBinding(LayoutInflater.from(parent.getContext()), parent, viewType));
-        }
-
+        return new BaseViewHolder(createBinding(LayoutInflater.from(parent.getContext()), parent, viewType));
     }
 
     @Override
     public int getItemCount() {
-        return (list == null ? 0 : list.size()) + getHeaderCount() + getFooterCount();
+        return getDataCount() + getHeaderCount();
     }
 
     public int getDataCount() {
@@ -96,17 +77,7 @@ public abstract class BaseListAdapter<T> extends RecyclerView.Adapter<BaseViewHo
 
     @Override
     public final void onBindViewHolder(BaseViewHolder holder, int position) {
-        switch (getItemViewType(position)) {
-            case VIEW_TYPE_NO_MORE:
-                break;
-            case VIEW_TYPE_LOAD_MORE:
-                break;
-            case VIEW_TYPE_EMPTY:
-                break;
-            default:
-                holder.bindData(createViewModel(getItemViewType(position), position));
-                break;
-        }
+        holder.bindData(createViewModel(getItemViewType(position), position));
     }
 
     @Override
@@ -345,44 +316,12 @@ public abstract class BaseListAdapter<T> extends RecyclerView.Adapter<BaseViewHo
         return null;
     }
 
-
     public long getIndex(T t) {
         return NO_INDEX;
     }
 
     public int getHeaderCount() {
         return 0;
-    }
-
-    private int getFooterCount() {
-        return (footerState != FooterState.NONE && getDataCount() > 0) ? 1 : 0;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        if (position == getHeaderCount() + getDataCount()) {
-            if (footerState == FooterState.NO_MORE) {
-                return VIEW_TYPE_NO_MORE;
-            } else if (footerState == FooterState.LOAD_MORE) {
-                return VIEW_TYPE_LOAD_MORE;
-            } else if (footerState == FooterState.EMPTY) {
-                return VIEW_TYPE_EMPTY;
-            } else {
-                return super.getItemViewType(position);
-
-            }
-        } else {
-            return super.getItemViewType(position);
-        }
-    }
-
-    public int getFooterState() {
-        return footerState;
-    }
-
-    public void setFooterState(@FooterState int state) {
-        this.footerState = state;
-        notifyItemChanged(getItemCount() - 1);
     }
 
 }

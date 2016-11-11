@@ -30,7 +30,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.ray.mvvm.lib.app.AppComp;
 import com.ray.mvvm.lib.di.scope.PerBaseActivity;
 import com.ray.mvvm.lib.view.base.page.BaseActivity;
-import com.ray.mvvm.lib.viewmodel.ActivityModule;
+import com.ray.mvvm.lib.di.modules.ActivityModule;
 import com.ray.mvvm.lib.widget.anotations.ContextType;
 
 import javax.inject.Named;

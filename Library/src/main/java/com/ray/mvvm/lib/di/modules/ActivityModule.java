@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 8 Oct 2016 23:56:12 +0800.
+ *  Created on Fri, 11 Nov 2016 22:57:52 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 8 Oct 2016 23:56:12 +0800.
+ *  Author: Lena; Last Modified: Fri, 11 Nov 2016 22:57:52 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@
  *
  */
 
-package com.ray.mvvm.lib.viewmodel;
+package com.ray.mvvm.lib.di.modules;
 
 import android.content.Context;
 import android.support.v4.app.FragmentManager;

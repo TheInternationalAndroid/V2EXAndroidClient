@@ -86,15 +86,8 @@ dependencies {
     compile depMap.LoggingInterceptor
     compile depMap.Retrofit
     compile depMap.RxJavaAdapter
-    //    compile depMap.Java8Adapter
-//    compile depMap.GuavaAdapter
-//    compile depMap.GsonConverter
-//    compile depMap.JacksonConverter
     compile depMap.MoshiConverter
 //    compile depMap.ProtobufConverter
-//    compile depMap.WireConverter
-//    compile depMap.SimpleXMLConverter
-//    compile depMap.ScalarsConverter
     compile depMap.RxAndroid
 
     compile depMap.RxBinding
@@ -115,12 +108,10 @@ dependencies {
     compile depMap.ScaleImageView
     compile depMap.Moshi
     compile depMap.FastJson
+    compile depMap.StethoRealm
 
     debugCompile depMap.Stetho
     debugCompile depMap.StethoOkhttp3
-    debugCompile depMap.StethoRealm
-
-    compile 'com.uphyca:stetho_realm:2.0.0'
 
     androidTestCompile(depMap.EspressoCore, {
         exclude group: 'com.android.support', module: 'support-annotations'

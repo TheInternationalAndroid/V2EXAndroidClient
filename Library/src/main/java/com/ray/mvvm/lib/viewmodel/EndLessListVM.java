@@ -28,19 +28,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import com.ray.mvvm.lib.app.Constants;
 import com.ray.mvvm.lib.interfaces.ILoadMore;
 import com.ray.mvvm.lib.model.model.ListRespEntity;
+import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
-import com.ray.mvvm.lib.view.base.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
-import com.ray.mvvm.lib.widget.anotations.FooterState;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
 
-public abstract class BaseLoadMoreVM<T extends IPresenter, R extends IView, Q> extends BaseListRespVM<T, R, Q> implements ILoadMore {
+public abstract class EndLessListVM<T extends IPresenter, R extends IView, Q> extends ListRespVM<T, R, Q> implements ILoadMore {
 
     private int pageNum = Constants.PAGE_NUM_START;
     private boolean hasMore = true;
 
-    public BaseLoadMoreVM(T presenter, R view, LinearLayoutManager layoutManager, BaseListAdapter<Q> adapter) {
+    public EndLessListVM(T presenter, R view, LinearLayoutManager layoutManager, BaseListAdapter<Q> adapter) {
         super(presenter, view, layoutManager, adapter);
     }
 
@@ -53,7 +52,6 @@ public abstract class BaseLoadMoreVM<T extends IPresenter, R extends IView, Q> e
     @Override
     protected void handleResponse(ListRespEntity<Q> data) {
         hasMore = data != null && data.isHasMore();
-        adapter.setFooterState(!hasMore ? FooterState.NO_MORE : FooterState.LOAD_MORE);
         switch (getRequestType()) {
             case RequestType.CONTENT_LOADING:
             case RequestType.SWIP_REFRESH:
@@ -72,8 +70,9 @@ public abstract class BaseLoadMoreVM<T extends IPresenter, R extends IView, Q> e
     @Override
     protected void handleErrorState(@RequestType int requestType) {
         super.handleErrorState(requestType);
-        if (requestType == RequestType.LOAD_MORE)
-            adapter.setFooterState(FooterState.EMPTY);
+        if (requestType == RequestType.LOAD_MORE) {
+            // TODO: 11/11/2016 Hide load more view
+        }
     }
 
     @Override
@@ -86,8 +85,7 @@ public abstract class BaseLoadMoreVM<T extends IPresenter, R extends IView, Q> e
             return;
         setRequestType(RequestType.LOAD_MORE);
         exePageRequest(pageNum + 1);
-
-        adapter.setFooterState(FooterState.LOAD_MORE);
+        // TODO: 11/11/2016 Show load more view
 
     }
 

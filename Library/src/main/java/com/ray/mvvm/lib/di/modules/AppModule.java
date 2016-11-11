@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 8 Oct 2016 23:56:12 +0800.
+ *  Created on Fri, 11 Nov 2016 22:57:52 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 8 Oct 2016 23:56:12 +0800.
+ *  Author: Lena; Last Modified: Fri, 11 Nov 2016 22:57:52 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,16 +21,16 @@
  *
  */
 
-package com.ray.mvvm.lib.viewmodel;
+package com.ray.mvvm.lib.di.modules;
 
 import android.app.Application;
 import android.content.Context;
 
-import com.ray.mvvm.lib.di.modules.SPModule;
 import com.ray.mvvm.lib.di.scope.PerApplication;
 import com.ray.mvvm.lib.model.cache.FileModule;
 import com.ray.mvvm.lib.model.http.RetrofitModule;
 import com.ray.mvvm.lib.model.http.okhttp.OkHttpModule;
+import com.ray.mvvm.lib.model.service.APIServiceModule;
 import com.ray.mvvm.lib.widget.anotations.ContextType;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
@@ -45,7 +45,8 @@ import dagger.Provides;
         OkHttpModule.class,
         RetrofitModule.class,
         ComponentModule.class,
-        FileModule.class
+        FileModule.class,
+        APIServiceModule.class
 })
 public class AppModule {
 

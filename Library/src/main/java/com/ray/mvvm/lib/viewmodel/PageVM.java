@@ -29,7 +29,7 @@ import android.view.View;
 import com.ray.mvvm.lib.BR;
 import com.ray.mvvm.lib.model.http.ExObserver;
 import com.ray.mvvm.lib.model.http.event.ErrorEvent;
-import com.ray.mvvm.lib.view.base.presenter.IPresenter;
+import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
@@ -37,7 +37,7 @@ import com.ray.mvvm.lib.widget.utils.StringUtil;
 
 import java.io.IOException;
 
-public abstract class BaseStateVM<T extends IPresenter, R extends IView, Q> extends BaseVM<T, R> implements ExObserver<Q> {
+public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends BaseVM<T, R> implements ExObserver<Q> {
 
     private int requestType = RequestType.CONTENT_LOADING;
     private int state;
@@ -46,7 +46,7 @@ public abstract class BaseStateVM<T extends IPresenter, R extends IView, Q> exte
     private String errorString;
     private boolean isNetworkError = false;
 
-    public BaseStateVM(T presenter, R view) {
+    public PageVM(T presenter, R view) {
         super(presenter, view);
     }
 

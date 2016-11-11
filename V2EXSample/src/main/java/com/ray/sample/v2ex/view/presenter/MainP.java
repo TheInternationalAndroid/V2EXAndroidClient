@@ -23,7 +23,7 @@
 
 package com.ray.sample.v2ex.view.presenter;
 
-import com.ray.mvvm.lib.view.base.presenter.BasePresenter;
+import com.ray.mvvm.lib.presenter.BasePresenter;
 import com.ray.sample.v2ex.view.contract.MainContract;
 import com.squareup.leakcanary.RefWatcher;
 

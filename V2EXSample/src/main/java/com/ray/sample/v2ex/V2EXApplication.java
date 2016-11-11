@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sun, 9 Oct 2016 00:05:30 +0800.
+ *  Created on Fri, 21 Oct 2016 10:20:12 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sun, 9 Oct 2016 00:05:30 +0800.
+ *  Author: Lena; Last Modified: Fri, 21 Oct 2016 10:20:12 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,20 +21,36 @@
  *
  */
 
-package com.ray.mvvm.lib.widget.anotations;
+package com.ray.sample.v2ex;
 
-import android.support.annotation.IntDef;
+import com.ray.mvvm.lib.app.MVVMApp;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import timber.log.Timber;
 
-@Documented
-@Retention(RetentionPolicy.SOURCE)
-@IntDef({FooterState.NO_MORE, FooterState.LOAD_MORE, FooterState.EMPTY, FooterState.NONE})
-public @interface FooterState {
-    int NO_MORE = 1001;
-    int LOAD_MORE = 1002;
-    int EMPTY = 1003;
-    int NONE = 1004;
+/**
+ * Created by Android Studio.
+ * ProjectName: V2EXAndroidClient
+ * Author:  Lena
+ * Date: 14/10/2016
+ * Time: 4:39 PM
+ * \ ----------------------------------------
+ * \| A small leak will sink a great ship.!  |
+ * \ ----------------------------------------
+ * \  \
+ * \   \   \_\_    _/_/
+ * \    \      \__/
+ * \           (oo)\_______
+ * \           (__)\       )\/\
+ * \               ||----w |
+ * \               ||     ||
+ */
+public class V2EXApplication extends MVVMApp {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Timber.i("Test", "");
+        init("debug");
+    }
+
 }

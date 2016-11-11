@@ -24,11 +24,11 @@
 package com.ray.sample.v2ex.view.contract;
 
 import com.ray.mvvm.lib.di.scope.PerActivity;
+import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.comp.ActivityComp;
-import com.ray.mvvm.lib.view.base.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
-import com.ray.sample.v2ex.view.vm.module.MainVMModule;
 import com.ray.sample.v2ex.view.MainActivity;
+import com.ray.sample.v2ex.view.vm.module.MainVMModule;
 
 import dagger.Component;
 

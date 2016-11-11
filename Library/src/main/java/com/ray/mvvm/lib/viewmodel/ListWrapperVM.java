@@ -28,19 +28,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.ray.mvvm.lib.BR;
-import com.ray.mvvm.lib.model.model.ListRespEntity;
+import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
-import com.ray.mvvm.lib.view.base.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
 
-public abstract class BaseListRespVM<T extends IPresenter, R extends IView, Q> extends BaseSwipStateVM<T, R, ListRespEntity<Q>> {
+import java.util.List;
+
+public abstract class ListWrapperVM<T extends IPresenter, R extends IView, Q, W> extends PageVM<T, R, Q> {
 
     private final RecyclerView.LayoutManager layoutManager;
-    BaseListAdapter<Q> adapter;
+    private final BaseListAdapter<W> adapter;
 
-    public BaseListRespVM(T presenter, R view, RecyclerView.LayoutManager layoutManager, BaseListAdapter<Q> adapter) {
+    public ListWrapperVM(T presenter, R view, RecyclerView.LayoutManager layoutManager, BaseListAdapter<W> adapter) {
         super(presenter, view);
         this.layoutManager = layoutManager;
         this.adapter = adapter;
@@ -53,11 +54,11 @@ public abstract class BaseListRespVM<T extends IPresenter, R extends IView, Q> e
     }
 
     @Override
-    protected final boolean isRespNull(ListRespEntity<Q> data) {
-        return data == null || data.getList() == null || data.getList().size() == 0;
+    protected final boolean isRespNull(Q data) {
+        return data == null || getList(data) == null || getList(data).size() == 0;
     }
 
-    public BaseListAdapter<Q> getAdapter() {
+    public BaseListAdapter<W> getAdapter() {
         return adapter;
     }
 
@@ -66,23 +67,23 @@ public abstract class BaseListRespVM<T extends IPresenter, R extends IView, Q> e
     }
 
     @Override
-    protected void bindResp(ListRespEntity<Q> data) {
-        adapter.setList(data.getList());
+    protected void bindResp(Q data) {
+        adapter.setList(getList(data));
         layoutManager.scrollToPosition(0);
     }
+
+    protected abstract List<W> getList(Q data);
 
     @Override
     public void setState(@PageState int state) {
         super.setState(state);
-        if (state == PageState.ERROR) {
-            adapter.resetList();
-        }
         notifyPropertyChanged(BR.listVisibility);
     }
 
     @Bindable
     public int getListVisibility() {
-        return (getState() == PageState.EMPTY || getState() == PageState.ERROR || getState() == PageState.LOADING) ? View.GONE : View.VISIBLE;
+        final int state = getState();
+        return ((getAdapter().getItemCount() == 0 && state == PageState.EMPTY) || state == PageState.ERROR || state == PageState.LOADING) ? View.GONE : View.VISIBLE;
     }
 
 }

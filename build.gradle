@@ -28,10 +28,11 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.1'
+        classpath 'com.android.tools.build:gradle:2.2.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.tencent.bugly:symtabfileuploader:latest.release'
 //        classpath 'com.frogermcs.androiddevmetrics:androiddevmetrics-plugin:0.3.1'
-        classpath 'me.tatarka:gradle-retrolambda:3.3.0-beta4'
+        classpath 'me.tatarka:gradle-retrolambda:3.3.0'
         classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
         classpath 'io.realm:realm-gradle-plugin:2.0.2'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
@@ -78,9 +79,9 @@ ext {
     applicationId = 'com.rayman.v2ex'
     minSdkVersion = 21
     libDefaultPublish = 'debug'//debug or release
-    compileSdkVersion = 24
-    targetSdkVersion = 24
-    buildToolsVersion = '24.0.3'
+    compileSdkVersion = 25
+    targetSdkVersion = 25
+    buildToolsVersion = '25.0.0'
     gradleBuildToolsVersion = '2.2.0'
     junitVersion = '4.12'
     sourceCompatibilityVersion = JavaVersion.VERSION_1_8
@@ -88,7 +89,7 @@ ext {
     retrolambdaJavaVersion = JavaVersion.VERSION_1_7
 
     androidSupportPkg = 'com.android.support'
-    androidSupportVersion = '24.2.1'
+    androidSupportVersion = '25.0.0'
     squareUpPkg = 'com.squareup'
     okHttpPkg = 'com.squareup.okhttp3'
     okHttpVersion = '3.3.1'

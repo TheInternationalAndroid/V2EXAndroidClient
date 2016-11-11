@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 8 Oct 2016 23:47:37 +0800.
+ *  Created on Fri, 11 Nov 2016 22:14:52 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 8 Oct 2016 23:47:37 +0800.
+ *  Author: Lena; Last Modified: Fri, 11 Nov 2016 22:14:52 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,10 +21,18 @@
  *
  */
 
-package com.ray.mvvm.lib.view.adapter.list.vm;
+package com.ray.mvvm.lib.presenter;
 
-import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
+import com.ray.mvvm.lib.view.base.view.ILifeCycle;
+import com.ray.mvvm.lib.widget.eventbus.event.BaseEvent;
 
-public class NoMoreCellVM extends CellVM {
+import rx.Subscription;
+import rx.functions.Action1;
+
+public interface IPresenter extends ILifeCycle {
+
+    void subscribe(Subscription subscription);
+
+    <T extends BaseEvent> void subscribeEvent(Class<T> aClass, Action1<T> action1);
 
 }

@@ -29,13 +29,13 @@
 
         <import type="com.ray.mvvm.lib.widget.anotations.PageState" />
 
-        <import type="com.ray.mvvm.lib.viewmodel.BaseLoadMoreVM" />
+        <import type="com.ray.mvvm.lib.viewmodel.EndLessListVM" />
 
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="BaseLoadMoreVM" />
+            type="EndLessListVM" />
 
     </data>
 

@@ -25,7 +25,7 @@ package com.ray.mvvm.lib.viewmodel;
 
 import android.databinding.BaseObservable;
 
-import com.ray.mvvm.lib.view.base.presenter.IPresenter;
+import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
 
 public class BaseVM<T extends IPresenter, R extends IView> extends BaseObservable {

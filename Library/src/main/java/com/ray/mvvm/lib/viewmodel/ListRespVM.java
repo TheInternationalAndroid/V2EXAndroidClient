@@ -28,20 +28,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.ray.mvvm.lib.BR;
+import com.ray.mvvm.lib.model.model.ListRespEntity;
+import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
-import com.ray.mvvm.lib.view.base.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
 
-import java.util.List;
-
-public abstract class BaseListVM<T extends IPresenter, R extends IView, Q> extends BaseSwipStateVM<T, R, List<Q>> {
+public abstract class ListRespVM<T extends IPresenter, R extends IView, Q> extends SwipRefreshVM<T, R, ListRespEntity<Q>> {
 
     private final RecyclerView.LayoutManager layoutManager;
     BaseListAdapter<Q> adapter;
 
-    public BaseListVM(T presenter, R view, RecyclerView.LayoutManager layoutManager, BaseListAdapter<Q> adapter) {
+    public ListRespVM(T presenter, R view, RecyclerView.LayoutManager layoutManager, BaseListAdapter<Q> adapter) {
         super(presenter, view);
         this.layoutManager = layoutManager;
         this.adapter = adapter;
@@ -54,8 +53,8 @@ public abstract class BaseListVM<T extends IPresenter, R extends IView, Q> exten
     }
 
     @Override
-    protected final boolean isRespNull(List<Q> data) {
-        return data == null || data.size() == 0;
+    protected final boolean isRespNull(ListRespEntity<Q> data) {
+        return data == null || data.getList() == null || data.getList().size() == 0;
     }
 
     public BaseListAdapter<Q> getAdapter() {
@@ -67,8 +66,8 @@ public abstract class BaseListVM<T extends IPresenter, R extends IView, Q> exten
     }
 
     @Override
-    protected void bindResp(List<Q> data) {
-        adapter.setList(data);
+    protected void bindResp(ListRespEntity<Q> data) {
+        adapter.setList(data.getList());
         layoutManager.scrollToPosition(0);
     }
 
@@ -83,7 +82,8 @@ public abstract class BaseListVM<T extends IPresenter, R extends IView, Q> exten
 
     @Bindable
     public int getListVisibility() {
-        return (getState() == PageState.EMPTY || getState() == PageState.ERROR || getState() == PageState.LOADING) ? View.GONE : View.VISIBLE;
+        final int state = getState();
+        return ((getAdapter().getItemCount() == 0 && state == PageState.EMPTY) || state == PageState.ERROR || state == PageState.LOADING) ? View.GONE : View.VISIBLE;
     }
 
 }

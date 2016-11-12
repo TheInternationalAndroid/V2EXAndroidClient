@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Fri, 11 Nov 2016 23:27:33 +0800.
+ *  Created on Sat, 12 Nov 2016 21:41:16 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Fri, 11 Nov 2016 23:27:33 +0800.
+ *  Author: Lena; Last Modified: Sat, 12 Nov 2016 21:41:16 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,14 +21,18 @@
  *
  */
 
-package com.ray.sample.v2ex.view;
+package com.ray.sample.v2ex.view.mock.vm;
+
+import com.ray.mvvm.lib.model.model.test.TestEntity;
+import com.ray.mvvm.lib.view.adapter.OnItemClick;
+import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena
- * Date: 11/11/2016
- * Time: 11:27 PM
+ * Date: 12/11/2016
+ * Time: 9:41 PM
  * \ ----------------------------------------
  * \| A small leak will sink a great ship.!  |
  * \ ----------------------------------------
@@ -40,5 +44,9 @@ package com.ray.sample.v2ex.view;
  * \               ||----w |
  * \               ||     ||
  */
-public class Temp {
+public class TestEntityVM extends CellVM<TestEntity> {
+
+    public TestEntityVM(TestEntity entity, int position, OnItemClick<TestEntity> itemClick) {
+        super(entity, position, itemClick);
+    }
 }

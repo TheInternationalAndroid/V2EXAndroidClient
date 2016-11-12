@@ -119,4 +119,6 @@ dependencies {
 //    androidTestCompile depMap.Design
 //    androidTestCompile depMap.RecyclerView
 //    androidTestCompile depMap.UIAutomator
+    compile 'com.android.support:appcompat-v7:25.0.0'
+    compile 'com.android.support:design:25.0.0'
 }

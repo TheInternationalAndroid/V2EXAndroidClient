@@ -29,7 +29,7 @@ import com.ray.mvvm.lib.app.Constants;
 import com.ray.mvvm.lib.interfaces.ILoadMore;
 import com.ray.mvvm.lib.model.model.ListRespEntity;
 import com.ray.mvvm.lib.presenter.IPresenter;
-import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
+import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
@@ -39,7 +39,7 @@ public abstract class EndLessListVM<T extends IPresenter, R extends IView, Q> ex
     private int pageNum = Constants.PAGE_NUM_START;
     private boolean hasMore = true;
 
-    public EndLessListVM(T presenter, R view, LinearLayoutManager layoutManager, BaseListAdapter<Q> adapter) {
+    public EndLessListVM(T presenter, R view, LinearLayoutManager layoutManager, ListAdapter<Q> adapter) {
         super(presenter, view, layoutManager, adapter);
     }
 

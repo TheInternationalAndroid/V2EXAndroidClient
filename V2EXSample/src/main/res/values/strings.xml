@@ -24,4 +24,22 @@
 <resources>
     <string name="app_name">V2EXSample</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_topic_list">TopicListActivity</string>
+
+    <string name="reply_count_format">%1$s次点击</string>
+    <string name="index_format">%1$s, %2$s</string>
+    <string name="topic_count_format">主题总数:%1$s</string>
+
+    <string name="success">Success</string>
+    <string name="error">Error</string>
+    <string name="click_test">Click to Test</string>
+    <string name="sending">SendingRequest</string>
+
+    <string name="title_format">标题：%1$s</string>
+
+    <!--Account-->
+    <string name="number_format">V2EX 第%1$s号会员</string>
+    <string name="created_at_format">加入于%1$s</string>
+    <string name="title_activity_list_sample">ListSampleActivity</string>
+    <string name="title_activity_mock_samples">MockSamplesActivity</string>
 </resources>

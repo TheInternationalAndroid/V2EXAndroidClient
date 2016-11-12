@@ -27,6 +27,8 @@ import android.view.View;
 
 import com.ray.mvvm.lib.viewmodel.BaseVM;
 import com.ray.sample.v2ex.view.main.contract.MainContract;
+import com.ray.sample.v2ex.view.mock.MockSamplesActivity;
+import com.ray.sample.v2ex.view.v2ex.TopicListActivity;
 
 public class MainVM extends BaseVM<MainContract.Presenter, MainContract.View> {
 
@@ -35,11 +37,11 @@ public class MainVM extends BaseVM<MainContract.Presenter, MainContract.View> {
     }
 
     public void onV2exClicked(View view) {
-
+        this.view.intent(TopicListActivity.class);
     }
 
     public void onMockDataClicked(View view) {
-
+        this.view.intent(MockSamplesActivity.class);
     }
 
 }

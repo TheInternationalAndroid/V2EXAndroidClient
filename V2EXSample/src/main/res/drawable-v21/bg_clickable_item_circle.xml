@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (c) 2016.  Jie Jing Ke Ji, Ltd.
+  ~  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and
+  ~  confidential.
+  ~  Created on Tue, 8 Nov 2016 18:35:48 +0800.
+  ~  ProjectName: WuLiu; ModuleName: Bumblebee; ClassName: bg_clickable_item_circle.xml.
+  ~  Author: Lena; Last Modified: Tue, 8 Nov 2016 18:35:48 +0800.
+  ~  This file is originally created by Lena.
+  ~
+  -->
+
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/bg_gray_transparent">
+    <item
+        android:id="@android:id/mask"
+        android:drawable="@drawable/bg_circle_gray_tran" />
+</ripple>

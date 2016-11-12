@@ -26,6 +26,8 @@ package com.ray.mvvm.lib.view.adapter.list.viewholder;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 
+import com.ray.mvvm.lib.BR;
+
 public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     private ViewDataBinding binding;
@@ -37,7 +39,7 @@ public class BaseViewHolder extends RecyclerView.ViewHolder {
 
     //    TODO Warning : All viewModels in show cell layout must be named as "viewModel"!!!!!!!!!
     public void bindData(Object t) {
-//        binding.setVariable(BR.viewModel, t);
+        binding.setVariable(BR.viewModel, t);
         binding.executePendingBindings();
     }
 

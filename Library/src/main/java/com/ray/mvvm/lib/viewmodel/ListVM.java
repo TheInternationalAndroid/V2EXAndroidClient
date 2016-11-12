@@ -29,7 +29,7 @@ import android.view.View;
 
 import com.ray.mvvm.lib.BR;
 import com.ray.mvvm.lib.presenter.IPresenter;
-import com.ray.mvvm.lib.view.adapter.list.base.BaseListAdapter;
+import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
@@ -39,9 +39,9 @@ import java.util.List;
 public abstract class ListVM<T extends IPresenter, R extends IView, Q> extends SwipRefreshVM<T, R, List<Q>> {
 
     private final RecyclerView.LayoutManager layoutManager;
-    BaseListAdapter<Q> adapter;
+    ListAdapter<Q> adapter;
 
-    public ListVM(T presenter, R view, RecyclerView.LayoutManager layoutManager, BaseListAdapter<Q> adapter) {
+    public ListVM(T presenter, R view, RecyclerView.LayoutManager layoutManager, ListAdapter<Q> adapter) {
         super(presenter, view);
         this.layoutManager = layoutManager;
         this.adapter = adapter;
@@ -58,7 +58,7 @@ public abstract class ListVM<T extends IPresenter, R extends IView, Q> extends S
         return data == null || data.size() == 0;
     }
 
-    public BaseListAdapter<Q> getAdapter() {
+    public ListAdapter<Q> getAdapter() {
         return adapter;
     }
 

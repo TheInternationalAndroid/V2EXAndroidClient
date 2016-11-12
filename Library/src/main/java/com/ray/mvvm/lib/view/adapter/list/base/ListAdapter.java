@@ -38,25 +38,25 @@ import java.util.List;
 
 import static android.R.attr.id;
 
-public abstract class BaseListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
+public abstract class ListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
 
     private static final int NO_INDEX = -99;
     private List<T> list;
     private LongSparseArray<T> wrapMap = new LongSparseArray<>();
     protected OnItemClick<T> itemClick;
 
-    public BaseListAdapter() {
+    public ListAdapter() {
     }
 
-    public BaseListAdapter(OnItemClick<T> itemClick) {
+    public ListAdapter(OnItemClick<T> itemClick) {
         this.itemClick = itemClick;
     }
 
-    public BaseListAdapter(List<T> list) {
+    public ListAdapter(List<T> list) {
         this.list = list;
     }
 
-    public BaseListAdapter(List<T> list, OnItemClick<T> itemClick) {
+    public ListAdapter(List<T> list, OnItemClick<T> itemClick) {
         this.list = list;
         this.itemClick = itemClick;
     }

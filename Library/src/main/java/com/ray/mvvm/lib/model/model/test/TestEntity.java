@@ -46,6 +46,14 @@ public class TestEntity {
 
     private String description;
 
+    public TestEntity() {
+    }
+
+    public TestEntity(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+
     public String getTitle() {
         return title;
     }

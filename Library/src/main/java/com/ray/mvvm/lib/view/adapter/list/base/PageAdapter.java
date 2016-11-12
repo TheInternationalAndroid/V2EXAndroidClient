@@ -32,9 +32,9 @@ import com.ray.mvvm.lib.view.adapter.list.viewholder.BaseViewHolder;
 
 import java.util.List;
 
-public abstract class BasePageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+public abstract class PageAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
-    public BasePageAdapter() {
+    public PageAdapter() {
     }
 
     @Override

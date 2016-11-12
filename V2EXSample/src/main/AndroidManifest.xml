@@ -39,6 +39,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.v2ex.TopicListActivity"
+            android:label="@string/title_activity_topic_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.mock.ListSampleActivity"
+            android:label="@string/title_activity_list_sample"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.mock.MockSamplesActivity"
+            android:label="@string/title_activity_mock_samples"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

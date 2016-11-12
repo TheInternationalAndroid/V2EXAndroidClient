@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~
+  ~  Copyright (c) 2016 Lena.t.Yan
+  ~  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
+  ~  Created on Sat, 12 Nov 2016 00:22:29 +0800.
+  ~  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
+  ~  Author: Lena; Last Modified: Sat, 12 Nov 2016 00:22:29 +0800.
+  ~  This file is originally created by Lena.
+  ~
+  ~  Licensed under the Apache License, Version 2.0 (the "License");
+  ~  you may not use this file except in compliance with the License.
+  ~  You may obtain a copy of the License at
+  ~
+  ~  http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~  Unless required by applicable law or agreed to in writing, software
+  ~  distributed under the License is distributed on an "AS IS" BASIS,
+  ~  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  See the License for the specific language governing permissions and
+  ~  limitations under the License.
+  ~
+  -->
+<layout>
+
+    <data>
+
+        <import type="com.ray.sample.v2ex.view.v2ex.vm.TopicCellVM" />
+
+        <import type="com.ray.mvvm.lib.widget.utils.DateUtil" />
+
+        <variable
+            name="viewModel"
+            type="TopicCellVM" />
+    </data>
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/padding_m"
+        app:cardElevation="@dimen/padding_ss"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:id="@+id/content"
+            style="@style/ClickableStyle.Corner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:onClick="@{viewModel.onContentClicked}"
+            android:paddingBottom="@dimen/padding_xl"
+            android:paddingLeft="@dimen/padding_l"
+            android:paddingRight="@dimen/padding_l"
+            android:paddingTop="@dimen/padding_xl">
+
+            <FrameLayout
+                android:id="@+id/clickable_view"
+                style="@style/ClickableStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:foreground="@drawable/bg_clickable_item_corner"
+                android:onClick="@{viewModel.onAvatarClicked}">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/image"
+                    android:layout_width="@dimen/icon_size_s"
+                    android:layout_height="@dimen/icon_size_s"
+                    android:scaleType="centerCrop"
+                    android:src="@{viewModel.entity.member.avatarLarge}"
+                    app:riv_border_width="0dp"
+                    app:riv_corner_radius="@dimen/btn_corner"
+                    app:riv_mutate_background="true" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/padding_l"
+                android:paddingRight="@dimen/padding_l">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minLines="2"
+                    android:text="@{viewModel.entity.title}"
+                    android:textColor="@color/text_gray_dark"
+                    android:textSize="@dimen/text_xl" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding_l"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/node"
+                        style="@style/NodeTagStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{viewModel.onNodeClicked}"
+                        android:text="@{viewModel.entity.node.name,default=Node}"
+                        android:textSize="@dimen/text_m" />
+
+                    <View style="@style/PointStyle" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.entity.member.username,default=UserName}"
+                        android:textColor="@color/text_black_light"
+                        android:textSize="@dimen/text_m" />
+
+                    <View style="@style/PointStyle" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{DateUtil.getFormatPassTime(viewModel.entity.created),default=Date}"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/text_m" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/CountTagStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(viewModel.entity.replies),default=0}"
+                android:textColor="@color/text_white"
+                android:textSize="@dimen/text_m" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</layout>

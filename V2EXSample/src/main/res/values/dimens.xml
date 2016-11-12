@@ -26,4 +26,39 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="point_dia">3dp</dimen>
+    <dimen name="tag_corner">10dp</dimen>
+    <dimen name="btn_corner">5dp</dimen>
+    <dimen name="divider">0.5dp</dimen>
+
+    <dimen name="padding_list_bottom">64dp</dimen>
+
+    <!--TextSize-->
+    <dimen name="text_micro">6sp</dimen>
+    <dimen name="text_s">8sp</dimen>
+    <dimen name="text_m">10sp</dimen>
+    <dimen name="text_l">13sp</dimen>
+    <dimen name="text_xl">15sp</dimen>
+    <dimen name="text_xxl">17sp</dimen>
+    <dimen name="text_xxxl">23sp</dimen>
+
+    <!--Padding-->
+    <dimen name="padding_ss">1dp</dimen>
+    <dimen name="padding_s">3dp</dimen>
+    <dimen name="padding_m">5dp</dimen>
+    <dimen name="padding_l">8dp</dimen>
+    <dimen name="padding_xl">12dp</dimen>
+    <dimen name="padding_xxl">15dp</dimen>
+    <dimen name="padding_bottom">20dp</dimen>
+
+    <!--Icon-->
+    <dimen name="icon_size_ss">44dp</dimen>
+    <dimen name="icon_size_s">60dp</dimen>
+    <dimen name="icon_size_m">70dp</dimen>
+    <dimen name="icon_size_l">75dp</dimen>
+
+    <!--List item height-->
+    <dimen name="list_item_l">53dp</dimen>
+    <dimen name="list_item_m">48dp</dimen>
 </resources>

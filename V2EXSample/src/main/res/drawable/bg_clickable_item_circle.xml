@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (c) 2016.  Jie Jing Ke Ji, Ltd.
+  ~  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and
+  ~  confidential.
+  ~  Created on Tue, 8 Nov 2016 18:35:35 +0800.
+  ~  ProjectName: WuLiu; ModuleName: Bumblebee; ClassName: list_selector_circle.xml.
+  ~  Author: Lena; Last Modified: Tue, 8 Nov 2016 18:35:35 +0800.
+  ~  This file is originally created by Lena.
+  ~
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:exitFadeDuration="300">
+    <item android:drawable="@drawable/transparent" android:state_enabled="false" android:state_focused="true" android:state_pressed="true" />
+    <item android:drawable="@drawable/transparent" android:state_focused="false" android:state_pressed="false" />
+    <item android:drawable="@drawable/bg_circle_gray_tran" android:state_focused="true" android:state_pressed="true" />
+    <item android:drawable="@drawable/bg_circle_gray_tran" android:state_focused="false" android:state_pressed="true" />
+    <item android:drawable="@drawable/bg_circle_gray_tran" android:state_focused="true" />
+
+</selector>

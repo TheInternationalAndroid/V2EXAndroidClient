@@ -30,7 +30,7 @@ import android.view.ViewGroup;
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.sample.v2ex.databinding.ListCellTopicBinding;
-import com.ray.sample.v2ex.view.common.TopicCellView;
+import com.ray.sample.v2ex.view.common.v2ex.TopicCellView;
 
 /**
  * Created by Android Studio.

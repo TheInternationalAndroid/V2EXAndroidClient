@@ -27,7 +27,7 @@ import android.view.View;
 
 import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
 import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
-import com.ray.sample.v2ex.view.common.ReplyCellView;
+import com.ray.sample.v2ex.view.common.v2ex.ReplyCellView;
 
 /**
  * Created by Android Studio.

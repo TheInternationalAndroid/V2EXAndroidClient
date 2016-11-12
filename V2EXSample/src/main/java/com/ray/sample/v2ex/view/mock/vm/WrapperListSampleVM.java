@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 12 Nov 2016 21:57:13 +0800.
+ *  Created on Sat, 12 Nov 2016 22:35:40 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 12 Nov 2016 21:57:13 +0800.
+ *  Author: Lena; Last Modified: Sat, 12 Nov 2016 22:35:40 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,25 +23,22 @@
 
 package com.ray.sample.v2ex.view.mock.vm;
 
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
 
-import com.ray.mvvm.lib.viewmodel.BaseVM;
-import com.ray.sample.v2ex.view.mock.ListSampleActivity;
-import com.ray.sample.v2ex.view.mock.WrapperListSampleActivity;
-import com.ray.sample.v2ex.view.mock.contract.MockSamplesContract;
+import com.ray.mvvm.lib.model.model.test.TestEntity;
+import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
+import com.ray.mvvm.lib.viewmodel.ListRespVM;
+import com.ray.sample.v2ex.view.mock.contract.WrapperListSampleContract;
 
-public class MockSamplesVM extends BaseVM<MockSamplesContract.Presenter, MockSamplesContract.View> {
+public class WrapperListSampleVM extends ListRespVM<WrapperListSampleContract.Presenter, WrapperListSampleContract.View, TestEntity> {
 
-    public MockSamplesVM(MockSamplesContract.Presenter presenter, MockSamplesContract.View view) {
-        super(presenter, view);
+    public WrapperListSampleVM(WrapperListSampleContract.Presenter presenter, WrapperListSampleContract.View view, RecyclerView.LayoutManager layoutManager, ListAdapter<TestEntity> adapter) {
+        super(presenter, view, layoutManager, adapter);
     }
 
-    public void onListSampleClicked(View view) {
-        this.view.intent(ListSampleActivity.class);
-    }
-
-    public void onWrapperListSampleClicked(View view) {
-        this.view.intent(WrapperListSampleActivity.class);
+    @Override
+    protected void exeRequest() {
+        presenter.requestListData(this);
     }
 
 }

@@ -42,4 +42,5 @@
     <string name="created_at_format">加入于%1$s</string>
     <string name="title_activity_list_sample">ListSampleActivity</string>
     <string name="title_activity_mock_samples">MockSamplesActivity</string>
+    <string name="title_activity_wrapper_list_sample">WrapperListSampleActivity</string>
 </resources>

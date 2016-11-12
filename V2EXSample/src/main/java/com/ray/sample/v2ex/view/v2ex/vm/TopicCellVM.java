@@ -27,7 +27,7 @@ import android.view.View;
 
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
-import com.ray.sample.v2ex.view.common.TopicCellView;
+import com.ray.sample.v2ex.view.common.v2ex.TopicCellView;
 
 /**
  * Created by Android Studio.

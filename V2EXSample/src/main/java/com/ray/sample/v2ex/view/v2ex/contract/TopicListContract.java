@@ -27,8 +27,8 @@ import com.ray.mvvm.lib.di.scope.PerActivity;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.comp.ActivityComp;
 import com.ray.mvvm.lib.view.base.view.IView;
-import com.ray.sample.v2ex.view.common.MemberView;
-import com.ray.sample.v2ex.view.common.ReplyCellView;
+import com.ray.sample.v2ex.view.common.v2ex.MemberView;
+import com.ray.sample.v2ex.view.common.v2ex.ReplyCellView;
 import com.ray.sample.v2ex.view.v2ex.TopicListActivity;
 import com.ray.sample.v2ex.view.v2ex.vm.module.TopicListVMModule;
 

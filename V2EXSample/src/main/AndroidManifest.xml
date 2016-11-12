@@ -50,6 +50,10 @@
         <activity
             android:name=".view.mock.MockSamplesActivity"
             android:label="@string/title_activity_mock_samples"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.mock.WrapperListSampleActivity"
+            android:label="@string/title_activity_wrapper_list_sample"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

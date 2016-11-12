@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 12 Nov 2016 00:01:24 +0800.
+ *  Created on Sat, 12 Nov 2016 22:45:14 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 12 Nov 2016 00:01:24 +0800.
+ *  Author: Lena; Last Modified: Sat, 12 Nov 2016 22:45:14 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,17 +21,16 @@
  *
  */
 
-package com.ray.sample.v2ex.view.common;
+package com.ray.sample.v2ex.view.common.v2ex;
 
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
-import com.ray.mvvm.lib.view.adapter.OnItemClick;
+import com.ray.mvvm.lib.model.model.node.NodeEntity;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena
  * Date: 12/11/2016
- * Time: 12:01 AM
+ * Time: 12:07 AM
  * \ ----------------------------------------
  * \| A small leak will sink a great ship.!  |
  * \ ----------------------------------------
@@ -43,5 +42,6 @@ import com.ray.mvvm.lib.view.adapter.OnItemClick;
  * \               ||----w |
  * \               ||     ||
  */
-public interface TopicCellView extends OnItemClick<TopicEntity>, MemberView, NodeView {
+public interface NodeView {
+    void onNodeClicked(NodeEntity nodeEntity);
 }

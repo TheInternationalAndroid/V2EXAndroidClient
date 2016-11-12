@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~
   ~  Copyright (c) 2016 Lena.t.Yan
   ~  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
-  ~  Created on Sat, 12 Nov 2016 21:57:13 +0800.
+  ~  Created on Sat, 12 Nov 2016 22:35:40 +0800.
   ~  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
-  ~  Author: Lena; Last Modified: Sat, 12 Nov 2016 21:57:13 +0800.
+  ~  Author: Lena; Last Modified: Sat, 12 Nov 2016 22:35:40 +0800.
   ~  This file is originally created by Lena.
   ~
   ~  Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,34 +26,38 @@
 
     <data>
 
-        <import type="com.ray.sample.v2ex.view.mock.vm.MockSamplesVM" />
+        <import type="com.ray.sample.v2ex.view.mock.vm.WrapperListSampleVM" />
 
         <variable
             name="viewModel"
-            type="MockSamplesVM" />
+            type="WrapperListSampleVM" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="com.ray.sample.v2ex.view.mock.MockSamplesActivity"
-        tools:showIn="@layout/activity_mock_samples">
+        android:fitsSystemWindows="true"
+        tools:context="com.ray.sample.v2ex.view.mock.WrapperListSampleActivity">
 
-        <Button
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{viewModel::onListSampleClicked}"
-            android:text="ListSample" />
+            android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="@{viewModel::onWrapperListSampleClicked}"
-            android:text="WrapperListSample" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
-    </LinearLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <include
+            layout="@layout/content_wrapper_list_sample"
+            app:viewModel="@{viewModel}" />
+
+    </android.support.design.widget.CoordinatorLayout>
 </layout>

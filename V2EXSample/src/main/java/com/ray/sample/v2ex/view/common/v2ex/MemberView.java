@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 12 Nov 2016 00:06:39 +0800.
+ *  Created on Sat, 12 Nov 2016 22:45:14 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 12 Nov 2016 00:06:39 +0800.
+ *  Author: Lena; Last Modified: Sat, 12 Nov 2016 22:45:14 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,17 +21,16 @@
  *
  */
 
-package com.ray.sample.v2ex.view.common;
+package com.ray.sample.v2ex.view.common.v2ex;
 
-import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
-import com.ray.mvvm.lib.view.adapter.OnItemClick;
+import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena
  * Date: 12/11/2016
- * Time: 12:06 AM
+ * Time: 12:05 AM
  * \ ----------------------------------------
  * \| A small leak will sink a great ship.!  |
  * \ ----------------------------------------
@@ -43,6 +42,6 @@ import com.ray.mvvm.lib.view.adapter.OnItemClick;
  * \               ||----w |
  * \               ||     ||
  */
-public interface ReplyCellView extends MemberView,OnItemClick<ReplyEntity> {
-    void onReplyClicked(ReplyEntity replyEntity);
+public interface MemberView {
+    void onAvatarClicked(MemberBaseEntity memberEntity);
 }

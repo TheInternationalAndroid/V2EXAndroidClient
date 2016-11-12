@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Fri, 11 Nov 2016 22:14:52 +0800.
+ *  Created on Sat, 12 Nov 2016 22:57:01 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Fri, 11 Nov 2016 22:14:52 +0800.
+ *  Author: Lena; Last Modified: Sat, 12 Nov 2016 22:57:01 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,20 +21,29 @@
  *
  */
 
-package com.ray.mvvm.lib.presenter;
+package com.ray.sample.v2ex.view.mock.vm.module;
 
-import com.ray.mvvm.lib.view.base.view.ILifeCycle;
-import com.ray.mvvm.lib.widget.eventbus.event.BaseEvent;
+import com.ray.mvvm.lib.di.scope.PerActivity;
+import com.ray.sample.v2ex.view.mock.contract.PageSampleContract;
+import com.ray.sample.v2ex.view.mock.presenter.PageSampleP;
+import com.ray.sample.v2ex.view.mock.vm.PageSampleVM;
 
-import rx.Observable;
-import rx.Subscription;
-import rx.functions.Action1;
+import dagger.Module;
+import dagger.Provides;
 
-public interface IPresenter extends ILifeCycle {
+@Module
+public class PageSampleVMModule {
 
-    void subscribe(Subscription subscription);
+    private PageSampleContract.View view;
 
-    <T extends BaseEvent> void subscribeEvent(Class<T> aClass, Action1<T> action1);
+    public PageSampleVMModule(PageSampleContract.View view) {
+        this.view = view;
+    }
 
-    <V> void subscribeView(Observable<V> publishSubject, Action1<? super V> action);
+    @Provides
+    @PerActivity
+    PageSampleVM provideVM(PageSampleP presenter) {
+        return new PageSampleVM(presenter, view);
+    }
+
 }

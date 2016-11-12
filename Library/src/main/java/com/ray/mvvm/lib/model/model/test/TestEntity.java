@@ -23,6 +23,9 @@
 
 package com.ray.mvvm.lib.model.model.test;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
@@ -40,7 +43,9 @@ package com.ray.mvvm.lib.model.model.test;
  * \               ||----w |
  * \               ||     ||
  */
-public class TestEntity {
+public class TestEntity implements Parcelable {
+
+    public static final String KEY = "TestEntity";
 
     private String title;
 
@@ -69,4 +74,32 @@ public class TestEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.title);
+        dest.writeString(this.description);
+    }
+
+    protected TestEntity(Parcel in) {
+        this.title = in.readString();
+        this.description = in.readString();
+    }
+
+    public static final Parcelable.Creator<TestEntity> CREATOR = new Parcelable.Creator<TestEntity>() {
+        @Override
+        public TestEntity createFromParcel(Parcel source) {
+            return new TestEntity(source);
+        }
+
+        @Override
+        public TestEntity[] newArray(int size) {
+            return new TestEntity[size];
+        }
+    };
 }

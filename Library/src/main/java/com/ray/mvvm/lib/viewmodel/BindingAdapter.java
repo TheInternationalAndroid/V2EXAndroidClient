@@ -253,7 +253,7 @@ public class BindingAdapter {
 
     @android.databinding.BindingAdapter(value = "refresh")
     public static void bindSwipRefreshingState(SwipeRefreshLayout swipeRefreshLayout, boolean refresh) {
-        swipeRefreshLayout.post(() -> swipeRefreshLayout.setRefreshing(refresh));
+        swipeRefreshLayout.postDelayed(() -> swipeRefreshLayout.setRefreshing(refresh), 300);
     }
 
     @android.databinding.BindingAdapter(value = {"drawerVisible"})

@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 12 Nov 2016 22:35:40 +0800.
+ *  Created on Sat, 12 Nov 2016 22:57:00 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 12 Nov 2016 22:35:40 +0800.
+ *  Author: Lena; Last Modified: Sat, 12 Nov 2016 22:57:00 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,31 +24,30 @@
 package com.ray.sample.v2ex.view.mock;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
-import com.ray.mvvm.lib.widget.anotations.RequestType;
 import com.ray.sample.v2ex.R;
-import com.ray.sample.v2ex.databinding.ActivityWrapperListSampleBinding;
-import com.ray.sample.v2ex.view.mock.contract.DaggerWrapperListSampleContract_Comp;
-import com.ray.sample.v2ex.view.mock.contract.WrapperListSampleContract;
-import com.ray.sample.v2ex.view.mock.vm.WrapperListSampleVM;
-import com.ray.sample.v2ex.view.mock.vm.module.WrapperListSampleVMModule;
+import com.ray.sample.v2ex.databinding.ActivityPageSampleBinding;
+import com.ray.sample.v2ex.view.mock.contract.DaggerPageSampleContract_Comp;
+import com.ray.sample.v2ex.view.mock.contract.PageSampleContract;
+import com.ray.sample.v2ex.view.mock.vm.PageSampleVM;
+import com.ray.sample.v2ex.view.mock.vm.module.PageSampleVMModule;
 
 import javax.inject.Inject;
 
-public class WrapperListSampleActivity extends BaseDIActivity implements WrapperListSampleContract.View {
+public class PageSampleActivity extends BaseDIActivity implements PageSampleContract.View {
 
-    @Inject WrapperListSampleVM viewModel;
+    @Inject PageSampleVM viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityWrapperListSampleBinding binding = bindLayout(R.layout.activity_wrapper_list_sample);
+        ActivityPageSampleBinding binding = bindLayout(R.layout.activity_page_sample);
         binding.setViewModel(viewModel);
-        viewModel.initiallyReq(RequestType.CONTENT_LOADING);
+        TestEntity testEntity = getIntent().getParcelableExtra(TestEntity.KEY);
+        viewModel.init(testEntity);
     }
 
     @Override
@@ -58,18 +57,12 @@ public class WrapperListSampleActivity extends BaseDIActivity implements Wrapper
 
     @Override
     public void buildComp() {
-        DaggerWrapperListSampleContract_Comp
+        DaggerPageSampleContract_Comp
                 .builder()
                 .activityComp(getActivityComp())
-                .wrapperListSampleVMModule(new WrapperListSampleVMModule(this))
+                .pageSampleVMModule(new PageSampleVMModule(this))
                 .build()
                 .inject(this);
-    }
 
-    @Override
-    public void onItemClick(int position, View view, TestEntity testEntity) {
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(TestEntity.KEY, testEntity);
-        intent(PageSampleActivity.class, bundle);
     }
 }

@@ -43,4 +43,5 @@
     <string name="title_activity_list_sample">ListSampleActivity</string>
     <string name="title_activity_mock_samples">MockSamplesActivity</string>
     <string name="title_activity_wrapper_list_sample">WrapperListSampleActivity</string>
+    <string name="title_activity_page_sample">PageSampleActivity</string>
 </resources>

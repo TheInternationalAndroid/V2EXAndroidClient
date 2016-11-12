@@ -45,6 +45,7 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
     private int emptyMsgRes = com.ray.mvvm.lib.R.string.state_empty_msg;
     private String errorString;
     private boolean isNetworkError = false;
+    private Q entity;
 
     public PageVM(T presenter, R view) {
         super(presenter, view);
@@ -187,13 +188,25 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
         exeRequest();
     }
 
+    public void setEntity(Q entity) {
+        this.entity = entity;
+        notifyPropertyChanged(BR.entity);
+    }
+
+    @Bindable
+    public Q getEntity() {
+        return entity;
+    }
+
     protected void handleResponse(Q data) {
         bindResp(data);
     }
 
     protected abstract void exeRequest();
 
-    protected abstract void bindResp(Q data);
+    protected void bindResp(Q data) {
+        setEntity(data);
+    }
 
     public void initiallyReq(@RequestType int requestType) {
         requestData(requestType);

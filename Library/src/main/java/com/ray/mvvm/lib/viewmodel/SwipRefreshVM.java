@@ -33,12 +33,22 @@ import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
 
+import rx.subjects.PublishSubject;
+
 public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> extends PageVM<T, R, Q> implements SwipeRefreshLayout.OnRefreshListener {
+
+    private PublishSubject<Boolean> refreshSubject;
+    private boolean isRefreshing;
 
     private int[] colors = {com.ray.mvvm.lib.R.color.SwipRefreshColor};
 
     public SwipRefreshVM(T presenter, R view) {
         super(presenter, view);
+        refreshSubject = PublishSubject.create();
+        presenter.subscribeView(refreshSubject.filter(refresh -> refresh != isRefreshing), refresh -> {
+            isRefreshing = refresh;
+            notifyPropertyChanged(BR.refreshing);
+        });
     }
 
     public int[] getColors() {
@@ -57,7 +67,7 @@ public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> ex
     public void setState(@PageState int state) {
         super.setState(state);
         notifyPropertyChanged(BR.swipRefreshVisibility);
-        notifyPropertyChanged(BR.refreshing);
+        setRefreshing(getState() == PageState.REFRESH);
     }
 
     @Bindable
@@ -68,7 +78,10 @@ public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> ex
 
     @Bindable
     public boolean isRefreshing() {
-        return getState() == PageState.REFRESH;
+        return isRefreshing;
     }
 
+    private void setRefreshing(boolean refreshing) {
+        refreshSubject.onNext(refreshing);
+    }
 }

@@ -68,6 +68,8 @@ public class ListSampleActivity extends BaseDIActivity implements ListSampleCont
 
     @Override
     public void onItemClick(int position, View view, TestEntity testEntity) {
-        showToast("Clicked " + testEntity.getTitle());
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(TestEntity.KEY, testEntity);
+        intent(PageSampleActivity.class, bundle);
     }
 }

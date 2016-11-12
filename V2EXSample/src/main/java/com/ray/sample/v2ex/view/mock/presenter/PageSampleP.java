@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Fri, 11 Nov 2016 22:14:52 +0800.
+ *  Created on Sat, 12 Nov 2016 22:57:00 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Fri, 11 Nov 2016 22:14:52 +0800.
+ *  Author: Lena; Last Modified: Sat, 12 Nov 2016 22:57:00 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,20 +21,26 @@
  *
  */
 
-package com.ray.mvvm.lib.presenter;
+package com.ray.sample.v2ex.view.mock.presenter;
 
-import com.ray.mvvm.lib.view.base.view.ILifeCycle;
-import com.ray.mvvm.lib.widget.eventbus.event.BaseEvent;
+import com.ray.mvvm.lib.model.http.ExObserver;
+import com.ray.mvvm.lib.model.model.test.TestEntity;
+import com.ray.mvvm.lib.presenter.BasePresenter;
+import com.ray.sample.v2ex.view.mock.contract.PageSampleContract;
+import com.squareup.leakcanary.RefWatcher;
 
-import rx.Observable;
-import rx.Subscription;
-import rx.functions.Action1;
+import javax.inject.Inject;
 
-public interface IPresenter extends ILifeCycle {
+public class PageSampleP extends BasePresenter implements PageSampleContract.Presenter {
 
-    void subscribe(Subscription subscription);
+    @Inject
+    PageSampleP(RefWatcher refWatcher) {
+        super(refWatcher);
+    }
 
-    <T extends BaseEvent> void subscribeEvent(Class<T> aClass, Action1<T> action1);
+    @Override
+    public void requestEntity(ExObserver<TestEntity> observer) {
+        subscribeCommonReq(mockCommonRespObservable(new TestEntity("Title (from server)", "Description (from server)")), observer);
+    }
 
-    <V> void subscribeView(Observable<V> publishSubject, Action1<? super V> action);
 }

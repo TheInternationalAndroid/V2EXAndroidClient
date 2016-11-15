@@ -23,10 +23,11 @@
 
 package com.ray.mvvm.lib.model.model.node;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.squareup.moshi.Json;
+
+import io.realm.RealmModel;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 
 /**
  * Created by Android Studio.
@@ -45,8 +46,10 @@ import com.squareup.moshi.Json;
  * \               ||----w |
  * \               ||     ||
  */
-public class NodeEntity implements Parcelable {
+@RealmClass
+public class NodeEntity implements RealmModel {
 
+    @PrimaryKey
     private long id;
     private String name;
     private String title;
@@ -169,57 +172,4 @@ public class NodeEntity implements Parcelable {
         this.stars = stars;
     }
 
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(this.id);
-        dest.writeString(this.name);
-        dest.writeString(this.title);
-        dest.writeString(this.titleAlternative);
-        dest.writeString(this.url);
-        dest.writeInt(this.topics);
-        dest.writeString(this.avatarMini);
-        dest.writeString(this.avatarNormal);
-        dest.writeString(this.avatarLarge);
-        dest.writeString(this.header);
-        dest.writeString(this.footer);
-        dest.writeLong(this.created);
-        dest.writeLong(this.stars);
-    }
-
-    public NodeEntity() {
-    }
-
-    protected NodeEntity(Parcel in) {
-        this.id = in.readLong();
-        this.name = in.readString();
-        this.title = in.readString();
-        this.titleAlternative = in.readString();
-        this.url = in.readString();
-        this.topics = in.readInt();
-        this.avatarMini = in.readString();
-        this.avatarNormal = in.readString();
-        this.avatarLarge = in.readString();
-        this.header = in.readString();
-        this.footer = in.readString();
-        this.created = in.readLong();
-        this.stars = in.readLong();
-    }
-
-    public static final Creator<NodeEntity> CREATOR = new Creator<NodeEntity>() {
-        @Override
-        public NodeEntity createFromParcel(Parcel source) {
-            return new NodeEntity(source);
-        }
-
-        @Override
-        public NodeEntity[] newArray(int size) {
-            return new NodeEntity[size];
-        }
-    };
 }

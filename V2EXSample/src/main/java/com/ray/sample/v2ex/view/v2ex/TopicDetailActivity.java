@@ -26,7 +26,7 @@ package com.ray.sample.v2ex.view.v2ex;
 import android.os.Bundle;
 import android.view.View;
 
-import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
+import com.ray.mvvm.lib.model.model.member.MemberEntity;
 import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
@@ -72,7 +72,7 @@ public class TopicDetailActivity extends BaseDIActivity implements TopicDetailCo
     }
 
     @Override
-    public void onAvatarClicked(MemberBaseEntity memberEntity) {
+    public void onAvatarClicked(MemberEntity memberEntity) {
 
     }
 }

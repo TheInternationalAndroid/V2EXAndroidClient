@@ -25,6 +25,7 @@ package com.ray.sample.v2ex.view.v2ex.contract;
 
 import com.ray.mvvm.lib.di.scope.PerActivity;
 import com.ray.mvvm.lib.model.http.ExObserver;
+import com.ray.mvvm.lib.model.http.ExSubscriber;
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.comp.ActivityComp;
@@ -50,6 +51,8 @@ public interface TopicListContract {
 
     interface Presenter extends IPresenter {
         void requestTopicList(ExObserver<List<TopicEntity>> observer);
+
+        void findTopicList(ExSubscriber<List<TopicEntity>> observer);
     }
 
 }

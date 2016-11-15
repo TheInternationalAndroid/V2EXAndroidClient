@@ -224,6 +224,22 @@ public class CommonPresenter implements IPresenter {
         );
     }
 
+    protected <T, R> void subscribeCommonReqConcat(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends T>> before, Func1<? super T, ? extends Observable<? extends R>> after, @NonNull ExObserver<R> observer) {
+        subscription.add(
+                observable
+                        .subscribeOn(Schedulers.io())
+                        .doOnUnsubscribe(this::unSubscribe)
+                        .doOnError(this::postError)
+                        .filter(data -> isAlive)
+                        .flatMap(this::dataFlatMap)
+                        .concatMap(before)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .concatMap(after)
+                        .doOnSubscribe(observer::onStart)
+                        .subscribe(observer)
+        );
+    }
+
     protected <T> void subscribeCommonReq(@NonNull Observable<T> observable, ExObserver<T> observer) {
         subscription.add(
                 observable

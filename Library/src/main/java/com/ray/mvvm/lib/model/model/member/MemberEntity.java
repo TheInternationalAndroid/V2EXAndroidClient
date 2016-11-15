@@ -23,7 +23,11 @@
 
 package com.ray.mvvm.lib.model.model.member;
 
-import android.os.Parcel;
+import com.squareup.moshi.Json;
+
+import io.realm.RealmModel;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 
 /**
  * Created by Android Studio.
@@ -42,7 +46,19 @@ import android.os.Parcel;
  * \               ||----w |
  * \               ||     ||
  */
-public class MemberEntity extends MemberBaseEntity {
+@RealmClass
+public class MemberEntity implements RealmModel {
+
+    @PrimaryKey
+    private long id;
+    private String username;
+    private String tagline;
+    @Json(name = "avatar_mini")
+    private String avatarMini;
+    @Json(name = "avatar_normal")
+    private String avatarNormal;
+    @Json(name = "avatar_large")
+    private String avatarLarge;
 
     private String status;
     private String url;
@@ -56,15 +72,6 @@ public class MemberEntity extends MemberBaseEntity {
     private long created;
 
     public MemberEntity() {
-    }
-
-    public MemberEntity(MemberBaseEntity memberBaseEntity) {
-        setId(memberBaseEntity.getId());
-        setUsername(memberBaseEntity.getUsername());
-        setTagline(memberBaseEntity.getTagline());
-        setAvatarMini(memberBaseEntity.getAvatarMini());
-        setAvatarNormal(memberBaseEntity.getAvatarNormal());
-        setAvatarLarge(memberBaseEntity.getAvatarLarge());
     }
 
     public String getStatus() {
@@ -147,47 +154,51 @@ public class MemberEntity extends MemberBaseEntity {
         this.created = created;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public long getId() {
+        return id;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        super.writeToParcel(dest, flags);
-        dest.writeString(this.status);
-        dest.writeString(this.url);
-        dest.writeString(this.website);
-        dest.writeString(this.twitter);
-        dest.writeString(this.psn);
-        dest.writeString(this.github);
-        dest.writeString(this.btc);
-        dest.writeString(this.location);
-        dest.writeString(this.bio);
-        dest.writeLong(this.created);
+    public void setId(long id) {
+        this.id = id;
     }
 
-    protected MemberEntity(Parcel in) {
-        super(in);
-        this.status = in.readString();
-        this.url = in.readString();
-        this.website = in.readString();
-        this.twitter = in.readString();
-        this.psn = in.readString();
-        this.github = in.readString();
-        this.btc = in.readString();
-        this.location = in.readString();
-        this.bio = in.readString();
-        this.created = in.readLong();
+    public String getUsername() {
+        return username;
     }
 
-    public static final Creator<MemberEntity> CREATOR = new Creator<MemberEntity>() {
-        public MemberEntity createFromParcel(Parcel source) {
-            return new MemberEntity(source);
-        }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-        public MemberEntity[] newArray(int size) {
-            return new MemberEntity[size];
-        }
-    };
+    public String getTagline() {
+        return tagline;
+    }
+
+    public void setTagline(String tagline) {
+        this.tagline = tagline;
+    }
+
+    public String getAvatarMini() {
+        return avatarMini;
+    }
+
+    public void setAvatarMini(String avatarMini) {
+        this.avatarMini = avatarMini;
+    }
+
+    public String getAvatarNormal() {
+        return avatarNormal;
+    }
+
+    public void setAvatarNormal(String avatarNormal) {
+        this.avatarNormal = avatarNormal;
+    }
+
+    public String getAvatarLarge() {
+        return avatarLarge;
+    }
+
+    public void setAvatarLarge(String avatarLarge) {
+        this.avatarLarge = avatarLarge;
+    }
 }

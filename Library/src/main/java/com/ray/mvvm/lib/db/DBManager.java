@@ -170,10 +170,11 @@ public abstract class DBManager<T extends RealmModel> implements IDBManager<T> {
     @Override
     public Observable<List<T>> insertListObs(List<T> list) {
         return Observable
-                .create(subscriber -> {
-                    subscriber.onNext(realm.copyToRealmOrUpdate(list));
-                    subscriber.onCompleted();
-                });
+                .create(subscriber ->
+                        realm.executeTransaction(realm -> {
+                            subscriber.onNext(realm.copyToRealmOrUpdate(list));
+                            subscriber.onCompleted();
+                        }));
     }
 
     @Override

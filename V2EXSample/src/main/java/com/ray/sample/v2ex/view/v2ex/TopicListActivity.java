@@ -26,12 +26,11 @@ package com.ray.sample.v2ex.view.v2ex;
 import android.os.Bundle;
 import android.view.View;
 
-import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
+import com.ray.mvvm.lib.model.model.member.MemberEntity;
 import com.ray.mvvm.lib.model.model.node.NodeEntity;
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
-import com.ray.mvvm.lib.widget.anotations.RequestType;
 import com.ray.sample.v2ex.R;
 import com.ray.sample.v2ex.databinding.ActivityTopicListBinding;
 import com.ray.sample.v2ex.view.v2ex.contract.DaggerTopicListContract_Comp;
@@ -50,7 +49,7 @@ public class TopicListActivity extends BaseDIActivity implements TopicListContra
         super.onCreate(savedInstanceState);
         ActivityTopicListBinding binding = bindLayout(R.layout.activity_topic_list);
         binding.setViewModel(viewModel);
-        viewModel.initiallyReq(RequestType.CONTENT_LOADING);
+        viewModel.init();
     }
 
     @Override
@@ -77,6 +76,6 @@ public class TopicListActivity extends BaseDIActivity implements TopicListContra
     }
 
     @Override
-    public void onAvatarClicked(MemberBaseEntity memberEntity) {
+    public void onAvatarClicked(MemberEntity memberEntity) {
     }
 }

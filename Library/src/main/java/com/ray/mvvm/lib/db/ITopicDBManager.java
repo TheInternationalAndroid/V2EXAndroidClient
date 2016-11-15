@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 12 Nov 2016 22:45:14 +0800.
+ *  Created on Tue, 15 Nov 2016 17:39:24 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 12 Nov 2016 22:45:14 +0800.
+ *  Author: Lena; Last Modified: Tue, 15 Nov 2016 17:39:24 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,16 +21,16 @@
  *
  */
 
-package com.ray.sample.v2ex.view.common.v2ex;
+package com.ray.mvvm.lib.db;
 
-import com.ray.mvvm.lib.model.model.member.MemberEntity;
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 
 /**
  * Created by Android Studio.
  * ProjectName: V2EXAndroidClient
  * Author:  Lena
- * Date: 12/11/2016
- * Time: 12:05 AM
+ * Date: 15/11/2016
+ * Time: 5:39 PM
  * \ ----------------------------------------
  * \| A small leak will sink a great ship.!  |
  * \ ----------------------------------------
@@ -42,6 +42,5 @@ import com.ray.mvvm.lib.model.model.member.MemberEntity;
  * \               ||----w |
  * \               ||     ||
  */
-public interface MemberView {
-    void onAvatarClicked(MemberEntity memberEntity);
+public interface ITopicDBManager extends IDBManager<TopicEntity> {
 }

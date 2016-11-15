@@ -50,7 +50,7 @@ public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> ex
         refreshSubject = PublishSubject.create();
         presenter.subscribe(refreshSubject
                         .filter(refresh -> refresh != isRefreshing)
-                        .concatMap(value -> Observable.just(value).delay(!value && isRefreshing ? 3 : 0, TimeUnit.SECONDS)),
+                        .concatMap(value -> Observable.just(value).delay(!value && isRefreshing ? 2 : 0, TimeUnit.SECONDS)),
                 refresh -> {
                     isRefreshing = refresh;
                     notifyPropertyChanged(BR.refreshing);

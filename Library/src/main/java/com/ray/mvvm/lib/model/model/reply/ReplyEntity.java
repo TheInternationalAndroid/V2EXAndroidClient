@@ -23,7 +23,7 @@
 
 package com.ray.mvvm.lib.model.model.reply;
 
-import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
+import com.ray.mvvm.lib.model.model.member.MemberEntity;
 import com.squareup.moshi.Json;
 
 /**
@@ -50,7 +50,7 @@ public class ReplyEntity {
     private String content;
     @Json(name = "content_rendered")
     private String contentRendered;
-    private MemberBaseEntity member;
+    private MemberEntity member;
     private long created;
     @Json(name = "last_modified")
     private long lastModified;
@@ -87,11 +87,11 @@ public class ReplyEntity {
         this.contentRendered = contentRendered;
     }
 
-    public MemberBaseEntity getMember() {
+    public MemberEntity getMember() {
         return member;
     }
 
-    public void setMember(MemberBaseEntity member) {
+    public void setMember(MemberEntity member) {
         this.member = member;
     }
 

@@ -23,12 +23,13 @@
 
 package com.ray.mvvm.lib.model.model.topic;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
+import com.ray.mvvm.lib.model.model.member.MemberEntity;
 import com.ray.mvvm.lib.model.model.node.NodeEntity;
 import com.squareup.moshi.Json;
+
+import io.realm.RealmModel;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 
 /**
  * Created by Android Studio.
@@ -47,8 +48,12 @@ import com.squareup.moshi.Json;
  * \               ||----w |
  * \               ||     ||
  */
-public class TopicEntity implements Parcelable {
+@RealmClass
+public class TopicEntity implements RealmModel {
 
+    public static final String PRIMARY_KEY = "id";
+
+    @PrimaryKey
     private long id;
     private String title;
     private String url;
@@ -56,7 +61,7 @@ public class TopicEntity implements Parcelable {
     @Json(name = "content_rendered")
     private String contentRendered;
     private int replies;
-    private MemberBaseEntity member;
+    private MemberEntity member;
     private NodeEntity node;
     private long created;
     @Json(name = "last_modified")
@@ -112,11 +117,11 @@ public class TopicEntity implements Parcelable {
         this.replies = replies;
     }
 
-    public MemberBaseEntity getMember() {
+    public MemberEntity getMember() {
         return member;
     }
 
-    public void setMember(MemberBaseEntity member) {
+    public void setMember(MemberEntity member) {
         this.member = member;
     }
 
@@ -152,52 +157,4 @@ public class TopicEntity implements Parcelable {
         this.lastTouched = lastTouched;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(this.id);
-        dest.writeString(this.title);
-        dest.writeString(this.url);
-        dest.writeString(this.content);
-        dest.writeString(this.contentRendered);
-        dest.writeInt(this.replies);
-        dest.writeParcelable(this.member, flags);
-        dest.writeParcelable(this.node, flags);
-        dest.writeLong(this.created);
-        dest.writeLong(this.lastModified);
-        dest.writeLong(this.lastTouched);
-    }
-
-    public TopicEntity() {
-    }
-
-    protected TopicEntity(Parcel in) {
-        this.id = in.readLong();
-        this.title = in.readString();
-        this.url = in.readString();
-        this.content = in.readString();
-        this.contentRendered = in.readString();
-        this.replies = in.readInt();
-        this.member = in.readParcelable(MemberBaseEntity.class.getClassLoader());
-        this.node = in.readParcelable(NodeEntity.class.getClassLoader());
-        this.created = in.readLong();
-        this.lastModified = in.readLong();
-        this.lastTouched = in.readLong();
-    }
-
-    public static final Creator<TopicEntity> CREATOR = new Creator<TopicEntity>() {
-        @Override
-        public TopicEntity createFromParcel(Parcel source) {
-            return new TopicEntity(source);
-        }
-
-        @Override
-        public TopicEntity[] newArray(int size) {
-            return new TopicEntity[size];
-        }
-    };
 }

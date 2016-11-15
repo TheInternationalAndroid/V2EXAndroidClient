@@ -23,8 +23,10 @@
 
 package com.ray.sample.v2ex.view.v2ex.presenter;
 
+import com.ray.mvvm.lib.db.ITopicDBManager;
 import com.ray.mvvm.lib.model.http.ExObserver;
-import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
+import com.ray.mvvm.lib.model.http.ExSubscriber;
+import com.ray.mvvm.lib.model.model.member.MemberEntity;
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.model.service.TopicService;
 import com.ray.mvvm.lib.presenter.BasePresenter;
@@ -36,35 +38,43 @@ import java.util.List;
 import javax.inject.Inject;
 
 import rx.Observable;
-import rx.functions.Func1;
 
 public class TopicListP extends BasePresenter implements TopicListContract.Presenter {
 
     private final TopicService topicService;
+    private final ITopicDBManager topicDBManager;
 
     @Inject
-    TopicListP(RefWatcher refWatcher, TopicService topicService) {
+    TopicListP(RefWatcher refWatcher, TopicService topicService, ITopicDBManager topicDBManager) {
         super(refWatcher);
         this.topicService = topicService;
+        this.topicDBManager = topicDBManager;
     }
 
     @Override
     public void requestTopicList(ExObserver<List<TopicEntity>> observer) {
-        subscribeCommonReqConcat(topicService.hot(), new Func1<List<TopicEntity>, Observable<List<TopicEntity>>>() {
-            @Override
-            public Observable<List<TopicEntity>> call(List<TopicEntity> topicEntities) {
-                return Observable.create(subscriber -> {
-                    for (TopicEntity topicEntity : topicEntities) {
-                        MemberBaseEntity memberEntity = topicEntity.getMember();
-                        memberEntity.setAvatarNormal("http:" + memberEntity.getAvatarNormal());
-                        memberEntity.setAvatarMini("http:" + memberEntity.getAvatarMini());
-                        memberEntity.setAvatarLarge("http:" + memberEntity.getAvatarLarge());
-                    }
-                    subscriber.onNext(topicEntities);
-                    subscriber.onCompleted();
-                });
-
-            }
-        }, observer);
+        subscribeCommonReqConcat(
+                topicService.hot(),
+                (List<TopicEntity> topicEntities) -> {
+                    return Observable.create(subscriber -> {
+                        for (TopicEntity topicEntity : topicEntities) {
+                            MemberEntity memberEntity = topicEntity.getMember();
+                            memberEntity.setAvatarNormal("http:" + memberEntity.getAvatarNormal());
+                            memberEntity.setAvatarMini("http:" + memberEntity.getAvatarMini());
+                            memberEntity.setAvatarLarge("http:" + memberEntity.getAvatarLarge());
+                        }
+                        subscriber.onNext(topicEntities);
+                        subscriber.onCompleted();
+                    });
+                },
+                topicDBManager::insertListObs,
+                observer
+        );
     }
+
+    @Override
+    public void findTopicList(ExSubscriber<List<TopicEntity>> subscriber) {
+        subscribe(topicDBManager.findAllObs().subscribe(subscriber));
+    }
+
 }

@@ -26,6 +26,8 @@ package com.ray.mvvm.lib.di.modules;
 import android.content.Context;
 
 import com.ray.mvvm.lib.BuildConfig;
+import com.ray.mvvm.lib.db.ITopicDBManager;
+import com.ray.mvvm.lib.db.TopicDBManager;
 import com.ray.mvvm.lib.di.scope.PerApplication;
 import com.ray.mvvm.lib.model.http.adapter.RespEntityAdapter;
 import com.ray.mvvm.lib.widget.anotations.ContextType;
@@ -60,7 +62,7 @@ public class ComponentModule {
                         Timber.i("migration  Old version %d -> New version %d", oldVersion, newVersion))
                 .schemaVersion(BuildConfig.VERSION_CODE)
                 .deleteRealmIfMigrationNeeded()
-                .name("IronHideDB.realm")
+                .name("Library.realm")
                 .build();
         Realm.setDefaultConfiguration(realmConfig);
         return Realm.getDefaultInstance();
@@ -70,6 +72,12 @@ public class ComponentModule {
     @PerApplication
     RxPermissions provideRxPermission(@Named(ContextType.APPLICATION) Context context) {
         return RxPermissions.getInstance(context);
+    }
+
+    @Provides
+    @PerApplication
+    ITopicDBManager provideTopicDB(Realm realm) {
+        return new TopicDBManager(realm);
     }
 
 }

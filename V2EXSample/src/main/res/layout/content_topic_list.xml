@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~
   ~  Copyright (c) 2016 Lena.t.Yan
   ~  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
@@ -42,5 +41,36 @@
         tools:context="com.ray.sample.v2ex.view.v2ex.TopicListActivity"
         tools:showIn="@layout/activity_topic_list">
 
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.swipRefreshVisibility, default = visible}"
+            app:colorSchemeResources="@{viewModel.colors}"
+            app:onRefreshListener="@{viewModel}"
+            app:refresh="@{viewModel.refreshing}">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/padding_l"
+                android:visibility="@{viewModel.listVisibility, default = gone}"
+                app:adapter="@{viewModel.adapter}"
+                app:itemAnimator="@{null}"
+                app:layoutManager="@{viewModel.layoutManager}" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <include
+            layout="@layout/state_empty_layout"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            layout="@layout/state_loading_layout"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            layout="@layout/state_error_layout"
+            app:viewModel="@{viewModel}" />
     </RelativeLayout>
 </layout>

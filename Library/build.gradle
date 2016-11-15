@@ -107,7 +107,6 @@ dependencies {
     compile depMap.FlexBox
     compile depMap.ScaleImageView
     compile depMap.Moshi
-    compile depMap.FastJson
     compile depMap.StethoRealm
 
     debugCompile depMap.Stetho

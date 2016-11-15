@@ -58,6 +58,10 @@
         <activity
             android:name=".view.mock.PageSampleActivity"
             android:label="@string/title_activity_page_sample"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.v2ex.TopicDetailActivity"
+            android:label="@string/title_activity_topic_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

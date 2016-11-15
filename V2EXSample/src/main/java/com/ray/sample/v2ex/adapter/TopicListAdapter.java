@@ -31,6 +31,7 @@ import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.sample.v2ex.databinding.ListCellTopicBinding;
 import com.ray.sample.v2ex.view.common.v2ex.TopicCellView;
+import com.ray.sample.v2ex.view.v2ex.vm.TopicCellVM;
 
 /**
  * Created by Android Studio.
@@ -64,6 +65,6 @@ public class TopicListAdapter extends ListAdapter<TopicEntity> {
 
     @Override
     protected Object createViewModel(int viewType, int position) {
-        return null;
+        return new TopicCellVM(getItem(position), position, topicCellView);
     }
 }

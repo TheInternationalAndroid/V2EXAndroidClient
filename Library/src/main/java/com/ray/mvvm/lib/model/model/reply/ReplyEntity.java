@@ -23,8 +23,8 @@
 
 package com.ray.mvvm.lib.model.model.reply;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
+import com.squareup.moshi.Json;
 
 /**
  * Created by Android Studio.
@@ -48,11 +48,11 @@ public class ReplyEntity {
     private long id;
     private String thanks;
     private String content;
-    @JSONField(name = "content_rendered")
+    @Json(name = "content_rendered")
     private String contentRendered;
     private MemberBaseEntity member;
     private long created;
-    @JSONField(name = "last_modified")
+    @Json(name = "last_modified")
     private long lastModified;
 
     public long getId() {

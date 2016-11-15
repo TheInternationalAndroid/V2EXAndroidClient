@@ -44,5 +44,4 @@ import com.ray.mvvm.lib.view.adapter.OnItemClick;
  * \               ||     ||
  */
 public interface ReplyCellView extends MemberView,OnItemClick<ReplyEntity> {
-    void onReplyClicked(ReplyEntity replyEntity);
 }

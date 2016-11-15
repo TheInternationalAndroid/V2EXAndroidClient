@@ -23,15 +23,22 @@
 
 package com.ray.sample.v2ex.view.v2ex.vm.module;
 
+import android.support.v7.widget.LinearLayoutManager;
+
+import com.ray.mvvm.lib.di.modules.LayoutManagerModule;
 import com.ray.mvvm.lib.di.scope.PerActivity;
+import com.ray.mvvm.lib.widget.anotations.ListType;
+import com.ray.sample.v2ex.adapter.TopicListAdapter;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicListContract;
 import com.ray.sample.v2ex.view.v2ex.presenter.TopicListP;
 import com.ray.sample.v2ex.view.v2ex.vm.TopicListVM;
 
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+@Module(includes = LayoutManagerModule.class)
 public class TopicListVMModule {
 
     private TopicListContract.View view;
@@ -42,8 +49,8 @@ public class TopicListVMModule {
 
     @Provides
     @PerActivity
-    TopicListVM provideVM(TopicListP presenter) {
-        return new TopicListVM(presenter, view);
+    TopicListVM provideVM(TopicListP presenter, @Named(ListType.VERTICAL) LinearLayoutManager layoutManager) {
+        return new TopicListVM(presenter, view, layoutManager, new TopicListAdapter(view));
     }
 
 }

@@ -26,9 +26,9 @@ package com.ray.mvvm.lib.model.model.topic;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.ray.mvvm.lib.model.model.member.MemberBaseEntity;
 import com.ray.mvvm.lib.model.model.node.NodeEntity;
+import com.squareup.moshi.Json;
 
 /**
  * Created by Android Studio.
@@ -53,15 +53,15 @@ public class TopicEntity implements Parcelable {
     private String title;
     private String url;
     private String content;
-    @JSONField(name = "content_rendered")
+    @Json(name = "content_rendered")
     private String contentRendered;
     private int replies;
     private MemberBaseEntity member;
     private NodeEntity node;
     private long created;
-    @JSONField(name = "last_modified")
+    @Json(name = "last_modified")
     private long lastModified;
-    @JSONField(name = "last_touched")
+    @Json(name = "last_touched")
     private long lastTouched;
 
     public long getId() {

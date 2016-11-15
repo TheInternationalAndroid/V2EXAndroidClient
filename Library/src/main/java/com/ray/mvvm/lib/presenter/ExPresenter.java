@@ -62,7 +62,7 @@ public class ExPresenter extends CommonPresenter {
         );
     }
 
-    protected <T extends ExRespEntity, R> void subscribeReqConvert(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull Subscriber<R> subscriber) {
+    protected <T extends ExRespEntity, R> void subscribeReqConcat(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull Subscriber<R> subscriber) {
         subscription.add(
                 observable
                         .subscribeOn(Schedulers.io())
@@ -78,7 +78,7 @@ public class ExPresenter extends CommonPresenter {
         );
     }
 
-    protected <T extends ExRespEntity, R> void subscribeReqConvert(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull Subscriber<R> subscriber, Action1<T> action1) {
+    protected <T extends ExRespEntity, R> void subscribeReqConcat(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull Subscriber<R> subscriber, Action1<T> action1) {
         subscription.add(
                 observable
                         .subscribeOn(Schedulers.io())
@@ -95,7 +95,7 @@ public class ExPresenter extends CommonPresenter {
         );
     }
 
-    protected <T extends ExRespEntity, R> void subscribeReqConvert(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter) {
+    protected <T extends ExRespEntity, R> void subscribeReqConcat(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter) {
         subscription.add(
                 observable
                         .subscribeOn(Schedulers.io())
@@ -110,7 +110,7 @@ public class ExPresenter extends CommonPresenter {
         );
     }
 
-    protected <T extends ExRespEntity, R> void subscribeReqConvert(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull ExObserver<R> observer) {
+    protected <T extends ExRespEntity, R> void subscribeReqConcat(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull ExObserver<R> observer) {
         subscription.add(
                 observable
                         .subscribeOn(Schedulers.io())

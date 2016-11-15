@@ -47,6 +47,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.ray.mvvm.lib.interfaces.ILoadMore;
 import com.ray.mvvm.lib.interfaces.OnItemSwitch;
 import com.ray.mvvm.lib.interfaces.OnScrollListener;
@@ -151,6 +152,20 @@ public class BindingAdapter {
 
     @android.databinding.BindingAdapter(value = {"imgurl", "placeHolder", "showFade"}, requireAll = false)
     public static void loadImageByPath(ImageView imageView, String imgurl, Drawable placeHolder, boolean showFade) {
+        Glide.clear(imageView);
+        if (StringUtil.isEmpty(imgurl)) {
+            imageView.setImageDrawable(placeHolder);
+            return;
+        }
+        if (showFade) {
+            with(imageView.getContext()).load(imgurl).centerCrop().placeholder(placeHolder).crossFade().into(imageView);
+        } else {
+            with(imageView.getContext()).load(imgurl).centerCrop().placeholder(placeHolder).dontAnimate().into(imageView);
+        }
+    }
+
+    @android.databinding.BindingAdapter(value = {"imgurl", "placeHolder", "showFade"}, requireAll = false)
+    public static void loadImageByPath(RoundedImageView imageView, String imgurl, Drawable placeHolder, boolean showFade) {
         Glide.clear(imageView);
         if (StringUtil.isEmpty(imgurl)) {
             imageView.setImageDrawable(placeHolder);

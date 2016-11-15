@@ -32,7 +32,7 @@ import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.sample.v2ex.databinding.ListCellReplyBinding;
 import com.ray.sample.v2ex.databinding.ListHeaderMemberBinding;
-import com.ray.sample.v2ex.view.v2ex.contract.TopicListContract;
+import com.ray.sample.v2ex.view.v2ex.contract.TopicDetailContract;
 import com.ray.sample.v2ex.view.v2ex.vm.ReplyCellVM;
 import com.ray.sample.v2ex.view.v2ex.vm.TopicHeaderVM;
 
@@ -60,9 +60,9 @@ public class TopicPageAdapter extends ListAdapter<ReplyEntity> {
     public static final int HEADER_COUNT = 1;
 
     private TopicEntity topicEntity;
-    private TopicListContract.View view;
+    private TopicDetailContract.View view;
 
-    public TopicPageAdapter(TopicListContract.View view) {
+    public TopicPageAdapter(TopicDetailContract.View view) {
         this.view = view;
     }
 

@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~
   ~  Copyright (c) 2016 Lena.t.Yan
   ~  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
-  ~  Created on Sat, 8 Oct 2016 22:33:15 +0800.
+  ~  Created on Tue, 15 Nov 2016 08:11:00 +0800.
   ~  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
-  ~  Author: Lena; Last Modified: Sat, 8 Oct 2016 22:33:15 +0800.
+  ~  Author: Lena; Last Modified: Tue, 15 Nov 2016 08:11:00 +0800.
   ~  This file is originally created by Lena.
   ~
   ~  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,15 +22,25 @@
   ~
   -->
 
-<manifest package="com.ray.mvvm.lib"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout>
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <data>
 
-    <application
-        android:allowBackup="true"
-        android:supportsRtl="true" />
+        <import type="com.ray.sample.v2ex.view.v2ex.vm.TopicDetailVM" />
 
-</manifest>
+        <variable
+            name="viewModel"
+            type="TopicDetailVM" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.ray.sample.v2ex.view.v2ex.TopicDetailActivity"
+        tools:showIn="@layout/activity_topic_detail">
+
+    </RelativeLayout>
+</layout>

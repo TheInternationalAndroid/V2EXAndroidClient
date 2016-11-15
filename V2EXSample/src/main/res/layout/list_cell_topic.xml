@@ -68,7 +68,7 @@
                     android:layout_width="@dimen/icon_size_s"
                     android:layout_height="@dimen/icon_size_s"
                     android:scaleType="centerCrop"
-                    android:src="@{viewModel.entity.member.avatarLarge}"
+                    app:imgurl="@{viewModel.entity.member.avatarLarge}"
                     app:riv_border_width="0dp"
                     app:riv_corner_radius="@dimen/btn_corner"
                     app:riv_mutate_background="true" />

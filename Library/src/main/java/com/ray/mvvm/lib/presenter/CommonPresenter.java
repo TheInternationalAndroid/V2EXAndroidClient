@@ -92,11 +92,9 @@ public class CommonPresenter implements IPresenter {
     }
 
     @Override
-    public <V> void subscribeView(Observable<V> publishSubject, Action1<? super V> action) {
+    public <V> void subscribe(Observable<V> publishSubject, Action1<? super V> action) {
         subscribe(publishSubject
-                .throttleLast(200, TimeUnit.MILLISECONDS)
-                .debounce(500, TimeUnit.MILLISECONDS)
-                .onBackpressureLatest()
+                .onBackpressureBuffer()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(action::call));
     }
@@ -168,7 +166,7 @@ public class CommonPresenter implements IPresenter {
         );
     }
 
-    protected <T, R> void subscribeCommonReqConvert(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull Subscriber<R> subscriber) {
+    protected <T, R> void subscribeCommonReqConcat(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull Subscriber<R> subscriber) {
         subscription.add(
                 observable
                         .subscribeOn(Schedulers.io())
@@ -182,7 +180,7 @@ public class CommonPresenter implements IPresenter {
         );
     }
 
-    protected <T, R> void subscribeCommonReqConvert(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull Subscriber<R> subscriber, Action1<T> action1) {
+    protected <T, R> void subscribeCommonReqConcat(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull Subscriber<R> subscriber, Action1<T> action1) {
         subscription.add(
                 observable
                         .subscribeOn(Schedulers.io())
@@ -197,7 +195,7 @@ public class CommonPresenter implements IPresenter {
         );
     }
 
-    protected <T, R> void subscribeCommonReqConvert(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter) {
+    protected <T, R> void subscribeCommonReqConcat(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter) {
         subscription.add(
                 observable
                         .subscribeOn(Schedulers.io())
@@ -211,7 +209,7 @@ public class CommonPresenter implements IPresenter {
         );
     }
 
-    protected <T, R> void subscribeCommonReqConvert(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull ExObserver<R> observer) {
+    protected <T, R> void subscribeCommonReqConcat(@NonNull Observable<T> observable, Func1<? super T, ? extends Observable<? extends R>> converter, @NonNull ExObserver<R> observer) {
         subscription.add(
                 observable
                         .subscribeOn(Schedulers.io())

@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Fri, 11 Nov 2016 22:14:52 +0800.
+ *  Created on Tue, 15 Nov 2016 08:11:00 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Fri, 11 Nov 2016 22:14:52 +0800.
+ *  Author: Lena; Last Modified: Tue, 15 Nov 2016 08:11:00 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,21 +21,19 @@
  *
  */
 
-package com.ray.mvvm.lib.presenter;
+package com.ray.sample.v2ex.view.v2ex.presenter;
 
-import com.ray.mvvm.lib.view.base.view.ILifeCycle;
-import com.ray.mvvm.lib.widget.eventbus.event.BaseEvent;
+import com.ray.mvvm.lib.presenter.BasePresenter;
+import com.ray.sample.v2ex.view.v2ex.contract.TopicDetailContract;
+import com.squareup.leakcanary.RefWatcher;
 
-import rx.Observable;
-import rx.Subscription;
-import rx.functions.Action1;
+import javax.inject.Inject;
 
-public interface IPresenter extends ILifeCycle {
+public class TopicDetailP extends BasePresenter implements TopicDetailContract.Presenter {
 
-    void subscribe(Subscription subscription);
-
-    <T extends BaseEvent> void subscribeEvent(Class<T> aClass, Action1<T> action1);
-
-    <V> void subscribe(Observable<V> publishSubject, Action1<? super V> action);
+    @Inject
+    TopicDetailP(RefWatcher refWatcher) {
+        super(refWatcher);
+    }
 
 }

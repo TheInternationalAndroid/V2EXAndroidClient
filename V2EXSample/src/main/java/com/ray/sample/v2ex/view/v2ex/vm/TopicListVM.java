@@ -23,13 +23,28 @@
 
 package com.ray.sample.v2ex.view.v2ex.vm;
 
-import com.ray.mvvm.lib.viewmodel.BaseVM;
+import android.support.v7.widget.RecyclerView;
+
+import com.ray.mvvm.lib.model.model.topic.TopicEntity;
+import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
+import com.ray.mvvm.lib.viewmodel.ListVM;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicListContract;
 
-public class TopicListVM extends BaseVM<TopicListContract.Presenter, TopicListContract.View> {
+import java.util.List;
 
-    public TopicListVM(TopicListContract.Presenter presenter, TopicListContract.View view) {
-        super(presenter, view);
+public class TopicListVM extends ListVM<TopicListContract.Presenter, TopicListContract.View, TopicEntity> {
+
+    public TopicListVM(TopicListContract.Presenter presenter, TopicListContract.View view, RecyclerView.LayoutManager layoutManager, ListAdapter<TopicEntity> adapter) {
+        super(presenter, view, layoutManager, adapter);
     }
 
+    @Override
+    protected void exeRequest() {
+        presenter.requestTopicList(this);
+    }
+
+    @Override
+    protected void bindResp(List<TopicEntity> data) {
+        super.bindResp(data);
+    }
 }

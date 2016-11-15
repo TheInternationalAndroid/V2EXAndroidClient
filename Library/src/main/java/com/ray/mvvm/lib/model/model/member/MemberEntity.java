@@ -59,12 +59,12 @@ public class MemberEntity extends MemberBaseEntity {
     }
 
     public MemberEntity(MemberBaseEntity memberBaseEntity) {
-        this.id = memberBaseEntity.id;
-        this.username = memberBaseEntity.username;
-        this.tagline = memberBaseEntity.tagline;
-        this.avatarMini = memberBaseEntity.avatarMini;
-        this.avatarNormal = memberBaseEntity.avatarNormal;
-        this.avatarLarge = memberBaseEntity.avatarLarge;
+        setId(memberBaseEntity.getId());
+        setUsername(memberBaseEntity.getUsername());
+        setTagline(memberBaseEntity.getTagline());
+        setAvatarMini(memberBaseEntity.getAvatarMini());
+        setAvatarNormal(memberBaseEntity.getAvatarNormal());
+        setAvatarLarge(memberBaseEntity.getAvatarLarge());
     }
 
     public String getStatus() {
@@ -147,11 +147,13 @@ public class MemberEntity extends MemberBaseEntity {
         this.created = created;
     }
 
-    @Override public int describeContents() {
+    @Override
+    public int describeContents() {
         return 0;
     }
 
-    @Override public void writeToParcel(Parcel dest, int flags) {
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
         super.writeToParcel(dest, flags);
         dest.writeString(this.status);
         dest.writeString(this.url);

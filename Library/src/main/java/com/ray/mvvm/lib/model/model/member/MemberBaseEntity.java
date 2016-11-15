@@ -26,7 +26,7 @@ package com.ray.mvvm.lib.model.model.member;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.squareup.moshi.Json;
 
 /**
  * Created by Android Studio.
@@ -47,15 +47,15 @@ import com.alibaba.fastjson.annotation.JSONField;
  */
 public class MemberBaseEntity implements Parcelable {
 
-    protected long id;
-    protected String username;
-    protected String tagline;
-    @JSONField(name = "avatar_mini")
-    protected String avatarMini;
-    @JSONField(name = "avatar_normal")
-    protected String avatarNormal;
-    @JSONField(name = "avatar_large")
-    protected String avatarLarge;
+    private long id;
+    private String username;
+    private String tagline;
+    @Json(name = "avatar_mini")
+    private String avatarMini;
+    @Json(name = "avatar_normal")
+    private String avatarNormal;
+    @Json(name = "avatar_large")
+    private String avatarLarge;
 
     public long getId() {
         return id;

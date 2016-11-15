@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Fri, 11 Nov 2016 23:40:53 +0800.
+ *  Created on Tue, 15 Nov 2016 08:11:00 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Fri, 11 Nov 2016 23:40:53 +0800.
+ *  Author: Lena; Last Modified: Tue, 15 Nov 2016 08:11:00 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,32 +24,29 @@
 package com.ray.sample.v2ex.view.v2ex.contract;
 
 import com.ray.mvvm.lib.di.scope.PerActivity;
-import com.ray.mvvm.lib.model.http.ExObserver;
-import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.comp.ActivityComp;
 import com.ray.mvvm.lib.view.base.view.IView;
-import com.ray.sample.v2ex.view.common.v2ex.TopicCellView;
-import com.ray.sample.v2ex.view.v2ex.TopicListActivity;
-import com.ray.sample.v2ex.view.v2ex.vm.module.TopicListVMModule;
-
-import java.util.List;
+import com.ray.sample.v2ex.view.common.v2ex.MemberView;
+import com.ray.sample.v2ex.view.common.v2ex.ReplyCellView;
+import com.ray.sample.v2ex.view.v2ex.TopicDetailActivity;
+import com.ray.sample.v2ex.view.v2ex.vm.module.TopicDetailVMModule;
 
 import dagger.Component;
 
-public interface TopicListContract {
+public interface TopicDetailContract {
 
     @PerActivity
-    @Component(modules = {TopicListVMModule.class}, dependencies = ActivityComp.class)
+    @Component(modules = {TopicDetailVMModule.class}, dependencies = ActivityComp.class)
     interface Comp extends ActivityComp {
-        void inject(TopicListActivity activity);
+        void inject(TopicDetailActivity activity);
     }
 
-    interface View extends IView, TopicCellView {
+    interface View extends IView, MemberView, ReplyCellView {
     }
 
     interface Presenter extends IPresenter {
-        void requestTopicList(ExObserver<List<TopicEntity>> observer);
+
     }
 
 }

@@ -26,7 +26,7 @@ package com.ray.mvvm.lib.model.model.node;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.squareup.moshi.Json;
 
 /**
  * Created by Android Studio.
@@ -50,15 +50,15 @@ public class NodeEntity implements Parcelable {
     private long id;
     private String name;
     private String title;
-    @JSONField(name = "title_alternative")
+    @Json(name = "title_alternative")
     private String titleAlternative;
     private String url;
     private int topics;
-    @JSONField(name = "avatar_mini")
+    @Json(name = "avatar_mini")
     private String avatarMini;
-    @JSONField(name = "avatar_normal")
+    @Json(name = "avatar_normal")
     private String avatarNormal;
-    @JSONField(name = "avatar_large")
+    @Json(name = "avatar_large")
     private String avatarLarge;
     private String header;
     private String footer;

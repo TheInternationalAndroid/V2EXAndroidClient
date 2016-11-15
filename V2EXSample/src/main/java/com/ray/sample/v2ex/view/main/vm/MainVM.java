@@ -23,12 +23,19 @@
 
 package com.ray.sample.v2ex.view.main.vm;
 
+import android.content.Context;
 import android.view.View;
 
 import com.ray.mvvm.lib.viewmodel.BaseVM;
 import com.ray.sample.v2ex.view.main.contract.MainContract;
 import com.ray.sample.v2ex.view.mock.MockSamplesActivity;
 import com.ray.sample.v2ex.view.v2ex.TopicListActivity;
+import com.tbruyelle.rxpermissions.RxPermissions;
+
+import rx.subjects.PublishSubject;
+
+import static android.Manifest.permission.CAMERA;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class MainVM extends BaseVM<MainContract.Presenter, MainContract.View> {
 
@@ -44,4 +51,22 @@ public class MainVM extends BaseVM<MainContract.Presenter, MainContract.View> {
         this.view.intent(MockSamplesActivity.class);
     }
 
+    public void requestPermission(Context context) {
+        PublishSubject<Boolean> subject = PublishSubject.create();
+        presenter.subscribe(
+                subject
+                        .compose(RxPermissions
+                                .getInstance(context)
+                                .ensure(WRITE_EXTERNAL_STORAGE,
+                                        CAMERA))
+                        .subscribe(granted -> {
+                            if (granted) {
+                                subject.onCompleted();
+                            } else {
+                                view.showPermissionDialog(subject);
+                            }
+                        })
+        );
+        subject.onNext(true);
+    }
 }

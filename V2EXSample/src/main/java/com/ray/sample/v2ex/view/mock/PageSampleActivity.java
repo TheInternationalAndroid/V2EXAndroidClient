@@ -63,6 +63,5 @@ public class PageSampleActivity extends BaseDIActivity implements PageSampleCont
                 .pageSampleVMModule(new PageSampleVMModule(this))
                 .build()
                 .inject(this);
-
     }
 }

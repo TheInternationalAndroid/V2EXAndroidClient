@@ -40,6 +40,10 @@ import static android.R.attr.id;
 
 public abstract class ListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
 
+    private static final int TYPE_EMPTY = 926;
+    private static final int TYPE_ERROR = 807;
+    private static final int TYPE_LOADING = 745;
+
     private static final int NO_INDEX = -99;
     private List<T> list;
     private LongSparseArray<T> wrapMap = new LongSparseArray<>();

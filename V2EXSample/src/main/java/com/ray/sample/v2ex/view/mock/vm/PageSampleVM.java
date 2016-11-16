@@ -25,7 +25,6 @@ package com.ray.sample.v2ex.view.mock.vm;
 
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.viewmodel.SwipRefreshVM;
-import com.ray.mvvm.lib.widget.anotations.RequestType;
 import com.ray.sample.v2ex.view.mock.contract.PageSampleContract;
 
 public class PageSampleVM extends SwipRefreshVM<PageSampleContract.Presenter, PageSampleContract.View, TestEntity> {
@@ -36,7 +35,7 @@ public class PageSampleVM extends SwipRefreshVM<PageSampleContract.Presenter, Pa
 
     public void init(TestEntity testEntity) {
         setEntity(testEntity);
-        initiallyReq(RequestType.SWIP_REFRESH);
+        startRefreshWithContent();
     }
 
     @Override

@@ -23,15 +23,11 @@
 
 package com.ray.mvvm.lib.viewmodel;
 
-import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import com.ray.mvvm.lib.BR;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.mvvm.lib.view.base.view.IView;
-import com.ray.mvvm.lib.widget.anotations.PageState;
 
 import java.util.List;
 
@@ -66,17 +62,4 @@ public abstract class ListWrapperVM<T extends IPresenter, R extends IView, Q, W>
     }
 
     protected abstract List<W> getList(Q data);
-
-    @Override
-    public void setState(@PageState int state) {
-        super.setState(state);
-        notifyPropertyChanged(BR.listVisibility);
-    }
-
-    @Bindable
-    public int getListVisibility() {
-        final int state = getState();
-        return ((getAdapter().getItemCount() == 0 && state == PageState.EMPTY) || state == PageState.ERROR || state == PageState.LOADING) ? View.GONE : View.VISIBLE;
-    }
-
 }

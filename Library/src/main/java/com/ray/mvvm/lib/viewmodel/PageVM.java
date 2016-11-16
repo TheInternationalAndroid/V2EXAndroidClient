@@ -32,83 +32,35 @@ import com.ray.mvvm.lib.model.http.event.ErrorEvent;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
-import com.ray.mvvm.lib.widget.anotations.RequestType;
 
 import java.io.IOException;
 
-public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends BaseStateVM<T, R> implements ExObserver<Q>, View.OnClickListener {
+public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends BaseStateVM<T, R> implements ExObserver<Q> {
 
-    private int requestType = RequestType.CONTENT_LOADING;
     private Q entity;
 
-    public PageVM(T presenter, R view) {
+    PageVM(T presenter, R view) {
         super(presenter, view);
-    }
-
-    private void handleStartState(@RequestType int requestType) {
-        switch (requestType) {
-            case RequestType.CONTENT_LOADING:
-                setState(PageState.LOADING);
-                break;
-            case RequestType.SWIP_REFRESH:
-                setState(PageState.REFRESH);
-                break;
-            case RequestType.SILENT:
-            case RequestType.LOAD_MORE:
-                setState(PageState.CONTENT);
-                break;
-        }
-    }
-
-    private void handleCompleteState(@RequestType int requestType, Q data) {
-        switch (requestType) {
-            case RequestType.CONTENT_LOADING:
-            case RequestType.SWIP_REFRESH:
-            case RequestType.SILENT:
-                setState(isRespNull(data) ? PageState.EMPTY : PageState.CONTENT);
-                break;
-            case RequestType.LOAD_MORE:
-                setState(PageState.CONTENT);
-                break;
-        }
-    }
-
-    protected void handleErrorState(@RequestType int requestType) {
-        switch (requestType) {
-            case RequestType.CONTENT_LOADING:
-                setState(PageState.ERROR);
-                break;
-            case RequestType.LOAD_MORE:
-            case RequestType.SWIP_REFRESH:
-            case RequestType.SILENT:
-                setState(PageState.CONTENT);
-                break;
-        }
     }
 
     @Override
     public void onRetryClicked(View view) {
-        initiallyReq(RequestType.CONTENT_LOADING);
-    }
-
-    int getRequestType() {
-        return requestType;
+        startRequest(PageState.LOADING);
     }
 
     @Override
     public void onStart() {
-        handleStartState(requestType);
     }
 
     @Override
     public void onError(Throwable throwable) {
-        handleErrorState(requestType);
+        handleErrorState();
         String errorString;
         if (throwable instanceof ErrorEvent) {
             errorString = throwable.getMessage();
         } else if (throwable instanceof IOException) {
             setNetworkError(true);
-            errorString = view.findString(com.ray.mvvm.lib.R.string.state_error_network_msg);
+            errorString = view.findString(com.ray.mvvm.lib.R.string.state_network_error_msg);
         } else {
             errorString = throwable.getMessage();
         }
@@ -120,11 +72,37 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
     @Override
     public void onNext(Q data) {
         handleResponse(data);
-        handleCompleteState(requestType, data);
+        handleCompleteState(data);
     }
 
     @Override
     public void onCompleted() {
+    }
+
+    protected void handleCompleteState(Q data) {
+        final int startState = getState();
+        switch (startState) {
+            case PageState.LOADING:
+            case PageState.CONTENT:
+                setState(isRespNull(data) ? PageState.EMPTY : PageState.CONTENT);
+                break;
+            case PageState.LOAD_MORE:
+                setState(PageState.CONTENT/*Or startState*/);
+                break;
+        }
+    }
+
+    protected void handleErrorState() {
+        final int startState = getState();
+        switch (startState) {
+            case PageState.LOADING:
+                setState(PageState.ERROR);
+                break;
+            case PageState.LOAD_MORE:
+            case PageState.CONTENT:
+                setState(PageState.CONTENT);
+                break;
+        }
     }
 
     public void setEntity(Q entity) {
@@ -141,24 +119,24 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
         bindResp(data);
     }
 
-    protected abstract void exeRequest();
-
     protected void bindResp(Q data) {
         setEntity(data);
     }
 
-    public void initiallyReq(@RequestType int requestType) {
-        this.requestType = requestType;
+    public void startRequest() {
+        setState(PageState.LOADING);
         exeRequest();
     }
 
-    @Override
-    public void onClick(View view) {
-        initiallyReq(RequestType.CONTENT_LOADING);
+    public void startRequest(@PageState int startState) {
+        setState(startState);
+        exeRequest();
     }
 
     protected boolean isRespNull(Q data) {
         return data == null;
     }
+
+    protected abstract void exeRequest();
 
 }

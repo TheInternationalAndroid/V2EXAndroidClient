@@ -93,7 +93,6 @@ public abstract class ListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
                 break;
             default:
             case PageState.CONTENT:
-            case PageState.REFRESH:
                 viewDataBinding = createBinding(LayoutInflater.from(parent.getContext()), parent, viewType);
                 break;
         }
@@ -110,7 +109,6 @@ public abstract class ListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
                 return 1;
             default:
             case PageState.CONTENT:
-            case PageState.REFRESH:
                 return getDataCount() + getHeaderCount();
         }
     }
@@ -152,8 +150,6 @@ public abstract class ListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
             case PageState.ERROR:
             case PageState.LOADING:
                 holder.bindData(stateVM);
-                break;
-            case PageState.REFRESH:
                 break;
             default:
             case PageState.CONTENT:

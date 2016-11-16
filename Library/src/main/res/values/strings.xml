@@ -24,6 +24,7 @@
 <resources>
     <string name="state_empty_msg">没有数据</string>
     <string name="state_error_msg">请求数据失败</string>
+    <string name="state_network_error_msg">网络异常</string>
     <string name="state_error_network_msg">请求数据失败</string>
     <string name="state_retry_msg">重新加载</string>
     <string name="delete_count_format">删除(%1$s)</string>

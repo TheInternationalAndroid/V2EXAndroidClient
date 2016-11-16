@@ -30,7 +30,6 @@ import com.ray.mvvm.lib.BR;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
-import com.ray.mvvm.lib.widget.anotations.RequestType;
 
 import rx.subjects.PublishSubject;
 
@@ -49,6 +48,8 @@ public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> ex
                 refresh -> {
                     isRefreshing = refresh;
                     notifyPropertyChanged(BR.refreshing);
+                    if (isRefreshing)
+                        onRefresh();
                 });
     }
 
@@ -57,17 +58,40 @@ public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> ex
     }
 
     @Override
-    public void onRefresh() {
-        if (getState() == PageState.LOADING) {
-            return;
-        }
-        initiallyReq(RequestType.SWIP_REFRESH);
+    public void onCompleted() {
+        super.onCompleted();
+        refreshSubject.onNext(false);
     }
 
     @Override
-    public void setState(@PageState int state) {
-        super.setState(state);
-        refreshSubject.onNext(state == PageState.REFRESH);
+    public void onRefresh() {
+        if (getState() == PageState.LOADING) {
+            refreshSubject.onNext(false);
+            return;
+        }
+        this.isRefreshing = true;
+        startRequest(PageState.CONTENT);
+    }
+
+    protected void startRefreshWithContent() {
+        setState(PageState.CONTENT);
+        refreshSubject.onNext(true);
+    }
+
+    protected void startRefreshRequest() {
+        final int state = getState();
+        switch (state) {
+            case PageState.EMPTY:
+            case PageState.ERROR:
+                startRequest();
+                break;
+            case PageState.CONTENT:
+            case PageState.LOAD_MORE:
+                refreshSubject.onNext(true);
+                break;
+            case PageState.LOADING:
+                break;
+        }
     }
 
     @Bindable

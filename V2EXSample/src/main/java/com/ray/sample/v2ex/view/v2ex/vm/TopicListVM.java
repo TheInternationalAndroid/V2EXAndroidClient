@@ -29,7 +29,6 @@ import com.ray.mvvm.lib.model.http.ExSubscriber;
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.mvvm.lib.viewmodel.ListVM;
-import com.ray.mvvm.lib.widget.anotations.RequestType;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicListContract;
 
 import java.util.List;
@@ -56,9 +55,9 @@ public class TopicListVM extends ListVM<TopicListContract.Presenter, TopicListCo
             public void onNext(List<TopicEntity> topicEntities) {
                 if (topicEntities != null && topicEntities.size() > 0) {
                     bindResp(topicEntities);
-                    initiallyReq(RequestType.SWIP_REFRESH);
+                    startRefreshRequest();
                 } else {
-                    initiallyReq(RequestType.CONTENT_LOADING);
+                    startRequest();
                 }
             }
         });

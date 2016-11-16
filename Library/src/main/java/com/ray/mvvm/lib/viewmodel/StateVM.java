@@ -53,7 +53,7 @@ public abstract class StateVM extends BaseObservable {
     private int emptyIconRes;
     private int emptyMsgRes = com.ray.mvvm.lib.R.string.state_empty_msg;
     private String errorString;
-    private int state = PageState.CONTENT;
+    private int state = PageState.LOADING;
     private boolean isNetworkError = false;
 
     public StateVM() {
@@ -65,11 +65,15 @@ public abstract class StateVM extends BaseObservable {
 
     public abstract void onRetryClicked(View view);
 
-    public int getState() {
+    public
+    @PageState
+    int getState() {
         return state;
     }
 
     public void setState(@PageState int state) {
+        if (this.state == state)
+            return;
         this.state = state;
         notifyPropertyChanged(BR.errorVisibility);
         notifyPropertyChanged(BR.emptyVisibility);
@@ -132,6 +136,6 @@ public abstract class StateVM extends BaseObservable {
 
     @Bindable
     public int getContentVisibility() {
-        return (state == PageState.CONTENT) || (state == PageState.REFRESH) ? View.VISIBLE : View.GONE;
+        return state == PageState.CONTENT || state == PageState.LOAD_MORE ? View.VISIBLE : View.GONE;
     }
 }

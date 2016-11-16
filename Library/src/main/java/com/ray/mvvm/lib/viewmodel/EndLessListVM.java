@@ -31,7 +31,6 @@ import com.ray.mvvm.lib.model.model.ListRespEntity;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.mvvm.lib.view.base.view.IView;
-import com.ray.mvvm.lib.widget.anotations.RequestType;
 
 public abstract class EndLessListVM<T extends IPresenter, R extends IView, Q> extends ListRespVM<T, R, Q> implements ILoadMore {
 
@@ -43,36 +42,36 @@ public abstract class EndLessListVM<T extends IPresenter, R extends IView, Q> ex
     }
 
     @Override
-    public void initiallyReq(@RequestType int requestType) {
-        super.initiallyReq(requestType);
+    public void startRequest(int requestType) {
+        super.startRequest(requestType);
         exePageRequest(Constants.PAGE_NUM_START);
     }
 
     @Override
     protected void handleResponse(ListRespEntity<Q> data) {
         hasMore = data != null && data.isHasMore();
-        switch (getRequestType()) {
-            case RequestType.CONTENT_LOADING:
-            case RequestType.SWIP_REFRESH:
-            case RequestType.SILENT:
-                super.handleResponse(data);
-                pageNum = Constants.PAGE_NUM_START;
-                break;
-            case RequestType.LOAD_MORE:
-                bindLoadMoreResp(data);
-                pageNum++;
-                break;
-        }
+//        switch (getRequestType()) {
+//            case RequestType.CONTENT_LOADING:
+//            case RequestType.SWIP_REFRESH:
+//            case RequestType.SILENT:
+//                super.handleResponse(data);
+//                pageNum = Constants.PAGE_NUM_START;
+//                break;
+//            case RequestType.LOAD_MORE:
+//                bindLoadMoreResp(data);
+//                pageNum++;
+//                break;
+//        }
 
     }
 
-    @Override
-    protected void handleErrorState(@RequestType int requestType) {
-        super.handleErrorState(requestType);
-        if (requestType == RequestType.LOAD_MORE) {
-            // TODO: 11/11/2016 Hide load more view
-        }
-    }
+//    @Override
+//    protected void handleErrorState() {
+//        super.handleErrorState();
+//        if (requestType == RequestType.LOAD_MORE) {
+//            // TODO: 11/11/2016 Hide load more view
+//        }
+//    }
 
     @Override
     protected final void exeRequest() {

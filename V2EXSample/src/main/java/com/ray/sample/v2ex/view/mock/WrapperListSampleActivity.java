@@ -29,7 +29,6 @@ import android.view.View;
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
-import com.ray.mvvm.lib.widget.anotations.RequestType;
 import com.ray.sample.v2ex.R;
 import com.ray.sample.v2ex.databinding.ActivityWrapperListSampleBinding;
 import com.ray.sample.v2ex.view.mock.contract.DaggerWrapperListSampleContract_Comp;
@@ -48,7 +47,7 @@ public class WrapperListSampleActivity extends BaseDIActivity implements Wrapper
         super.onCreate(savedInstanceState);
         ActivityWrapperListSampleBinding binding = bindLayout(R.layout.activity_wrapper_list_sample);
         binding.setViewModel(viewModel);
-        viewModel.initiallyReq(RequestType.CONTENT_LOADING);
+        viewModel.startRequest();
     }
 
     @Override

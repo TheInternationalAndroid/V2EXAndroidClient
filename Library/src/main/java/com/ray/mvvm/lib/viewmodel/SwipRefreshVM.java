@@ -25,7 +25,6 @@ package com.ray.mvvm.lib.viewmodel;
 
 import android.databinding.Bindable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.view.View;
 
 import com.ray.mvvm.lib.BR;
 import com.ray.mvvm.lib.presenter.IPresenter;
@@ -50,7 +49,7 @@ public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> ex
         refreshSubject = PublishSubject.create();
         presenter.subscribe(refreshSubject
                         .filter(refresh -> refresh != isRefreshing)
-                        .concatMap(value -> Observable.just(value).delay(!value && isRefreshing ? 2 : 0, TimeUnit.SECONDS)),
+                        .concatMap(value -> Observable.just(value).delay(!value && isRefreshing ? 1 : 0, TimeUnit.SECONDS)),
                 refresh -> {
                     isRefreshing = refresh;
                     notifyPropertyChanged(BR.refreshing);
@@ -72,14 +71,7 @@ public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> ex
     @Override
     public void setState(@PageState int state) {
         super.setState(state);
-        notifyPropertyChanged(BR.swipRefreshVisibility);
         setRefreshing(getState() == PageState.REFRESH);
-    }
-
-    @Bindable
-    public int getSwipRefreshVisibility() {
-        final int state = getState();
-        return state == PageState.LOADING || state == PageState.EMPTY || state == PageState.ERROR ? View.GONE : View.VISIBLE;
     }
 
     @Bindable

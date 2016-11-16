@@ -23,11 +23,8 @@
 
 package com.ray.mvvm.lib.viewmodel;
 
-import android.databinding.Bindable;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
-import com.ray.mvvm.lib.BR;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.mvvm.lib.view.base.view.IView;
@@ -39,7 +36,7 @@ import java.util.List;
 public abstract class ListVM<T extends IPresenter, R extends IView, Q> extends SwipRefreshVM<T, R, List<Q>> {
 
     private final RecyclerView.LayoutManager layoutManager;
-    ListAdapter<Q> adapter;
+    private ListAdapter<Q> adapter;
 
     public ListVM(T presenter, R view, RecyclerView.LayoutManager layoutManager, ListAdapter<Q> adapter) {
         super(presenter, view);
@@ -75,16 +72,6 @@ public abstract class ListVM<T extends IPresenter, R extends IView, Q> extends S
     @Override
     public void setState(@PageState int state) {
         super.setState(state);
-        if (state == PageState.ERROR) {
-            adapter.resetList();
-        }
-        notifyPropertyChanged(BR.listVisibility);
+        adapter.setState(state);
     }
-
-    @Bindable
-    public int getListVisibility() {
-        final int state = getState();
-        return ((getAdapter().getItemCount() == 0 && state == PageState.EMPTY) || state == PageState.ERROR || state == PageState.LOADING) ? View.GONE : View.VISIBLE;
-    }
-
 }

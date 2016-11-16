@@ -25,15 +25,11 @@
 
     <data>
 
-        <import type="com.ray.mvvm.lib.widget.anotations.PageState" />
-
-        <import type="com.ray.mvvm.lib.viewmodel.PageVM" />
-
-        <import type="android.view.View" />
+        <import type="com.ray.mvvm.lib.viewmodel.ListStateVM" />
 
         <variable
             name="viewModel"
-            type="PageVM" />
+            type="ListStateVM" />
     </data>
 
     <LinearLayout android:id="@+id/error_layout"
@@ -41,8 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="@{viewModel.state == PageState.ERROR ? View.VISIBLE : View.GONE,default = visible}">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,7 +52,7 @@
                 android:layout_gravity="center"
                 android:drawablePadding="15dp"
                 android:gravity="center"
-                android:text="@{viewModel.errorString ?? @string/state_error_msg, default = @string/state_error_msg}"
+                android:text="@string/state_error_msg"
                 android:textColor="@color/error_text_color"
                 android:textSize="14sp" />
 
@@ -68,7 +63,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:minHeight="0dp"
-                android:onClick="@{viewModel::onRetryClicked}"
                 android:paddingBottom="10dp"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"

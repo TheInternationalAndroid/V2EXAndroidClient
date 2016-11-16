@@ -25,15 +25,11 @@
 
     <data>
 
-        <import type="com.ray.mvvm.lib.widget.anotations.PageState" />
-
-        <import type="com.ray.mvvm.lib.viewmodel.PageVM" />
-
-        <import type="android.view.View" />
+        <import type="com.ray.mvvm.lib.viewmodel.ListStateVM" />
 
         <variable
             name="viewModel"
-            type="PageVM" />
+            type="ListStateVM" />
     </data>
 
     <LinearLayout android:id="@+id/loading_view"
@@ -41,8 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="@{viewModel.state == PageState.LOADING ? View.VISIBLE : View.GONE, default = gone}">
+        android:orientation="vertical">
 
         <ProgressBar
             android:id="@+id/progress"

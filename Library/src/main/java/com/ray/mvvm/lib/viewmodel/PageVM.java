@@ -74,8 +74,8 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
     public void setEmptyInfo(int emptyIcon, int emptyMsgRes) {
         this.emptyIconRes = emptyIcon;
         this.emptyMsgRes = emptyMsgRes;
-        notifyPropertyChanged(BR.emptyMsgRes);
-        notifyPropertyChanged(BR.emptyIconRes);
+        notifyPropertyChanged(emptyMsgRes);
+        notifyPropertyChanged(emptyIconRes);
     }
 
     @Bindable
@@ -83,10 +83,20 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
         return errorString;
     }
 
-    public void setErrorString(String errorString) {
+    private void setErrorString(String errorString) {
         if (StringUtil.isEmpty(errorString)) return;
         this.errorString = errorString;
         notifyPropertyChanged(BR.errorString);
+    }
+
+    @Bindable
+    public boolean isNetworkError() {
+        return isNetworkError;
+    }
+
+    public void setNetworkError(boolean networkError) {
+        isNetworkError = networkError;
+        notifyPropertyChanged(BR.networkError);
     }
 
     private void handleStartState(@RequestType int requestType) {
@@ -132,7 +142,7 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
         }
     }
 
-    protected void setRequestType(int requestType) {
+    public void setRequestType(int requestType) {
         this.requestType = requestType;
     }
 
@@ -158,25 +168,14 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
             errorString = throwable.getMessage();
         }
         view.showToast(errorString);
-//        setErrorString(view.findString(com.istuary.ironhide.lib.R.string.state_error_network_msg));
         setErrorString(errorString);
         throwable.printStackTrace();
     }
 
-    @Bindable
-    public boolean isNetworkError() {
-        return isNetworkError;
-    }
-
-    public void setNetworkError(boolean networkError) {
-        isNetworkError = networkError;
-        notifyPropertyChanged(BR.networkError);
-    }
-
     @Override
     public void onNext(Q data) {
-        handleCompleteState(requestType, data);
         handleResponse(data);
+        handleCompleteState(requestType, data);
     }
 
     @Override

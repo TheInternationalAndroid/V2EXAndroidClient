@@ -22,7 +22,6 @@
  */
 
 apply plugin: 'com.android.library'
-apply plugin: 'com.neenbedankt.android-apt'
 
 //Androiddevmetrics based on sdk 21
 //apply plugin: 'com.frogermcs.androiddevmetrics'
@@ -98,6 +97,8 @@ dependencies {
 //  compile depMap.RxLeanBack
 
     compile depMap.Dagger
+    annotationProcessor depMap.DaggerCompile
+
     compile depMap.MaterialMenuToolbar
     compile depMap.RoundedImageview
     compile depMap.Timber
@@ -116,12 +117,8 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-//    compile depMap.AutoValue
-//    compile depMap.AutoParcel
-//    apt depMap.AutoParcelProcessor
-
     compile depMap.Guava
-    apt depMap.DaggerCompile
+
     retrolambdaConfig depMap.RetroLambdaConfig
 
     provided depMap.LeakCanary

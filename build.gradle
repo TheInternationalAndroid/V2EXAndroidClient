@@ -28,14 +28,12 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-//        classpath 'com.frogermcs.androiddevmetrics:androiddevmetrics-plugin:0.3.1'
-        classpath 'me.tatarka:gradle-retrolambda:3.3.0'
+        classpath 'com.android.tools.build:gradle:2.2.0'
+//        classpath 'com.frogermcs.androiddevmetrics:androiddevmetri／cs-plugin:0.3.1'
+        classpath 'me.tatarka:gradle-retrolambda:3.3.1'
         classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
-        classpath 'io.realm:realm-gradle-plugin:2.0.2'
+        classpath 'io.realm:realm-gradle-plugin:2.2.0'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
-        classpath 'com.genymotion:plugin:1.1'
         classpath 'org.jfrog.buildinfo:build-info-extractor-gradle:4.4.7'
     }
     configurations.classpath.exclude group: 'com.android.tools.external.lombok'
@@ -107,7 +105,7 @@ ext {
     mockitoPkg = 'org.mockito'
     mockitoVersion = '1.10.19'
     daggerPkg = 'com.google.dagger'
-    daggerVersion = '2.0.2'
+    daggerVersion = '2.7'
 }
 
 ext.depMap = [

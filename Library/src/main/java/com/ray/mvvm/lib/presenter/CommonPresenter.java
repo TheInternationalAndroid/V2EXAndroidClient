@@ -359,13 +359,16 @@ public class CommonPresenter implements IPresenter {
 
     protected <T> Observable<T> mockCommonRespObservable(T t) {
         return Observable
-                .create(new Observable.OnSubscribe<T>() {
-                    @Override
-                    public void call(Subscriber<? super T> subscriber) {
-                        subscriber.onNext(t);
-                        subscriber.onCompleted();
-                    }
+                .create((Subscriber<? super T> subscriber) -> {
+                    subscriber.onNext(t);
+                    subscriber.onCompleted();
                 })
+                .delay(3, TimeUnit.SECONDS);
+    }
+
+    protected Observable mockErrorRespObservable() {
+        return Observable
+                .error(new IllegalArgumentException("Error response"))
                 .delay(3, TimeUnit.SECONDS);
     }
 

@@ -30,8 +30,13 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.ray.mvvm.lib.app.Constants;
+import com.ray.mvvm.lib.databinding.ListStateEmptyBinding;
+import com.ray.mvvm.lib.databinding.ListStateErrorBinding;
+import com.ray.mvvm.lib.databinding.ListStateLoadingBinding;
 import com.ray.mvvm.lib.view.adapter.OnItemClick;
 import com.ray.mvvm.lib.view.adapter.list.viewholder.BaseViewHolder;
+import com.ray.mvvm.lib.viewmodel.ListStateVM;
+import com.ray.mvvm.lib.widget.anotations.PageState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,14 +45,16 @@ import static android.R.attr.id;
 
 public abstract class ListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
 
-    private static final int TYPE_EMPTY = 926;
-    private static final int TYPE_ERROR = 807;
-    private static final int TYPE_LOADING = 745;
+    private static final int TYPE_EMPTY = 391;
+    private static final int TYPE_LOADING = 392;
+    private static final int TYPE_ERROR = 393;
+    private static final int TYPE_ITEM = 394;
 
     private static final int NO_INDEX = -99;
     private List<T> list;
     private LongSparseArray<T> wrapMap = new LongSparseArray<>();
-    protected OnItemClick<T> itemClick;
+    private OnItemClick<T> itemClick;
+    private int state = PageState.CONTENT;
 
     public ListAdapter() {
     }
@@ -67,12 +74,50 @@ public abstract class ListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
 
     @Override
     public final BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new BaseViewHolder(createBinding(LayoutInflater.from(parent.getContext()), parent, viewType));
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        ViewDataBinding viewDataBinding;
+        switch (state) {
+            case PageState.EMPTY:
+                viewDataBinding = ListStateEmptyBinding.inflate(inflater, parent, false);
+                break;
+            case PageState.ERROR:
+                viewDataBinding = ListStateErrorBinding.inflate(inflater, parent, false);
+                break;
+            case PageState.LOADING:
+            case TYPE_LOADING:
+                viewDataBinding = ListStateLoadingBinding.inflate(inflater, parent, false);
+                break;
+            default:
+                viewDataBinding = createBinding(LayoutInflater.from(parent.getContext()), parent, viewType);
+                break;
+        }
+        return new BaseViewHolder(viewDataBinding);
     }
 
     @Override
     public int getItemCount() {
-        return getDataCount() + getHeaderCount();
+        switch (state) {
+            case PageState.EMPTY:
+            case PageState.ERROR:
+            case PageState.LOADING:
+                return 1;
+            default:
+                return getDataCount() + getHeaderCount();
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        switch (state) {
+            case PageState.EMPTY:
+                return TYPE_EMPTY;
+            case PageState.ERROR:
+                return TYPE_ERROR;
+            case PageState.LOADING:
+                return TYPE_LOADING;
+            default:
+                return TYPE_ITEM;
+        }
     }
 
     public int getDataCount() {
@@ -81,18 +126,37 @@ public abstract class ListAdapter<T> extends RecyclerView.Adapter<BaseViewHolder
 
     @Override
     public final void onBindViewHolder(BaseViewHolder holder, int position) {
-        holder.bindData(createViewModel(getItemViewType(position), position));
+        bindingViewHolder(holder, position);
     }
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position, List<Object> payloads) {
-        super.onBindViewHolder(holder, position, payloads);
+        bindingViewHolder(holder, position);
+    }
+
+    private void bindingViewHolder(BaseViewHolder holder, int position) {
+        switch (state) {
+            case PageState.EMPTY:
+            case PageState.ERROR:
+            case PageState.LOADING:
+                holder.bindData(new ListStateVM(state));
+                break;
+            default:
+                holder.bindData(createViewModel(getItemViewType(position), position));
+                break;
+        }
     }
 
     protected abstract ViewDataBinding createBinding(LayoutInflater layoutInflater, ViewGroup parent, int viewType);
 
     protected Object createViewModel(int viewType, int position) {
         return new CellVM<>(getItem(position), position, itemClick);
+    }
+
+    public void setState(@PageState int state) {
+        if (state == this.state || state == PageState.REFRESH)
+            return;
+        this.state = state;
     }
 
     public void setList(List<T> list) {

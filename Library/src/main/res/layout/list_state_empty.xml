@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~
   ~  Copyright (c) 2016 Lena.t.Yan
   ~  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
@@ -26,25 +25,17 @@
 
     <data>
 
-        <import type="com.ray.mvvm.lib.widget.anotations.PageState" />
-
-        <import type="com.ray.mvvm.lib.viewmodel.PageVM" />
-
-        <import type="android.view.View" />
-
-        <import type="com.ray.mvvm.lib.R" />
+        <import type="com.ray.mvvm.lib.viewmodel.ListStateVM" />
 
         <variable
             name="viewModel"
-            type="PageVM" />
+            type="ListStateVM" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp"
-        android:visibility="@{viewModel.state == PageState.EMPTY ? View.VISIBLE:View.GONE, default = gone}">
+        android:padding="8dp">
 
         <TextView
             android:id="@+id/empty_textview"
@@ -53,10 +44,9 @@
             android:layout_gravity="center"
             android:drawablePadding="15dp"
             android:gravity="center"
+            android:text="Empty"
             android:textColor="@color/error_text_color"
-            android:textSize="14sp"
-            app:icon="@{viewModel.emptyIconRes}"
-            app:msg="@{viewModel.emptyMsgRes}" />
+            android:textSize="14sp" />
 
     </FrameLayout>
 </layout>

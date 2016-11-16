@@ -28,8 +28,6 @@ import android.support.v7.widget.RecyclerView;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.mvvm.lib.view.base.view.IView;
-import com.ray.mvvm.lib.widget.anotations.PageState;
-import com.ray.mvvm.lib.widget.anotations.RequestType;
 
 import java.util.List;
 
@@ -42,12 +40,7 @@ public abstract class ListVM<T extends IPresenter, R extends IView, Q> extends S
         super(presenter, view);
         this.layoutManager = layoutManager;
         this.adapter = adapter;
-    }
-
-    @Override
-    public void initiallyReq(@RequestType int requestType) {
-        setRequestType(requestType);
-        exeRequest();
+        adapter.setStateVM(this);
     }
 
     @Override
@@ -67,11 +60,5 @@ public abstract class ListVM<T extends IPresenter, R extends IView, Q> extends S
     protected void bindResp(List<Q> data) {
         adapter.setList(data);
         layoutManager.scrollToPosition(0);
-    }
-
-    @Override
-    public void setState(@PageState int state) {
-        super.setState(state);
-        adapter.setState(state);
     }
 }

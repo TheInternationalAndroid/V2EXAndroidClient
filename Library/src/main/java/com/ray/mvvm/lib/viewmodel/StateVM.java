@@ -25,6 +25,7 @@ package com.ray.mvvm.lib.viewmodel;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.view.View;
 
 import com.ray.mvvm.lib.BR;
 import com.ray.mvvm.lib.widget.anotations.PageState;
@@ -47,26 +48,33 @@ import com.ray.mvvm.lib.widget.utils.StringUtil;
  * \               ||----w |
  * \               ||     ||
  */
-public class ListStateVM extends BaseObservable {
+public abstract class StateVM extends BaseObservable {
 
     private int emptyIconRes;
     private int emptyMsgRes = com.ray.mvvm.lib.R.string.state_empty_msg;
     private String errorString;
-    private int state;
+    private int state = PageState.CONTENT;
     private boolean isNetworkError = false;
 
-    public ListStateVM(int state) {
+    public StateVM() {
+    }
+
+    public StateVM(@PageState int state) {
         this.state = state;
     }
 
-    @Bindable
+    public abstract void onRetryClicked(View view);
+
     public int getState() {
         return state;
     }
 
     public void setState(@PageState int state) {
         this.state = state;
-        notifyPropertyChanged(BR.state);
+        notifyPropertyChanged(BR.errorVisibility);
+        notifyPropertyChanged(BR.emptyVisibility);
+        notifyPropertyChanged(BR.loadingVisibility);
+        notifyPropertyChanged(BR.contentVisibility);
     }
 
     @Bindable
@@ -107,5 +115,23 @@ public class ListStateVM extends BaseObservable {
         notifyPropertyChanged(BR.networkError);
     }
 
+    @Bindable
+    public int getEmptyVisibility() {
+        return state == PageState.EMPTY ? View.VISIBLE : View.GONE;
+    }
 
+    @Bindable
+    public int getErrorVisibility() {
+        return state == PageState.ERROR ? View.VISIBLE : View.GONE;
+    }
+
+    @Bindable
+    public int getLoadingVisibility() {
+        return state == PageState.LOADING ? View.VISIBLE : View.GONE;
+    }
+
+    @Bindable
+    public int getContentVisibility() {
+        return (state == PageState.CONTENT) || (state == PageState.REFRESH) ? View.VISIBLE : View.GONE;
+    }
 }

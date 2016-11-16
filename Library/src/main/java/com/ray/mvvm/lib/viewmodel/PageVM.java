@@ -33,70 +33,16 @@ import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
-import com.ray.mvvm.lib.widget.utils.StringUtil;
 
 import java.io.IOException;
 
-public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends BaseVM<T, R> implements ExObserver<Q> {
+public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends BaseStateVM<T, R> implements ExObserver<Q>, View.OnClickListener {
 
     private int requestType = RequestType.CONTENT_LOADING;
-    private int state;
-    private int emptyIconRes;
-    private int emptyMsgRes = com.ray.mvvm.lib.R.string.state_empty_msg;
-    private String errorString;
-    private boolean isNetworkError = false;
     private Q entity;
 
     public PageVM(T presenter, R view) {
         super(presenter, view);
-    }
-
-    @Bindable
-    public int getState() {
-        return state;
-    }
-
-    public void setState(@PageState int state) {
-        this.state = state;
-        notifyPropertyChanged(BR.state);
-    }
-
-    @Bindable
-    public int getEmptyMsgRes() {
-        return emptyMsgRes;
-    }
-
-    @Bindable
-    public int getEmptyIconRes() {
-        return emptyIconRes;
-    }
-
-    public void setEmptyInfo(int emptyIcon, int emptyMsgRes) {
-        this.emptyIconRes = emptyIcon;
-        this.emptyMsgRes = emptyMsgRes;
-        notifyPropertyChanged(emptyMsgRes);
-        notifyPropertyChanged(emptyIconRes);
-    }
-
-    @Bindable
-    public String getErrorString() {
-        return errorString;
-    }
-
-    private void setErrorString(String errorString) {
-        if (StringUtil.isEmpty(errorString)) return;
-        this.errorString = errorString;
-        notifyPropertyChanged(BR.errorString);
-    }
-
-    @Bindable
-    public boolean isNetworkError() {
-        return isNetworkError;
-    }
-
-    public void setNetworkError(boolean networkError) {
-        isNetworkError = networkError;
-        notifyPropertyChanged(BR.networkError);
     }
 
     private void handleStartState(@RequestType int requestType) {
@@ -108,10 +54,8 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
                 setState(PageState.REFRESH);
                 break;
             case RequestType.SILENT:
-                setState(PageState.CONTENT);
-                break;
             case RequestType.LOAD_MORE:
-                setState(PageState.LOAD_MORE);
+                setState(PageState.CONTENT);
                 break;
         }
     }
@@ -142,8 +86,9 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
         }
     }
 
-    public void setRequestType(int requestType) {
-        this.requestType = requestType;
+    @Override
+    public void onRetryClicked(View view) {
+        initiallyReq(RequestType.CONTENT_LOADING);
     }
 
     int getRequestType() {
@@ -182,11 +127,6 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
     public void onCompleted() {
     }
 
-    private void requestData(@RequestType int requestType) {
-        this.requestType = requestType;
-        exeRequest();
-    }
-
     public void setEntity(Q entity) {
         this.entity = entity;
         notifyPropertyChanged(BR.entity);
@@ -208,10 +148,12 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
     }
 
     public void initiallyReq(@RequestType int requestType) {
-        requestData(requestType);
+        this.requestType = requestType;
+        exeRequest();
     }
 
-    public void onRetryClicked(View view) {
+    @Override
+    public void onClick(View view) {
         initiallyReq(RequestType.CONTENT_LOADING);
     }
 

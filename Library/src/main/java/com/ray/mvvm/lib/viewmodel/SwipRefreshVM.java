@@ -32,9 +32,6 @@ import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
 
-import java.util.concurrent.TimeUnit;
-
-import rx.Observable;
 import rx.subjects.PublishSubject;
 
 public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> extends PageVM<T, R, Q> implements SwipeRefreshLayout.OnRefreshListener {
@@ -48,8 +45,7 @@ public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> ex
         super(presenter, view);
         refreshSubject = PublishSubject.create();
         presenter.subscribe(refreshSubject
-                        .filter(refresh -> refresh != isRefreshing)
-                        .concatMap(value -> Observable.just(value).delay(!value && isRefreshing ? 1 : 0, TimeUnit.SECONDS)),
+                        .filter(refresh -> refresh != isRefreshing),
                 refresh -> {
                     isRefreshing = refresh;
                     notifyPropertyChanged(BR.refreshing);
@@ -71,15 +67,11 @@ public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> ex
     @Override
     public void setState(@PageState int state) {
         super.setState(state);
-        setRefreshing(getState() == PageState.REFRESH);
+        refreshSubject.onNext(state == PageState.REFRESH);
     }
 
     @Bindable
     public boolean isRefreshing() {
         return isRefreshing;
-    }
-
-    private void setRefreshing(boolean refreshing) {
-        refreshSubject.onNext(refreshing);
     }
 }

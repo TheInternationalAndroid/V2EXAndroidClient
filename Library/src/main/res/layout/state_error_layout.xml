@@ -27,13 +27,13 @@
 
         <import type="com.ray.mvvm.lib.widget.anotations.PageState" />
 
-        <import type="com.ray.mvvm.lib.viewmodel.PageVM" />
+        <import type="com.ray.mvvm.lib.viewmodel.StateVM" />
 
         <import type="android.view.View" />
 
         <variable
             name="viewModel"
-            type="PageVM" />
+            type="StateVM" />
     </data>
 
     <LinearLayout android:id="@+id/error_layout"
@@ -42,7 +42,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="@{viewModel.state == PageState.ERROR ? View.VISIBLE : View.GONE,default = visible}">
+        android:visibility="@{viewModel.errorVisibility, default = visible}">
 
         <LinearLayout
             android:layout_width="match_parent"

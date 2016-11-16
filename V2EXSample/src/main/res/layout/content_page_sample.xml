@@ -46,6 +46,7 @@
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="@{viewModel.contentVisibility, default = visible}"
             app:colorSchemeResources="@{viewModel.colors}"
             app:onRefreshListener="@{viewModel}"
             app:refresh="@{viewModel.refreshing}">
@@ -72,7 +73,20 @@
                     android:layout_marginTop="@dimen/padding_l"
                     android:text="@{viewModel.entity.description, default = Description}" />
             </LinearLayout>
+
         </android.support.v4.widget.SwipeRefreshLayout>
+
+        <include
+            layout="@layout/state_empty_layout"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            layout="@layout/state_error_layout"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            layout="@layout/state_loading_layout"
+            app:viewModel="@{viewModel}" />
 
     </RelativeLayout>
 </layout>

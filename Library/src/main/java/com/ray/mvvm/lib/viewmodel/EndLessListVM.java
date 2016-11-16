@@ -31,7 +31,6 @@ import com.ray.mvvm.lib.model.model.ListRespEntity;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.mvvm.lib.view.base.view.IView;
-import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.anotations.RequestType;
 
 public abstract class EndLessListVM<T extends IPresenter, R extends IView, Q> extends ListRespVM<T, R, Q> implements ILoadMore {
@@ -81,10 +80,10 @@ public abstract class EndLessListVM<T extends IPresenter, R extends IView, Q> ex
 
     @Override
     public final void onLoadMore() {
-        if (getState() == PageState.LOAD_MORE || !hasMore)
-            return;
-        setRequestType(RequestType.LOAD_MORE);
-        exePageRequest(pageNum + 1);
+//        if (getState() == PageState.LOAD_MORE || !hasMore)
+//            return;
+//        setRequestType(RequestType.LOAD_MORE);
+//        exePageRequest(pageNum + 1);
         // TODO: 11/11/2016 Show load more view
 
     }
@@ -92,7 +91,7 @@ public abstract class EndLessListVM<T extends IPresenter, R extends IView, Q> ex
     protected abstract void exePageRequest(int pageNum);
 
     private void bindLoadMoreResp(ListRespEntity<Q> data) {
-        adapter.addItems(data.getList());
+        getAdapter().addItems(data.getList());
     }
 
 }

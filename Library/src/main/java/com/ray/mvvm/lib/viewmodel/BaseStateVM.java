@@ -2,9 +2,9 @@
  *
  *  Copyright (c) 2016 Lena.t.Yan
  *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 8 Oct 2016 23:11:30 +0800.
+ *  Created on Sat, 8 Oct 2016 23:56:12 +0800.
  *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 8 Oct 2016 23:11:30 +0800.
+ *  Author: Lena; Last Modified: Sat, 8 Oct 2016 23:56:12 +0800.
  *  This file is originally created by Lena.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,21 +21,27 @@
  *
  */
 
-package com.ray.mvvm.lib.widget.anotations;
+package com.ray.mvvm.lib.viewmodel;
 
-import android.support.annotation.IntDef;
+import com.ray.mvvm.lib.presenter.IPresenter;
+import com.ray.mvvm.lib.view.base.view.IView;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+public abstract class BaseStateVM<T extends IPresenter, R extends IView> extends StateVM {
 
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@IntDef({PageState.LOADING, PageState.ERROR, PageState.CONTENT, PageState.EMPTY, PageState.REFRESH})
-public @interface PageState {
-    int LOADING = 0;
-    int ERROR = 1;
-    int CONTENT = 2;
-    int EMPTY = 3;
-    int REFRESH = 4;
+    protected final T presenter;
+    protected final R view;
+
+    public BaseStateVM(T presenter, R view) {
+        this.presenter = presenter;
+        this.view = view;
+    }
+
+    public T presenter() {
+        return presenter;
+    }
+
+    public R view() {
+        return view;
+    }
+
 }

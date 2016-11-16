@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~
   ~  Copyright (c) 2016 Lena.t.Yan
   ~  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
@@ -26,17 +25,13 @@
 
     <data>
 
-        <import type="com.ray.mvvm.lib.widget.anotations.PageState" />
-
-        <import type="com.ray.mvvm.lib.viewmodel.PageVM" />
+        <import type="com.ray.mvvm.lib.viewmodel.StateVM" />
 
         <import type="android.view.View" />
 
-        <import type="com.ray.mvvm.lib.R" />
-
         <variable
             name="viewModel"
-            type="PageVM" />
+            type="StateVM" />
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -44,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
-        android:visibility="@{viewModel.state == PageState.EMPTY ? View.VISIBLE:View.GONE, default = gone}">
+        android:visibility="@{viewModel.emptyVisibility, default = visible}">
 
         <TextView
             android:id="@+id/empty_textview"

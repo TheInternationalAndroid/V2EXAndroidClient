@@ -55,11 +55,14 @@ public abstract class EndLessListVM<T extends IPresenter, R extends IView, Q> ex
 
     @Override
     public final void onLoadMore() {
+        if (getAdapter().getDataCount()==0)
+            return;
         if (getListItemType() == ListViewItemType.LOAD_MORE || !hasMore)
             return;
         setState(PageState.CONTENT);
         setListItemType(ListViewItemType.LOAD_MORE);
-        exePageRequest(pageNum + 1);
+        pageNum = pageNum + 1;
+        exePageRequest(pageNum);
     }
 
     @Override

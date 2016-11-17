@@ -115,8 +115,7 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
     }
 
     public void startRequest() {
-        setState(PageState.LOADING);
-        exeRequest();
+        startRequest(PageState.LOADING);
     }
 
     public void startRequest(@PageState int startState) {

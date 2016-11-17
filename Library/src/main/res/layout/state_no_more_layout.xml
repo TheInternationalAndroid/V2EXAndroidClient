@@ -32,17 +32,14 @@
             type="StateVM" />
     </data>
 
-    <LinearLayout android:id="@+id/loading_view"
+    <TextView android:id="@+id/loading_view"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="@{viewModel.loadingVisibility, default = visible}">
-
-        <ProgressBar
-            android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:text="@string/have_no_more"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:visibility="@{viewModel.noMoreVisibility, default = visible}" />
 </layout>

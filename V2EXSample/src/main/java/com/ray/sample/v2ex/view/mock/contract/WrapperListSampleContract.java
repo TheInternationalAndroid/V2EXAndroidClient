@@ -48,7 +48,7 @@ public interface WrapperListSampleContract {
     }
 
     interface Presenter extends IPresenter {
-        void requestListData(ExObserver<ListRespEntity<TestEntity>> observer);
+        void requestListData(int page, ExObserver<ListRespEntity<TestEntity>> observer);
     }
 
 }

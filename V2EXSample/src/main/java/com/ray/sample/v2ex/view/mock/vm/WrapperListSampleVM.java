@@ -23,22 +23,22 @@
 
 package com.ray.sample.v2ex.view.mock.vm;
 
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
-import com.ray.mvvm.lib.viewmodel.ListRespVM;
+import com.ray.mvvm.lib.viewmodel.EndLessListVM;
 import com.ray.sample.v2ex.view.mock.contract.WrapperListSampleContract;
 
-public class WrapperListSampleVM extends ListRespVM<WrapperListSampleContract.Presenter, WrapperListSampleContract.View, TestEntity> {
+public class WrapperListSampleVM extends EndLessListVM<WrapperListSampleContract.Presenter, WrapperListSampleContract.View, TestEntity> {
 
-    public WrapperListSampleVM(WrapperListSampleContract.Presenter presenter, WrapperListSampleContract.View view, RecyclerView.LayoutManager layoutManager, ListAdapter<TestEntity> adapter) {
+    public WrapperListSampleVM(WrapperListSampleContract.Presenter presenter, WrapperListSampleContract.View view, LinearLayoutManager layoutManager, ListAdapter<TestEntity> adapter) {
         super(presenter, view, layoutManager, adapter);
     }
 
     @Override
-    protected void exeRequest() {
-        presenter.requestListData(this);
+    protected void exePageRequest(int pageNum) {
+        presenter.requestListData(pageNum, this);
     }
 
 }

@@ -54,7 +54,6 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
 
     @Override
     public void onError(Throwable throwable) {
-        handleErrorState();
         String errorString;
         if (throwable instanceof ErrorEvent) {
             errorString = throwable.getMessage();
@@ -67,27 +66,25 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
         view.showToast(errorString);
         setErrorString(errorString);
         throwable.printStackTrace();
+        handleErrorState();
     }
 
     @Override
     public void onNext(Q data) {
-        handleResponse(data);
-        handleCompleteState(data);
+        bindResp(data);
+        changePageState(data);
     }
 
     @Override
     public void onCompleted() {
     }
 
-    protected void handleCompleteState(Q data) {
+    protected void changePageState(Q data) {
         final int startState = getState();
         switch (startState) {
             case PageState.LOADING:
             case PageState.CONTENT:
                 setState(isRespNull(data) ? PageState.EMPTY : PageState.CONTENT);
-                break;
-            case PageState.LOAD_MORE:
-                setState(PageState.CONTENT/*Or startState*/);
                 break;
         }
     }
@@ -98,9 +95,7 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
             case PageState.LOADING:
                 setState(PageState.ERROR);
                 break;
-            case PageState.LOAD_MORE:
             case PageState.CONTENT:
-                setState(PageState.CONTENT);
                 break;
         }
     }
@@ -113,10 +108,6 @@ public abstract class PageVM<T extends IPresenter, R extends IView, Q> extends B
     @Bindable
     public Q getEntity() {
         return entity;
-    }
-
-    protected void handleResponse(Q data) {
-        bindResp(data);
     }
 
     protected void bindResp(Q data) {

@@ -30,8 +30,6 @@ import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
 import com.ray.mvvm.lib.viewmodel.ListVM;
 import com.ray.sample.v2ex.view.mock.contract.ListSampleContract;
 
-import java.util.List;
-
 public class ListSampleVM extends ListVM<ListSampleContract.Presenter, ListSampleContract.View, TestEntity> {
 
     public ListSampleVM(ListSampleContract.Presenter presenter, ListSampleContract.View view, RecyclerView.LayoutManager layoutManager, ListAdapter<TestEntity> adapter) {
@@ -41,10 +39,5 @@ public class ListSampleVM extends ListVM<ListSampleContract.Presenter, ListSampl
     @Override
     protected void exeRequest() {
         presenter.requestData(this);
-    }
-
-    @Override
-    protected void bindResp(List<TestEntity> data) {
-        super.bindResp(data);
     }
 }

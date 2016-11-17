@@ -86,7 +86,6 @@ public abstract class SwipRefreshVM<T extends IPresenter, R extends IView, Q> ex
                 startRequest();
                 break;
             case PageState.CONTENT:
-            case PageState.LOAD_MORE:
                 refreshSubject.onNext(true);
                 break;
             case PageState.LOADING:

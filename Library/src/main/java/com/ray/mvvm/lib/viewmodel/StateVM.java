@@ -28,6 +28,7 @@ import android.databinding.Bindable;
 import android.view.View;
 
 import com.ray.mvvm.lib.BR;
+import com.ray.mvvm.lib.widget.anotations.ListViewItemType;
 import com.ray.mvvm.lib.widget.anotations.PageState;
 import com.ray.mvvm.lib.widget.utils.StringUtil;
 
@@ -54,6 +55,7 @@ public abstract class StateVM extends BaseObservable {
     private int emptyMsgRes = com.ray.mvvm.lib.R.string.state_empty_msg;
     private String errorString;
     private int state = PageState.LOADING;
+    private int listItemType = ListViewItemType.NO_MORE;
     private boolean isNetworkError = false;
 
     public StateVM() {
@@ -65,9 +67,8 @@ public abstract class StateVM extends BaseObservable {
 
     public abstract void onRetryClicked(View view);
 
-    public
     @PageState
-    int getState() {
+    public int getState() {
         return state;
     }
 
@@ -79,6 +80,19 @@ public abstract class StateVM extends BaseObservable {
         notifyPropertyChanged(BR.emptyVisibility);
         notifyPropertyChanged(BR.loadingVisibility);
         notifyPropertyChanged(BR.contentVisibility);
+    }
+
+    public void setListItemType(@ListViewItemType int listItemType) {
+        if (this.listItemType == listItemType)
+            return;
+        this.listItemType = listItemType;
+        notifyPropertyChanged(BR.loadingVisibility);
+        notifyPropertyChanged(BR.noMoreVisibility);
+    }
+
+    @ListViewItemType
+    public int getListItemType() {
+        return listItemType;
     }
 
     @Bindable
@@ -135,7 +149,17 @@ public abstract class StateVM extends BaseObservable {
     }
 
     @Bindable
+    public int getLoadMoreVisibility() {
+        return listItemType == ListViewItemType.LOAD_MORE ? View.VISIBLE : View.GONE;
+    }
+
+    @Bindable
+    public int getNoMoreVisibility() {
+        return listItemType == ListViewItemType.NO_MORE ? View.VISIBLE : View.GONE;
+    }
+
+    @Bindable
     public int getContentVisibility() {
-        return state == PageState.CONTENT || state == PageState.LOAD_MORE ? View.VISIBLE : View.GONE;
+        return state == PageState.CONTENT ? View.VISIBLE : View.GONE;
     }
 }

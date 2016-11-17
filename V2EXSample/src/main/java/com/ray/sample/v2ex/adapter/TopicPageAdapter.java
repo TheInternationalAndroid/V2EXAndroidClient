@@ -88,7 +88,7 @@ public class TopicPageAdapter extends ListAdapter<ReplyEntity> {
     }
 
     @Override
-    public int getItemViewType(int position) {
+    protected int getRealItemViewType(int position) {
         if (position == 0) {
             return VIEW_HEADER;
         } else {

@@ -55,7 +55,8 @@
                 android:clipToPadding="false"
                 android:paddingBottom="@dimen/padding_l"
                 app:adapter="@{viewModel.adapter}"
-                app:layoutManager="@{viewModel.layoutManager}" />
+                app:layoutManager="@{viewModel.layoutManager}"
+                app:onLoadMore="@{viewModel}" />
         </android.support.v4.widget.SwipeRefreshLayout>
 
     </RelativeLayout>

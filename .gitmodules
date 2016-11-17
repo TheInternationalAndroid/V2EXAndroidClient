@@ -1,0 +1,3 @@
+[submodule "BaseLibrary"]
+	path = BaseLibrary
+	url = git@git.coding.net:lenayan/BaseLibrary.git

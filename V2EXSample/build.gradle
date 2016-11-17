@@ -83,7 +83,7 @@ retrolambda {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':Library')
+    compile project(':BaseLibrary')
 
     annotationProcessor depMap.DaggerCompile
 

@@ -7,7 +7,7 @@
     git submodule update
 ```
 
-## 使用Templates，默认支持Mac环境下，AndroidStudio 安装到Applications目录下
+## 使用Templates,默认支持Mac环境下,AndroidStudio 安装到Applications目录下
 /Applications/Android Studio.app/
 
 ```shell

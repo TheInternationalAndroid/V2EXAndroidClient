@@ -55,18 +55,17 @@ public class TopicListP extends BasePresenter implements TopicListContract.Prese
     public void requestTopicList(ExObserver<List<TopicEntity>> observer) {
         subscribeCommonReqConcat(
                 topicService.hot(),
-                (List<TopicEntity> topicEntities) -> {
-                    return Observable.create(subscriber -> {
-                        for (TopicEntity topicEntity : topicEntities) {
-                            MemberEntity memberEntity = topicEntity.getMember();
-                            memberEntity.setAvatarNormal("http:" + memberEntity.getAvatarNormal());
-                            memberEntity.setAvatarMini("http:" + memberEntity.getAvatarMini());
-                            memberEntity.setAvatarLarge("http:" + memberEntity.getAvatarLarge());
-                        }
-                        subscriber.onNext(topicEntities);
-                        subscriber.onCompleted();
-                    });
-                },
+                (topicEntities) ->
+                        Observable.create(subscriber -> {
+                            for (TopicEntity topicEntity : topicEntities) {
+                                MemberEntity memberEntity = topicEntity.getMember();
+                                memberEntity.setAvatarNormal("http:" + memberEntity.getAvatarNormal());
+                                memberEntity.setAvatarMini("http:" + memberEntity.getAvatarMini());
+                                memberEntity.setAvatarLarge("http:" + memberEntity.getAvatarLarge());
+                            }
+                            subscriber.onNext(topicEntities);
+                            subscriber.onCompleted();
+                        }),
                 topicDBManager::insertListObs,
                 observer
         );

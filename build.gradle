@@ -15,15 +15,15 @@ buildscript {
         maven {
             url "http://106.75.77.246:8081/artifactory/libs-release-local"
             credentials {
-                username = artifactory_username
-                password = artifactory_password
+                username = artifactory_reader
+                password = artifactory_reader_password
             }
         }
         maven {
             url "http://106.75.77.246:8081/artifactory/libs-snapshot-local"
             credentials {
-                username = artifactory_username
-                password = artifactory_password
+                username = artifactory_reader
+                password = artifactory_reader_password
             }
         }
     }
@@ -52,15 +52,15 @@ allprojects {
         maven {
             url "http://106.75.77.246:8081/artifactory/libs-release-local"
             credentials {
-                username = artifactory_username
-                password = artifactory_password
+                username = artifactory_reader
+                password = artifactory_reader_password
             }
         }
         maven {
             url "http://106.75.77.246:8081/artifactory/libs-snapshot-local"
             credentials {
-                username = artifactory_username
-                password = artifactory_password
+                username = artifactory_reader
+                password = artifactory_reader_password
             }
         }
     }

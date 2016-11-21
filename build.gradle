@@ -13,14 +13,14 @@ buildscript {
             url "https://plugins.gradle.org/m2/"
         }
         maven {
-            url "${artifactory_context_url}libs-release-local"
+            url "http://106.75.77.246:8081/artifactory/libs-release-local"
             credentials {
                 username = artifactory_username
                 password = artifactory_password
             }
         }
         maven {
-            url "${artifactory_context_url}libs-snapshot-local"
+            url "http://106.75.77.246:8081/artifactory/libs-snapshot-local"
             credentials {
                 username = artifactory_username
                 password = artifactory_password
@@ -50,14 +50,14 @@ allprojects {
             url "https://plugins.gradle.org/m2/"
         }
         maven {
-            url "${artifactory_context_url}libs-release-local"
+            url "http://106.75.77.246:8081/artifactory/libs-release-local"
             credentials {
                 username = artifactory_username
                 password = artifactory_password
             }
         }
         maven {
-            url "${artifactory_context_url}libs-snapshot-local"
+            url "http://106.75.77.246:8081/artifactory/libs-snapshot-local"
             credentials {
                 username = artifactory_username
                 password = artifactory_password

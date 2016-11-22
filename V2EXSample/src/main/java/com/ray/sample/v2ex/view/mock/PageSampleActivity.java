@@ -29,7 +29,6 @@ import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.sample.v2ex.R;
-import com.ray.sample.v2ex.databinding.ActivityPageSampleBinding;
 import com.ray.sample.v2ex.view.mock.contract.DaggerPageSampleContract_Comp;
 import com.ray.sample.v2ex.view.mock.contract.PageSampleContract;
 import com.ray.sample.v2ex.view.mock.vm.PageSampleVM;
@@ -44,8 +43,7 @@ public class PageSampleActivity extends BaseDIActivity implements PageSampleCont
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityPageSampleBinding binding = bindLayout(R.layout.activity_page_sample);
-        binding.setViewModel(viewModel);
+        bindLayout(R.layout.activity_page_sample, viewModel);
         TestEntity testEntity = getIntent().getParcelableExtra(TestEntity.KEY);
         viewModel.init(testEntity);
     }

@@ -32,7 +32,6 @@ import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.sample.v2ex.R;
-import com.ray.sample.v2ex.databinding.ActivityTopicListBinding;
 import com.ray.sample.v2ex.view.v2ex.contract.DaggerTopicListContract_Comp;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicListContract;
 import com.ray.sample.v2ex.view.v2ex.vm.TopicListVM;
@@ -47,8 +46,7 @@ public class TopicListActivity extends BaseDIActivity implements TopicListContra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityTopicListBinding binding = bindLayout(R.layout.activity_topic_list);
-        binding.setViewModel(viewModel);
+        bindLayout(R.layout.activity_topic_list, viewModel);
         viewModel.init();
     }
 

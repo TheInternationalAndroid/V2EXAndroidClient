@@ -29,7 +29,6 @@ import android.support.v7.app.AlertDialog;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.sample.v2ex.R;
-import com.ray.sample.v2ex.databinding.ActivityMainBinding;
 import com.ray.sample.v2ex.view.main.contract.DaggerMainContract_Comp;
 import com.ray.sample.v2ex.view.main.contract.MainContract;
 import com.ray.sample.v2ex.view.main.vm.MainVM;
@@ -46,8 +45,7 @@ public class MainActivity extends BaseDIActivity implements MainContract.View {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityMainBinding binding = bindLayout(R.layout.activity_main, false);
-        binding.setViewModel(viewModel);
+        bindLayout(R.layout.activity_main, viewModel, false);
         viewModel.requestPermission(this);
     }
 

@@ -28,7 +28,6 @@ import android.os.Bundle;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.sample.v2ex.R;
-import com.ray.sample.v2ex.databinding.ActivityMockSamplesBinding;
 import com.ray.sample.v2ex.view.mock.contract.DaggerMockSamplesContract_Comp;
 import com.ray.sample.v2ex.view.mock.contract.MockSamplesContract;
 import com.ray.sample.v2ex.view.mock.vm.MockSamplesVM;
@@ -43,8 +42,7 @@ public class MockSamplesActivity extends BaseDIActivity implements MockSamplesCo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityMockSamplesBinding binding = bindLayout(R.layout.activity_mock_samples);
-        binding.setViewModel(viewModel);
+        bindLayout(R.layout.activity_mock_samples, viewModel);
     }
 
 

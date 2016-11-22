@@ -31,7 +31,6 @@ import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.sample.v2ex.R;
-import com.ray.sample.v2ex.databinding.ActivityTopicDetailBinding;
 import com.ray.sample.v2ex.view.v2ex.contract.DaggerTopicDetailContract_Comp;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicDetailContract;
 import com.ray.sample.v2ex.view.v2ex.vm.TopicDetailVM;
@@ -46,10 +45,8 @@ public class TopicDetailActivity extends BaseDIActivity implements TopicDetailCo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityTopicDetailBinding binding = bindLayout(R.layout.activity_topic_detail);
-        binding.setViewModel(viewModel);
+        bindLayout(R.layout.activity_topic_detail, viewModel);
     }
-
 
     @Override
     protected ILifeCycle getPageLifeCycle() {

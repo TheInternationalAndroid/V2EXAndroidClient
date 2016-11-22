@@ -74,7 +74,7 @@ ext {
     versionName = '1.0.0'
     versionCode = 1
     applicationId = 'com.rayman.v2ex'
-    minSdkVersion = 21
+    minSdkVersion = 15
     libDefaultPublish = 'debug'//debug or release
     compileSdkVersion = 25
     targetSdkVersion = 25

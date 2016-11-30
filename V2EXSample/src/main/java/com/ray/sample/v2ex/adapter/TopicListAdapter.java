@@ -23,6 +23,7 @@
 
 package com.ray.sample.v2ex.adapter;
 
+import android.databinding.BaseObservable;
 import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -64,7 +65,7 @@ public class TopicListAdapter extends ListAdapter<TopicEntity> {
     }
 
     @Override
-    protected Object createViewModel(int viewType, int position) {
+    protected BaseObservable createViewModel(int viewType, int position) {
         return new TopicCellVM(getItem(position), position, topicCellView);
     }
 }

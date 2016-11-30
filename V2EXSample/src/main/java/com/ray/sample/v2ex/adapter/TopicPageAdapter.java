@@ -23,6 +23,7 @@
 
 package com.ray.sample.v2ex.adapter;
 
+import android.databinding.BaseObservable;
 import android.databinding.ViewDataBinding;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -97,7 +98,7 @@ public class TopicPageAdapter extends ListAdapter<ReplyEntity> {
     }
 
     @Override
-    protected Object createViewModel(int viewType, int position) {
+    protected BaseObservable createViewModel(int viewType, int position) {
         switch (getItemViewType(position)) {
             case VIEW_HEADER:
                 return new TopicHeaderVM(topicEntity, view);

@@ -38,6 +38,7 @@ import javax.inject.Inject;
 public class WrapperListSampleP extends BasePresenter implements WrapperListSampleContract.Presenter {
 
     private int index = 0;
+    private int page = 0;
 
     @Inject
     WrapperListSampleP(RefWatcher refWatcher) {
@@ -47,13 +48,16 @@ public class WrapperListSampleP extends BasePresenter implements WrapperListSamp
     @Override
     public void requestListData(int page, ExObserver<ListRespEntity<TestEntity>> observer) {
         List<TestEntity> testEntities = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            TestEntity testEntity = new TestEntity("Title" + index, "Description");
-            testEntities.add(testEntity);
-            index += 1;
-        }
         ListRespEntity<TestEntity> respEntity = new ListRespEntity<>();
-        respEntity.setHasMore(true);
+        if (this.page < 2) {
+            for (int i = 0; i < 20; i++) {
+                TestEntity testEntity = new TestEntity("Title" + index, "Description");
+                testEntities.add(testEntity);
+                index += 1;
+            }
+            this.page++;
+            respEntity.setHasMore(true);
+        }
         respEntity.setTotalCount(100);
         respEntity.setList(testEntities);
         subscribeCommonReq(mockCommonRespObservable(respEntity), observer);

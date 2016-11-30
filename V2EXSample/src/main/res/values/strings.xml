@@ -45,4 +45,5 @@
     <string name="title_activity_wrapper_list_sample">WrapperListSampleActivity</string>
     <string name="title_activity_page_sample">PageSampleActivity</string>
     <string name="title_activity_topic_detail">TopicDetailActivity</string>
+    <string name="title_activity_basic_temp">BasicTempActivity</string>
 </resources>

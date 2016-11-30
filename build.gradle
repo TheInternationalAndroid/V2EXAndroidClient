@@ -78,7 +78,7 @@ ext {
     libDefaultPublish = 'debug'//debug or release
     compileSdkVersion = 25
     targetSdkVersion = 25
-    buildToolsVersion = '25.0.0'
+    buildToolsVersion = '25.0.1'
     gradleBuildToolsVersion = '2.2.0'
     junitVersion = '4.12'
     sourceCompatibilityVersion = JavaVersion.VERSION_1_8

@@ -49,7 +49,7 @@ import timber.log.Timber;
 public class V2EXApplication extends MVVMApp {
 
     static {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO);
     }
 
     @Override

@@ -34,6 +34,8 @@ import com.tbruyelle.rxpermissions.RxPermissions;
 
 import rx.subjects.PublishSubject;
 
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
@@ -58,6 +60,8 @@ public class MainVM extends BaseVM<MainContract.Presenter, MainContract.View> {
                         .compose(RxPermissions
                                 .getInstance(context)
                                 .ensure(WRITE_EXTERNAL_STORAGE,
+                                        ACCESS_COARSE_LOCATION,
+                                        ACCESS_FINE_LOCATION,
                                         CAMERA))
                         .subscribe(granted -> {
                             if (granted) {

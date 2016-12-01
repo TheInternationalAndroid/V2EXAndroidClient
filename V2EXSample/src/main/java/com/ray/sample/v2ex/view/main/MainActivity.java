@@ -23,8 +23,12 @@
 
 package com.ray.sample.v2ex.view.main;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatDelegate;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.mvvm.lib.view.base.view.ILifeCycle;
@@ -47,6 +51,44 @@ public class MainActivity extends BaseDIActivity implements MainContract.View {
         super.onCreate(savedInstanceState);
         bindLayout(R.layout.activity_main, viewModel, false);
         viewModel.requestPermission(this);
+//        modeCheck();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_day:
+                switchDayNight(AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+            case R.id.action_night:
+                switchDayNight(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void switchDayNight(@AppCompatDelegate.NightMode int mode) {
+        getDelegate().setLocalNightMode(mode);
+        recreate();
+    }
+
+    private void modeCheck() {
+        int currentNightMode = getResources().getConfiguration().uiMode
+                & Configuration.UI_MODE_NIGHT_MASK;
+        switch (currentNightMode) {
+            case Configuration.UI_MODE_NIGHT_NO:
+                getSupportActionBar().setTitle(getString(R.string.app_name_format, "Day"));
+            case Configuration.UI_MODE_NIGHT_YES:
+                getSupportActionBar().setTitle(getString(R.string.app_name_format, "Night"));
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                getSupportActionBar().setTitle(getString(R.string.app_name_format, "Sysyem"));
+        }
     }
 
     @Override

@@ -23,6 +23,7 @@
 
 <resources>
     <string name="app_name">V2EXSample</string>
+    <string name="app_name_format">V2EXSample（%1$s）</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_topic_list">TopicListActivity</string>
 
@@ -36,6 +37,10 @@
     <string name="sending">SendingRequest</string>
 
     <string name="title_format">标题：%1$s</string>
+
+    <!--Action-->
+    <string name="day">Day</string>
+    <string name="night">Night</string>
 
     <!--Account-->
     <string name="number_format">V2EX 第%1$s号会员</string>

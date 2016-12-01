@@ -23,6 +23,8 @@
 
 package com.ray.sample.v2ex;
 
+import android.support.v7.app.AppCompatDelegate;
+
 import com.ray.mvvm.lib.app.MVVMApp;
 
 import timber.log.Timber;
@@ -45,6 +47,10 @@ import timber.log.Timber;
  * \               ||     ||
  */
 public class V2EXApplication extends MVVMApp {
+
+    static {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+    }
 
     @Override
     public void onCreate() {

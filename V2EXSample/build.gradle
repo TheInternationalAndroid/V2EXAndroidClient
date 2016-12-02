@@ -77,7 +77,7 @@ retrolambda {
 //    oldJdk System.getenv("JAVA7_HOME")
     javaVersion rootProject.ext.retrolambdaJavaVersion
 //    jvmArgs '-arg1', '-arg2'
-//    defaultMethods false
+    defaultMethods true
 //    incremental true
 }
 

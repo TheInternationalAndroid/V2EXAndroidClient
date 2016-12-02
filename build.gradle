@@ -30,7 +30,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0-alpha2'
 //        classpath 'com.frogermcs.androiddevmetrics:androiddevmetri／cs-plugin:0.3.1'
-        classpath 'me.tatarka:gradle-retrolambda:3.3.1'
+        classpath 'me.tatarka:gradle-retrolambda:3.4.0'
         classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
         classpath 'io.realm:realm-gradle-plugin:2.2.0'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
@@ -169,7 +169,7 @@ ext.depMap = [
         Dagger                : "${daggerPkg}:dagger:${daggerVersion}",
         DaggerCompile         : "${daggerPkg}:dagger-compiler:${daggerVersion}",
 
-        RetroLambdaConfig     : 'net.orfjackal.retrolambda:retrolambda:2.1.0',
+        RetroLambdaConfig     : 'net.orfjackal.retrolambda:retrolambda:2.3.0',
         Timber                : 'com.jakewharton.timber:timber:4.1.1',
         AnnotationJsr250      : 'javax.annotation:jsr250-api:1.0',
         MaterialMenuToolbar   : 'com.balysv.materialmenu:material-menu-toolbar:1.5.0',

@@ -54,7 +54,7 @@ public class TopicListVM extends ListVM<TopicListContract.Presenter, TopicListCo
             @Override
             public void onNext(List<TopicEntity> topicEntities) {
                 if (topicEntities != null && topicEntities.size() > 0) {
-                    bindResp(topicEntities);
+                    TopicListVM.this.onNext(topicEntities);
                     startRefreshRequest();
                 } else {
                     startRequest();

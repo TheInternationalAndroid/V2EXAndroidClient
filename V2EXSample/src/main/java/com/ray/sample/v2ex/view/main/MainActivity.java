@@ -31,7 +31,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
-import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.sample.v2ex.R;
 import com.ray.sample.v2ex.view.main.contract.DaggerMainContract_Comp;
 import com.ray.sample.v2ex.view.main.contract.MainContract;
@@ -89,11 +88,6 @@ public class MainActivity extends BaseDIActivity implements MainContract.View {
             case Configuration.UI_MODE_NIGHT_UNDEFINED:
                 getSupportActionBar().setTitle(getString(R.string.app_name_format, "Sysyem"));
         }
-    }
-
-    @Override
-    protected ILifeCycle getPageLifeCycle() {
-        return viewModel.presenter();
     }
 
     @Override

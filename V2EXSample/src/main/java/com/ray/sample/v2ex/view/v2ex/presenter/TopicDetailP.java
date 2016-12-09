@@ -25,15 +25,13 @@ package com.ray.sample.v2ex.view.v2ex.presenter;
 
 import com.ray.mvvm.lib.presenter.BasePresenter;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicDetailContract;
-import com.squareup.leakcanary.RefWatcher;
 
 import javax.inject.Inject;
 
 public class TopicDetailP extends BasePresenter implements TopicDetailContract.Presenter {
 
     @Inject
-    TopicDetailP(RefWatcher refWatcher) {
-        super(refWatcher);
+    TopicDetailP() {
     }
 
 }

@@ -29,7 +29,6 @@ import android.view.View;
 import com.ray.mvvm.lib.model.model.member.MemberEntity;
 import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
-import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.sample.v2ex.R;
 import com.ray.sample.v2ex.view.v2ex.contract.DaggerTopicDetailContract_Comp;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicDetailContract;
@@ -46,11 +45,6 @@ public class TopicDetailActivity extends BaseDIActivity implements TopicDetailCo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bindLayout(R.layout.activity_topic_detail, viewModel);
-    }
-
-    @Override
-    protected ILifeCycle getPageLifeCycle() {
-        return viewModel.presenter();
     }
 
     @Override

@@ -30,7 +30,6 @@ import com.ray.mvvm.lib.model.model.member.MemberEntity;
 import com.ray.mvvm.lib.model.model.node.NodeEntity;
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
-import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.sample.v2ex.R;
 import com.ray.sample.v2ex.view.v2ex.contract.DaggerTopicListContract_Comp;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicListContract;
@@ -48,11 +47,6 @@ public class TopicListActivity extends BaseDIActivity implements TopicListContra
         super.onCreate(savedInstanceState);
         bindLayout(R.layout.activity_topic_list, viewModel);
         viewModel.init();
-    }
-
-    @Override
-    protected ILifeCycle getPageLifeCycle() {
-        return viewModel.presenter();
     }
 
     @Override

@@ -28,7 +28,6 @@ import android.view.View;
 
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
-import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.mvvm.lib.widget.utils.ToastUtil;
 import com.ray.sample.v2ex.R;
 import com.ray.sample.v2ex.view.mock.contract.DaggerListSampleContract_Comp;
@@ -49,12 +48,7 @@ public class ListSampleActivity extends BaseDIActivity implements ListSampleCont
         viewModel.setEmptyAddButtonVisibility(View.VISIBLE, this::onEmptyAddClicked);
         viewModel.startRequest();
     }
-
-    @Override
-    protected ILifeCycle getPageLifeCycle() {
-        return viewModel.presenter();
-    }
-
+    
     @Override
     public void buildComp() {
         DaggerListSampleContract_Comp

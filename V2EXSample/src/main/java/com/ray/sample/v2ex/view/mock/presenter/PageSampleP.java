@@ -27,15 +27,13 @@ import com.ray.mvvm.lib.model.http.ExObserver;
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.presenter.BasePresenter;
 import com.ray.sample.v2ex.view.mock.contract.PageSampleContract;
-import com.squareup.leakcanary.RefWatcher;
 
 import javax.inject.Inject;
 
 public class PageSampleP extends BasePresenter implements PageSampleContract.Presenter {
 
     @Inject
-    PageSampleP(RefWatcher refWatcher) {
-        super(refWatcher);
+    PageSampleP() {
     }
 
     @Override

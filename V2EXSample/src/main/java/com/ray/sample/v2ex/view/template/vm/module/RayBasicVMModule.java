@@ -1,7 +1,7 @@
 package com.ray.sample.v2ex.view.template.vm.module;
 
 import com.ray.mvvm.lib.di.scope.PerFragment;
-import com.ray.sample.v2ex.view.template.contract.RayBasicContract;
+import com.ray.sample.v2ex.view.template.RayBasicFragment;
 import com.ray.sample.v2ex.view.template.presenter.RayBasicP;
 import com.ray.sample.v2ex.view.template.vm.RayBasicVM;
 
@@ -11,16 +11,18 @@ import dagger.Provides;
 @Module
 public class RayBasicVMModule {
 
-    private RayBasicContract.View view;
+    private RayBasicFragment fragment;
 
-    public RayBasicVMModule(RayBasicContract.View view) {
-        this.view = view;
+    public RayBasicVMModule(RayBasicFragment fragment) {
+        this.fragment = fragment;
     }
 
     @Provides
     @PerFragment
     RayBasicVM provideVM(RayBasicP presenter) {
-        return new RayBasicVM(presenter, view);
+        RayBasicVM viewModel = new RayBasicVM(presenter, fragment);
+        fragment.setViewModel(viewModel);
+        return viewModel;
     }
 
 }

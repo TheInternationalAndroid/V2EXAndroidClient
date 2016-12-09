@@ -31,7 +31,6 @@ import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.model.service.TopicService;
 import com.ray.mvvm.lib.presenter.BasePresenter;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicListContract;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.util.List;
 
@@ -45,8 +44,7 @@ public class TopicListP extends BasePresenter implements TopicListContract.Prese
     private final ITopicDBManager topicDBManager;
 
     @Inject
-    TopicListP(RefWatcher refWatcher, TopicService topicService, ITopicDBManager topicDBManager) {
-        super(refWatcher);
+    TopicListP(TopicService topicService, ITopicDBManager topicDBManager) {
         this.topicService = topicService;
         this.topicDBManager = topicDBManager;
     }

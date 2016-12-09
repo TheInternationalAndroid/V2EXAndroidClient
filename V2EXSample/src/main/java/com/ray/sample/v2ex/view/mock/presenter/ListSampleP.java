@@ -27,7 +27,6 @@ import com.ray.mvvm.lib.model.http.ExObserver;
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.presenter.BasePresenter;
 import com.ray.sample.v2ex.view.mock.contract.ListSampleContract;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +36,7 @@ import javax.inject.Inject;
 public class ListSampleP extends BasePresenter implements ListSampleContract.Presenter {
 
     @Inject
-    ListSampleP(RefWatcher refWatcher) {
-        super(refWatcher);
+    ListSampleP() {
     }
 
     @Override
@@ -46,7 +44,7 @@ public class ListSampleP extends BasePresenter implements ListSampleContract.Pre
         List<TestEntity> testEntities = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
             TestEntity testEntity = new TestEntity("Title" + i, "Description");
-//            testEntities.add(testEntity);
+            testEntities.add(testEntity);
         }
         subscribeCommonReq(mockCommonRespObservable(testEntities), observer);
     }

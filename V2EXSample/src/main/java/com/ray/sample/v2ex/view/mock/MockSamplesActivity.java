@@ -26,7 +26,6 @@ package com.ray.sample.v2ex.view.mock;
 import android.os.Bundle;
 
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
-import com.ray.mvvm.lib.view.base.view.ILifeCycle;
 import com.ray.sample.v2ex.R;
 import com.ray.sample.v2ex.view.mock.contract.DaggerMockSamplesContract_Comp;
 import com.ray.sample.v2ex.view.mock.contract.MockSamplesContract;
@@ -43,12 +42,6 @@ public class MockSamplesActivity extends BaseDIActivity implements MockSamplesCo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bindLayout(R.layout.activity_mock_samples, viewModel);
-    }
-
-
-    @Override
-    protected ILifeCycle getPageLifeCycle() {
-        return viewModel.presenter();
     }
 
     @Override

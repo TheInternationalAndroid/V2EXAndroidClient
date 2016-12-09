@@ -28,7 +28,6 @@ import com.ray.mvvm.lib.model.model.ListRespEntity;
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.presenter.BasePresenter;
 import com.ray.sample.v2ex.view.mock.contract.WrapperListSampleContract;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +40,7 @@ public class WrapperListSampleP extends BasePresenter implements WrapperListSamp
     private int page = 0;
 
     @Inject
-    WrapperListSampleP(RefWatcher refWatcher) {
-        super(refWatcher);
+    WrapperListSampleP() {
     }
 
     @Override

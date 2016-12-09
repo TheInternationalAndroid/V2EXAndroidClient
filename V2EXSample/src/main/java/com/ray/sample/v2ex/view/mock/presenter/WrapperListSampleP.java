@@ -37,7 +37,6 @@ import javax.inject.Inject;
 public class WrapperListSampleP extends BasePresenter implements WrapperListSampleContract.Presenter {
 
     private int index = 0;
-    private int page = 0;
 
     @Inject
     WrapperListSampleP() {
@@ -47,13 +46,14 @@ public class WrapperListSampleP extends BasePresenter implements WrapperListSamp
     public void requestListData(int page, ExObserver<ListRespEntity<TestEntity>> observer) {
         List<TestEntity> testEntities = new ArrayList<>();
         ListRespEntity<TestEntity> respEntity = new ListRespEntity<>();
-        if (this.page < 2) {
+        if (page == 1)
+            index = 0;
+        if (page <= 2) {
             for (int i = 0; i < 20; i++) {
                 TestEntity testEntity = new TestEntity("Title" + index, "Description");
                 testEntities.add(testEntity);
                 index += 1;
             }
-            this.page++;
             respEntity.setHasMore(true);
         }
         respEntity.setTotalCount(100);

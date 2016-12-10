@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.ray.sample.v2ex.view.template.vm.RayTest2VM" />
+
+        <variable
+            name="viewModel"
+            type="RayTest2VM" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.ray.sample.v2ex.view.template.RayTest2Activity"
+        tools:showIn="@layout/activity_ray_test2">
+
+    </RelativeLayout>
+</layout>

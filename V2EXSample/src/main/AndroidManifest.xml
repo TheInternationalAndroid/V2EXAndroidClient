@@ -70,6 +70,10 @@
         <activity
             android:name=".view.template.BasicTempActivity"
             android:label="@string/title_activity_basic_temp"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.template.RayTest2Activity"
+            android:label="@string/title_activity_ray_test2"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

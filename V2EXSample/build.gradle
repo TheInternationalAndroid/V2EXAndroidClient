@@ -43,6 +43,7 @@ android {
             minifyEnabled false
             debuggable true
             shrinkResources false
+            applicationIdSuffix '.debug'
         }
         release {
             minifyEnabled false

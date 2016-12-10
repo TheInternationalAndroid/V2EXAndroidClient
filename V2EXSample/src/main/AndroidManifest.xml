@@ -68,12 +68,8 @@
             android:label="@string/title_activity_topic_detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".view.template.BasicTempActivity"
-            android:label="@string/title_activity_basic_temp"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".view.template.RayTest2Activity"
-            android:label="@string/title_activity_ray_test2"
+            android:name=".view.templates.RayListNoToolbarActivity"
+            android:label="@string/title_activity_ray_list_no_toolbar"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

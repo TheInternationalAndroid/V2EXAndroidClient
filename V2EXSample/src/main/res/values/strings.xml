@@ -50,6 +50,5 @@
     <string name="title_activity_wrapper_list_sample">WrapperListSampleActivity</string>
     <string name="title_activity_page_sample">PageSampleActivity</string>
     <string name="title_activity_topic_detail">TopicDetailActivity</string>
-    <string name="title_activity_basic_temp">BasicTempActivity</string>
-    <string name="title_activity_ray_test2">RayTest2Activity</string>
+    <string name="title_activity_ray_list_no_toolbar">RayListNoToolbarActivity</string>
 </resources>

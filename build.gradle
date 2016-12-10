@@ -85,45 +85,34 @@ ext {
     targetCompatibilityVersion = JavaVersion.VERSION_1_8
     retrolambdaJavaVersion = JavaVersion.VERSION_1_7
 
-    androidSupportPkg = 'com.android.support'
     androidSupportVersion = '25.0.0'
-    squareUpPkg = 'com.squareup'
-    okHttpPkg = 'com.squareup.okhttp3'
     okHttpVersion = '3.3.1'
-    retrofitPkg = 'com.squareup.retrofit2'
     retrofitVersion = '2.0.0-beta3'
-    testSupportPkg = "com.android.support.test"
     testSupportVersion = '0.5'
-    dexMakerPkg = 'com.google.dexmaker'
     dexMakerVersion = '1.2'
-    testEspressoPkg = 'com.android.support.test.espresso'
     testEspressoVersion = '2.2.2'
-    lintPkg = 'com.android.tools.lint'
     lintVersion = '24.3.1'
-    rxBindingPkg = 'com.jakewharton.rxbinding'
     rxBindingVersion = '0.4.0'
-    mockitoPkg = 'org.mockito'
     mockitoVersion = '1.10.19'
-    daggerPkg = 'com.google.dagger'
     daggerVersion = '2.7'
 }
 
 ext.depMap = [
-        RecyclerView          : "${androidSupportPkg}:recyclerview-v7:${androidSupportVersion}",
-        Palette               : "${androidSupportPkg}:palette-v7:${androidSupportVersion}",
-        CardView              : "${androidSupportPkg}:cardview-v7:${androidSupportVersion}",
-        Design                : "${androidSupportPkg}:design:${androidSupportVersion}",
-        Percent               : "${androidSupportPkg}:percent:${androidSupportVersion}",
-        Annotations           : "${androidSupportPkg}:support-annotations:${androidSupportVersion}",
-        AppCompat             : "${androidSupportPkg}:appcompat-v7:${androidSupportVersion}",
-        SupportV4             : "${androidSupportPkg}:support-v4:${androidSupportVersion}",
-        SupportCompat         : "${androidSupportPkg}:support-compat:${androidSupportVersion}",
-        SupportCoreUtils      : "${androidSupportPkg}:support-core-utils:${androidSupportVersion}",
-        SupportCoreUI         : "${androidSupportPkg}:support-core-ui:${androidSupportVersion}",
-        SupportMediaCompat    : "${androidSupportPkg}:support-media-compat:${androidSupportVersion}",
-        SupportFragment       : "${androidSupportPkg}:support-fragment:${androidSupportVersion}",
-        Multidex              : "${androidSupportPkg}:multidex:1.0.1",
-        ConstraintLayout      : "${androidSupportPkg}:constraint-layout:1.0.0-alpha1",
+        RecyclerView          : "com.android.support:recyclerview-v7:${androidSupportVersion}",
+        Palette               : "com.android.support:palette-v7:${androidSupportVersion}",
+        CardView              : "com.android.support:cardview-v7:${androidSupportVersion}",
+        Design                : "com.android.support:design:${androidSupportVersion}",
+        Percent               : "com.android.support:percent:${androidSupportVersion}",
+        Annotations           : "com.android.support:support-annotations:${androidSupportVersion}",
+        AppCompat             : "com.android.support:appcompat-v7:${androidSupportVersion}",
+        SupportV4             : "com.android.support:support-v4:${androidSupportVersion}",
+        SupportCompat         : "com.android.support:support-compat:${androidSupportVersion}",
+        SupportCoreUtils      : "com.android.support:support-core-utils:${androidSupportVersion}",
+        SupportCoreUI         : "com.android.support:support-core-ui:${androidSupportVersion}",
+        SupportMediaCompat    : "com.android.support:support-media-compat:${androidSupportVersion}",
+        SupportFragment       : "com.android.support:support-fragment:${androidSupportVersion}",
+        Multidex              : "com.android.support:multidex:1.0.1",
+        ConstraintLayout      : "com.android.support.constraint:constraint-layout:1.0.0-beta4",
         FlexBox               : 'com.google.android:flexbox:0.2.3',
 
         Stetho                : 'com.facebook.stetho:stetho:1.4.1',
@@ -140,34 +129,34 @@ ext.depMap = [
         DSLJson               : 'com.dslplatform:dsl-json:0.9.5',
         DSLJsonProcessor      : 'com.dslplatform:dsl-json-processor:0.4',
 
-        OkHttp                : "${okHttpPkg}:okhttp:${okHttpVersion}",
-        LoggingInterceptor    : "${okHttpPkg}:logging-interceptor:${okHttpVersion}",
-        OkHttpWS              : "${okHttpPkg}:okhttp-ws:${okHttpVersion}",
+        OkHttp                : "com.squareup.okhttp3:okhttp:${okHttpVersion}",
+        LoggingInterceptor    : "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
+        OkHttpWS              : "com.squareup.okhttp3:okhttp-ws:${okHttpVersion}",
 
-        Retrofit              : "${retrofitPkg}:retrofit:${retrofitVersion}",
-        RxJavaAdapter         : "${retrofitPkg}:adapter-rxjava:${retrofitVersion}",
-        Java8Adapter          : "${retrofitPkg}:adapter-java8:${retrofitVersion}",
-        GuavaAdapter          : "${retrofitPkg}:adapter-guava:${retrofitVersion}",
-        GsonConverter         : "${retrofitPkg}:converter-gson:${retrofitVersion}",
-        JacksonConverter      : "${retrofitPkg}:converter-jackson:${retrofitVersion}",
-        MoshiConverter        : "${retrofitPkg}:converter-moshi:${retrofitVersion}",
-        ProtobufConverter     : "${retrofitPkg}:converter-protobuf:${retrofitVersion}",
-        WireConverter         : "${retrofitPkg}:converter-wire:${retrofitVersion}",
-        SimpleXMLConverter    : "${retrofitPkg}:converter-simplexml:${retrofitVersion}",
-        ScalarsConverter      : "${retrofitPkg}:converter-scalars:${retrofitVersion}",
+        Retrofit              : "com.squareup.retrofit2:retrofit:${retrofitVersion}",
+        RxJavaAdapter         : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
+        Java8Adapter          : "com.squareup.retrofit2:adapter-java8:${retrofitVersion}",
+        GuavaAdapter          : "com.squareup.retrofit2:adapter-guava:${retrofitVersion}",
+        GsonConverter         : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+        JacksonConverter      : "com.squareup.retrofit2:converter-jackson:${retrofitVersion}",
+        MoshiConverter        : "com.squareup.retrofit2:converter-moshi:${retrofitVersion}",
+        ProtobufConverter     : "com.squareup.retrofit2:converter-protobuf:${retrofitVersion}",
+        WireConverter         : "com.squareup.retrofit2:converter-wire:${retrofitVersion}",
+        SimpleXMLConverter    : "com.squareup.retrofit2:converter-simplexml:${retrofitVersion}",
+        ScalarsConverter      : "com.squareup.retrofit2:converter-scalars:${retrofitVersion}",
 
         RxAndroid             : 'io.reactivex:rxandroid:1.0.1',
-        RxBinding             : "${rxBindingPkg}:rxbinding:${rxBindingVersion}",
-        RxBindingSupportV4    : "${rxBindingPkg}:rxbinding-support-v4:${rxBindingVersion}",
-        RxBindingAppcompat    : "${rxBindingPkg}:rxbinding-appcompat-v7:${rxBindingVersion}",
-        RxBindingDesign       : "${rxBindingPkg}:rxbinding-design:${rxBindingVersion}",
-        RxBindingRecyclerView : "${rxBindingPkg}:rxbinding-recyclerview-v7:${rxBindingVersion}",
-        RxLeanBack            : "${rxBindingPkg}:rxbinding-leanback-v17:${rxBindingVersion}",
+        RxBinding             : "com.jakewharton.rxbinding:rxbinding:${rxBindingVersion}",
+        RxBindingSupportV4    : "com.jakewharton.rxbinding:rxbinding-support-v4:${rxBindingVersion}",
+        RxBindingAppcompat    : "com.jakewharton.rxbinding:rxbinding-appcompat-v7:${rxBindingVersion}",
+        RxBindingDesign       : "com.jakewharton.rxbinding:rxbinding-design:${rxBindingVersion}",
+        RxBindingRecyclerView : "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:${rxBindingVersion}",
+        RxLeanBack            : "com.jakewharton.rxbinding:rxbinding-leanback-v17:${rxBindingVersion}",
 
         Moshi                 : 'com.squareup.moshi:moshi:1.2.0',
 
-        Dagger                : "${daggerPkg}:dagger:${daggerVersion}",
-        DaggerCompile         : "${daggerPkg}:dagger-compiler:${daggerVersion}",
+        Dagger                : "com.google.dagger:dagger:${daggerVersion}",
+        DaggerCompile         : "com.google.dagger:dagger-compiler:${daggerVersion}",
 
         RetroLambdaConfig     : 'net.orfjackal.retrolambda:retrolambda:2.3.0',
         Timber                : 'com.jakewharton.timber:timber:4.1.1',
@@ -179,12 +168,12 @@ ext.depMap = [
         RoundedImageview      : 'com.makeramen:roundedimageview:2.2.1',
         ScaleImageView        : "com.davemorrissey.labs:subsampling-scale-image-view:3.5.0",
 
-        Otto                  : "${squareUpPkg}:otto:1.3.8",
-        LeakCanary            : "${squareUpPkg}.leakcanary:leakcanary-android:1.5",
-        LeakCanaryAndroidNoOp : "${squareUpPkg}.leakcanary:leakcanary-android-no-op:1.5",
-        FestAndroid           : "${squareUpPkg}:fest-android:1.0.7",
+        Otto                  : "com.squareup:otto:1.3.8",
+        LeakCanary            : "com.squareup.leakcanary:leakcanary-android:1.5",
+        LeakCanaryAndroidNoOp : "com.squareup.leakcanary:leakcanary-android-no-op:1.5",
+        FestAndroid           : "com.squareup:fest-android:1.0.7",
 
-        Picasso               : "${squareUpPkg}.picasso:picasso:2.5.2",
+        Picasso               : "com.squareup.picasso:picasso:2.5.2",
         Glide                 : "com.github.bumptech.glide:glide:3.7.0",
         GlideOkhttpIntegration: 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar',
 
@@ -193,28 +182,28 @@ ext.depMap = [
         Hamcrest              : 'org.hamcrest:hamcrest-all:1.3',
         JUnit                 : "junit:junit:${junitVersion}",
 
-        MockitoAll            : "${mockitoPkg}:mockito-all:${mockitoVersion}",
-        MockitoCore           : "${mockitoPkg}:mockito-core:${mockitoVersion}",
+        MockitoAll            : "org.mockito:mockito-all:${mockitoVersion}",
+        MockitoCore           : "org.mockito:mockito-core:${mockitoVersion}",
         FestAssert            : 'org.easytesting:fest-assert-core:2.0M10',
         Robolectric           : 'org.robolectric:robolectric:3.0',
 
         UIAutomator           : 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2',
 
         //Espresso
-        EspressoCore          : "${testEspressoPkg}:espresso-core:${testEspressoVersion}",
-        EspressoContrib       : "${testEspressoPkg}:espresso-contrib:${testEspressoVersion}",
-        EspressoIntents       : "${testEspressoPkg}:espresso-intents:${testEspressoVersion}",
-        EspressoIDLing        : "${testEspressoPkg}:espresso-idling-resource:${testEspressoVersion}",
+        EspressoCore          : "com.android.support.test.espresso:espresso-core:${testEspressoVersion}",
+        EspressoContrib       : "com.android.support.test.espresso:espresso-contrib:${testEspressoVersion}",
+        EspressoIntents       : "com.android.support.test.espresso:espresso-intents:${testEspressoVersion}",
+        EspressoIDLing        : "com.android.support.test.espresso:espresso-idling-resource:${testEspressoVersion}",
 
         //Test support
-        RunnerSupport         : "${testSupportPkg}:runner:${testSupportVersion}",
-        RulesSupport          : "${testSupportPkg}:rules:${testSupportVersion}",
+        RunnerSupport         : "com.android.support.test:runner:${testSupportVersion}",
+        RulesSupport          : "com.android.support.test:rules:${testSupportVersion}",
 
         //Dex maker
-        DexMaker              : "${dexMakerPkg}:dexmaker:${dexMakerVersion}",
-        DexMakerMockito       : "${dexMakerPkg}:dexmaker-mockito:${dexMakerVersion}",
+        DexMaker              : "com.google.dexmaker:dexmaker:${dexMakerVersion}",
+        DexMakerMockito       : "com.google.dexmaker:dexmaker-mockito:${dexMakerVersion}",
 
         //Lint dependencies
-        Lintapi               : "${lintPkg}:lint-api:${lintVersion}",
-        Lintchecks            : "${lintPkg}:lint-checks:${lintVersion}"
+        Lintapi               : "com.android.tools.lint:lint-api:${lintVersion}",
+        Lintchecks            : "com.android.tools.lint:lint-checks:${lintVersion}"
 ]

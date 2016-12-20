@@ -46,6 +46,6 @@ public class ListSampleP extends BasePresenter implements ListSampleContract.Pre
             TestEntity testEntity = new TestEntity("Title" + i, "Description");
             testEntities.add(testEntity);
         }
-        subscribeCommonReq(mockCommonRespObservable(testEntities), observer);
+        subscribeCommonReq(mockCommonRespObs(testEntities), observer);
     }
 }

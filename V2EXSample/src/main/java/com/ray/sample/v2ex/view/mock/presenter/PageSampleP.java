@@ -38,7 +38,7 @@ public class PageSampleP extends BasePresenter implements PageSampleContract.Pre
 
     @Override
     public void requestEntity(ExObserver<TestEntity> observer) {
-        subscribeCommonReq(mockCommonRespObservable(new TestEntity("Title (from server)", "Description (from server)")), observer);
+        subscribeCommonReq(mockCommonRespObs(new TestEntity("Title (from server)", "Description (from server)")), observer);
     }
 
 }

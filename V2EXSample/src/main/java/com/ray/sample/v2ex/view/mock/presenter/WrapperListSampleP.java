@@ -58,6 +58,6 @@ public class WrapperListSampleP extends BasePresenter implements WrapperListSamp
         }
         respEntity.setTotalCount(100);
         respEntity.setList(testEntities);
-        subscribeCommonReq(mockCommonRespObservable(respEntity), observer);
+        subscribeCommonReq(mockCommonRespObs(respEntity), observer);
     }
 }

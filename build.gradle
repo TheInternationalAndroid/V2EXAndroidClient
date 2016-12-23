@@ -26,6 +26,9 @@ buildscript {
                 password = artifactory_reader_password
             }
         }
+        maven {
+            url "http://maven.bughd.com/public"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0-beta1'
@@ -35,6 +38,7 @@ buildscript {
         classpath 'io.realm:realm-gradle-plugin:2.2.0'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
         classpath 'org.jfrog.buildinfo:build-info-extractor-gradle:4.4.7'
+        classpath 'im.fir:gradle-fir-publisher:1.0.7'
     }
     configurations.classpath.exclude group: 'com.android.tools.external.lombok'
 }
@@ -62,6 +66,9 @@ allprojects {
                 username = artifactory_reader
                 password = artifactory_reader_password
             }
+        }
+        maven {
+            url "http://maven.bughd.com/public"
         }
     }
 }

@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:onClick="@{viewModel.onContentClicked}"
+            android:onClick="@{viewModel::onContentClicked}"
             android:paddingBottom="@dimen/padding_xl"
             android:paddingLeft="@dimen/padding_l"
             android:paddingRight="@dimen/padding_l"
@@ -61,14 +61,14 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:foreground="@drawable/bg_clickable_item_corner"
-                android:onClick="@{viewModel.onAvatarClicked}">
+                android:onClick="@{viewModel::onAvatarClicked}">
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/image"
                     android:layout_width="@dimen/icon_size_s"
                     android:layout_height="@dimen/icon_size_s"
                     android:scaleType="centerCrop"
-                    app:imgurl="@{viewModel.entity.member.avatarLarge}"
+                    app:imgUrl="@{viewModel.entity.member.avatarLarge}"
                     app:riv_border_width="0dp"
                     app:riv_corner_radius="@dimen/btn_corner"
                     app:riv_mutate_background="true" />
@@ -104,7 +104,7 @@
                         style="@style/NodeTagStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:onClick="@{viewModel.onNodeClicked}"
+                        android:onClick="@{viewModel::onNodeClicked}"
                         android:text="@{viewModel.entity.node.name,default=Node}"
                         android:textSize="@dimen/text_m" />
 

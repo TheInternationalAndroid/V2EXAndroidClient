@@ -27,7 +27,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.ray.mvvm.lib.model.http.ExSubscriber;
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
-import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
+import com.ray.mvvm.lib.view.adapter.list.base.StateListAdapter;
 import com.ray.mvvm.lib.viewmodel.ListVM;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicListContract;
 
@@ -35,7 +35,7 @@ import java.util.List;
 
 public class TopicListVM extends ListVM<TopicListContract.Presenter, TopicListContract.View, TopicEntity> {
 
-    public TopicListVM(TopicListContract.Presenter presenter, TopicListContract.View view, RecyclerView.LayoutManager layoutManager, ListAdapter<TopicEntity> adapter) {
+    public TopicListVM(TopicListContract.Presenter presenter, TopicListContract.View view, RecyclerView.LayoutManager layoutManager, StateListAdapter<TopicEntity> adapter) {
         super(presenter, view, layoutManager, adapter);
     }
 

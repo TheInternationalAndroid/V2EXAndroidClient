@@ -29,7 +29,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.ray.mvvm.lib.model.model.test.TestEntity;
-import com.ray.mvvm.lib.view.adapter.list.base.ListAdapter;
+import com.ray.mvvm.lib.view.adapter.list.base.StateListAdapter;
 import com.ray.sample.v2ex.databinding.ListCellTestEntityBinding;
 import com.ray.sample.v2ex.view.common.mock.TestEntityCellView;
 import com.ray.sample.v2ex.view.mock.vm.TestEntityVM;
@@ -51,7 +51,7 @@ import com.ray.sample.v2ex.view.mock.vm.TestEntityVM;
  * \               ||----w |
  * \               ||     ||
  */
-public class TestListAdapter extends ListAdapter<TestEntity> {
+public class TestListAdapter extends StateListAdapter<TestEntity> {
 
     private final TestEntityCellView view;
 

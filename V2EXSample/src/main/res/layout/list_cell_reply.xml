@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:foreground="?selectableItemBackground"
-                android:onClick="@{viewModel.onAvatarClicked}">
+                android:onClick="@{viewModel::onAvatarClicked}">
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/image"

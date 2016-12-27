@@ -27,10 +27,10 @@ import android.support.v7.widget.RecyclerView;
 
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.view.adapter.list.base.StateListAdapter;
-import com.ray.mvvm.lib.viewmodel.ListVM;
+import com.ray.mvvm.lib.viewmodel.StateListVM;
 import com.ray.sample.v2ex.view.mock.contract.ListSampleContract;
 
-public class ListSampleVM extends ListVM<ListSampleContract.Presenter, ListSampleContract.View, TestEntity> {
+public class ListSampleVM extends StateListVM<ListSampleContract.Presenter, ListSampleContract.View, TestEntity> {
 
     public ListSampleVM(ListSampleContract.Presenter presenter, ListSampleContract.View view, RecyclerView.LayoutManager layoutManager, StateListAdapter<TestEntity> adapter) {
         super(presenter, view, layoutManager, adapter);

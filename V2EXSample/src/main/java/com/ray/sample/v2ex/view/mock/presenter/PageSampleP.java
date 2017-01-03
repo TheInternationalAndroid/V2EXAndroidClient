@@ -25,12 +25,12 @@ package com.ray.sample.v2ex.view.mock.presenter;
 
 import com.ray.mvvm.lib.model.http.ExObserver;
 import com.ray.mvvm.lib.model.model.test.TestEntity;
-import com.ray.mvvm.lib.presenter.BasePresenter;
+import com.ray.mvvm.lib.presenter.CommonPresenter;
 import com.ray.sample.v2ex.view.mock.contract.PageSampleContract;
 
 import javax.inject.Inject;
 
-public class PageSampleP extends BasePresenter implements PageSampleContract.Presenter {
+public class PageSampleP extends CommonPresenter implements PageSampleContract.Presenter {
 
     @Inject
     PageSampleP() {

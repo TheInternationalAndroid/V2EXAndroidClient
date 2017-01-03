@@ -25,6 +25,7 @@ package com.ray.sample.v2ex.adapter;
 
 import android.databinding.BaseObservable;
 import android.databinding.ViewDataBinding;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -98,14 +99,13 @@ public class TopicPageAdapter extends ListAdapter<ReplyEntity> {
     }
 
     @Override
-    protected BaseObservable createViewModel(int viewType, int position) {
+    protected BaseObservable createViewModel(RecyclerView.ViewHolder holder, int position, int viewType) {
         switch (getItemViewType(position)) {
             case VIEW_HEADER:
                 return new TopicHeaderVM(topicEntity, view);
             default:
             case VIEW_CELL:
-                return new ReplyCellVM(getItem(position), position, view);
+                return new ReplyCellVM(getItem(position), holder, view);
         }
     }
-
 }

@@ -50,8 +50,8 @@ public class TopicCellVM extends CellVM<TopicEntity> {
 
     private TopicCellView topicCellView;
 
-    public TopicCellVM(TopicEntity entity, int position, TopicCellView topicCellView) {
-        super(entity, position, topicCellView);
+    public TopicCellVM(TopicEntity entity, TopicCellView topicCellView) {
+        super(entity, topicCellView);
         this.topicCellView = topicCellView;
     }
 

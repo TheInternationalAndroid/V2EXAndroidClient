@@ -23,12 +23,12 @@
 
 package com.ray.sample.v2ex.view.v2ex.presenter;
 
-import com.ray.mvvm.lib.presenter.BasePresenter;
+import com.ray.mvvm.lib.presenter.CommonPresenter;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicDetailContract;
 
 import javax.inject.Inject;
 
-public class TopicDetailP extends BasePresenter implements TopicDetailContract.Presenter {
+public class TopicDetailP extends CommonPresenter implements TopicDetailContract.Presenter {
 
     @Inject
     TopicDetailP() {

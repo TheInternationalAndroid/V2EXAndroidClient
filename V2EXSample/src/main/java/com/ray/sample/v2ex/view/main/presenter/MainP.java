@@ -23,12 +23,12 @@
 
 package com.ray.sample.v2ex.view.main.presenter;
 
-import com.ray.mvvm.lib.presenter.BasePresenter;
+import com.ray.mvvm.lib.presenter.CommonPresenter;
 import com.ray.sample.v2ex.view.main.contract.MainContract;
 
 import javax.inject.Inject;
 
-public class MainP extends BasePresenter implements MainContract.Presenter {
+public class MainP extends CommonPresenter implements MainContract.Presenter {
 
     @Inject
     MainP() {

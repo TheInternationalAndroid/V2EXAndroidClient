@@ -29,7 +29,7 @@ import com.ray.mvvm.lib.model.http.ExSubscriber;
 import com.ray.mvvm.lib.model.model.member.MemberEntity;
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.model.service.TopicService;
-import com.ray.mvvm.lib.presenter.BasePresenter;
+import com.ray.mvvm.lib.presenter.CommonPresenter;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicListContract;
 
 import java.util.List;
@@ -38,7 +38,7 @@ import javax.inject.Inject;
 
 import rx.Observable;
 
-public class TopicListP extends BasePresenter implements TopicListContract.Presenter {
+public class TopicListP extends CommonPresenter implements TopicListContract.Presenter {
 
     private final TopicService topicService;
     private final ITopicDBManager topicDBManager;

@@ -25,7 +25,7 @@ package com.ray.sample.v2ex.view.mock.presenter;
 
 import com.ray.mvvm.lib.model.http.ExObserver;
 import com.ray.mvvm.lib.model.model.test.TestEntity;
-import com.ray.mvvm.lib.presenter.BasePresenter;
+import com.ray.mvvm.lib.presenter.CommonPresenter;
 import com.ray.sample.v2ex.view.mock.contract.ListSampleContract;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class ListSampleP extends BasePresenter implements ListSampleContract.Presenter {
+public class ListSampleP extends CommonPresenter implements ListSampleContract.Presenter {
 
     @Inject
     ListSampleP() {

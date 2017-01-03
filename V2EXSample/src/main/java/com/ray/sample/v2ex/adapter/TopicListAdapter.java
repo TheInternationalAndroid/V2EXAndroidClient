@@ -25,6 +25,7 @@ package com.ray.sample.v2ex.adapter;
 
 import android.databinding.BaseObservable;
 import android.databinding.ViewDataBinding;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -65,7 +66,7 @@ public class TopicListAdapter extends StateListAdapter<TopicEntity> {
     }
 
     @Override
-    protected BaseObservable createViewModel(int viewType, int position) {
-        return new TopicCellVM(getItem(position), position, topicCellView);
+    protected BaseObservable createViewModel(RecyclerView.ViewHolder holder, int position, int viewType) {
+        return new TopicCellVM(getItem(position), topicCellView);
     }
 }

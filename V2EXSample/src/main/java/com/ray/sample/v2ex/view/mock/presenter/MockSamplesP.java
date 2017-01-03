@@ -23,12 +23,12 @@
 
 package com.ray.sample.v2ex.view.mock.presenter;
 
-import com.ray.mvvm.lib.presenter.BasePresenter;
+import com.ray.mvvm.lib.presenter.CommonPresenter;
 import com.ray.sample.v2ex.view.mock.contract.MockSamplesContract;
 
 import javax.inject.Inject;
 
-public class MockSamplesP extends BasePresenter implements MockSamplesContract.Presenter {
+public class MockSamplesP extends CommonPresenter implements MockSamplesContract.Presenter {
 
     @Inject
     MockSamplesP() {

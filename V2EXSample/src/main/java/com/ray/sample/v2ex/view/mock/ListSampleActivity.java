@@ -48,7 +48,7 @@ public class ListSampleActivity extends BaseDIActivity implements ListSampleCont
         viewModel.setEmptyAddButtonVisibility(View.VISIBLE, this::onEmptyAddClicked);
         viewModel.startRequest();
     }
-    
+
     @Override
     public void buildComp() {
         DaggerListSampleContract_Comp
@@ -61,9 +61,14 @@ public class ListSampleActivity extends BaseDIActivity implements ListSampleCont
 
     @Override
     public void onItemClick(int position, View view, TestEntity testEntity) {
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(TestEntity.KEY, testEntity);
-        intent(PageSampleActivity.class, bundle);
+//        Bundle bundle = new Bundle();
+//        bundle.putParcelable(TestEntity.KEY, testEntity);
+//        intent(PageSampleActivity.class, bundle);
+        if (position % 2 == 0) {
+            showToast("Position " + position);
+        } else {
+            viewModel.getAdapter().removeItem(testEntity);
+        }
     }
 
     public void onEmptyAddClicked(View view) {

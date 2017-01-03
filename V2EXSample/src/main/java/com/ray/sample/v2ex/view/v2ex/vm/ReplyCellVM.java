@@ -23,6 +23,7 @@
 
 package com.ray.sample.v2ex.view.v2ex.vm;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.ray.mvvm.lib.model.model.reply.ReplyEntity;
@@ -50,8 +51,8 @@ public class ReplyCellVM extends CellVM<ReplyEntity> {
 
     private ReplyCellView replyCellView;
 
-    public ReplyCellVM(ReplyEntity entity, int position, ReplyCellView replyCellView) {
-        super(entity, position, replyCellView);
+    public ReplyCellVM(ReplyEntity entity, RecyclerView.ViewHolder viewHolder, ReplyCellView replyCellView) {
+        super(entity, viewHolder, replyCellView);
         this.replyCellView = replyCellView;
     }
 

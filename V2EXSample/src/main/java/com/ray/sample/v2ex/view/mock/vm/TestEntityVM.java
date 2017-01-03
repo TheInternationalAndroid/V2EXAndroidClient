@@ -23,6 +23,8 @@
 
 package com.ray.sample.v2ex.view.mock.vm;
 
+import android.support.v7.widget.RecyclerView;
+
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.view.adapter.OnItemClick;
 import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
@@ -46,7 +48,7 @@ import com.ray.mvvm.lib.view.adapter.list.base.CellVM;
  */
 public class TestEntityVM extends CellVM<TestEntity> {
 
-    public TestEntityVM(TestEntity entity, int position, OnItemClick<TestEntity> itemClick) {
-        super(entity, position, itemClick);
+    public TestEntityVM(TestEntity entity, RecyclerView.ViewHolder viewHolder, OnItemClick<TestEntity> itemClick) {
+        super(entity, viewHolder, itemClick);
     }
 }

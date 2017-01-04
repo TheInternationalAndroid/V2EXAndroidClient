@@ -67,6 +67,6 @@ public class TopicListAdapter extends StateListAdapter<TopicEntity> {
 
     @Override
     protected BaseObservable createViewModel(RecyclerView.ViewHolder holder, int position, int viewType) {
-        return new TopicCellVM(getItem(position), topicCellView);
+        return new TopicCellVM(getItem(position), holder, topicCellView);
     }
 }

@@ -23,6 +23,7 @@
 
 package com.ray.sample.v2ex.view.v2ex.vm;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
@@ -50,8 +51,8 @@ public class TopicCellVM extends CellVM<TopicEntity> {
 
     private TopicCellView topicCellView;
 
-    public TopicCellVM(TopicEntity entity, TopicCellView topicCellView) {
-        super(entity, topicCellView);
+    public TopicCellVM(TopicEntity entity, RecyclerView.ViewHolder viewHolder, TopicCellView topicCellView) {
+        super(entity, viewHolder);
         this.topicCellView = topicCellView;
     }
 

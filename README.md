@@ -9,6 +9,6 @@
 /Applications/Android Studio.app/
 
 ```shell
-    ./create_activity_tmplate.sh （用于生成activity 模版）
+    ./create_activity_tmplate.sh      （用于生成activity 模版）
     ./create_fragment_template.sh     （用于生成fragment 模版）
 ```

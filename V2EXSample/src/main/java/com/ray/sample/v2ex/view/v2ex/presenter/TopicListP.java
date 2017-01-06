@@ -71,7 +71,9 @@ public class TopicListP extends CommonPresenter implements TopicListContract.Pre
 
     @Override
     public void findTopicList(ExSubscriber<List<TopicEntity>> subscriber) {
-        subscribe(topicDBManager.findAllObs().subscribe(subscriber));
+        topicDBManager.findAllObs()
+                .compose(lifecycleTransformer())
+                .subscribe(subscriber);
     }
 
 }

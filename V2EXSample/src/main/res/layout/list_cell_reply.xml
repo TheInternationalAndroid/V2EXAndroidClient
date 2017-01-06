@@ -79,7 +79,7 @@
                 android:layout_toRightOf="@id/clickable_view"
                 android:text="@{viewModel.entity.member.username,default=UserName}"
                 android:textSize="@dimen/text_m" />
-
+            
             <TextView
                 android:id="@+id/date"
                 android:layout_width="wrap_content"

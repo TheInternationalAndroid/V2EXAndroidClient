@@ -27,6 +27,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.ray.mvvm.lib.viewmodel.BaseVM;
+import com.ray.mvvm.lib.widget.lifecycle.LifecycleEvent;
 import com.ray.sample.v2ex.view.main.contract.MainContract;
 import com.ray.sample.v2ex.view.mock.MockSamplesActivity;
 import com.ray.sample.v2ex.view.v2ex.TopicListActivity;
@@ -55,22 +56,21 @@ public class MainVM extends BaseVM<MainContract.Presenter, MainContract.View> {
 
     public void requestPermission(Context context) {
         PublishSubject<Boolean> subject = PublishSubject.create();
-        presenter.subscribe(
-                subject
-                        .compose(RxPermissions
-                                .getInstance(context)
-                                .ensure(WRITE_EXTERNAL_STORAGE,
-                                        ACCESS_COARSE_LOCATION,
-                                        ACCESS_FINE_LOCATION,
-                                        CAMERA))
-                        .subscribe(granted -> {
-                            if (granted) {
-                                subject.onCompleted();
-                            } else {
-                                view.showPermissionDialog(subject);
-                            }
-                        })
-        );
+        subject
+                .compose(RxPermissions
+                        .getInstance(context)
+                        .ensure(WRITE_EXTERNAL_STORAGE,
+                                ACCESS_COARSE_LOCATION,
+                                ACCESS_FINE_LOCATION,
+                                CAMERA))
+                .compose(view.bindUntilEvent(LifecycleEvent.DETACH))
+                .subscribe(granted -> {
+                    if (granted) {
+                        subject.onCompleted();
+                    } else {
+                        view.showPermissionDialog(subject);
+                    }
+                });
         subject.onNext(true);
     }
 }

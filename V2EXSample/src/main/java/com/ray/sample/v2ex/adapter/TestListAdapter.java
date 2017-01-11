@@ -23,7 +23,6 @@
 
 package com.ray.sample.v2ex.adapter;
 
-import android.databinding.BaseObservable;
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -66,7 +65,7 @@ public class TestListAdapter extends StateListAdapter<TestEntity> {
     }
 
     @Override
-    protected BaseObservable createViewModel(RecyclerView.ViewHolder holder, int position, int viewType) {
+    protected Object createViewModel(RecyclerView.ViewHolder holder, int position) {
         return new TestEntityVM(getItem(position), holder, this.view);
     }
 

@@ -92,20 +92,15 @@ dependencies {
 
     annotationProcessor depMap.DaggerCompile
 
+    provided depMap.JavaxAnnotations
+
     debugCompile depMap.LeakCanary
     releaseCompile depMap.LeakCanaryAndroidNoOp
     testCompile depMap.LeakCanaryAndroidNoOp
 
-    // Dependencies for local unit tests
     testCompile depMap.JUnit
-//    testCompile depMap.MockitoAll
-//    testCompile depMap.Hamcrest
-
-    // Android Testing Support Library's runner and rules
+    testCompile depMap.Annotations
     androidTestCompile depMap.RunnerSupport
-    androidTestCompile depMap.RulesSupport
     androidTestCompile depMap.Annotations
-
-    // Dependencies for android unit tests
     androidTestCompile depMap.JUnit
 }

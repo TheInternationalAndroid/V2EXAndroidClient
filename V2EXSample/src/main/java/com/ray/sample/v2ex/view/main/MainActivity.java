@@ -57,7 +57,7 @@ public class MainActivity extends BaseDIActivity implements MainContract.View {
         viewModel.requestPermission(this);
         Observable.just(true)
                 .delay(5, TimeUnit.SECONDS)
-                .compose(bindUntilEvent())
+                .compose(bindUntilLastEvent())
                 .subscribe(new ExSubscriber<Boolean>() {
                     @Override
                     public void onStart() {

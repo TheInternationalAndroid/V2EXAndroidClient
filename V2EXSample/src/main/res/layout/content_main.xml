@@ -58,5 +58,11 @@
             android:onClick="@{viewModel::onMockDataClicked}"
             android:text="Mock Data Sample" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel::onWebViewClicked}"
+            android:text="Open WebView Page" />
+
     </LinearLayout>
 </layout>

@@ -26,6 +26,7 @@ package com.ray.sample.v2ex.view.main.vm;
 import android.content.Context;
 import android.view.View;
 
+import com.ray.mvvm.lib.view.web.WebViewActivity;
 import com.ray.mvvm.lib.viewmodel.BaseVM;
 import com.ray.mvvm.lib.widget.lifecycle.LifecycleEvent;
 import com.ray.sample.v2ex.view.main.contract.MainContract;
@@ -52,6 +53,10 @@ public class MainVM extends BaseVM<MainContract.Presenter, MainContract.View> {
 
     public void onMockDataClicked(View view) {
         this.view.intent(MockSamplesActivity.class);
+    }
+
+    public void onWebViewClicked(View view) {
+        WebViewActivity.intent(this.view, "Bing", "http://bing.com");
     }
 
     public void requestPermission(Context context) {

@@ -30,7 +30,6 @@ import android.support.v7.app.AppCompatDelegate;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.ray.mvvm.lib.model.http.ExSubscriber;
 import com.ray.mvvm.lib.view.base.page.BaseDIActivity;
 import com.ray.sample.v2ex.R;
 import com.ray.sample.v2ex.view.main.contract.DaggerMainContract_Comp;
@@ -38,13 +37,9 @@ import com.ray.sample.v2ex.view.main.contract.MainContract;
 import com.ray.sample.v2ex.view.main.vm.MainVM;
 import com.ray.sample.v2ex.view.main.vm.module.MainVMModule;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.inject.Inject;
 
-import rx.Observable;
 import rx.subjects.Subject;
-import timber.log.Timber;
 
 public class MainActivity extends BaseDIActivity implements MainContract.View {
 
@@ -55,32 +50,6 @@ public class MainActivity extends BaseDIActivity implements MainContract.View {
         super.onCreate(savedInstanceState);
         bindLayout(R.layout.activity_main, viewModel, false);
         viewModel.requestPermission(this);
-        Observable.just(true)
-                .delay(5, TimeUnit.SECONDS)
-                .compose(bindUntilLastEvent())
-                .subscribe(new ExSubscriber<Boolean>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                        Timber.i("----------onStart-----------");
-                    }
-
-                    @Override
-                    public void onError(Throwable throwable) {
-                        Timber.i("----------onError-----------");
-                    }
-
-                    @Override
-                    public void onNext(Boolean aBoolean) {
-                        Timber.i("-----------onNext----------");
-                    }
-
-                    @Override
-                    public void onCompleted() {
-                        super.onCompleted();
-                        Timber.i("----------onCompleted-----------");
-                    }
-                });
     }
 
     @Override

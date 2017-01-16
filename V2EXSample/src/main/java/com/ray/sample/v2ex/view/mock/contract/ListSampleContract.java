@@ -31,6 +31,7 @@ import com.ray.mvvm.lib.view.base.comp.ActivityComp;
 import com.ray.mvvm.lib.view.base.view.IView;
 import com.ray.sample.v2ex.view.common.mock.TestEntityCellView;
 import com.ray.sample.v2ex.view.mock.ListSampleActivity;
+import com.ray.sample.v2ex.view.mock.vm.ListSampleVM;
 import com.ray.sample.v2ex.view.mock.vm.module.ListSampleVMModule;
 
 import java.util.List;
@@ -43,6 +44,8 @@ public interface ListSampleContract {
     @Component(modules = {ListSampleVMModule.class}, dependencies = ActivityComp.class)
     interface Comp extends ActivityComp {
         void inject(ListSampleActivity activity);
+
+        ListSampleVM viewModel();
     }
 
     interface View extends IView, TestEntityCellView {

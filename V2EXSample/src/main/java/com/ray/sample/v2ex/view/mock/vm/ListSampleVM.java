@@ -24,6 +24,7 @@
 package com.ray.sample.v2ex.view.mock.vm;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.view.adapter.list.base.StateListAdapter;
@@ -34,6 +35,7 @@ public class ListSampleVM extends StateListVM<ListSampleContract.Presenter, List
 
     public ListSampleVM(ListSampleContract.Presenter presenter, ListSampleContract.View view, RecyclerView.LayoutManager layoutManager, StateListAdapter<TestEntity> adapter) {
         super(presenter, view, layoutManager, adapter);
+        setEmptyAddButtonVisibility(View.VISIBLE);
     }
 
     @Override

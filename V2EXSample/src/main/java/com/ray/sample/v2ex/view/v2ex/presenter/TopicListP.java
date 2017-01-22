@@ -51,22 +51,22 @@ public class TopicListP extends CommonPresenter implements TopicListContract.Pre
 
     @Override
     public void requestTopicList(ExObserver<List<TopicEntity>> observer) {
-        subscribeCommonReqConcat(
-                topicService.hot(),
-                (topicEntities) ->
-                        Observable.create(subscriber -> {
-                            for (TopicEntity topicEntity : topicEntities) {
-                                MemberEntity memberEntity = topicEntity.getMember();
-                                memberEntity.setAvatarNormal("http:" + memberEntity.getAvatarNormal());
-                                memberEntity.setAvatarMini("http:" + memberEntity.getAvatarMini());
-                                memberEntity.setAvatarLarge("http:" + memberEntity.getAvatarLarge());
-                            }
-                            subscriber.onNext(topicEntities);
-                            subscriber.onCompleted();
-                        }),
-                topicDBManager::insertListObs,
-                observer
-        );
+
+        topicService.hot()
+                .compose(commonObservableTransformer1(
+                        (topicEntities) ->
+                                Observable.create(subscriber -> {
+                                    for (TopicEntity topicEntity : topicEntities) {
+                                        MemberEntity memberEntity = topicEntity.getMember();
+                                        memberEntity.setAvatarNormal("http:" + memberEntity.getAvatarNormal());
+                                        memberEntity.setAvatarMini("http:" + memberEntity.getAvatarMini());
+                                        memberEntity.setAvatarLarge("http:" + memberEntity.getAvatarLarge());
+                                    }
+                                    subscriber.onNext(topicEntities);
+                                    subscriber.onCompleted();
+                                }), observer))
+                .concatMap(topicDBManager::insertListObs)
+                .subscribe(observer);
     }
 
     @Override

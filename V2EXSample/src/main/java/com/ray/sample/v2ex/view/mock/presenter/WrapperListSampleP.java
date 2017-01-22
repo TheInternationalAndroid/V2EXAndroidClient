@@ -44,20 +44,25 @@ public class WrapperListSampleP extends CommonPresenter implements WrapperListSa
 
     @Override
     public void requestListData(int page, ExObserver<ListRespEntity<TestEntity>> observer) {
-        List<TestEntity> testEntities = new ArrayList<>();
-        ListRespEntity<TestEntity> respEntity = new ListRespEntity<>();
-        if (page == 1)
-            index = 0;
-        if (page <= 2) {
-            for (int i = 0; i < 20; i++) {
-                TestEntity testEntity = new TestEntity("Title" + index, "Description");
-                testEntities.add(testEntity);
-                index += 1;
+
+        mockCommonRespObsFunc(() -> {
+            List<TestEntity> testEntities = new ArrayList<>();
+            ListRespEntity<TestEntity> respEntity = new ListRespEntity<>();
+            if (page == 1)
+                index = 0;
+            if (page <= 2) {
+                for (int i = 0; i < 20; i++) {
+                    TestEntity testEntity = new TestEntity("Title" + index, "Description");
+                    testEntities.add(testEntity);
+                    index += 1;
+                }
+                respEntity.setHasMore(true);
             }
-            respEntity.setHasMore(true);
-        }
-        respEntity.setTotalCount(100);
-        respEntity.setList(testEntities);
-        subscribeCommonReq(mockCommonRespObs(respEntity), observer);
+            respEntity.setTotalCount(100);
+            respEntity.setList(testEntities);
+            return respEntity;
+        })
+                .compose(commonObservableTransformer(observer))
+                .subscribe(observer);
     }
 }

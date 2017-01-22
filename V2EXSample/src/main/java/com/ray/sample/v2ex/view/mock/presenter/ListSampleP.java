@@ -46,6 +46,8 @@ public class ListSampleP extends CommonPresenter implements ListSampleContract.P
             TestEntity testEntity = new TestEntity("Title" + i, "Description");
             testEntities.add(testEntity);
         }
-        subscribeCommonReq(mockCommonRespObs(testEntities), observer);
+        mockCommonRespObs(testEntities)
+                .compose(commonObservableTransformer(observer))
+                .subscribe(observer);
     }
 }

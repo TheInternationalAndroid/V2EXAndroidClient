@@ -56,10 +56,10 @@ public class TopicHeaderVM extends CellVM<TopicEntity> {
     }
 
     public void onAvatarClicked(View view) {
-        if (entity == null)
+        if (data == null)
             return;
         if (memberView != null)
-            memberView.onAvatarClicked(entity.getMember());
+            memberView.onAvatarClicked(data.getMember());
     }
 
 }

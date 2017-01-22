@@ -34,7 +34,7 @@ public class PageSampleVM extends SwipRefreshVM<PageSampleContract.Presenter, Pa
     }
 
     public void init(TestEntity testEntity) {
-        setEntity(testEntity);
+        setData(testEntity);
         startRefreshRequestAuto();
     }
 

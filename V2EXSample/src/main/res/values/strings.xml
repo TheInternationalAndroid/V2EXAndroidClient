@@ -51,4 +51,5 @@
     <string name="title_activity_page_sample">PageSampleActivity</string>
     <string name="title_activity_topic_detail">TopicDetailActivity</string>
     <string name="title_activity_ray_list_no_toolbar">RayListNoToolbarActivity</string>
+    <string name="title_activity_ray_test_new">RayTestNewActivity</string>
 </resources>

@@ -68,7 +68,7 @@
                     android:layout_width="@dimen/icon_size_s"
                     android:layout_height="@dimen/icon_size_s"
                     android:scaleType="centerCrop"
-                    app:imgUrl="@{viewModel.entity.member.avatarLarge}"
+                    app:imgUrl="@{viewModel.data.member.avatarLarge}"
                     app:riv_border_width="0dp"
                     app:riv_corner_radius="@dimen/btn_corner"
                     app:riv_mutate_background="true" />
@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minLines="2"
-                    android:text="@{viewModel.entity.title}"
+                    android:text="@{viewModel.data.title}"
                     android:textColor="@color/text_gray_dark"
                     android:textSize="@dimen/text_xl" />
 
@@ -105,7 +105,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onClick="@{viewModel::onNodeClicked}"
-                        android:text="@{viewModel.entity.node.name,default=Node}"
+                        android:text="@{viewModel.data.node.name,default=Node}"
                         android:textSize="@dimen/text_m" />
 
                     <View style="@style/PointStyle" />
@@ -113,7 +113,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.entity.member.username,default=UserName}"
+                        android:text="@{viewModel.data.member.username,default=UserName}"
                         android:textColor="@color/text_black_light"
                         android:textSize="@dimen/text_m" />
 
@@ -122,7 +122,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{DateUtil.getFormatPassTime(viewModel.entity.created),default=Date}"
+                        android:text="@{DateUtil.getFormatPassTime(viewModel.data.created),default=Date}"
                         android:textColor="@color/text_gray"
                         android:textSize="@dimen/text_m" />
 
@@ -133,7 +133,7 @@
                 style="@style/CountTagStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{String.valueOf(viewModel.entity.replies),default=0}"
+                android:text="@{String.valueOf(viewModel.data.replies),default=0}"
                 android:textColor="@color/text_white"
                 android:textSize="@dimen/text_m" />
 

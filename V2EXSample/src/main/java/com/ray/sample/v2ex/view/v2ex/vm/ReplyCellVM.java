@@ -57,10 +57,10 @@ public class ReplyCellVM extends CellVM<ReplyEntity> {
     }
 
     public void onAvatarClicked(View view) {
-        if (entity == null)
+        if (data == null)
             return;
         if (replyCellView != null)
-            replyCellView.onAvatarClicked(entity.getMember());
+            replyCellView.onAvatarClicked(data.getMember());
     }
 
 }

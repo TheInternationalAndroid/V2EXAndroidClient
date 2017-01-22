@@ -72,6 +72,10 @@
             android:name=".view.templates.RayListNoToolbarActivity"
             android:label="@string/title_activity_ray_list_no_toolbar"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.templates.RayTestNewActivity"
+            android:label="@string/title_activity_ray_test_new"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

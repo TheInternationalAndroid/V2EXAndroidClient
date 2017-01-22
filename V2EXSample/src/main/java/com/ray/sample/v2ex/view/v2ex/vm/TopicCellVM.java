@@ -57,11 +57,11 @@ public class TopicCellVM extends CellVM<TopicEntity> {
     }
 
     public void onAvatarClicked(View view) {
-        topicCellView.onAvatarClicked(entity.getMember());
+        topicCellView.onAvatarClicked(data.getMember());
     }
 
     public void onNodeClicked(View view) {
-        topicCellView.onNodeClicked(entity.getNode());
+        topicCellView.onNodeClicked(data.getNode());
     }
 
 }

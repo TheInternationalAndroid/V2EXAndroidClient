@@ -72,7 +72,7 @@
                         android:layout_width="@dimen/icon_size_s"
                         android:layout_height="@dimen/icon_size_s"
                         android:scaleType="centerCrop"
-                        android:src="@{viewModel.entity.member.avatarLarge}"
+                        android:src="@{viewModel.data.member.avatarLarge}"
                         app:riv_border_width="0dp"
                         app:riv_corner_radius="@dimen/btn_corner"
                         app:riv_mutate_background="true" />
@@ -91,7 +91,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/padding_m"
-                        android:text="@{viewModel.entity.title, default = Title}"
+                        android:text="@{viewModel.data.title, default = Title}"
                         android:textColor="@color/text_gray_dark"
                         android:textSize="@dimen/text_xl" />
 
@@ -107,7 +107,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{viewModel.entity.member.username, default = UserName}"
+                            android:text="@{viewModel.data.member.username, default = UserName}"
                             android:textSize="@dimen/text_m" />
 
                         <View style="@style/PointStyle" />
@@ -115,7 +115,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{DateUtil.getFormatPassTime(viewModel.entity.created), default = Date}"
+                            android:text="@{DateUtil.getFormatPassTime(viewModel.data.created), default = Date}"
                             android:textSize="@dimen/text_m" />
 
                         <View style="@style/PointStyle" />
@@ -123,7 +123,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{@string/reply_count_format(viewModel.entity.replies), default = 9999}"
+                            android:text="@{@string/reply_count_format(viewModel.data.replies), default = 9999}"
                             android:textSize="@dimen/text_m" />
                     </LinearLayout>
                 </LinearLayout>
@@ -139,7 +139,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.entity.content, default = Content}"
+                android:text="@{viewModel.data.content, default = Content}"
                 android:textColor="@color/text_black"
                 android:textIsSelectable="true" />
 

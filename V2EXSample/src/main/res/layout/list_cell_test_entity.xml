@@ -50,13 +50,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/title_format(viewModel.entity.title), default = Title}" />
+                android:text="@{@string/title_format(viewModel.data.title), default = Title}" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_l"
-                android:text="@{viewModel.entity.description, default = Description}" />
+                android:text="@{viewModel.data.description, default = Description}" />
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

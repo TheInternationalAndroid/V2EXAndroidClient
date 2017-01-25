@@ -78,12 +78,8 @@ android {
 }
 
 retrolambda {
-//    jdk System.getenv("JAVA8_HOME")
-//    oldJdk System.getenv("JAVA7_HOME")
     javaVersion rootProject.ext.retrolambdaJavaVersion
-//    jvmArgs '-arg1', '-arg2'
     defaultMethods true
-//    incremental true
 }
 
 dependencies {

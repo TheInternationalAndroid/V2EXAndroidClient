@@ -46,6 +46,7 @@
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="@{viewModel.contentVisibility}"
             app:colorSchemeResources="@{@color/SwipRefreshColor}"
             app:enabled="@{viewModel.enabled}"
             app:onRefreshListener="@{viewModel}"
@@ -76,5 +77,16 @@
 
         </android.support.v4.widget.SwipeRefreshLayout>
 
+        <include
+            layout="@layout/state_empty_layout"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            layout="@layout/state_loading_layout"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            layout="@layout/state_error_layout"
+            app:viewModel="@{viewModel}" />
     </RelativeLayout>
 </layout>

@@ -55,8 +55,8 @@ public class V2EXApplication extends MVVMApp {
     @Override
     public void onCreate() {
         super.onCreate();
-        Timber.plant(new Timber.DebugTree());
-        init("debug");
+        if (BuildConfig.DEBUG)
+            Timber.plant(new Timber.DebugTree());
     }
 
 }

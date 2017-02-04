@@ -4,6 +4,11 @@ apply plugin: "com.jfrog.artifactory"
 
 apply from: 'BaseLibrary/dependencies.gradle'
 
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+apply from: 'BaseLibrary/cleanBuildCache.gradle'
+
 buildscript {
     repositories {
         jcenter()
@@ -33,7 +38,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0-beta2'
+        classpath 'com.android.tools.build:gradle:2.3.0-beta3'
 //        classpath 'com.frogermcs.androiddevmetrics:androiddevmetri／cs-plugin:0.3.1'
         classpath 'me.tatarka:gradle-retrolambda:3.4.0'
         classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
@@ -73,10 +78,6 @@ allprojects {
             url "http://maven.bughd.com/public"
         }
     }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
 
 ext {

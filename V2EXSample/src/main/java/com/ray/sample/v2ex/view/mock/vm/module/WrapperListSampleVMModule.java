@@ -1,17 +1,11 @@
 /*
- *
- *  Copyright (c) 2016 Lena.t.Yan
- *  Unauthorized copying of this file, via any medium is strictly prohibited proprietary and confidential.
- *  Created on Sat, 12 Nov 2016 22:35:40 +0800.
- *  ProjectName: V2EXAndroidClient ; ModuleName: app ; ClassName: TopicListCellVM.
- *  Author: Lena; Last Modified: Sat, 12 Nov 2016 22:35:40 +0800.
- *  This file is originally created by Lena.
+ *  Copyright (C) 2015 Rayman Yan
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
  *
- *  http://www.apache.org/licenses/LICENSE-2.0
+ *        http://www.apache.org/licenses/LICENSE-2.0
  *
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,

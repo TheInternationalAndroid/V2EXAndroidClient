@@ -62,7 +62,7 @@ public class MainVM extends BaseVM<MainContract.Presenter, MainContract.View> {
                                 ACCESS_COARSE_LOCATION,
                                 ACCESS_FINE_LOCATION,
                                 CAMERA))
-                .compose(view.bindUntilEvent(LifecycleEvent.DETACH))
+                .compose(view.bindUntilEvent(LifecycleEvent.DESTROY))
                 .subscribe(granted -> {
                     if (granted) {
                         subject.onCompleted();

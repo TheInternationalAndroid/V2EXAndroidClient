@@ -30,7 +30,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import rx.Observable;
+import rx.Single;
 
 public class TopicListP extends CommonPresenter implements TopicListContract.Presenter {
 
@@ -46,19 +46,17 @@ public class TopicListP extends CommonPresenter implements TopicListContract.Pre
     @Override
     public void requestTopicList(ExObserver<List<TopicEntity>> observer) {
         topicService.hot()
-                .compose(applyAsync(
-                        (topicEntities) ->
-                                Observable.create(subscriber -> {
-                                    for (TopicEntity topicEntity : topicEntities) {
-                                        MemberEntity memberEntity = topicEntity.getMember();
-                                        memberEntity.setAvatarNormal("http:" + memberEntity.getAvatarNormal());
-                                        memberEntity.setAvatarMini("http:" + memberEntity.getAvatarMini());
-                                        memberEntity.setAvatarLarge("http:" + memberEntity.getAvatarLarge());
-                                    }
-                                    subscriber.onNext(topicEntities);
-                                    subscriber.onCompleted();
-                                }), observer))
-                .concatMap(topicDBManager::insertListObs)
+                .compose(applyAsync((topicEntities) ->
+                        Single.create(subscriber -> {
+                            for (TopicEntity topicEntity : topicEntities) {
+                                MemberEntity memberEntity = topicEntity.getMember();
+                                memberEntity.setAvatarNormal("http:" + memberEntity.getAvatarNormal());
+                                memberEntity.setAvatarMini("http:" + memberEntity.getAvatarMini());
+                                memberEntity.setAvatarLarge("http:" + memberEntity.getAvatarLarge());
+                            }
+                            subscriber.onSuccess(topicEntities);
+                        }), observer))
+                .flatMap(topicDBManager::insertListObs)
                 .subscribe(observer);
     }
 

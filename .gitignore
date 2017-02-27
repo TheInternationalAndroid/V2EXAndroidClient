@@ -35,4 +35,3 @@ local.properties
 .DS_Store
 .navigation
 /Bash/
-*/artifactory.gradle

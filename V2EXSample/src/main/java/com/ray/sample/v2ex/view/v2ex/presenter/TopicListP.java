@@ -46,7 +46,7 @@ public class TopicListP extends CommonPresenter implements TopicListContract.Pre
     @Override
     public void requestTopicList(ExObserver<List<TopicEntity>> observer) {
         topicService.hot()
-                .compose(applyAsync((topicEntities) ->
+                .compose(applyAsyncRequest((topicEntities) ->
                         Single.create(subscriber -> {
                             for (TopicEntity topicEntity : topicEntities) {
                                 MemberEntity memberEntity = topicEntity.getMember();

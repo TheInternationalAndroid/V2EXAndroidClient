@@ -55,7 +55,7 @@ public class WrapperListSampleP extends CommonPresenter implements WrapperListSa
             respEntity.setList(testEntities);
             return respEntity;
         })
-                .compose(applyAsync(observer))
+                .compose(applyAsyncRequest(observer))
                 .subscribe(observer);
     }
 }

@@ -33,7 +33,7 @@ public class PageSampleP extends CommonPresenter implements PageSampleContract.P
     @Override
     public void requestEntity(ExObserver<TestEntity> observer) {
         mockResp(new TestEntity("Title (from server)", "Description (from server)"))
-                .compose(applyAsync(observer))
+                .compose(applyAsyncRequest(observer))
                 .subscribe(observer);
     }
 

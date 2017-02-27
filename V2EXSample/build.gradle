@@ -19,9 +19,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'realm-android'
 
-if (file("../BaseLibrary/fir_publish.gradle").exists()) {
-    apply from: "../BaseLibrary/fir_publish.gradle"
-}
+//if (file("../BaseLibrary/fir_publish.gradle").exists()) {
+//    apply from: "../BaseLibrary/fir_publish.gradle"
+//}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion

@@ -41,7 +41,7 @@ public class ListSampleP extends CommonPresenter implements ListSampleContract.P
             testEntities.add(testEntity);
         }
         mockResp(testEntities)
-                .compose(applyAsync(observer))
+                .compose(applyAsyncRequest(observer))
                 .subscribe(observer);
     }
 }

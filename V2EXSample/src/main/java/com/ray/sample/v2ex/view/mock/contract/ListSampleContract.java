@@ -18,7 +18,7 @@
 package com.ray.sample.v2ex.view.mock.contract;
 
 import com.ray.mvvm.lib.di.scope.PerActivity;
-import com.ray.mvvm.lib.model.http.ExObserver;
+import com.ray.mvvm.lib.interfaces.ExObserver;
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.comp.ActivityComp;

@@ -19,13 +19,16 @@ package com.ray.sample.v2ex.view.v2ex.vm;
 
 import android.support.v7.widget.RecyclerView;
 
-import com.ray.mvvm.lib.model.http.ExSubscriber;
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.view.adapter.list.base.StateListAdapter;
 import com.ray.mvvm.lib.viewmodel.StateListVM;
 import com.ray.sample.v2ex.view.v2ex.contract.TopicListContract;
 
 import java.util.List;
+
+import io.reactivex.SingleObserver;
+import io.reactivex.disposables.Disposable;
+import timber.log.Timber;
 
 public class TopicListVM extends StateListVM<TopicListContract.Presenter, TopicListContract.View, TopicEntity> {
 
@@ -39,16 +42,23 @@ public class TopicListVM extends StateListVM<TopicListContract.Presenter, TopicL
     }
 
     public void init() {
-        presenter.findTopicList(new ExSubscriber<List<TopicEntity>>() {
+        presenter.findTopicList(new SingleObserver<List<TopicEntity>>() {
             @Override
             public void onError(Throwable e) {
-
+                e.printStackTrace();
+                Timber.e(e.getMessage());
+                startRequest();
             }
 
             @Override
-            public void onNext(List<TopicEntity> topicEntities) {
+            public void onSubscribe(Disposable d) {
+                Timber.i("Start");
+            }
+
+            @Override
+            public void onSuccess(List<TopicEntity> topicEntities) {
                 if (topicEntities != null && topicEntities.size() > 0) {
-                    TopicListVM.this.onNext(topicEntities);
+                    TopicListVM.this.onSuccess(topicEntities);
                     startRefreshRequestAuto();
                 } else {
                     startRequest();

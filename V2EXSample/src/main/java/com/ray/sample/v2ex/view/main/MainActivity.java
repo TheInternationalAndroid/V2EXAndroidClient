@@ -31,12 +31,12 @@ import com.ray.sample.v2ex.view.main.contract.DaggerMainContract_Comp;
 import com.ray.sample.v2ex.view.main.contract.MainContract;
 import com.ray.sample.v2ex.view.main.vm.MainVM;
 import com.ray.sample.v2ex.view.main.vm.module.MainVMModule;
-import com.tbruyelle.rxpermissions.RxPermissions;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import javax.inject.Inject;
 
-import rx.subjects.PublishSubject;
-import rx.subjects.Subject;
+import io.reactivex.subjects.PublishSubject;
+import io.reactivex.subjects.Subject;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
@@ -45,8 +45,10 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class MainActivity extends BaseDIActivity implements MainContract.View {
 
-    @Inject MainVM viewModel;
-    @Inject RxPermissions rxPermissions;
+    @Inject
+    MainVM viewModel;
+    @Inject
+    RxPermissions rxPermissions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +115,7 @@ public class MainActivity extends BaseDIActivity implements MainContract.View {
                 .compose(bindUntilEvent(LifecycleEvent.DESTROY))
                 .subscribe(granted -> {
                     if (granted) {
-                        subject.onCompleted();
+                        subject.onComplete();
                     } else {
                         showPermissionDialog(subject);
                     }
@@ -121,7 +123,7 @@ public class MainActivity extends BaseDIActivity implements MainContract.View {
         subject.onNext(true);
     }
 
-    private void showPermissionDialog(Subject<Boolean, Boolean> subject) {
+    private void showPermissionDialog(Subject<Boolean> subject) {
         new AlertDialog.Builder(this)
                 .setTitle("Permission request")
                 .setMessage("We need camera & storage permissions.")

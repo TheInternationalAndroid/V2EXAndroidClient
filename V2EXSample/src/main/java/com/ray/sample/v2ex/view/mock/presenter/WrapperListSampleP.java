@@ -17,7 +17,7 @@
 
 package com.ray.sample.v2ex.view.mock.presenter;
 
-import com.ray.mvvm.lib.model.http.ExObserver;
+import com.ray.mvvm.lib.interfaces.ExObserver;
 import com.ray.mvvm.lib.model.model.ListRespEntity;
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.presenter.CommonPresenter;
@@ -55,7 +55,7 @@ public class WrapperListSampleP extends CommonPresenter implements WrapperListSa
             respEntity.setList(testEntities);
             return respEntity;
         })
-                .compose(applyAsyncRequest(observer))
+                .compose(applyAsyncRequest(observer::onSubscribe))
                 .subscribe(observer);
     }
 }

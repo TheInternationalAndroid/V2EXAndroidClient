@@ -17,7 +17,7 @@
 
 package com.ray.sample.v2ex.view.mock.presenter;
 
-import com.ray.mvvm.lib.model.http.ExObserver;
+import com.ray.mvvm.lib.interfaces.ExObserver;
 import com.ray.mvvm.lib.model.model.test.TestEntity;
 import com.ray.mvvm.lib.presenter.CommonPresenter;
 import com.ray.sample.v2ex.view.mock.contract.ListSampleContract;
@@ -41,7 +41,7 @@ public class ListSampleP extends CommonPresenter implements ListSampleContract.P
             testEntities.add(testEntity);
         }
         mockResp(testEntities)
-                .compose(applyAsyncRequest(observer))
+                .compose(applyAsyncRequest(observer::onSubscribe))
                 .subscribe(observer);
     }
 }

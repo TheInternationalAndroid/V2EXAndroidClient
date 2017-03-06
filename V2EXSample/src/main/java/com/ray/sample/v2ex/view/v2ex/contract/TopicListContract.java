@@ -18,8 +18,7 @@
 package com.ray.sample.v2ex.view.v2ex.contract;
 
 import com.ray.mvvm.lib.di.scope.PerActivity;
-import com.ray.mvvm.lib.model.http.ExObserver;
-import com.ray.mvvm.lib.model.http.ExSubscriber;
+import com.ray.mvvm.lib.interfaces.ExObserver;
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.presenter.IPresenter;
 import com.ray.mvvm.lib.view.base.comp.ActivityComp;
@@ -31,6 +30,7 @@ import com.ray.sample.v2ex.view.v2ex.vm.module.TopicListVMModule;
 import java.util.List;
 
 import dagger.Component;
+import io.reactivex.SingleObserver;
 
 public interface TopicListContract {
 
@@ -46,7 +46,7 @@ public interface TopicListContract {
     interface Presenter extends IPresenter {
         void requestTopicList(ExObserver<List<TopicEntity>> observer);
 
-        void findTopicList(ExSubscriber<List<TopicEntity>> observer);
+        void findTopicList(SingleObserver<List<TopicEntity>> observer);
     }
 
 }

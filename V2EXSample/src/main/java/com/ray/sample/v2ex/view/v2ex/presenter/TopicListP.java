@@ -18,8 +18,7 @@
 package com.ray.sample.v2ex.view.v2ex.presenter;
 
 import com.ray.mvvm.lib.db.ITopicDBManager;
-import com.ray.mvvm.lib.model.http.ExObserver;
-import com.ray.mvvm.lib.model.http.ExSubscriber;
+import com.ray.mvvm.lib.interfaces.ExObserver;
 import com.ray.mvvm.lib.model.model.member.MemberEntity;
 import com.ray.mvvm.lib.model.model.topic.TopicEntity;
 import com.ray.mvvm.lib.model.service.TopicService;
@@ -30,7 +29,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import rx.Single;
+import io.reactivex.Single;
+import io.reactivex.SingleObserver;
 
 public class TopicListP extends CommonPresenter implements TopicListContract.Presenter {
 
@@ -46,25 +46,26 @@ public class TopicListP extends CommonPresenter implements TopicListContract.Pre
     @Override
     public void requestTopicList(ExObserver<List<TopicEntity>> observer) {
         topicService.hot()
-                .compose(applyAsyncRequest((topicEntities) ->
-                        Single.create(subscriber -> {
-                            for (TopicEntity topicEntity : topicEntities) {
-                                MemberEntity memberEntity = topicEntity.getMember();
-                                memberEntity.setAvatarNormal("http:" + memberEntity.getAvatarNormal());
-                                memberEntity.setAvatarMini("http:" + memberEntity.getAvatarMini());
-                                memberEntity.setAvatarLarge("http:" + memberEntity.getAvatarLarge());
-                            }
-                            subscriber.onSuccess(topicEntities);
-                        }), observer))
+                .compose(applyAsyncRequest(topicEntities ->
+                                Single.create(subscriber -> {
+                                    for (TopicEntity topicEntity : topicEntities) {
+                                        MemberEntity memberEntity = topicEntity.getMember();
+                                        memberEntity.setAvatarNormal("http:" + memberEntity.getAvatarNormal());
+                                        memberEntity.setAvatarMini("http:" + memberEntity.getAvatarMini());
+                                        memberEntity.setAvatarLarge("http:" + memberEntity.getAvatarLarge());
+                                    }
+                                    subscriber.onSuccess(topicEntities);
+                                }),
+                        observer::onSubscribe))
                 .flatMap(topicDBManager::insertListObs)
                 .subscribe(observer);
     }
 
     @Override
-    public void findTopicList(ExSubscriber<List<TopicEntity>> subscriber) {
+    public void findTopicList(SingleObserver<List<TopicEntity>> observer) {
         topicDBManager.findAllObs()
-                .compose(bindLifecycle().forSingle())
-                .subscribe(subscriber);
+                .compose(bindLifecycle())
+                .subscribe(observer);
     }
 
 }
